@@ -1,0 +1,94 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: url(../img/19.jpg) no-repeat;
+    background-size: cover;
+}
+
+.login {
+    width: 465px;
+    /* height: 352px; */
+    border: 1px solid #d6d6d6;
+    background-color: #fff;
+    position: fixed;
+    right: 200px;
+    top: 100px;
+}
+
+.login .top {
+    width: 100%;
+    height: 88px;
+    border-bottom: 1px solid #d6d6d6;
+    padding: 23px 0;
+    box-sizing: border-box;
+}
+
+.login .top .logo {
+    width: 124px;
+    height: 42px;
+    margin: 0 auto;
+}
+
+.login .top .logo img {
+    width: 100%;
+}
+
+
+.bottom [class*=item] {
+    width: 100%;
+    height: 58px;
+    text-align: center;
+}
+
+.bottom .item1 {
+    height: 52px;
+    overflow: hidden;
+}
+
+.bottom .item1 div {
+    width: 256px;
+    height: 30px;
+    border: 1px solid #d6d6d6;
+    box-sizing: border-box;
+    margin: 11px auto;
+    font-size: 12px;
+    color: #333333;
+    line-height: 30px;
+    background-color: #fdf4e5;
+}
+
+.bottom .item input,
+.bottom .item button {
+    width: 256px;
+    height: 42px;
+    border: 1px solid #d6d6d6;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.bottom .item input::placeholder {
+    font-size: 14px;
+}
+
+.bottom .item button {
+    background-color: #c20000;
+    border: 0;
+    color: #fff;
+    font-size: 14px;
+}
+
+.bottom .item5 {
+    height: 42px;
+}
+.bottom .item5 .link {
+    width: 256px;
+    height: 42px;
+    margin: 0 auto;
+    text-align: right;
+}
+
+.bottom .item5 .link a {
+    text-decoration: none;
+    font-size: 12px;
+    color: #000;
+}

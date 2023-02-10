@@ -1,0 +1,115 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+a {
+    text-decoration: none;
+}
+
+.header {
+    width: 100%;
+    height: 140px;
+    display: flex;
+    justify-content: center;
+
+    .center {
+        width: 1160px;
+        height: 140px;
+
+        .center-top {
+            width: 100%;
+            height: 100px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            img {
+                width: 170px;
+                height: 60px;
+            }
+
+            .message {
+                display: flex;
+                align-items: center;
+
+                a {
+                    color: #000;
+                    font-size: 13px;
+                    padding: 0 15px;
+                }
+
+                .border-right {
+                    border-right: 1px solid #dbdbdb;
+                }
+
+                .search {
+                    border-bottom: 1px solid #000;
+                    display: flex;
+
+                    input {
+                        width: 140px;
+                        border: 0;
+
+                        &:focus {
+                            outline: none;
+                        }
+
+                    }
+
+                    &::after {
+                        content: "";
+                        display: block;
+                        width: 20px;
+                        height: 20px;
+                        background: url(../img/icons_xuebitu.png) no-repeat;
+                        background-position: -83px 0;
+                    }
+                }
+
+                .icon {
+                    display: flex;
+                    align-items: center;
+
+                    div {
+                        width: 20px;
+                        height: 20px;
+                        margin: 6px;
+                        background: url(../img/icons_xuebitu.png) no-repeat;
+                    }
+
+                    .item1 {
+                        background-position: -26px 0px;
+                    }
+
+                    .item3 {
+                        background-position: -55px 0px;
+                    }
+                }
+            }
+        }
+
+        .center-bottom {
+            width: 100%;
+            height: 40px;
+            ul {
+                margin: 0;
+                padding: 0;
+                list-style: none;
+                height: 40px;
+                line-height: 40px;
+                display: flex;
+                justify-content: center;
+                a {
+                    display: block;
+                    height: 100%;
+                    color: #333;
+                    font-size: 13px;
+                    padding: 0 20px;
+                    &:hover {
+                        color: #a10000;
+                    }
+                }
+            }
+        }
+    }
+}

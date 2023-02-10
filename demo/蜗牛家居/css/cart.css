@@ -1,0 +1,145 @@
+/* content区域 */
+.content {
+    margin-top: 140px;
+    width: 100%;
+    border-top: 1px solid #dbdbdb;
+}
+
+.content .center {
+    width: 1160px;
+    /* background-color: pink; */
+    margin: 0 auto;
+}
+
+/* message区域 */
+.content .center .message {
+    width: 1160px;
+    height: 64px;
+    /* background-color: skyblue; */
+
+}
+
+.content .center .message>div {
+    float: left;
+}
+
+.content .center .message div[class] {
+    width: 100px;
+    height: 64px;
+    line-height: 64px;
+    font-size: 16px;
+    color: #333;
+}
+
+.content .center .message .message-left+div {
+    width: 960px;
+    height: 64px;
+    text-align: center;
+}
+
+.content .center .message .message-left+div img {
+    margin: 15px 0;
+}
+
+.content .center .message .message-right {
+    float: right;
+    text-align: right;
+}
+
+.content .center .message .message-right a {
+    color: #333;
+    text-decoration: underline;
+}
+
+/* table区域 */
+.content .center table {
+    width: 1160px;
+    border-spacing: 0;
+}
+
+.content .center table thead,.content .center table tfoot {
+    height: 40px;
+    background-color: #e9e9e9;
+    font-size: 12px;
+    color: #000;
+}
+
+.content .center table thead .check {
+    width: 50px;
+}
+.content .center table thead .goods {
+    width: 300px;
+}
+.content .center table thead .price {
+    width: 260px;
+}
+.content .center table thead .count {
+    width: 200px;
+}
+.content .center table thead .all {
+    width: 150px;
+}
+
+.content .center table tbody {
+    text-align: center;
+}
+
+.content .center table tbody tr .item>div {
+    float: left;
+}
+
+.content .center table tbody tr .item .text {
+    text-align: left;
+    margin-left: 20px;
+}
+
+.content .center table tbody tr .item .text h5 {
+    font-weight: normal;
+    margin: 15px 0;
+}
+
+.content .center table tbody tr .item .text p {
+    margin: 0 0 5px;
+    color: #808080;
+}
+
+.content .center table tbody tr td {
+    font-size: 12px;
+    color: #333;
+    border-bottom: 1px dashed #e9e9e9;
+    padding: 15px 0;
+}
+
+.content .center table tbody tr .sub img {
+    vertical-align: middle;
+}
+
+.content .center table tbody tr .sub span {
+    vertical-align: middle;
+}
+
+.content .center table tbody tr>td+td+td+td+td span {
+    text-decoration: underline;
+}
+
+.content .center table tfoot {
+    color: #333;
+    text-align: center;
+}
+
+.content .center table tfoot .td-left {
+    text-align: left;
+}
+
+.content .center table tfoot .td-right {
+    text-align: right;
+}
+
+.content .center table tfoot span {
+    color: #db0000;
+}
+
+.content .center table tfoot .last {
+    background-color: #8e8e8e;
+    color: #fff;
+}

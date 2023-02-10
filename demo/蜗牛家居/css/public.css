@@ -1,0 +1,407 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+.clearfix::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+/* 头部区域 */
+.header {
+    width: 100%;
+    height: 140px;
+    background-color: #ffffff;
+    position: fixed;
+    top: 0;
+    z-index: 100;
+}
+
+/* 结构选择器: 找到hesder盒子,再找到center盒子,中间用空格键隔开*/
+.header .center {
+    width: 1160px;
+    height: 140px;
+    /* background-color: blue; */
+    margin: 0 auto;
+}
+
+.header .center .container {
+    width: 1160px;
+    height: 100px;
+    /* background-color: aqua; */
+}
+
+.header .center .container .logo {
+    float: left;
+    width: 173px;
+    height: 60px;
+    /* background-color: rgb(158, 151, 151); */
+    margin: 20px 0;
+}
+
+
+.header .center .container .logo img {
+    width: 100%;
+}
+
+.header .center .container .login {
+    float: right;
+    height: 25px;
+    /* background-color: rgb(216, 128, 128); */
+    margin: 47px 0 28px 0;
+}
+
+.header .center .container .login .login-float {
+    float: left;
+}
+
+.header .center .container .login .login1 ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.header .center .container .login .login1 ul li {
+    float: left;
+    vertical-align: middle;
+}
+
+.header .center .container .login .login1 ul li:first-child {
+    border-right: 1px solid #dbdbdb;
+}
+
+.header .center .container .login .login1 ul li a {
+    color: #424242;
+    font-size: 13px;
+    padding: 0 10px 0 10px;
+}
+
+.header .center .container .login .login2 input::placeholder {
+    color: #686868;
+    font-size: 12px;
+}
+
+.header .center .container .login .login2 input {
+    vertical-align: middle;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    padding-left: 5px;
+    border-bottom: 1px solid #262626;
+}
+
+.header .center .container .login .login3 {
+    margin-left: -32px;
+}
+
+.header .center .container .login [class*=login-icon] {
+    float: left;
+    width: 20px;
+    height: 20px;
+    background-image: url(../img/icons_xuebitu.png);
+    margin-left: 10px;
+    vertical-align: middle;
+    background-repeat: no-repeat;
+}
+
+.header .center .container .login .login-icon1 {
+    background-position: -84px 0;
+}
+
+.header .center .container .login .login3 .login-icon2 {
+    background-position: -27px 0;
+}
+
+.header .center .container .login .login3 .login-icon3 {
+    position: relative;
+}
+
+.header .center .container .login .login3 .login-icon3:hover .icon3-show {
+    display: block;
+}
+
+.header .center .container .login .login3 .login-icon3 .icon3-show {
+    position: absolute;
+    width: 74px;
+    height: 74px;
+    border: 1px solid #A10000;
+    top: 30px;
+    right: -28px;
+    display: none;
+}
+
+.header .center .container .login .login3 .login-icon3 .icon3-show::before {
+    content: "";
+    width: 0;
+    height: 0;
+    display: block;
+    border: 5px solid transparent;
+    border-bottom-color: #A10000;
+    position: absolute;
+    top: -10px;
+    right: 31px;
+}
+
+.header .center .container .login .login3 .login-icon3 .icon3-show img {
+    width: 100%;
+}
+
+.header .center .container .login .login3 .login-icon4 {
+    background-position: -55px 0;
+}
+
+.header .center .nav {
+    width: 1160px;
+    height: 40px;
+    /* background-color: blueviolet; */
+}
+
+.header .center .nav ul {
+    list-style: none;
+    padding: 0;
+    /* background-color: rgb(148, 221, 105); */
+    width: 625px;
+    height: 40px;
+    margin: 0 auto;
+    line-height: 40px;
+    /* text-align: center; */
+}
+
+.header .center .nav ul li {
+    float: left;
+    /* background-color: rgb(204, 75, 75); */
+}
+
+.header .center .nav ul li:hover .two-nav {
+    display: block;
+}
+
+.header .center .nav ul li .two-nav {
+    width: 100%;
+    /* height: 280px; */
+    background-color: #fff;
+    border-top: 2px solid #000;
+    position: absolute;
+    left: 0;
+    display: none;
+}
+
+.header .center .nav ul li .two-nav .two-nav-center {
+    width: 1160px;
+    height: 280px;
+    margin: 0 auto;
+    padding: 30px 0px 20px 0;
+    /* background-color: rgb(177, 127, 127); */
+    box-sizing: border-box;
+}
+
+.header .center .nav ul li .two-nav .two-nav-center .two-nav-item {
+    float: left;
+    width: 162px;
+    height: 230px;
+    margin: 0 35px;
+    /* background-color: rgb(125, 219, 88); */
+}
+
+.header .center .nav ul li .two-nav .two-nav-center .two-nav-item .two-nav-img {
+    width: 162px;
+    height: 200px;
+    /* background-color: rgb(212, 174, 174); */
+}
+
+.header .center .nav ul li .two-nav .two-nav-center .two-nav-item p {
+    font-size: 12px;
+    color: #333333;
+    margin: 0;
+    text-align: center;
+}
+
+.header .center .nav ul li:nth-child(3) .two-nav .two-nav-center,
+.header .center .nav ul li:nth-child(4) .two-nav .two-nav-center {
+    background-color: #fff;
+    height: 50px;
+    line-height: 50px;
+    padding: 0;
+    font-size: 14px;
+    padding-left: 320px;
+}
+
+.header .center .nav ul li .two-nav .two-nav-center a {
+    padding: 0 15px;
+    display: inline;
+}
+
+.header .center .nav ul li a {
+    display: block;
+    color: #333333;
+    font-size: 13px;
+    padding: 0 20px;
+    width: calc(100% - 40px);
+    height: 100%;
+}
+
+.header .center .nav ul li a:hover {
+    color: red;
+}
+
+
+
+/* footer区域 */
+.footer {
+    width: 100%;
+    /* height: 200px; */
+    /* background-color: yellowgreen; */
+    border-top: 1px solid #dbdbdb;
+}
+
+.footer .footer-center {
+    width: 1160px;
+    height: 115px;
+    /* background-color: bisque; */
+    margin: 0 auto;
+}
+
+.footer .footer-center .ft-item {
+    float: left;
+    width: 25%;
+    height: 53px;
+    /* background-color: rgb(219, 93, 93); */
+    margin: 31px 0;
+    border-right: 1px solid #dbdbdb;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.footer .footer-center .ft-item:last-child {
+    border-right: 0;
+}
+
+.footer .footer-center .ft-item .bg {
+    display: inline-block;
+    width: 53px;
+    height: 53px;
+    background-image: url(../img/footer-xuebitu.png);
+    vertical-align: middle;
+}
+
+.footer .footer-center .ft-item .bg2 {
+    background-position: -63px 0;
+}
+
+.footer .footer-center .ft-item .bg3 {
+    background-position: -126px 0;
+}
+
+.footer .footer-center .ft-item .bg4 {
+    background-position: -189px 0;
+}
+
+.footer .footer-center .ft-item span {
+    vertical-align: middle;
+}
+
+.footer .bottom {
+    width: 100%;
+    height: 85px;
+    background-color: black;
+    padding-top: 15px;
+    box-sizing: border-box;
+}
+
+.footer .bottom p {
+    color: #ffffff;
+    font-size: 12px;
+    text-align: center;
+}
+
+/* 返回顶部 */
+
+.gotop {
+    width: 50px;
+    position: fixed;
+    right: 25px;
+    bottom: 0;
+}
+
+.gotop a {
+    display: block;
+    height: 50px;
+    width: 50px;
+    margin-top: 10px;
+    border: 1px solid #dbdbdb;
+    background:#fff url(../img/gt1.png) no-repeat center center;
+    font-size: 12px;
+    padding: 12px;
+    line-height: 12px;
+    box-sizing: border-box;
+
+}
+
+.gotop .item2 {
+    background-image: url(../img/gt2.png);
+}
+
+.gotop .item3 {
+    background-image: url(../img/gt3.png);
+}
+
+.gotop .item4 {
+    background-image: url(../img/gt4.png);
+}
+
+.gotop a::before {
+    content: "去购物车";
+    display: block;
+    color: #fff;
+    display: none;
+}
+.gotop .item2::before {
+    content: "联系客服";
+}
+.gotop .item3::before {
+    content: "个人中心";
+}
+.gotop .item4::before {
+    content: "返回顶部";
+}
+
+.gotop a:hover {
+    background-color: #A10000;
+}
+
+.gotop a:hover::before {
+    display: block;
+}
+
+.gotop p {
+    width: 100px;
+    border: 1px solid #A10000;
+    padding: 10px;
+    color: #333333;
+    font-size: 14px;
+    position: absolute;
+    top: 61px;
+    left: -135px;
+    display: none;
+}
+
+.gotop p::before {
+    content: "";
+    display: block;
+    width: 0;
+    height: 0;
+    border: 5px solid transparent;
+    border-left-color: #c02222;
+    position: absolute;
+    top: 15px;
+    right: -11px;
+}
+.gotop a:hover+p {
+    display: block;
+}
