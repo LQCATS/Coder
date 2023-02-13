@@ -47,11 +47,18 @@
     /* height: 350px; */
     margin: 15px 0px 15px 15px;
     /* background-color: rgb(151, 80, 80); */
+    overflow: hidden;
 }
 
 .content .con-center .con-top .icon img {
+    transition: all .5s;
     display: block;
 }
+
+.content .con-center .con-top .icon:hover img {
+    transform: scale(1.08,1.08);
+}
+
 
 /* con-bottom开始 */
 .content .con-center .con-bottom {
@@ -79,43 +86,44 @@
     width: 268px;
     height: 320px;
     margin: 0 29px 22px 0;
-    /* background-color: rgb(38, 150, 48); */
     text-align: center;
-    position: relative;
 }
+
 .content .con-center .con-bottom .box .item:hover {
     box-shadow: 0px 0px 10px 1px #757575;
 }
 
-.content .con-center .con-bottom .box .item::after {
+.content .con-center .con-bottom .box .item .img {
+    position: relative;
+    width: 268px;
+    height: 268px;
+    overflow: hidden;
+}
+
+.content .con-center .con-bottom .box .item .img::before,
+.content .con-center .con-bottom .box .item .img::after {
     content: "";
     display: block;
-    width: 0;
-    height: 0;
+    width: 268px;
+    height: 268px;
+    background-color: rgba(0, 225, 255, 0.137);
     position: absolute;
     top: 0;
-    transition: all 1s linear;
+    left: 0;
+    transition: all 1s;
+    transform: translate(-268px, -268px);
+
 }
-.content .con-center .con-bottom .box .item::before {
-    content: "";
-    display: block;
-    width: 0;
-    height: 0;
-    position: absolute;
-    bottom: 52px;
-    right: 0;
-    transition: all 1s linear;
+
+.content .con-center .con-bottom .box .item .img::after {
+    transform: translate(268px, 268px);
 }
-.content .con-center .con-bottom .box .item:hover::after {
-    background-color: rgba(0, 225, 255, 0.137);
-    width: 268px;
-    height: 268px;
+
+.content .con-center .con-bottom .box .item:hover .img::before,
+.content .con-center .con-bottom .box .item:hover .img::after {
+    transform: translate(0px, 0px);
 }
-.content .con-center .con-bottom .box .item:hover::before {
-    background-color: rgba(0, 225, 255, 0.137);
-    width: 268px;
-    height: 268px;
-}
+
 
 .content .con-center .con-bottom .box .item:nth-child(4n) {
     margin-right: 0;
@@ -138,10 +146,3 @@
     font-size: 14px;
     color: #a10000;
 }
-
-
-
-
-
-
-
