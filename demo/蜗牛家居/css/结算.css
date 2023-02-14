@@ -74,7 +74,7 @@
   width: 330px;
   height: 150px;
   box-sizing: border-box;
-  margin-bottom: 40px;
+  margin: 20px 0;
   border: 1px solid #dbdbdb;
 }
 
@@ -141,7 +141,7 @@
   box-sizing: border-box;
   margin: 30px 20px 30px 0;
   text-align: center;
-  line-height: 42px;
+  line-height: 38px;
 }
 
 .content .container .container-center .center-left .left-center .center-information .item:hover {
