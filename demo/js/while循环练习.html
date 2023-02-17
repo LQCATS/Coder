@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 1. 给20块钱买可乐，每瓶可乐3块钱，喝完之后退瓶子可以换回1块钱，问最多可以喝到多少瓶可乐。
+
+        let money = 20;//初始金额20元
+        let price = 3;//每一瓶3元
+        let sum = 0;//最多喝了多少瓶
+        // 循环条件：当前剩余金额大于价格
+        while (money >= price) {
+            //花掉3元钱
+            // money -=3;
+            //换回1元钱
+            // money ++;
+            //没喝一瓶一共用掉
+            money -= 2;
+            sum++
+        }
+        console.log(`最多可以喝到${sum}瓶可乐`)
+
+
+
+        // 2. 用户输入一个数字，倒序输出该数字，并计算每位上的数相加和//567
+        let num = prompt("请输入一个数字");
+        //定义倒叙数字的储存
+        let sum1 = 0;
+        /* while(?){
+            1.输出每位倒叙的数字
+            2.记录数字相加的和
+         } 
+        */
+        /* 
+        3456；    =>%10  =>/10取整
+        345;      =>%10  =>/10取整
+        34；      =>%10  =>/10取整
+        3；       =>10%  =>/10取整  =>0
+         */
+
+        while (num != 0) {
+            let i = num % 10;
+            document.write(`${i}`)
+            sum += i;
+            //num值的变化
+            num = parseInt(num / 10);
+        }
+        console.log(`总数的和是${sum}`)
+
+
+
+
+        // 3.【猜数】计算机生成一个100以内的随机数。用户输入数字与随机数进行比较：
+        //     如果用户输入的数大于随机数，提示大了，用户继续输入数字对比；
+        //     如果小于随机数，提示小了，用户继续输入数字对比；
+        //     相等，提示猜对了。输出猜测次数和随机数
+
+        let random = parseInt(Math.random() * 100)
+        alert(random)
+        let num2 = prompt("请输入一个数字") - 0;
+
+        let sum2 = 1;
+        while (num2 != random) {
+            if (num2 > random) {
+                alert("你猜大了")
+            } else {/*  */
+                alert("你猜小了")
+            }
+
+            num2 = prompt("请输入一个数字") - 0;
+            sum2++;
+        }
+        alert(`你猜对了，一共猜了${sum2}次`)
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>

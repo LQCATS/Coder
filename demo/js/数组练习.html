@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 完成学生成绩的数据管理
+
+    1. 在成绩单中追加多个成绩：97、57、32、87、65、78、89
+    2. 输出成绩单中共有几个数据
+    3. 在末尾新增新成绩数据：76、48
+    4. 删除最后一个成绩并输出该成绩单
+    5. 分别输出所有的成绩数据 -->
+
+    
+
+    <script>
+        let arr = [97, 57, 32, 87, 65, 78, 89]
+        console.log(arr)
+
+       /*  let arr2 = arr.length
+        console.log(arr2) */
+        console.log (arr.length)
+
+        arr[arr.length] = 76
+        arr[arr.length] = 48
+        console.log (arr)
+
+        arr.length-=1
+        console.log (arr)
+
+        console.log (arr[0],arr[1],arr[2],arr[3],arr[4],arr[5],arr[6],arr[7])
+
+
+    </script>
+</body>
+
+</html>

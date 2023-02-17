@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 练习：
+
+    1. 输入第一个学生的信息（姓名、年龄、工资、社保金额3000) 输入第二个学生的信息（姓名、年龄、工资、社保金额3500)
+    1. 请输出学生的平均年龄是多少
+    2. 请输出每个学生工资，需要缴纳的社保是多少（社保金额*缴费比例) 缴费比例自定义
+    3. 工资超出5000的部分，需要缴纳5%的税，算出需交税的金额是多少
+
+    2. 利用所学知识完成下列题目：
+    1. 用户输入2个数字，输出这两个数字的加减乘除运算结果
+    2. 定义一个变量，获取用户输入的数字，依次进行+=2、-=3、/=4、%=6，并输出结果 -->
+
+    <script>
+        
+
+        let userName = prompt("请输入姓名")
+        let age = prompt("请输入年龄") - 0
+        let salary = prompt("请输入工资") - 0
+        let socialSecurity = 3000
+        console.log(userName, age, salary, socialSecurity)
+
+        let userName1 = prompt("请输入姓名")
+        let age1 = prompt("请输入年龄") - 0
+        let salary1 = prompt("请输入工资") - 0
+        let socialSecurity1 = 3500
+        console.log(userName1, age1, salary1, socialSecurity1)
+        let average = age1 + age
+
+        console.log("题目1")
+
+        console.log("平均年龄  社保比例10%，缴纳社保费  交税")
+
+        console.log((age1 + age) / 2, socialSecurity * 0.1, (salary - 5000) * 0.05)
+        console.log((age1 + age) / 2, socialSecurity1 * 0.1, (salary1 - 5000) * 0.05)
+
+
+
+
+        console.log("题目2")
+
+        let num1 = prompt("请输入第一个数字") - 0
+        let num2 = prompt("请输入第二个数字") - 0
+        console.log(num1, num2)
+
+        console.log(num1 + num2,num1 - num2,num1 * num2,num1 / num2)
+
+        console.log("题目2.2")
+        let num3 = prompt("请输入数字") - 0
+        console.log(num3)
+
+        console.log(num3 += 2,num3 -= 3,num3 /= 4,num3 %= 6)
+        
+
+
+
+
+    </script>
+</body>
+
+</html>

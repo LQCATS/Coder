@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        //1.用户输入两次，每次输入一个数字，输出两个数字的比较结果(大于、小于、等于)
+        // let num1 = prompt ("请输入第一个数字") - 0;
+        // let num2 = prompt ("请输入第二个数字") - 0;
+        // if (num1 > num2) {
+        //     console.log (`${num1}大于${num2}`)
+        // } else if (num1 < num2) {
+        //     console.log (`${num1}小于${num2}`)
+        // } else {
+        //     console.log (`${num1}等于${num2}`)
+        // }
+
+        //2. 用户输入一个成绩，判断是优秀、良、中、还是不及格 >= 90(优秀)  良 > 70  中 >= 60  不及格(< 60)
+        // let grade = prompt ("请输入你的成绩") - 0;
+        // if (grade >= 90) {
+        //     console.log ("优秀")
+        // } else if (grade > 70) {
+        //     console.log ("良")
+        // } else if (grade >= 60) {
+        //     console.log ("中")
+        // } else {
+        //     console.log ("不及格")
+        // }
+
+        //3. 用户登录：用户输入用户名和密码并用两个变量保存，判断是否登录成功并输出登录结果(正确账号：用户名: admin 密码：ad123)
+        // let true_userName = "admin";
+        // let true_passWord = "ad123";
+        // let userName = prompt ("请输入用户名");
+        // let passWord = prompt ("请输入密码");
+        // if (userName == true_userName && passWord == true_passWord) {
+        //     console.log ("登录成功")
+        // } else {
+        //     console.log ("登录失败")
+        // }
+
+        /* 4.  用户输入一个三位数，判断该数是否是水仙花数(是指一个三位数。它的每位数的立方和加起来等于三位数本身。比如 153 = 1 * 1 * 1 + 5 * 5 * 5 + 3 * 3 * 3 ，153是水仙花数)
+        思考：如何输出三位数中的所有水仙花数 */
+
+        let num3 = prompt("请输入一位三位数") - 0;
+        let num4 = parseInt(num3 / 100);//百位数
+        let num5 = parseInt(num3 % 100 / 10);//十位数
+        let num6 = parseInt(num3 % 10);//个位数
+        if (num3 == num4**num4 + num5**num5 + num6**num6) {
+            console.log(`${num3}是水仙数`)
+        } else {
+            console.log(`${num3}不是水仙数`)
+        }
+
+
+
+
+        for (let i = 100; i < 1000; i++) {
+            let hundred = parseInt(i / 100);//百位数
+            let ten = parseInt(i % 100 / 10);//十位数
+            let bits = parseInt(i % 10);//个位数
+            if (i == hundred * hundred * hundred + ten * ten * ten + bits * bits * bits) {
+                console.log(`${i}是水仙数`)
+            }
+        }
+
+
+    </script>
+</body>
+
+</html>

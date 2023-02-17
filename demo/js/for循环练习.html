@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        /*      
+         1. 输出1到500
+         2. 计算从1加到10的和
+         3. 输入n的值，计算 1*1+2*2+...+n*n的和
+         4. 完成成绩单的数据管理,[97, 57, 32, 87, 65, 78, 89]
+           1. 用户输入指定下标与成绩，在对应下标前插入该成绩
+           2. 用户输入指定下标，删除对应成绩数据 
+        */
+
+        for (let i = 0; i <= 500; i++) {
+            console.log(i)
+        }
+
+        let sum = 0;
+        for (i = 1; i <= 10; i++) {
+            sum = sum + i;
+        }
+        console.log(`计算从1加到10的和：${sum}`)
+
+        let sum1 = 0;
+        let n = prompt("请输入一个数字") - 0
+        for (i = 1; i <= n; i++) {
+            sum1 = sum1 + i * i
+        }
+        console.log(`计算 1*1+2*2+...+n*n的和：${sum1}`)
+
+
+        let arr = [97, 57, 32, 87, 65, 78, 89];
+        let index = prompt("请输入数组下标") - 0;
+        let grade = prompt("请输入想插入的成绩") - 0;
+        for (i = arr.length - 1; i >= index; i--) {
+            arr[i + 1] = arr[i]
+        }
+        arr[index] = grade
+        console.log(`用户输入指定下标与成绩，在对应下标前插入该成绩：${arr}`)
+
+
+        let arr1 = [97, 57, 32, 87, 65, 78, 89];
+        let index1 = prompt("请输入删除的成绩下标") - 0;
+        for (let i = index1; i <= arr.length - 1; i++) {
+            arr1[i] = arr1[i + 1]
+        }
+        arr1.length--;
+        console.log(`用户想删除成绩后的成绩单：${arr1}`)
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+
+</body>
+
+</html>
