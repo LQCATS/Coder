@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+    //练习1：输出数组中3的倍数的数
+    let array = [1,2,3,4,5,6,7,8,9,0,19,20,30,18];
+    
+    for (let i = 0; i < array.length; i++){
+        let num = array[i] % 3
+        if (num != 0 || array[i] == 0) {
+           continue
+        }
+        console.log(`${array[i]}是3的倍数`)
+    }
+
+
+    /* 练习2：用户输入一个数字，如果小于等于5，则输出1~该数的所有数字，如果大于5，则输出1~5数   
+    例子：如果输入3，则输出1,2,3，如果输入10，则输出1,2,3,4,5 */
+    let input = prompt("请输入一个数字") - 0;
+    for (let i = 1; i <= input; i++){
+        console.log(i)
+        if (i == 5){
+          break  
+        }
+        }
+    </script>
+</body>
+
+</html>

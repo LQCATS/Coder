@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 练习：用户输入多次数字，当输入0时代表结束，输出我们输入数字中的最大值
+        let num;
+        let max;//undefined =>NaN
+        do{
+            num = prompt("请输入数字") - 0;
+            console.log(num)
+            if (num != 0) {
+                if (num > max || max == undefined) {
+                max = num
+            }
+            }
+        }while(num != 0)
+        console.log(`输入最大数字是${max}`)
+
+          
+
+        
+    </script>
+</body>
+</html>
