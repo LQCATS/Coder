@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const generateStarMultiply = (count) => {
+            const line = count * 2 - 1;
+            const maxStarNum = count * 2 - 1;
+
+            const mixDataArr = [];
+            
+            for (let i = 1 ; i <= line; i++) {
+                let startNum = 0
+                let spaceNum = 0
+
+                const tempStarSpaceArr = [];
+
+                if (i <= count) {
+                    startNum = 2 * i - 1;
+                    spaceNum = (maxStarNum - startNum) / 2;
+                } else {
+                    startNum = 2 * (count - (i % count)) - 1;
+                    spaceNum = (maxStarNum - startNum) / 2;
+                }
+                
+                tempStarSpaceArr[0] = spaceNum;
+                tempStarSpaceArr[1] = startNum
+
+                mixDataArr[i - 1] = tempStarSpaceArr;
+            }
+
+            return mixDataArr;
+        };
+
+        const generateDomStar = (mixDataArr) => {
+            for (let i = 0; i < mixDataArr.length; i++) {
+                const mixData = mixDataArr[i];
+
+                const spaceNum = mixData[0];
+                const startNum = mixData[1];
+
+                let str = '';
+                let consoleStr = '';
+                for (let j = 0; j < spaceNum; j++) {
+                    str += '&nbsp;';
+                    consoleStr += ' ';
+                }
+
+                for (let k = 0; k < startNum; k++) {
+                    str += '*';
+                    consoleStr += '*';
+                }
+
+                
+                document.write(str);
+                document.write("</br>");
+                console.log(consoleStr);
+            }
+            
+        };
+
+
+        const fiveCountData = generateStarMultiply(5);
+
+        generateDomStar(fiveCountData);
+
+        /**
+         * 思路1，算出所有行，求每行的空格数和星星数
+         * 
+        */
+        // const count = 5;
+        // const line = count * 2 - 1;
+        // const maxStarNum = count * 2 - 1;
+       
+        // for (let i = 1 ; i <= line; i++) {
+        //     let startNum = 0
+        //     let spaceNum = 0
+        //     let str = '';
+
+        //     if (i <= count) {
+        //         startNum = 2 * i - 1;
+        //         spaceNum = (maxStarNum - startNum) / 2;
+        //     } else {
+        //         startNum = 2 * (count - (i % count)) - 1;
+        //         spaceNum = (maxStarNum - startNum) / 2;
+        //     }
+
+        //     for (let j = 0; j < spaceNum; j++) {
+        //         str += '&nbsp;';
+        //     }
+
+        //     for (let k = 0; k < startNum; k++) {
+        //         str += '*';
+        //     }
+
+        //     document.write(str)
+        //     document.write("</br>");
+        // }
+
+        /**
+         * 思路2，算出一半行的空格数和星星数，然后剩下的复制，
+         * 
+        */
+       const mixData2 = [];
+       const count2 = 5;
+       const maxStarNum2 = count2 * 2 - 1;
+       for (let i = 1; i <= 5; i++) {
+            const startNum = 2 * i - 1;
+            const spaceNum = (maxStarNum2 - startNum) / 2;
+
+            const reverseIndex = 2 * 5 - i;
+
+            mixData2[i-1] = [spaceNum, startNum];
+
+            if (i !== 5) {
+                mixData2[reverseIndex] = [spaceNum, startNum];
+            }
+       }
+
+       console.log(mixData2);
+    </script>
+</body>
+
+</html>
