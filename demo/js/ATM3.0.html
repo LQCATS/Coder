@@ -33,6 +33,7 @@
 
         let saveUsers = [];
         let isGo = true;
+        let loginUser = null;
         while (isGo) {
             let operate = prompt("请选择一级菜单选项：1.登录 2. 注册 3. 退出") - 0;
             switch (operate) {
@@ -46,12 +47,78 @@
                         for (let i = 0; i < saveUsers.length; i++) {
                             if (loginName == saveUsers[i][0] && loginPassword == saveUsers[i][1]) {
                                 isLogin = true;
+                                loginUser = saveUsers[i];
                                 break;
                             }
                         }
                         if (isLogin) {
                             alert("登录成功")
-                            let operate2 = prompt("请选择二级菜单选项：1. 查询 2. 存钱 3. 取钱 4. 转账 5. 修改密码 6. 返回上一步") - 0;
+                            let isGo2 = true;
+                            while (isGo2) {
+                                let operate2 = prompt("请选择二级菜单选项：1. 查询 2. 存钱 3. 取钱 4. 转账 5. 修改密码 6. 返回上一步") - 0;
+                                switch (operate2) {
+                                    case 1://查询
+                                        if (loginUser[2] != undefined) {
+                                            alert(`余额还剩${loginUser[2]}`)
+                                        } else {
+                                            alert("余额为0")
+                                        }
+
+                                        break;
+                                    case 2://存钱
+                                        let saveMoney = prompt("请输入存钱金额") - 0;
+                                        if (saveMoney % 100 == 0 && saveMoney > 0) {
+                                            loginUser[2] = (loginUser[2] || 0) + saveMoney;
+                                            alert(`余额还剩${loginUser[2]}`)
+                                        } else {
+                                            alert("存钱金额错误，请重新输入");
+                                        }
+                                        break;
+                                    case 3://取钱
+                                        let deductMoney = prompt("请输入取钱金额") - 0;
+                                        if (deductMoney % 100 == 0 && deductMoney > 0) {
+                                            if (deductMoney > loginUser[2]) {
+                                                alert("余额不足")
+                                            } else {
+                                                loginUser[2] = loginUser[2] - deductMoney;
+                                                alert(`余额还剩${loginUser[2]}`)
+                                            }
+
+                                        } else {
+                                            alert("取钱金额错误，请重新输入");
+                                        }
+
+
+                                        break;
+                                    case 4://转账
+                                        let convertToUserName = prompt("请输入要转账的账户名");
+                                        if (convertToUserName != loginName) {
+                                            for (let i = 0; i < saveUsers.length; i++) {
+                                                if (convertToUserName == saveUsers[i][0]) {
+                                                    let convertToMoney = prompt("请输入转账的金额") - 0;
+                                                    loginUser[2] = loginUser[2] - convertToMoney;
+                                                    alert(`余额还剩${loginUser[2]}`)
+                                                    break;
+                                                }
+                                            }
+                                        } else {
+                                            alert("请不要给自己转账")
+                                        }
+
+
+                                        break;
+                                    case 5://修改密码
+
+                                        break;
+                                    case 6://返回上一级菜单
+                                        isGo2 = false;
+                                        break;
+                                    default:
+                                        alert("指令无效，请重新输入");
+                                        break;
+                                }
+
+                            }
 
 
                         } else {
@@ -88,7 +155,7 @@
                     break;
 
                 default:
-                    alert("指令无效，请重新输入")
+                    alert("指令无效，请重新输入");
                     break;
             }
 
