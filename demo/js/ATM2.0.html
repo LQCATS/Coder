@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        /* 
+        ATM多用户版：用户需要先输入一级菜单选项：1.登录 2. 注册 3. 退出
+        功能：
+        1. 注册：用户输入用户名和密码，注册成功的信息追加进二维数组中，相同用户名不能重复注册
+        var users = [["admin", "ad123"]]
+        2. 登录：用户输入用户名和密码，判断是否登录成功
+        */
+
+        let saveUsers = [];
+        let isGo = true;
+        while (isGo) {
+            let operate = prompt("请选择一级菜单选项：1.登录 2. 注册 3. 退出") - 0;
+            switch (operate) {
+                case 1://登录
+                    // alert("请登录")
+                    if (saveUsers.length == 0) {
+                        alert("请先注册")
+                    } else {
+                        let loginName = prompt("请输入登录账号")
+                        let loginPassword = prompt("请输入登录密码")
+                        //开关变量，记录是否匹配成功
+                        let isLogin = false;//默认匹配不成功
+                        //对比每一个一维数组数据
+                        for (let i = 0; i < saveUsers.length; i++) {
+                            if (loginName == saveUsers[i][0] && loginPassword == saveUsers[i][1]) {
+                                isLogin = true;
+                            }
+                        }
+                        //判断开关变量状态
+                        if (isLogin) {
+                            alert("登录成功")
+                        } else {
+                            alert("登录失败")
+                        }
+                    }
+
+                    break;
+                case 2://注册
+                    //用户输入注册信息
+                    let registerName = prompt("请输入注册用户名")
+                    let registerPassword = prompt("请输入注册密码")
+                    //判断saveUsers是不是初始值
+                    if (saveUsers == 0) {
+                        saveUsers[saveUsers.length] = [registerName, registerPassword]
+                    } else {
+                        //开关变量，表示是否存在用户
+                        let isHave = false;//默认用户没有重复
+                        //判断当前注册用户是否已经存在
+                        for (let i = 0; i < saveUsers.length; i++) {
+                            if (registerName == saveUsers[i][0]) {
+                                //改变开关变量
+                                isHave = true;
+                                break;//一旦存在相同用户，后面的数据就不需要匹配了
+                            }
+                        }
+                        //判断开关变量的状态
+                        if (isHave) {
+                            alert("已注册，存在相同用户");
+                        } else {
+                            alert("注册成功")
+                            saveUsers[saveUsers.length] = [registerName, registerPassword]
+                        }
+                    }
+                    alert(saveUsers)
+                    break;
+                case 3://退出
+                    //改变循环状态，不循环
+                    isGo = false;
+                    break;
+
+                default://指令无效
+                    alert("指令无效，请重新输入")
+                    break;
+            }
+        }
+
+
+
+
+    </script>
+</body>
+
+</html>

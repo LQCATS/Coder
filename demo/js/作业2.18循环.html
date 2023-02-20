@@ -57,16 +57,19 @@
                 case 1://登录
                     inputUserName = prompt("请输入用户账号");
                     if (inputUserName === userName) {
+                        //用户名输入正确
                         inputPwd = prompt("请输入用户密码");
                         if (inputPwd === pwd) {
+                            //密码正确登录成功
                             alert("登录成功");
                         } else {
+                            //密码错误，退出操作
                             alert("登录失败：密码错误");
-
                         }
                         operate = 3;
                     } else {
-                        errorCount++;
+                        //用户名输入错误
+                        errorCount++;//错误的次数累加
                         if (errorCount >= 3) {
                             alert("用户名已经错误三次，次数已用完,请注册账户")
                             operate = -1;
