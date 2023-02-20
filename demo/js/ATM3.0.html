@@ -59,12 +59,14 @@
                                 switch (operate2) {
                                     case 1://查询
                                         if (loginUser[2] != undefined) {
+
                                             alert(`余额还剩${loginUser[2]}`)
                                         } else {
                                             alert("余额为0")
                                         }
 
                                         break;
+
                                     case 2://存钱
                                         let saveMoney = prompt("请输入存钱金额") - 0;
                                         if (saveMoney % 100 == 0 && saveMoney > 0) {
@@ -74,6 +76,7 @@
                                             alert("存钱金额错误，请重新输入");
                                         }
                                         break;
+
                                     case 3://取钱
                                         let deductMoney = prompt("请输入取钱金额") - 0;
                                         if (deductMoney % 100 == 0 && deductMoney > 0) {
@@ -88,8 +91,8 @@
                                             alert("取钱金额错误，请重新输入");
                                         }
 
-
                                         break;
+
                                     case 4://转账
                                         let convertToUserName = prompt("请输入要转账的账户名");
                                         if (convertToUserName != loginName) {
@@ -97,6 +100,7 @@
                                                 if (convertToUserName == saveUsers[i][0]) {
                                                     let convertToMoney = prompt("请输入转账的金额") - 0;
                                                     loginUser[2] = loginUser[2] - convertToMoney;
+                                                    saveUsers[i][2] = (saveUsers[i][2] || 0) + convertToMoney;
                                                     alert(`余额还剩${loginUser[2]}`)
                                                     break;
                                                 }
@@ -107,12 +111,15 @@
 
 
                                         break;
+
                                     case 5://修改密码
 
                                         break;
+
                                     case 6://返回上一级菜单
                                         isGo2 = false;
                                         break;
+                                        
                                     default:
                                         alert("指令无效，请重新输入");
                                         break;
