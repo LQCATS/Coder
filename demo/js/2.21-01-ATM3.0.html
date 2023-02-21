@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*
+                 完成ATM的综合练习
+                 a)完成登录、注册、修改密码功能
+                 b)完成查询余额和存取,选做转账功能
+                 c)大致流程：
+                     i.用户需要先输入一级菜单选项：1.登录 2. 注册 3. 退出
+                         1.注册：输入用户名和密码，不允许重复注册相同的用户名。注册的用户和密码需要追加到二维数组中。
+                         var users=[["admin","ad123"]] 其中admin是用户名，ad123是密码
+                         2.登录：遍历用户和密码数组，并进行验证。
+                     ii.只能登录成功才能进入二级菜单
+                         1. 查询 2. 存钱 3. 取钱 4. 转账 5. 修改密码 6. 返回上一步
+                 
+                 流程：
+                 1. 提示一级菜单并让用户输入选项
+                 2. 执行所选选项的对应功能
+                     登录 注册  退出 --- switch
+                     登录：遍历数组，判断是否输对
+                     注册：将用户输入的用户名和密码追加到数组中，需要考虑不能重复注册
+                     退出：提示就结束程序
+             */
+
+        let users = [
+            ["admin", "ad123", 2000],
+            ["admin1", "ad1234", 1000]
+        ]
+        //用户信息,二维数组
+        // let users = [];
+        //一级菜单状态
+        let isGo = true;
+        while (isGo) {
+            let num = prompt("输入一级菜单选项：1.登录 2. 注册 3. 退出") - 0;
+            //switch判断
+            switch (num) {
+                case 1:
+                    alert("登录");
+                    if (users.length == 0) {
+                        alert("请先注册")
+                    } else {
+                        let yourName = prompt("请输入登录账户")
+                        let yourPwd = prompt("请输入登录密码")
+                        //开关变量,记录是否登录匹配成功
+                        // let isLogin = false;
+                        //转换匹配方式,之前只记录了登录状态,现在需要获取登录用户的信息下标
+                        let isLogin = -1;
+                        //对比每个一维数组数据
+                        for (let i = 0; i <= users.length - 1; i++) {
+                            if (yourName == users[i][0] && yourPwd == users[i][1]) {
+                                // alert("登录成功");
+                                // isLogin = true;
+                                //将登录成功状态用下标记录
+                                isLogin = i;
+                                break;
+                            }
+                        }
+                        //判断开关变量状态
+                        if (isLogin != -1) {
+                            alert("登录成功")
+                            //二级菜单
+                            //开关变量控制二级菜单循环
+                            // alert(isLogin)
+                            let isGo2 = true;
+                            while (isGo2) {
+                                let num1 = prompt("1. 查询 2. 存钱 3. 取钱 4. 转账 5. 修改密码 6. 返回上一步") - 0;
+                                //进行条件匹配
+                                switch (num1) {
+                                    case 1:
+                                        // alert("查询");
+                                        //找到登录账户是谁,通过上一步登录成功获得当前用户信息
+                                        alert(`当前用户余额为${users[isLogin][2]}`)
+                                        break;
+                                    case 2:
+                                        // alert("存钱");
+                                        //输入存款金额,金额>=100,并且为100整数倍
+                                        let saveMoney = prompt("存钱金额") - 0;
+                                        if (saveMoney >= 100 && saveMoney % 100 == 0) {
+                                            //能够存钱,把存钱金额放入登录用户账户
+                                            users[isLogin][2] += saveMoney;
+                                            alert(`存钱成功,当前用户余额为${users[isLogin][2]}`)
+                                        } else {
+                                            alert("金额有误,请输入100的正整数倍金额")
+                                        }
+                                        break;
+                                    case 3:
+                                        // alert("取钱");
+                                        //输入取钱金额进行判断,金额>=100,并且为100整数倍,余额大于等于
+                                        let getMoney = prompt("请输入取钱金额") - 0;
+                                        if (getMoney >= 100 && getMoney % 100 == 0 && getMoney <= users[isLogin][2]) {
+                                            //能够取钱,把存钱金额放入登录用户账户
+                                            users[isLogin][2] -= getMoney;
+                                            alert(`取钱成功,当前用户余额为${users[isLogin][2]}`)
+                                        } else {
+                                            alert("金额有误,请输入100的正整数倍金额,并且小于余额")
+                                        }
+                                        break;
+                                    case 4:
+                                        alert("转账");
+                                        //输入转账用户账号
+                                        let otherUser = prompt("请输入转账用户账号")
+                                        //条件:1.账号存在2.不能和当前登录账号一致
+                                        //遍历查找账号
+                                        let otherIndex = -1;
+                                        for (let i = 0; i < users.length; i++) {
+                                            if (otherUser == users[i][0]) {
+                                                //账号存在
+                                                otherIndex = i;
+                                                break;
+                                            }
+                                        }
+                                        // if(otherIndex != -1 && otherIndex != isLogin){
+                                        //     alert("存在用户")
+                                        // }else{
+                                        //     alert("用户不存在,或为当前登录用户")
+                                        // }
+                                        if (otherIndex != -1) {
+
+                                            if (otherIndex != isLogin) {
+                                                alert("存在用户,为其他账户")
+                                                //用户匹配成功,执行转账操作
+                                                let transforMoney = prompt("请输入转账金额") - 0
+                                                //判断转账金额小于等于当前用户余额
+                                                //转账金额大于0
+                                                if (transforMoney > 0) {
+                                                    //转账
+                                                    if (transforMoney <= users[isLogin][2]) {
+                                                        //可以转账,当前用户金额减少,对方账户金融增加
+                                                        users[isLogin][2] -= transforMoney;
+                                                        users[otherIndex][2] += transforMoney;
+                                                        alert(`转账成功,当前余额为${users[isLogin][2]}`)
+                                                    } else {
+                                                        alert("转账失败,金额不得大于余额")
+                                                    }
+                                                } else {
+                                                    alert("金额必须大于0")
+                                                }
+
+                                            } else {
+                                                alert("为当前登录用户")
+                                            }
+                                        } else {
+                                            alert("用户不存在")
+                                        }
+                                        break;
+                                    case 5:
+                                        alert("修改密码");
+                                        //输入旧密码,匹配成功输入新密码,确认新密码
+                                        let oldPwd = prompt("请输入旧密码")
+                                        if (oldPwd == users[isLogin][1]) {
+                                            //输入新密码
+                                            // alert("密码验证成功")
+                                            let newPwd = prompt("请输入新密码")
+                                            if (newPwd != oldPwd) {
+                                                //两次密码不相等,可以修改
+                                                let aginPwd = prompt("请确认新密码")
+                                                if (aginPwd == newPwd) {
+                                                    alert("修改成功")
+                                                    users[isLogin][1] = aginPwd;
+                                                    //退出当前用户,并且退回一级菜单
+                                                    isGo2 = false;
+                                                    //退出账号
+                                                    isLogin = -1;
+
+                                                } else {
+                                                    alert("确认新密码失败,请重新操作")
+                                                }
+                                            } else {
+                                                alert("新旧密码一致,请重新操作")
+                                            }
+                                        } else {
+                                            alert("密码验证失败,请重新操作")
+                                        }
+                                        break;
+                                    case 6:
+                                        alert("返回上一级");
+                                        isGo2 = false
+                                        break;
+                                    default:
+                                        alert("无效选项")
+                                        break;
+                                }
+                            }
+
+
+
+
+                        } else {
+                            alert("登录失败")
+                        }
+                    }
+                    break;
+                case 2:
+                    // alert("注册");
+                    //用户输入注册信息
+                    let regName = prompt("请输入注册用户名")
+                    let regPwd = prompt("请输入注册密码")
+                    //判断users是否为初始值
+                    if (users.length == 0) {
+                        //直接作为一维数组放入用户数组中
+                        users[users.length] = [regName, regPwd]
+                    } else {
+                        //开关变量,表示是否存在用户
+                        let isHave = false
+                        //判断当前注册用户是否已经存在
+                        for (let i = 0; i <= users.length - 1; i++) {
+                            if (regName == users[i][0]) {
+                                //改变开关变量
+                                isHave = true
+                                break;//一旦存在相同用户,后面数据不需要匹配
+                            }
+                        }
+                        //判断开关变量的状态
+                        if (isHave) {
+                            alert("已注册,存在相同用户");
+                        } else {
+                            alert("注册成功")
+                            users[users.length] = [regName, regPwd, 100]
+                        }
+                    }
+                    alert(users)
+                    break;
+                case 3:
+                    alert("退出");
+                    //改变循环状态,不循环
+                    isGo = false
+                    break;
+                default:
+                    alert("无效选项,请重新输入");
+                    break;
+            }
+        }
+    </script>
+</body>
+
+</html>

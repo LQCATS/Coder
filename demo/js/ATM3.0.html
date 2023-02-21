@@ -47,7 +47,7 @@
                         for (let i = 0; i < saveUsers.length; i++) {
                             if (loginName == saveUsers[i][0] && loginPassword == saveUsers[i][1]) {
                                 isLogin = true;
-                                loginUser = saveUsers[i];
+                                loginUser = saveUsers[i];//登录成功的账号数组
                                 break;
                             }
                         }
@@ -58,18 +58,19 @@
                                 let operate2 = prompt("请选择二级菜单选项：1. 查询 2. 存钱 3. 取钱 4. 转账 5. 修改密码 6. 返回上一步") - 0;
                                 switch (operate2) {
                                     case 1://查询
+                                        //判断初始数组的有没有索引2的数据，有则输出金额，没有则输出金额为0
                                         if (loginUser[2] != undefined) {
-
                                             alert(`余额还剩${loginUser[2]}`)
                                         } else {
                                             alert("余额为0")
                                         }
-
                                         break;
 
                                     case 2://存钱
                                         let saveMoney = prompt("请输入存钱金额") - 0;
-                                        if (saveMoney % 100 == 0 && saveMoney > 0) {
+                                        //判断，存钱的金额必须是100的倍数，否则存钱失败，最少必须存100元
+                                        if (saveMoney % 100 == 0 && saveMoney >= 100) {
+                                            //登录成功状态下知道loginUser数组是账户信息，算出账户存钱后的余额
                                             loginUser[2] = (loginUser[2] || 0) + saveMoney;
                                             alert(`余额还剩${loginUser[2]}`)
                                         } else {
@@ -79,12 +80,14 @@
 
                                     case 3://取钱
                                         let deductMoney = prompt("请输入取钱金额") - 0;
-                                        if (deductMoney % 100 == 0 && deductMoney > 0) {
-                                            if (deductMoney > loginUser[2]) {
+                                        //判断，取钱的金额必须是100的倍数，否则取钱失败，最少必须存100元
+                                        if (deductMoney % 100 == 0 && deductMoney >= 100) {
+                                            //判断，取钱金额是大于剩余金额则取钱失败，小于取钱金额取钱成功
+                                            if (deductMoney > loginUser[2] || loginUser[2] == undefined) {
                                                 alert("余额不足")
                                             } else {
-                                                loginUser[2] = loginUser[2] - deductMoney;
-                                                alert(`余额还剩${loginUser[2]}`)
+                                                loginUser[2] -= deductMoney;
+                                                alert(`取钱成功，余额还剩${loginUser[2]}`)
                                             }
 
                                         } else {
@@ -95,31 +98,79 @@
 
                                     case 4://转账
                                         let convertToUserName = prompt("请输入要转账的账户名");
-                                        if (convertToUserName != loginName) {
-                                            for (let i = 0; i < saveUsers.length; i++) {
-                                                if (convertToUserName == saveUsers[i][0]) {
-                                                    let convertToMoney = prompt("请输入转账的金额") - 0;
-                                                    loginUser[2] = loginUser[2] - convertToMoney;
-                                                    saveUsers[i][2] = (saveUsers[i][2] || 0) + convertToMoney;
-                                                    alert(`余额还剩${loginUser[2]}`)
-                                                    break;
-                                                }
+                                        let exist = false;//开关变量，用户不存在
+                                        let findUser;//找的的用户信息
+                                        //判断账户名是否存在，存在后判断是不是自己账户，不是自己账户后判断转账金额是否小于余额
+                                        for (let i = 0; i < saveUsers.length; i++) {
+                                            if (convertToUserName == saveUsers[i][0]) {
+                                                exist = true;//改变开关变量，用户存在
+                                                findUser = saveUsers[i]
+                                                break;
                                             }
-                                        } else {
-                                            alert("请不要给自己转账")
                                         }
+                                        if (exist) {
+                                            if (convertToUserName != loginName) {
+                                                //转账用户名不是自己登录的用户名
+                                                let convertToMoney = prompt("请输入转账的金额") - 0;
+                                                if (convertToMoney % 100 == 0 && convertToMoney >= 100) {
+                                                    //转账金额是100的倍数，且转账金额不能是0
+                                                    if (convertToMoney < loginUser[2]) {
+                                                        //转账金额小于剩余金额且初始有存款
+                                                        //转账后剩余金额
+                                                        loginUser[2] -= convertToMoney;
+                                                        //转账后对方的余额
+                                                        findUser[2] = (findUser[2] || 0) + convertToMoney;
+                                                        alert(`余额还剩${loginUser[2]}`)
+                                                    } else {
+                                                        //转账金额大于余额
+                                                        alert("余额不足")
+                                                    }
+                                                } else {
+                                                    alert("转账金额不符合要求，不能为0，且必须是100的倍数")
+                                                }
+                                            } else {
+                                                alert("转账用户不能是自己")
+                                            }
 
-
+                                        } else {
+                                            alert("账户不存在，请重新输入账户");
+                                        }
                                         break;
 
                                     case 5://修改密码
-
+                                        alert("修改密码")
+                                        //输入旧密码，匹配成功输入新密码，新密码不能等于旧密码，确认新密码
+                                        let oldPassword = prompt("请输入原来的密码");
+                                        if (oldPassword == loginUser[1]) {
+                                            //原来的密码输入正确
+                                            alert("验证成功")
+                                            let changePassword = prompt("请输入修改的密码");
+                                            if (changePassword != oldPassword) {
+                                                //修改的新密码不等于原来的密码
+                                                let aginPassword = prompt("请确认修改的密码");
+                                                if (aginPassword == changePassword) {
+                                                    //确认密码正确
+                                                    alert("修改密码成功")
+                                                    loginUser[1] = changePassword;
+                                                    //退出当前用户，并返回一级菜单
+                                                    isGo2 = false;
+                                                    //退出登录
+                                                    isLogin = false;
+                                                } else {
+                                                    alert("确认新密码失败,请重新操作")
+                                                }
+                                            } else {
+                                                alert("新旧密码一致，修改失败")
+                                            }
+                                        } else {
+                                            alert("密码验证失败")
+                                        }
                                         break;
 
                                     case 6://返回上一级菜单
                                         isGo2 = false;
                                         break;
-                                        
+
                                     default:
                                         alert("指令无效，请重新输入");
                                         break;
@@ -160,7 +211,6 @@
                 case 3://退出
                     isGo = false;
                     break;
-
                 default:
                     alert("指令无效，请重新输入");
                     break;

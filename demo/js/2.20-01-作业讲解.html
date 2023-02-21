@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+        1. 获取某个长度不大于6的数组的动态和数组。所谓动态和数组是指数组里的每个数据都是原数组对应位置及之前的数据之和。比如var arr = [1,2,4,5]；那么arr的动态和数组为[1,3,7,12]  
+            解析:   [1,1+2,1+2+4,1+2+4+5]
+        2. 输入一个数字，判断该数是否为质数，输出结论;（质数：一个数字只能被1和 本身整除，比如1 5 7 13 ）
+        3. 用户有3次的用户名输入机会。3次都输错了就程序结束。用户名输入正确后就进行密码输入及判断。只要用户名输入正确。那么剩余还未使用的用户名输入机会则失效（比如第一次用户名就输入正确，那么无论密码验证结果如何。用户名剩余的2次机会都没有了
+        */
+
+        // let arr = [1,2,3,4,5,6]
+        // //和变量
+        // let sum = 0
+        // //动态和数组变量
+        // let newArr = [];
+        // //数组遍历
+        // for (let i = 0; i < arr.length; i++) {
+        //     // console.log(arr[i])
+        //     //求到目前位置的下标对应和
+        //     sum += arr[i]
+        //     newArr[i] = sum
+        //     // console.log(sum)
+
+        // }
+        // console.log(newArr);
+
+        //第二题
+        // let  num = prompt("请输入一个数字") - 0;
+        // //开关变量保存判断状态
+        // let isPrime = true;
+        // //遍历，查看该数从2~num-1能不能整除
+        // for (let i = 2; i <= num-1; i++) {
+        //     //判断是否能整除
+        //     if(num%i ==0){
+        //         //改变开关变量状态
+        //         isPrime = false
+        //         //跳出循环
+        //         break;
+        //     }
+        // }
+        // if(isPrime && num>1){
+        //     console.log("是质数");
+        // }else{
+        //     console.log("不是质数");
+        // }
+
+        //
+        let yourName = prompt("请输入账号")
+        let username = "admin";
+        let password = "ad123";
+
+        //次数,1,2,3
+        for (let i = 1; i <= 3; i++) {
+            if (yourName == username) {
+                //账号验证成功
+                // alert("账号验证成功")
+               let yourPWd =  prompt("请输入密码")
+               if(password ==yourPWd){
+                alert("登录成功")
+               }else{
+                alert("登录失败")
+               }
+               break;
+            } else {
+                //账号验证失败，需要循环
+                alert("账号验证失败")
+                //判断次数是否为最后一次
+                if (i < 3) {
+                    //弹窗提示剩余
+                    alert(`剩余机会${3-i}次，请珍惜`)
+                    //重新输入账号进行验证
+                    yourName = prompt("请输入账号")
+                }else{
+                    alert("没有机会，验证失败")
+                }
+
+            }
+        }
+    </script>
+</body>
+
+</html>

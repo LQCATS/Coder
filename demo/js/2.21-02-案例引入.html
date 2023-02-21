@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let class1 = [85, 66, 35, 76, 87, 65]
+        let class2 = [98, 16, 65, 76, 37, 65]
+        let class3 = [85, 78, 95, 76, 87, 65]
+        //求每个班级最高分
+
+        let max1 = class1[0]
+        for (let i = 0; i < class1.length; i++) {
+            if (max1 < class1[i]) {
+                max1 = class1[i]
+            }
+        }
+        console.log(`${max1}为${class1}的最高分`);
+        
+        let max2 = class2[0]
+        for (let i = 0; i < class2.length; i++) {
+            if (max2 < class2[i]) {
+                max2 = class2[i]
+            }
+        }
+        console.log(`${max2}为${class2}的最高分`);
+
+        let max3 = class3[0]
+        for (let i = 0; i < class3.length; i++) {
+            if (max3 < class3[i]) {
+                max3 = class3[i]
+            }
+        }
+        console.log(`${max3}为${class3}的最高分`);
+    </script>
+</body>
+
+</html>

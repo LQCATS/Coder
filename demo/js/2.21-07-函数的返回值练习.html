@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+            1. 定义一个函数 add，传入两个数字，返回从第一个数字加到第二个数字的和（第一个数字小于第二个数字）
+            2. 定义一个函数 mult，传入一个数字，返回该数的阶乘。 比如6的阶乘是6*5*4*3*2*1
+        */
+
+        //定义和函数
+        function add(num1,num2){
+            //定义一个数据接收和
+            let sum = 0;
+            for(let i = num1;i<= num2;i++){
+                sum += i;
+            }
+            return sum
+        }
+        let sum2 = add(5,7)
+        console.log(sum2);
+
+        //定义阶乘函
+        // function mult(num){
+        //     //定义一个变量接收累乘
+        //     let sum = 1;
+        //     for(let i =1;i<=num;i++){
+        //         sum *= i
+        //     }
+        //     return sum
+        // }
+        // let sum1 = mult(5)
+        // console.log(sum1);
+    </script>
+</body>
+</html>

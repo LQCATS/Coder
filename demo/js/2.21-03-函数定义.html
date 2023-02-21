@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        let class1 = [85, 66, 35, 76, 87, 65]
+        let class2 = [98, 16, 65, 76, 37, 65]
+        let class3 = [85, 78, 95, 76, 87, 65]
+
+
+        let max1 = class1[0]
+        for (let i = 0; i < class1.length; i++) {
+            if (max1 < class1[i]) {
+                max1 = class1[i]
+            }
+        }
+        /* 
+        function 函数名(){
+            //函数体,之后被调用是会执行的一段代码
+        }
+        */
+
+        // getMax();
+        //函数声明式
+        function getMax(arr) {
+            //获得最大值的业务逻辑
+            let max1 = arr[0]
+            for (let i = 0; i < arr.length; i++) {
+                if (max1 < arr[i]) {
+                    max1 = arr[i]
+                }
+            }
+            console.log(max1)
+        }
+
+        // getMin();
+        //函数表达式
+        // let getMin = function () {
+        //     //函数体
+        //     console.log("找到一个最小值")
+        // }
+
+        //调用函数;
+        // getMax();
+        // getMax();
+        // getMax();
+        // getMax();
+
+        //调用函数
+        // getMin();
+        //函数传参
+        
+        //获得一班最高分
+        getMax(class1);
+        //获得二班最高分
+        getMax(class2);
+        //获得三班最高分
+        getMax(class3);
+        getMax([1,2,3,4,5,8,6,5])
+    </script>
+</body>
+
+</html>

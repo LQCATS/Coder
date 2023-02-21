@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        let class1 = [85, 66, 35, 76, 96, 65]
+        let class2 = [98, 16, 65, 76, 37, 65]
+        let class3 = [85, 78, 95, 76, 87, 65]
+
+        //函数声明
+        function getMax(arr) {
+            //获得最大值的业务逻辑
+            let max1 = arr[0]
+            for (let i = 0; i < arr.length; i++) {
+                if (max1 < arr[i]) {
+                    max1 = arr[i]
+                }
+            }
+            //函数的返回值,将数据处理结果返回到函数调用处//return会中止函数的后续执行,直接返回结果数据
+            return max1
+
+            console.log(max1)
+        }
+
+        // console.log(max1)
+        //获得一班最高分
+        //函数调用处使用一个变量接收返回值
+        let class1Max = getMax(class1);
+        //获得二班最高分
+        let class2Max =  getMax(class2);
+        //获得三班最高分
+        let class3Max = getMax(class3);
+        // console.log(class1Max,class2Max,class3Max);
+        //得到三个班级最高分的平局分
+        // let ave = (class1Max+class2Max+class3Max)/3
+        // console.log(`最高分的平均值为${ave}`);
+
+    </script>
+</body>
+
+</html>
