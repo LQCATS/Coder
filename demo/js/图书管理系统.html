@@ -96,14 +96,11 @@
          */
         let readerstr = (arr) => {
             //遍历books数组，找到所有的图书
-            let str;
-            let allBooksStr = [];//输出的新格式组成的数组
+            let str = "";
             for (let i = 0; i < arr.length; i++) {
-                str = arr[i].join("-") + "\n"
-                allBooksStr.push(str)
-                allBooksStr.join(" ")
+                str += arr[i].join("-") + "\n"
             }
-            return allBooksStr
+            return str
         }
 
         while (isGo) {
