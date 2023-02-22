@@ -32,68 +32,219 @@
         */
 
 
-        let saveUsers = [["admin", "ad123", ""]];//用于存储所有的用户信息
-        let isGo = true;
-        //注册函数
+        let saveUsers = [["admin", "ad123", []]];//用于存储所有的用户信息
+        //把变量放置全局，其他函数也可以使用
+        let isGo = true;//一级菜单开关变量
+        let isLogin;//用户登录成功的下标
+        let isGo2 = true;//二级菜单开关变量
+        /**
+         * 注册函数
+         * 
+         */
         function register(usersArr) {
             let registerName = prompt("请输入注册的用户名");
             let registerPwd = prompt("请输入注册的密码");
+            let registerPwdAgin = prompt("请确认注册的密码");
             // let aginRegisterPwd = prompt("请确认注册的密码");
             //判断1.usersArr是否存在数组 2.存在时，判断注册的用户名是否重复 
             if (usersArr.length == 0) {
                 //数组初始值为空
-                alert("注册成功");
-                usersArr.push([registerName, registerPwd, ""]);
+                if (registerPwdAgin == registerPwd) {
+                    //确认密码和注册密码一样
+                    usersArr.push([registerName, registerPwd, []]);
+                    alert("注册成功");
+                } else {
+                    alert("两次密码不一致，注册失败");
+                }
             } else {
                 //数组存在用户信息组，判断注册的账号是否存在（遍历）
                 let isHave = false;//默认不重复
                 for (let i = 0; i < usersArr.length; i++) {
                     if (registerName == usersArr[i][0]) {
                         isHave = true;//用户名重复
+                        break;
                     }
                 }
                 if (isHave) {
                     //开关变量为true，表示重复用户名
                     alert("账户已经存在，重新注册");
                 } else {
-                    alert("注册成功");
-                    usersArr.push([registerName, registerPwd, ""]);
+                    if (registerPwdAgin == registerPwd) {
+                        //确认密码和注册密码一样
+                        usersArr.push([registerName, registerPwd, []]);
+                        alert("注册成功");
+                    } else {
+                        alert("两次密码不一致，注册失败");
+                    }
                 }
             }
             alert(usersArr)
         }
 
-        //登录函数
+        /**
+         * 登录函数
+         * 函数返回值 isLogin != -1 表示当前用户下标 未登录成功返回-1
+         */
         function login(usersArr) {
             let loginName = prompt("请输入登录的用户名");
             let loginPwd = prompt("请输入登录的密码");
-            //判断用户是否注册
-            if (usersArr.length == 0) {
-                //没有zhuce
-                alert("未注册，请前往注册")
-            } else {
-                //遍历，判断登录的密码和用户名是否正确
-                let isLogin = false;//开关变量默认登录失败
-                for (let i = 0; i < usersArr.length; i++) {
-                    if (loginName == usersArr[i][0] && loginPwd == usersArr[i][1]) {
-                        //用户名和密码登录正确
-                        isLogin = true;
-                        break;
-                    }
+            //遍历，判断登录的用户名是否存在
+            isLogin = -1;//usersArr的下标
+            for (let i = 0; i < usersArr.length; i++) {
+                if (loginName == usersArr[i][0]) {
+                    isLogin = i;//用户名存在的情况usersArr的下标
+                    break;
                 }
-                if (isLogin) {
+            }
+            if (isLogin != -1) {
+                if (loginPwd == usersArr[isLogin][1]) {
+                    //判断密码正确
                     alert("登录成功");
                 } else {
-                    alert("登录失败，用户名或者密码错误");
+                    isLogin = -1
+                    alert("密码输入错误");
                 }
+            } else {
+                alert("用户名不存在，登录失败,请先注册");
+            }
+            return isLogin
+        }
+
+        /**
+         * 二级菜单函数
+         */
+        function home2() {
+                while (isGo2) {
+                    let operate2 = prompt("请选择一级菜单选项：1.开始选号 2. 查看我的车牌 3. 删除我的车牌 4.退出") - 0;
+                    switch (operate2) {
+                        case 1://开始选号
+                            // alert("选号系统")
+                            //调用选号函数
+                            chooseCarNum();
+                            break;
+
+                        case 2://查看我的车牌
+                            // alert("查看车牌")
+                            //调用查看车牌函数
+                            seeCarNum();
+                            break;
+
+                        case 3://删除我的车牌
+                            // alert("删除车牌")
+                            //调用删除车牌函数
+                            delCarNum();
+                            break;
+                        case 4://退出
+                            //返回上一级菜单
+                            isGo2 = false;
+                            break;
+                        default://无效指令
+                            alert("指令无效，请重新输入")
+                            break;
+                    }
+                }
+        }
+       
+        /**
+         * 选号函数：1.随机得到一个车牌号 2.循环5次得到一个随机车牌号数组 3.用户选择车牌号码，并存储起来
+         */
+        function chooseCarNum() {
+            // alert("选号系统");
+            //调用随机生成一个车牌函数，循环5次
+            let arr = [];
+            for (let i = 1; i<= 5; i++) {
+                //调用一个随机车牌函数
+                let str = oneCarNum();
+                //放入车牌数组中
+                arr.push(str);
+                //随机生成5个车牌存储起来
+            }
+            //车牌展示给用户，用户进行输入选择车牌号
+            let numStr = renderStr(arr);//接收展示信息拼接函数的值
+            let choice = prompt(numStr);
+            //判断用户当前选择序号是否有效
+            if (choice > 0 && choice <= 5 && choice % 1 == 0) {
+                //选择数据
+                let str1 = arr[choice - 1];
+                //用户选择之后将当前车牌号放入
+                saveUsers[isLogin][2].push(str1);
+                alert(saveUsers);
+            } else {
+                alert("无效车牌")
+            } 
+
+        }
+
+
+        /**
+         * 1.得到一个随机车牌号
+         * 返回值str 是一个随机车牌号，类型是字符串
+         */
+         function oneCarNum() {
+            let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0, "Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P", "A", "S", "D", "F", "G", "H", "J", "K", "L", "Z", "X", "C", "V", "B", "N", "M"];
+            let str = "川A "
+            for (let i = 1; i <= 5; i++) {
+                //随机下标
+                let index = parseInt(Math.random() * arr.length)
+                str += arr[index]
+            }
+            return str
+        }
+
+        /**
+         * 展示信息拼接函数
+         * 传入值为车牌号数组
+         * 返回值为渲染随机车牌号格式，类型为字符串
+         */
+        function renderStr(arr) {
+            //处理每一项数据格式
+            let str = "";
+            for (let i = 0; i < arr.length; i++) {
+                //数据格式处理拼接，\n表示弹框中换行
+                str += (i + 1) + "-" + arr[i] + "\n";
+            }
+            return str
+        }
+        
+        /**
+         * 查看车牌函数
+         */
+        function seeCarNum() {
+            //1.获取当前用户选号的数组 2.调用renderStr函数渲染格式
+            let str = renderStr(saveUsers[isLogin][2]);
+            alert(str);
+        }
+
+        /**
+         * 删除车牌函数
+         */
+        function delCarNum() {
+            //获取用户当前车牌号数组
+            let str = renderStr(saveUsers[isLogin][2]);
+            //用户输入要删除数据的序号
+            let delChoice = prompt(str) - 0;
+            //判断序号大于1，小于车牌数量
+            if (delChoice >= 1 && delChoice <= saveUsers[isLogin][2].length) {
+                //满足条件表示输入数据无误，进行删除操作
+                saveUsers[isLogin][2].splice(delChoice-1,1);
+                alert(saveUsers)
+            } else {
+                alert("先择无效")
             }
 
         }
+
         while (isGo) {
             let operate = prompt("请选择一级菜单选项：1.登录 2. 注册 3. 退出") - 0;
             switch (operate) {
                 case 1://登录
-                    login(saveUsers);
+                    //调用函数
+                    isLogin = login(saveUsers);
+
+                    //登录成功之后再调用二级菜单函数
+                    if (isLogin != -1) {
+                        home2();
+                    }
                     break;
                 case 2://注册
                     register(saveUsers);
@@ -103,7 +254,7 @@
                     isGo = false;
                     break;
                 default:
-                    alert("无效指令，请重新输入")
+                    alert("无效指令，请重新输入");
                     break;
             }
         }

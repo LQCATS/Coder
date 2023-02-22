@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>图书管理系统</title>
+</head>
+
+<body>
+    <script>
+        // 图书管理系统
+        /*
+            1. 主页关于图书的信息。（编号、名字、价格、状态）
+                - 比如数据为：[[1,"老人与海",38,"上架"],[2,"悲惨世界",58,"下架"]]
+                - 查询：输出的格式为：1-老人与海-38-上架
+                - 新增：输入编号、名字、价格、状态
+                - 删除：输入书籍编号，删除对应的书籍
+
+            数据结构为
+            let books = [[1,"老人与海",1200,"上架"],[2,"悲惨世界",1000,"上架"]]
+        */
+
+        let books = [
+            [1, "老人与海", 38, "上架"],
+            [2, "悲惨世界", 58, "下架"]
+        ];
+        let isGo = true;
+        let index = -1;
+        /**
+         * 查询函数 
+         */
+        let searchBooks = () => {
+            let booksStr = readerstr(books);
+            alert(booksStr);
+        }
+
+        /**
+         * 新增函数 返回值新增后的books数组，形参是arr 实参是books
+         * 1.用户输入新增编号，判断是否重复 
+         * 2.输入书名，价格和上下架状态，数据添加进books数组
+         */
+        let addBook = (arr) => {
+            let addBookNum = prompt("请输入新增书籍编号") - 0;
+            //判断编号是否重复
+            isAdd = true;//默认添加编号成功
+            for (let i = 0; i < arr.length; i++) {
+                if (addBookNum == arr[i][0]) {
+                    //新增编号在原图书中不存在
+                    isAdd = false;//添加编号成功
+                    break;
+                }
+            }
+            if (isAdd) {
+                let addBookName = prompt("请输入新增图书名字");
+                let addBookPrice = prompt("请输入新增图书价格");
+                let addBookState = prompt("请输入新增图书上下架状态");
+                arr.push([addBookNum, addBookName, addBookPrice, addBookState]);
+            } else {
+                alert("输入编号已存在，请重新输入");
+            }
+            return arr
+        }
+
+        /**
+         * 删除函数 返回值是删除后books数组，形参是arr 实参是books
+         * 1.用户输入删除的编号，判断是否存在
+         * 2.books数组对应删除
+         */
+        let delBook = (arr) => {
+            let delBookNum = prompt("请输入想删除图书的序号") - 0;
+            for (let i = 0; i < arr.length; i++) {
+                // 循环判断序号是否存在
+                //开关变量表示存在编号对应的下标,默认编号不存在
+                if (delBookNum == arr[i][0]) {
+                    //序号存在删除成功
+                    index = i;
+                    break;
+                }
+            }
+            if (index != -1) {
+                //删除编号存在，对应数据是arr[index - 1]
+                arr.splice(index, 1)
+
+            } else {
+                alert("编号不存在，请重新输入")
+            }
+            return arr
+        }
+
+        /**
+         * 展示拼接信息函数：图书表现的格式
+         * 传入值是图书数组
+         * 返回值渲染图书数组格式，类型为字符串
+         */
+        let readerstr = (arr) => {
+            //遍历books数组，找到所有的图书
+            let str;
+            let allBooksStr = [];//输出的新格式组成的数组
+            for (let i = 0; i < arr.length; i++) {
+                str = arr[i].join("-") + "\n"
+                allBooksStr.push(str)
+                allBooksStr.join(" ")
+            }
+            return allBooksStr
+        }
+
+        while (isGo) {
+            let operate = prompt("1.查询图书 2.新增图书 3.删除图书 4.退出") - 0;
+            switch (operate) {
+                case 1: //查询
+                    searchBooks();
+                    break;
+
+                case 2: //新增
+                    addBook(books);
+                    break;
+
+                case 3: //删除
+                    delBook(books);
+                    break;
+
+                case 4: //退出
+                    isGo = false;
+                    break;
+
+                default://无效
+                    alert("指令无效，请重新输入");
+                    break;
+            }
+        }
+    </script>
+</body>
+
+</html>
