@@ -31,10 +31,6 @@
                 - 退出
         */
 
-<<<<<<< HEAD
-        let saveUsers = [["admin", "ad123", ""]];//用于存储所有的用户信息
-        let isGo = true;
-=======
 
         let saveUsers = [["admin", "ad123", ""]];//用于存储所有的用户信息
         let isGo = true;
@@ -93,70 +89,15 @@
             }
 
         }
->>>>>>> 07d416317c2db0512f4385089f02ab03a4717123
         while (isGo) {
             let operate = prompt("请选择一级菜单选项：1.登录 2. 注册 3. 退出") - 0;
             switch (operate) {
                 case 1://登录
-<<<<<<< HEAD
-                    let loginName = prompt("请输入登录的用户名");
-                    let loginPwd = prompt("请输入登录的密码");
-                    //判断用户是否注册
-                    if (saveUsers.length == 0) {
-                        //没有zhuce
-                        alert("未注册，请前往注册")
-                    } else {
-                        //遍历，判断登录的密码和用户名是否正确
-                        let isLogin = false;//开关变量默认登录失败
-                        for (let i = 0; i < saveUsers.length; i++) {
-                            if (loginName == saveUsers[i][0] && loginPwd == saveUsers[i][1]) {
-                                //用户名和密码登录正确
-                                isLogin = true;
-                                break;
-                            } else {
-                                alert("登录失败，用户名或者密码错误")
-                            }
-                        }
-                        if (isLogin) {
-                            alert("登录成功")
-                        }
-                    }
-
-
-                    break;
-                case 2://注册
-                    let registerName = prompt("请输入注册的用户名");
-                    let registerPwd = prompt("请输入注册的密码");
-                    // let aginRegisterPwd = prompt("请确认注册的密码");
-                    //判断1.saveUsers是否存在数组 2.存在时，判断注册的用户名是否重复 
-                    if (saveUsers.length == 0) {
-                        //数组初始值为空
-                        alert("注册成功");
-                        saveUsers.push([registerName, registerPwd, ""]);
-                    } else {
-                        //数组存在用户信息组，判断注册的账号是否存在（遍历）
-                        let isHave = false;//默认不重复
-                        for (let i = 0; i < saveUsers.length; i++) {
-                            if (registerName == saveUsers[i][0]) {
-                                isHave = true;//用户名重复
-                            }
-                        }
-                        if (isHave) {
-                            //开关变量为true，表示重复用户名
-                            alert("账户已经存在，重新注册");
-                        }else {
-                            alert("注册成功");
-                            saveUsers.push([registerName, registerPwd, ""]);
-                        }
-                    }
-                    alert(saveUsers)
-=======
                     login(saveUsers);
                     break;
                 case 2://注册
                     register(saveUsers);
 
->>>>>>> 07d416317c2db0512f4385089f02ab03a4717123
                     break;
                 case 3://退出
                     isGo = false;
