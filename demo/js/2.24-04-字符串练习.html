@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            有一个数组，里面存放了用户的个人信息
+            var arr = [
+                { id: 1, name: "xiaowang", age: 23, phone: "18234827367", address: "武侯区孵化园 5-1-301", gender: 1 },
+                { id: 2, name: "xiaoli", age: 16, phone: "18223427368", address: "高新区孵化园 6-1-503", gender: 0 }
+            ]
+
+            要求：
+            1. 将每个用户名输出在屏幕上，一行显示一个用户
+            2. 输出的时候，年龄不要直接显示，少年（7~17岁）、青年（18~44岁）、中年（45~59岁）、老年（60岁以上）
+            3. 电话号码需要隐藏中间4位，变为*  183****0980
+            4. 地址输出的时候，将地址和门牌号分开输出
+            5. 性别输出，1代表男、0代表女
+
+            输出结果为：
+            编号:1 姓名:xiaowang 年龄:青年 电话:182****7367 地址：武侯区孵化园 门牌号：5-1-301  性别:男
+            编号:2 姓名:xiaoli 年龄:少年 电话:182****7368 地址：高新区孵化园 门牌号：6-1-503  性别:女
+        */
+
+        var arr = [
+            { id: 1, name: "xiaowang", age: 23, phone: "18234827367", address: "武侯区孵化园 5-1-301", gender: 1 },
+            { id: 2, name: "xiaoli", age: 16, phone: "18223427368", address: "高新区孵化园 6-1-503", gender: 0 }
+        ]
+
+        /**
+         * 转换为字符串
+          */
+        function toStr(arr1) {
+            //遍历对象数组取出每一条对象数据
+            let str = ""
+            arr1.forEach(value => {
+                //在拼接之前对数据进行处理
+                //年龄
+                let age = doAge(value.age);
+                //电话
+                let phone = doPhone(value.phone)
+                //地址处理
+                let addressArr = doAddress(value.address)
+
+                str += `编号:${value.id} 姓名:${value.name} 年龄:${age} 电话:${phone} 地址：${addressArr[0]} 门牌号:${addressArr[1]}  性别:${value.gender ? "男" : "女"} <br/>`
+            });
+            document.write(str)
+        }
+
+        /**
+         * 地址处理函数
+         * 传入值：地址字符串
+         * 返回值：地址数组 0表示地址 1表示门牌号
+          */
+        function doAddress(str) {
+            let arr = str.split(" ")//将空格作为分隔符把字符串进行分割
+            return arr
+        }
+
+        /**
+         * 电话处理
+         * 传入值：电话号码 字符串
+          */
+        function doPhone(str) {
+            //截取前三位和最后四位 中间拼接
+            let start = str.substr(0, 3);
+            let end = str.substring(7)
+            return start + "****" + end
+        }
+        /**
+         * 年龄处理
+         * 传入值：年龄 数字类型
+         * 返回值：字符串
+          */
+        function doAge(num) {
+            if (num >= 7 && num <= 17) {
+                return "少年"
+            } else if (num >= 18 && num <= 44) {
+                return "青年"
+            } else if (num >= 45 && num <= 59) {
+                return "中年"
+            } else if (num >= 60) {
+                return "老年"
+            }
+        }
+
+        toStr(arr)
+    </script>
+</body>
+
+</html>

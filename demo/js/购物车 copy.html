@@ -40,23 +40,34 @@
          * 显示商品函数
          * 目标：将所有商品显示，通过输入编号将对应商品加入购物车，对应商品数量-1。放入同一商品购物车数量+1。
          */
-       function showGoods(arr) {
-            let findGoods = choiceGoods(arr);
+        function showGoods(arr,arr1) {
+            let goods = readerStr(arr);
+            let choiceId = prompt(`请选择下列商品：\n${goods}`) - 0;//用户选择加入购物车的id
+
+            let choiceGoodsArr = arr.filter(value => choiceId == value.id);//筛选出用户选择的对象返回新的数组
+
+            let findGoods = choiceGoodsArr[0];
             if (findGoods.num != 0) {
                 //有库存，自减1
                 findGoods.num--;
+                alert("加入购物车成功");
             } else {
                 //选中商品num = 0
                 alert("商品剩余数量为0，不能加入购物车");
             }
-            alert("加入购物车成功");
-
             // 加入购物车
-            let findShopGood = null;
-            for (let i = 0; i < shoppingArr.length; i++) {
-                const tempShopGoods = shoppingArr[i];
+            goCar(arr1, findGoods);
+        }
 
-                if (tempShopGoods.id === findGoods.id) {
+        /**
+         * 去加入购物车函数
+         */
+        function goCar(arr,obj) {
+            let findShopGood = null;
+            for (let i = 0; i < arr.length; i++) {
+                const tempShopGoods = arr[i];
+
+                if (tempShopGoods.id === obj.id) {
                     findShopGood = tempShopGoods;
                     break;
                 }
@@ -64,48 +75,34 @@
 
             if (findShopGood === null) {
                 findShopGood = {
-                    id: findGoods.id,
-                    name: findGoods.name,
-                    price: findGoods.price,
+                    id: obj.id,
+                    name: obj.name,
+                    price: obj.price,
                     num: 1,
-                    type: findGoods.type,
-                    all: findGoods.price ,
+                    type: obj.type,
+                    all: obj.price,
                 };
-                shoppingArr.push(findShopGood);
+                arr.push(findShopGood);
             } else {
                 findShopGood.num++;
                 findShopGood.all = findShopGood.price * findShopGood.num;
             }
-       }
-
-        /**
-         * 用户选中的对象，返回值用户选择的对象组成的新数组，数组长的是1
-         */
-        function choiceGoods(arr) {
-            let goods = readerStr(arr);
-            let choiceId = prompt(goods) - 0;//用户选择加入购物车的id
-            
-            let choiceGoodsArr = arr.filter(value => choiceId == value.id);//筛选出用户选择的对象返回新的数组
-            
-            return choiceGoodsArr[0];
-        }
-
-        /**
-         * 查看购物车函数
-         */
-        function checkCar(arr) {
-            alert(readerStr(arr));
         }
 
         /**
          * 展示数组信息拼接格式函数
+         * 传入：商品对象数组
+         * 返回值：渲染之后的字符串形式
          */
         function readerStr(arr) {
-            let goodsStr = "";//将每个对象用字符串表示
+            let goodsStr = "";
             arr.forEach(value => {
+                //数组遍历
                 for (let item in value) {
+                    //对象遍历,得到单个对象的字符串格式
                     goodsStr += `${item}:${value[item]} `
                 }
+                //每遍历一次数组将得到的对象字符串累加，每个对象字符串换行显示
                 goodsStr += "\n";
             })
             return goodsStr;
@@ -117,11 +114,12 @@
             switch (operate) {
                 case 1://显示商品
                     // alert("显示商品");
-                    showGoods(goodsArr);
+                    showGoods(goodsArr,shoppingArr);
                     break;
                 case 2://查看购物车
                     // alert("查看购物车");
-                    checkCar(shoppingArr);
+                    alert(readerStr(shoppingArr));
+                    
                     break;
                 case 3://退出
                     isGo = false;

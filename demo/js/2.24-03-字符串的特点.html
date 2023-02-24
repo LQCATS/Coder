@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        //字符串的长度
+        // console.log(str.length);
+        //通过下标获取字符
+        // console.log(str[0]);
+        // console.log(str[4]);
+        //字符串遍历
+        // for (let i = 0; i < str.length; i++) {
+        //     console.log(str[i]);
+        // }
+
+        //字符串专属循环 for..of  变量1对应的是每一个字符 变量二对应字符串
+        // for (let item of str) {
+        //     console.log(item);
+        // }
+        let str = "abcd123a";
+        // console.log( str.indexOf("a"));//0
+        // console.log( str.indexOf("f"));//-1
+        // console.log(str.lastIndexOf("a"))//7
+        // console.log(str.lastIndexOf("f"))//-1
+
+        // console.log(str.includes("a"))//true
+        // console.log(str.includes("f"))//false
+    //    console.log(str.startsWith("abc"));//true
+    //    console.log( str.endsWith("3a"));//true
+    //    console.log( str.endsWith("3b"));//false
+        //替换
+        
+        // console.log(str.replace("a","f"));
+        // console.log(str.replaceAll("a","f"));
+        // let date1 = new Date()
+        // console.log(date1);
+
+        //字符串截取
+        //（开始下标,截取数量)
+        // let res = str.substr(0,4);
+        //(开始下标，结束下标[不包含])
+        // let res = str.substring(4,7)//123
+        // let res1 = str.slice(4,7)//123
+        // let res3 = str.slice(-4,-1)//123
+
+        // console.log(res,res1,res3);
+        let str1 = "2023-02-25"
+        let arr = str.split()//是把该字符串作为一个数据放入数组
+        let arr1 = str.split("")//把每一个字符存入数组
+        let arr2 = str1.split("-")//将该数据以-作为分割存入数组
+        console.log(arr,arr1,arr2);
+    </script>
+</body>
+
+</html>

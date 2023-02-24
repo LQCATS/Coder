@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+           购物车
+           【功能】
+           - 显示商品：将所有商品显示，通过输入编号将对应商品加入购物车，对应商品数量-1。放入同一商品购物车数量+1。
+               商品数据如下：
+               id:1 name:小米手机 price:1200 num:3 type:数码产品 
+               id:2 name:小米手环 price:1000 num:4 type:数码产品 
+               id:3 name:小米拖地机器人 price:900 num:5 type:家用电器 
+               id:4 name:小米音箱 price:400 num:6 type:家用电器 
+           - 查看购物车：查看所有购物车中的数据
+           - 退出
+
+           【思路】
+           1. 提供一个商品数组，存放商品数据
+           2. 提供一个购物车数组，将已选商品数据存放到购物车数组(总价选做)
+              id:1 name:小米手机 price:1200 num:3 all:总价
+       */
+
+        //商品对象数组
+        let goods = [
+            { id: 1, name: "小米手机", price: 1200, num: 3, type: "数码产品" },
+            { id: 2, name: "小米手环", price: 1000, num: 4, type: "数码产品" },
+            { id: 3, name: "小米拖地机器人", price: 900, num: 5, type: "家用电器" },
+            { id: 4, name: "小米音箱", price: 400, num: 6, type: "家用电器" }
+        ]
+        
+        let carGoods = [];
+        let isGo = true;
+        //循环一级菜单
+        while (isGo) {
+            let num = prompt("请输入选项: 1.去购物 2.查看我的购物车 3.退出") - 0;
+            switch (num) {
+                case 1:
+                    // alert("去购物")
+                    //调用去购物函数
+                    toShopping(goods)
+                    break;
+                case 2:
+                    // alert("查看购物车")
+                   alert(toStr(carGoods))
+                    break;
+                case 3:
+                    alert("退出")
+                    isGo = false
+                    break;
+
+                default:
+                    alert("无效选项")
+                    break;
+            }
+        }
+        /**
+         * 去购物函数
+         * 形参：传入的商品对象数组
+          */
+        function toShopping(arr) {
+            // alert(arr)
+            //显示可选商品，需要进行数据处理，转化成字符串，将转化字符串封装成函数方便复用
+            let renderStr = toStr(arr);
+            //用户输入购买编号
+            let choiceNum = prompt(`请输入您的选项：\n${renderStr}`) -0;
+            //先查看商品是否存在
+            //默认商品不存在，为-1
+            let isHave = -1;
+            arr.forEach((value,index)=>{
+                if(value.id == choiceNum){
+                    //存在商品
+                    isHave = index
+                }
+            })
+            if(isHave != -1){
+                //存在商品
+                // alert("商品存在")
+                //进行购物，判断库存
+                if(arr[isHave].num >0){
+                    //可以购买，当前购买商品库存-1
+                    arr[isHave].num--;
+                    alert("购买成功")
+                    //把商品放入购物车
+                    pushCar(choiceNum,carGoods,isHave);
+                }else{
+                    alert("库存不足")
+                }
+            }else{
+                alert("不存在该商品")
+            }
+        }
+
+        /**
+         * 放入购物车函数
+         * 参数：id当前购买的商品编号;arr购物车里的商品对象数组;i该商品在商店对象数组中的下标
+          */
+        function pushCar(id,arr,i){
+            // alert("放入购物车")
+            //判断该商品在购物车是否存在，存在则数量+1
+            //不存在则把商品数据放入购物车
+            // alert(id)
+            // console.log(id,arr);
+            let isHave2 = false
+            arr.forEach((value)=>{
+                if(value.id == id){
+                    //该商品在购物车存在，存在则数量+1
+                    value.num++;
+                    value.all += value.price;
+                    //改变状态
+                    isHave2 = true
+                }
+            })
+            if(!isHave2){
+                //将当前商品数据放入购物车
+                let goodsName = goods[i].name;
+                let goodsPrice = goods[i].price;
+                carGoods.push({
+                    id:id,
+                    name:goodsName,
+                    price:goodsPrice,
+                    num:1,
+                    all:goodsPrice
+                })
+                // console.log(carGoods);
+
+            }
+        }
+
+        /**
+         * 转换字符串函数
+         * 传入：商品对象数组
+         * 返回值：渲染字符串
+          */
+        function toStr(arr1) {
+            //对数组变量，拿到每一个对象
+            //存储转换后字符串
+            let str = ""
+            arr1.forEach(value => {
+                // alert(value);
+                // console.log(value);
+                //对对象进行属性名和属性值拼接
+                for (let key in value) {
+                    // console.log(key,value[key]);
+                    str += `${key}:${value[key]} `
+                }
+                str += "\n"
+            });
+            return str
+        }
+    </script>
+</body>
+
+</html>
