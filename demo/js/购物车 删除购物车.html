@@ -40,7 +40,7 @@
          * 显示商品函数
          * 目标：将所有商品显示，通过输入编号将对应商品加入购物车，对应商品数量-1。放入同一商品购物车数量+1。
          */
-        function showGoods(arr,arr1) {
+        function showGoods(arr, arr1) {
             let goods = readerStr(arr);
             let choiceId = prompt(`请选择下列商品：\n${goods}`) - 0;//用户选择加入购物车的id
 
@@ -62,7 +62,7 @@
         /**
          * 去加入购物车函数
          */
-        function goCar(arr,obj) {
+        function goCar(arr, obj) {
             let findShopGood = null;
             for (let i = 0; i < arr.length; i++) {
                 const tempShopGoods = arr[i];
@@ -90,6 +90,47 @@
         }
 
         /**
+         * 删除购物车函数    
+         * 形参 arr , arr1
+         * 实参 shoppingArr , goodsArr
+         */
+        function delCarGood(arr, arr1) {
+            let delNum = prompt(`请选择想删除商品的编号：\n${readerStr(arr)}`) - 0;
+            let index = -1;//开关变量，默认编号不存在，index表示商品在数组中的下标
+            for (let i = 0; i < arr.length; i++) {
+                if (arr[i].id === delNum) {
+                    index = i;
+                    break;
+                }
+            }
+            if (index != -1) {
+                //商品在购物车内
+                //判断购物车内商品的数量是否为0
+                if (arr[index].num > 0) {
+                    //删除购物车的数量和价格
+                    arr[index].num--                   
+                    arr[index].all -= arr[index].price;
+                    //增加库存的数量 ，找到删除商品在库存里面的下标
+                    let index1 = -1;//删除编号在库存的下标
+                    for (let i = 0; i < arr1.length; i++) {
+                        if (arr1[i].id === delNum) {
+                            index1 = i;
+                            break;
+                        }
+                    }
+                    arr1[index1].num++
+                    alert("商品删除成功");
+                    //删除的商品数量为0需要在购物车内删除商品
+                    if (arr[index].umn == 0) {
+                        arr.splice(index, 1);
+                    }
+                }
+            } else {
+                alert("该编号商品不在购物车，请重新输入编号")
+            }
+        }
+
+        /**
          * 展示数组信息拼接格式函数
          * 传入：商品对象数组
          * 返回值：渲染之后的字符串形式
@@ -110,18 +151,22 @@
 
 
         while (isGo) {
-            let operate = prompt("1.显示商品 2.查看购物车 3.退出") - 0;
+            let operate = prompt("1.显示商品 2.查看购物车 3.删除购物车 4.退出") - 0;
             switch (operate) {
                 case 1://显示商品
                     // alert("显示商品");
-                    showGoods(goodsArr,shoppingArr);
+                    showGoods(goodsArr, shoppingArr);
                     break;
                 case 2://查看购物车
                     // alert("查看购物车");
                     alert(readerStr(shoppingArr));
-                    
                     break;
-                case 3://退出
+
+                case 3://删除购物车
+                    // alert("删除购物车");
+                    delCarGood(shoppingArr, goodsArr);
+                    break;
+                case 4://退出
                     isGo = false;
                     alert("退出");
                     break;
