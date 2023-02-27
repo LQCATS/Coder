@@ -106,7 +106,7 @@
             if (index != -1) {
                 //商品在购物车内
                 //判断购物车内商品的数量是否为0
-                if (arr[index].num > 0) {
+                if (arr[index].num > 1) {
                     //删除购物车的数量和价格
                     arr[index].num--                   
                     arr[index].all -= arr[index].price;
@@ -120,10 +120,10 @@
                     }
                     arr1[index1].num++
                     alert("商品删除成功");
-                    //删除的商品数量为0需要在购物车内删除商品
-                    if (arr[index].num == 0) {
-                        arr.splice(index, 1);
-                    }
+                } else {
+                    //删除的商品数量为1需要在购物车内删除商品
+                    arr.splice(index, 1);
+                    alert("商品删除成功");
                 }
             } else {
                 alert("该编号商品不在购物车，请重新输入编号")

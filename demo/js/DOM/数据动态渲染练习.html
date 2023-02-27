@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table,
+        th,
+        td {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>编号</th>
+                <th>姓名</th>
+                <th>价格</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- <tr>
+                <td>1</td>
+                <td>小米耳机</td>
+                <td>1200</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>小米耳机</td>
+                <td>1200</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>小米耳机</td>
+                <td>1200</td>
+            </tr> -->
+        </tbody>
+        <script>
+            //使用商品数据,动态渲染表格
+            var array = [
+                { id: 1, name: "小米耳机", price: 1200 },
+                { id: 2, name: "小米平衡车", price: 2300 },
+                { id: 3, name: "小米手环", price: 2300 },
+            ]
+            // let tBody = document.getElementsByTagName("tbody");
+            // let str = "";
+            // array.forEach(element => {
+            //     str += `
+            //     <tr>
+            //         <td>${element.id}</td>
+            //         <td>${element.name}</td>
+            //         <td>${element.price}</td>
+            //     </tr>`
+            // })
+            // tBody[0].innerHTML =  str;
+            // console.log(tBody[0]);
+            
+
+            let tBody = document.querySelector("tbody");
+            let tBodyTr = "";
+            array.forEach(value => {
+                tBodyTr += `
+                <tr>
+                    <td>${value.id}</td>
+                    <td>${value.name}</td>
+                    <td>${value.price}</td>
+                </tr>`
+            });
+            tBody.innerHTML = tBodyTr;
+           console.log(tBody);
+        </script>
+</body>
+
+</html>

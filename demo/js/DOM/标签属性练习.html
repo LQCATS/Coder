@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width: 270px;
+            border: 1px solid gainsboro;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <img src="./img/id1.jpg" alt="这是一张图片" id="one" class="image" index="1">
+        <p>id1.jpg</p>
+    </div>
+    <script>
+        //用户输入图片名(id3),修改页面中的图片路径以及p标签内容
+
+        //修改图片 => 找到图片标签 => 找到图片标签的属性名修改
+        let inputId = prompt("请输入修改的id名");
+        let elemImg = document.querySelector("img");
+        elemImg.setAttribute("src",`./img/${inputId}.jpg`);
+        //修改P标签的内容
+        let elemP = document.querySelector("p");
+        elemP.innerText = `${inputId}.jpg`
+    </script>
+</body>
+</html>
