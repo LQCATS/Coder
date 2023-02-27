@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 270px;
+            border: 1px solid gainsboro;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <img src="./img/id1.jpg" alt="这是一张图片" id="one" class="image" index="1">
+        <p>id1.jpg</p>
+        <button>随机更改</button>
+    </div>
+    <script>
+        //找到按钮标签
+        let btn = document.querySelector("button")
+        //进行事件绑定
+
+        btn.addEventListener("click", function () {
+            //更改图片
+            let elemImg = document.querySelector("img")
+            //随机生成图片编号 1-10 [0,1)  [1,11)
+            let randomNum = parseInt(Math.random() * 10 + 1)
+            elemImg.setAttribute("src", `./img/id${randomNum}.jpg`)
+            console.log(randomNum);
+            //更改文本
+            let elemP = document.querySelector("p")
+            elemP.innerText = `id${randomNum}.jpg`
+        })
+    </script>
+</body>
+
+</html>

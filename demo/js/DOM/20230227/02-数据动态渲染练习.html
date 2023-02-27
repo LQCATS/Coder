@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table,
+        th,
+        td {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>编号</th>
+                <th>姓名</th>
+                <th>价格</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- <tr>
+                <td>1</td>
+                <td>小米耳机</td>
+                <td>1200</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>小米耳机</td>
+                <td>1200</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>小米耳机</td>
+                <td>1200</td>
+            </tr> -->
+        </tbody>
+        <script>
+            //使用商品数据,动态渲染表格
+            var array = [
+                { id: 1, name: "小米耳机", price: 1200 },
+                { id: 2, name: "小米平衡车", price: 2300 },
+                { id: 3, name: "小米手环", price: 2300 },
+                { id: 4, name: "小米手机", price: 1999 },
+            ]
+            //获取tbody标签
+            // let elemTbody = document.getElementsByTagName("tbody")
+            let elemTbody = document.querySelector("tbody")
+            //将数据进行格式拼接
+            // let str = `
+            // <tr>
+            //     <td>${array[0].id}</td>
+            //     <td>${array[0].name}</td>
+            //     <td>${array[0].price}</td>
+            // </tr>
+            // `
+
+            //将数据进行遍历，每一个商品拼接成一个tr固定格式
+            let str = ""
+            array.forEach(element=>{
+                str += `
+            <tr>
+                <td>${element.id}</td>
+                <td>${element.name}</td>
+                <td>${element.price}</td>
+            </tr>
+            `
+            })
+            console.log(str);
+            elemTbody.innerHTML = str
+        </script>
+</body>
+
+</html>

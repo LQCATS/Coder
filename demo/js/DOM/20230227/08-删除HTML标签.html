@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <li>评论一：感觉还可以</li>
+        <li id="li2">评论二：一般般</li>
+        <li>评论三：我看还行</li>
+    </ul>
+
+    <div>
+        <p>p1</p>
+        <p>p2</p>
+        <p>p3</p>
+        <h1>h1</h1>
+        <span>span</span>
+    </div>
+    <script>
+        //删除评论2节点
+        // let elemli = document.getElementById("li2")
+        // console.log(elemli);
+        //删除指定标签 待删除标签变量名.remove()
+        // elemli.remove()
+        //删除父标签中的子标签  父标签变量名.removeChild(待删除子标签变量名)
+        // let father = document.querySelector("ul")
+        // father.removeChild(elemli)
+
+        let father = document.querySelector("div")
+        // father.innerHTML = ""
+        // father.innerText = ""
+
+        //删除div内所有p标签，但是保留h1和span
+        //1.找到所有的p标签
+        let elems = document.querySelectorAll("div p")
+        console.log(elems);
+        //2.对该类数组遍历，将每一个p标签移除
+        elems.forEach(element=>{
+            // element.remove()
+
+            father.removeChild(element)
+        })
+    </script>
+</body>
+</html>

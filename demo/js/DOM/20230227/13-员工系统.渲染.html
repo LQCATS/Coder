@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .mytable {
+            width: 1000px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 要求：(1)构造员工信息 -->
+    <!-- (2)将员工的数据动态渲染出来，表格渲染 -->
+    <div class="filterData">
+        <button class="all">全部员工</button>
+        <button class="lizhi">离职员工</button>
+        <button class="zaizhi">在职员工</button>
+    </div>
+    <table class="mytable" border="1">
+        <thead>
+            <tr>
+                <th>编号</th>
+                <th>名字</th>
+                <th>性别</th>
+                <th>年龄</th>
+                <th>证件类型</th>
+                <th>学历</th>
+                <th>个人介绍</th>
+                <th>员工状态</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                    <button>删除</button>
+                    <button>修改</button>
+                    <button>切换</button>
+                </td>
+            </tr> -->
+        </tbody>
+    </table>
+
+    <script>
+        // 需要构造全局数据
+        let emps = [
+            { id: 1, name: "xiaowang", age: 23, xueli: ["本科"], gender: 1, message: "性格开朗", cardType: "身份证", statues: 1 },
+            { id: 2, name: "xiaofei", age: 24, xueli: ["专科", "本科"], gender: 0, message: "性格开朗", cardType: "身份证", statues: 0 },
+            { id: 3, name: "xiaozhang", age: 25, xueli: ["本科"], gender: 1, message: "性格开朗", cardType: "身份证", statues: 1 }
+        ]
+
+    </script>
+</body>
+
+</html>

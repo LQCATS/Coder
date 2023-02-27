@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .mytable {
+            width: 1000px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 要求：(1)构造员工信息 -->
+    <!-- (2)将员工的数据动态渲染出来，表格渲染 -->
+    <div class="filterData">
+        <button class="all">全部员工</button>
+        <button class="lizhi">离职员工</button>
+        <button class="zaizhi">在职员工</button>
+    </div>
+    <table class="mytable" border="1">
+        <thead>
+            <tr>
+                <th>编号</th>
+                <th>名字</th>
+                <th>性别</th>
+                <th>年龄</th>
+                <th>证件类型</th>
+                <th>学历</th>
+                <th>个人介绍</th>
+                <th>员工状态</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                    <button>删除</button>
+                    <button>修改</button>
+                    <button>切换</button>
+                </td>
+            </tr> -->
+        </tbody>
+    </table>
+
+    <script>
+        // 需要构造全局数据
+        let emps = [
+            { id: 1, name: "xiaowang", age: 23, xueli: ["本科"], gender: 1, message: "性格开朗", cardType: "身份证", statues: 1 },
+            { id: 2, name: "xiaofei", age: 24, xueli: ["专科", "本科"], gender: 0, message: "性格开朗", cardType: "身份证", statues: 0 },
+            { id: 3, name: "xiaozhang", age: 25, xueli: ["本科"], gender: 1, message: "性格开朗", cardType: "身份证", statues: 1 }
+        ]
+
+        //修改数据库数据
+        emps.forEach(value => {
+            if (value.gender === 1) {
+                value.gender = "男";
+            } else {
+                value.gender = "女";
+            };
+            value.xueli = value.xueli.join("-");
+            if (value.statues === 1) {
+                value.statues = "在职";
+            } else {
+                value.statues = "离职";
+            };
+        });
+        // console.log(emps);
+
+
+
+        /**
+         * 首页初始数据函数
+         */
+        function demo() {
+            emps.forEach(element => {
+                //新增tr标签
+                let newTr = document.createElement("tr");
+                //填充tr标签的内容
+                newTr.innerHTML =
+                    `<td>${element.id}</td>
+                    <td>${element.name}</td>
+                    <td>${element.gender}</td>
+                    <td>${element.age}</td>
+                    <td>${element.cardType}</td>
+                    <td>${element.xueli}</td>
+                    <td>${element.message}</td>
+                    <td>${element.statues}</td>
+                    <td>
+                        <button>删除</button>
+                        <button>修改</button>
+                        <button>切换</button>
+                    </td>`;
+                //将tr插入父标签的最后一个节点
+                let trFather = document.querySelector("tbody");
+                trFather.appendChild(newTr);
+            });
+        };
+
+        /**
+         * 全部员工函数
+         */
+        function demo1() {
+            //找到tbody标签清空里面的内容
+            let tBody = document.querySelector("tbody");
+            tBody.innerHTML = null;
+            demo();
+        };
+
+        /**
+         * 离职员工函数
+         */
+        function demo2() {
+            //找到tbody标签清空里面的内容
+            let tBody = document.querySelector("tbody");
+            tBody.innerHTML = null;
+            let id = 0;
+            emps.forEach(element => {
+                if (element.statues === "离职") {
+                    id += 1
+                    element.id = id;
+                    //新增tr标签
+                    let newTr = document.createElement("tr");
+                    //填充tr标签的内容
+                    newTr.innerHTML =
+                        `<td>${element.id}</td>
+                        <td>${element.name}</td>
+                        <td>${element.gender}</td>
+                        <td>${element.age}</td>
+                        <td>${element.cardType}</td>
+                        <td>${element.xueli}</td>
+                        <td>${element.message}</td>
+                        <td>${element.statues}</td>
+                        <td>
+                            <button>删除</button>
+                            <button>修改</button>
+                            <button>切换</button>
+                        </td>`
+                    //将tr插入父标签的最后一个节点
+                    tBody.appendChild(newTr);
+                };
+            });
+        };
+
+        /**
+         * 在职员工函数
+         */
+        function demo3() {
+            //找到tbody标签清空里面的内容
+            let tBody = document.querySelector("tbody");
+            tBody.innerHTML = null;
+            let id = 0;//表示离职人序号，默认刚开始是0
+            //添加在职人员的数据
+            emps.forEach(element => {
+                //判断出在职的员工
+                if (element.statues === "在职") {
+                    //存在员工在职
+                    //在职人序号
+                    id += 1;
+                    element.id = id;
+                    //创建一个新的tr标签
+                    let newTr = document.createElement("tr");
+                    //在tr里面填充内容
+                    newTr.innerHTML =
+                        `<td>${element.id}</td>
+                        <td>${element.name}</td>
+                        <td>${element.gender}</td>
+                        <td>${element.age}</td>
+                        <td>${element.cardType}</td>
+                        <td>${element.xueli}</td>
+                        <td>${element.message}</td>
+                        <td>${element.statues}</td>
+                        <td>
+                            <button>删除</button>
+                            <button>修改</button>
+                            <button>切换</button>
+                        </td>`
+                    //将tr插入父元素的最后一个节点
+                    tBody.appendChild(newTr);
+                };
+            });
+        };
+
+        //渲染数据到页面上
+        demo();
+
+
+        //添加事件
+        //全部员工事件
+        let buttonAll = document.querySelector(".all");//找到事件源
+        buttonAll.addEventListener("click", demo1);//添加事件
+
+
+        //离职员工事件
+        let liziButton = document.querySelector(".lizhi");
+        liziButton.addEventListener("click", demo2);
+
+
+        //在职员工事件
+        let zaizhiButton = document.querySelector(".zaizhi");
+        zaizhiButton.addEventListener("click", demo3);
+
+    </script>
+
+</body>
+
+</html>

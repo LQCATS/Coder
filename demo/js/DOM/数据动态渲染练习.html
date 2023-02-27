@@ -41,13 +41,21 @@
                 <td>1200</td>
             </tr> -->
         </tbody>
-        <script>
+    </table>
+       
+    <script>
             //使用商品数据,动态渲染表格
             var array = [
                 { id: 1, name: "小米耳机", price: 1200 },
                 { id: 2, name: "小米平衡车", price: 2300 },
                 { id: 3, name: "小米手环", price: 2300 },
-            ]
+            ];
+
+            /**
+             * 使用innerHTML渲染页面
+             */
+
+
             // let tBody = document.getElementsByTagName("tbody");
             // let str = "";
             // array.forEach(element => {
@@ -60,21 +68,63 @@
             // })
             // tBody[0].innerHTML =  str;
             // console.log(tBody[0]);
-            
 
-            let tBody = document.querySelector("tbody");
-            let tBodyTr = "";
-            array.forEach(value => {
-                tBodyTr += `
-                <tr>
-                    <td>${value.id}</td>
-                    <td>${value.name}</td>
-                    <td>${value.price}</td>
-                </tr>`
-            });
-            tBody.innerHTML = tBodyTr;
-           console.log(tBody);
-        </script>
+
+            //     let tBody = document.querySelector("tbody");
+            //     let tBodyTr = "";
+            //     array.forEach(value => {
+            //         tBodyTr += `
+            //         <tr>
+            //             <td>${value.id}</td>
+            //             <td>${value.name}</td>
+            //             <td>${value.price}</td>
+            //         </tr>`
+            //     });
+            //     tBody.innerHTML = tBodyTr;
+            //    console.log(tBody);
+
+            
+           /**
+            * 增加html标签 createElement 和 appendChild
+            */
+            array.forEach(element => {
+                //新建一个tr标签
+                let newTr = document.createElement("tr");
+                //在tr标签里面填充内容
+                newTr.innerHTML =
+                    `<td>${element.id}</td>
+                    <td>${element.name}</td>
+                    <td>${element.price}</td>`;
+                //找到突然标签的父标签
+                let father = document.querySelector("tbody");
+                //将tr以最后节点加入到tbody标签里渲染在页面上
+                father.appendChild(newTr);
+            })
+
+    </script>
+
+
+    <div>
+        <p>P1</p>
+        <p>P2</p>
+        <p>P3</p>
+        <h1>h1</h1>
+        <span>span</span>
+    </div>
+    <script>
+        
+         /**
+             * 删除html标签 remove 和removeChild
+             * 
+             */
+        let elems = document.querySelectorAll("div p");//找到所有的p标签
+        elems.forEach(element => {
+            // element.remove();//遍历删除指定的标签
+
+            let father = document.querySelector("div");
+            father.removeChild(element);
+        })
+    </script>
 </body>
 
 </html>

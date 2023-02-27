@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button class="btn1" onclick="demo1()">按钮1</button>
+    <button class="btn2">按钮2</button>
+    <button class="btn3">按钮3</button>
+    <script>
+        //1.使用标签上的事件属性  on事件类型="js代码"
+        function demo1() {
+            console.log(111);
+            console.log(222);
+            console.log(333);
+        }
+        //删除事件
+        let elem1 = document.querySelector(".btn1")
+        elem1.removeAttribute("onclick")
+
+        //2.dom 0级绑定事件
+        let elem2 = document.querySelector(".btn2")
+        elem2.onclick = function () {
+            console.log("btn2被点击了");
+        }
+        elem2.onclick = function () {
+            console.log("btn2又被点击了");
+        }
+        elem2.onclick =null
+
+        //3.dom 2级绑定事件
+        let elem3 = document.querySelector(".btn3")
+        elem3.addEventListener("click",demo1)
+        elem3.addEventListener("click",demo2)
+
+        function demo1(){
+            console.log("btn3被点击了");
+        }
+        function demo2(){
+            console.log("btn3又被点击了");
+        }
+
+
+
+        elem3.removeEventListener("click",demo1)
+        elem3.removeEventListener("click",demo2)
+    </script>
+</body>
+
+</html>

@@ -20,14 +20,16 @@
     </div>
     <script>
         //用户输入图片名(id3),修改页面中的图片路径以及p标签内容
-
-        //修改图片 => 找到图片标签 => 找到图片标签的属性名修改
-        let inputId = prompt("请输入修改的id名");
-        let elemImg = document.querySelector("img");
-        elemImg.setAttribute("src",`./img/${inputId}.jpg`);
-        //修改P标签的内容
-        let elemP = document.querySelector("p");
-        elemP.innerText = `${inputId}.jpg`;
+        let input = prompt("请输入id名（如id3）")
+        console.log(input);
+        //修改图片
+        let elemImg = document.querySelector("#one")
+        elemImg.setAttribute("src",`./img/${input}.jpg`)
+        //修改p标签内容
+        let elemP = document.querySelector("p")
+        // elemP.innerText = `${input}.jpg`
+        elemP.innerHTML = `${input}.jpg`
+        console.log(elemP);
     </script>
 </body>
 </html>
