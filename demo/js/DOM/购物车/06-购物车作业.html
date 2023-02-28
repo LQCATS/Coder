@@ -98,65 +98,84 @@
     };
     main();
 
-/**
- * 渲染函数
- */
-function reader(arr) {
-//定义一个变量接受所有商品的总价格
-let sum = 0;
-arr.forEach(value => {
-  //新建一个tr标签
-  let newTr = document.createElement("tr");
-  //填充tr标签内容
-  newTr.innerHTML =
-    `<td><input type="checkbox" class="todel"></td>
-    <td>${value.name}</td>
-    <td><img src=${value.imgSrc} alt="" /></td>
-    <td>${value.price}</td>
-    <td>
-      <button class="sub">-</button>
-      <span>${value.num}</span>
-      <button class="add">+</button>
-      <button class="del">删除</button>
-    </td>
-    <td>${value.num * value.price}</td>`
-  //将tr插入tbody的最后一个节点
-  tbodyEle.appendChild(newTr);
-  sum += value.num * value.price;
-});
-//将总价格渲染到页面上
-totalPriceEle.innerText = sum;
-};
+    /**
+     * 渲染函数
+     */
+    function reader(arr) {
+      //定义一个变量接受所有商品的总价格
+      let sum = 0;
+      arr.forEach(value => {
+        //新建一个tr标签
+        let newTr = document.createElement("tr");
+        //填充tr标签内容
+        newTr.innerHTML =
+          `<td><input type="checkbox" class="todel"></td>
+      <td>${value.name}</td>
+      <td><img src=${value.imgSrc} alt="" /></td>
+      <td>${value.price}</td>
+      <td>
+        <button class="sub">-</button>
+        <span>${value.num}</span>
+        <button class="add">+</button>
+        <button class="del">删除</button>
+      </td>
+      <td>${value.num * value.price}</td>`
+        //将tr插入tbody的最后一个节点
+        tbodyEle.appendChild(newTr);
+        sum += value.num * value.price;
+      });
+      //将总价格渲染到页面上
+      totalPriceEle.innerText = sum;
 
-/**
- * 商品数量增减函数
- */
-function changeGoodsNum() {
-  //span标签类数组
-  tbodyEle.addEventListener("click", function (event) {
-    let subEle = event.target;
-    let spanEle = event.target.nextElementSibling;
-    let spanEleNum = spanEle.innerText - 0;
-    if (subEle.className === "sub" && spanEleNum > 0) {
-      spanEleNum--
-    } else if (subEle.className === "add") {
-      spanEleNum++
-    }
-  })
-  
-};
 
-  /**
-   * 删除商品函数
-   */
-  function delGoods() {
-    tbodyEle.addEventListener("click", function (event) {
-      if (event.target.className === "del") {
-        event.target.parentElement.parentElement.remove()
-      }
-    });
-  };
-  
+    };
+
+    /**
+     * 商品数量增减函数
+     */
+    function changeGoodsNum() {
+      //span标签类数组
+      tbodyEle.addEventListener("click", function (event) {
+        let changePrice = 0;//改变的价格
+        if (event.target.className === "sub" && event.target.nextElementSibling.innerText > 0) {
+          let spanEleNum = Number(event.target.nextElementSibling.innerText);//商品数量
+          spanEleNum--//商品数量减一
+          let addPrice = event.target.parentElement.nextElementSibling.innerText;//每个商品的总价格
+          let goodsPrice = event.target.parentElement.previousElementSibling.innerText;//每个商品单价
+
+          addPrice = spanEleNum * goodsPrice;
+          event.target.nextElementSibling.innerText = spanEleNum;
+          event.target.parentElement.nextElementSibling.innerText = addPrice;
+
+          changePrice = -goodsPrice;
+        } else if (event.target.className === "add") {
+          let spanEleNum = Number(event.target.previousElementSibling.innerText);
+          spanEleNum++//商品数量加一
+          let addPrice = event.target.parentElement.nextElementSibling.innerText;//每个商品的总价格
+          let goodsPrice = event.target.parentElement.previousElementSibling.innerText;//每个商品单价
+          addPrice = spanEleNum * goodsPrice;
+          event.target.previousElementSibling.innerText = spanEleNum
+          event.target.parentElement.nextElementSibling.innerText = addPrice;
+
+          changePrice = goodsPrice;
+        }
+
+        totalPriceEle.innerText = Number(totalPriceEle.innerText) + Number(changePrice);
+      })
+
+    };
+
+    /**
+     * 删除商品函数
+     */
+    function delGoods() {
+      tbodyEle.addEventListener("click", function (event) {
+        if (event.target.className === "del") {
+          event.target.parentElement.parentElement.remove()
+        }
+      });
+    };
+
   </script>
 </body>
 
