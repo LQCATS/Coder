@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            height: 300px;
+            width: 300px;
+            background-color: pink;
+            text-align: center;
+
+        }
+
+        span {
+            background-color: yellow;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <span>这是一个span</span>
+    </div>
+    <a href="https://www.woniuxy.com">蜗牛学院</a>
+    <script>
+        // document.querySelector("span").addEventListener("click", function() {
+        //     console.log("span被点击了")
+        // })
+        // document.querySelector("div").addEventListener("click", function() {
+        //     console.log("div被点击了")
+        // },true)
+
+        document.querySelector("span").addEventListener("click", function(event) {
+            // console.log(event)
+            // console.log(event.target)
+            // console.log(event.currentTarget)
+            // console.log(event.offsetX,event.offsetY)
+            event.stopPropagation()
+        })
+        document.querySelector("div").addEventListener("click", function(event) {
+            // console.log(event)
+            // console.log(event.target)
+            // console.log(event.currentTarget)
+            // console.log(event.pageX,event.pageY)
+            // console.log(event.clientX,event.clientY)
+            // console.log(event.offsetX,event.offsetY)
+        })
+
+        document.querySelector("a").addEventListener("click", function(event) {
+            event.preventDefault()
+        })
+    </script>
+</body>
+</html>
