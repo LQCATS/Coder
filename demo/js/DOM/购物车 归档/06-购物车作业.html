@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <style>
+    img {
+      width: 100px;
+    }
+
+    input {
+      width: 30px;
+    }
+
+    td {
+      text-align: center;
+    }
+
+    .totalPrice {
+      text-align: right;
+    }
+
+    .todel {
+      width: 30px;
+    }
+  </style>
+</head>
+
+<body>
+  <button>添加</button>
+  <button>删除所有</button>
+
+  <table border="1">
+    <thead>
+      <tr>
+        <th>选择</th>
+        <th>名称</th>
+        <th>图片</th>
+        <th>单价</th>
+        <th>操作</th>
+        <th>总价</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- <tr>
+        <td><input type="checkbox" class="todel"></td>
+        <td>卫龙辣条1</td>
+        <td><img src="img/banner1.jpg" alt="" /></td>
+        <td>3.5</td>
+        <td>
+          <button class="sub">-</button>
+          <span>1</span>
+          <button class="add">+</button>
+          <button class="del">删除</button>
+        </td>
+        <td>0</td>
+      </tr> -->
+
+    </tbody>
+    <tfoot>
+      <tr>
+        <!-- 总价格 -->
+        <td><input type="checkbox" class="todelall"> <span>全选</span></td>
+        <td colspan="5" class="totalPrice">0</td>
+      </tr>
+    </tfoot>
+  </table>
+
+  <script>
+    /*
+      使用DOM来操作HTML页面完成购物车相关功能
+        1. 构建数据完成页面的数据渲染
+        2. 计算单件商品的总价
+        3. 计算所有商品的总价
+        4. 实现数量增加和减少
+        5. 刪除当前的商品
+    */
+    let carProducts = [
+      { id: 1, name: "酸菜凤爪", price: 3.5, num: 5, imgSrc: "img/banner1.jpg" },
+      { id: 2, name: "杨梅干", price: 5.5, num: 1, imgSrc: "img/banner2.jpg" },
+      { id: 3, name: "坚果大礼包", price: 73.5, num: 2, imgSrc: "img/banner3.jpg" },
+      { id: 4, name: "广味香肠", price: 13.5, num: 3, imgSrc: "img/banner4.jpg" }
+
+    ]
+    //tobdy标签
+    let tbodyEle = document.querySelector("tbody")
+    //总价标签
+    let tdEle = document.querySelector(".totalPrice")
+
+    /**
+     * 主程序
+      */
+    function main() {
+      render(carProducts)
+      clickBtn()
+    }
+    /**
+     * 按钮点击
+      */
+     function clickBtn() {
+      // console.log(123);
+      //绑定点击事件
+      tbodyEle.onclick = function (event) {
+        // console.log(event.target);
+        let element = event.target
+        let indexChoice = element.getAttribute("index")
+        // console.log(indexChoice);
+        // console.log(element.className);
+        switch (element.className) {
+          case "sub":
+            // alert("减少数量")
+            subCount(indexChoice)
+            break;
+          case "add":
+            // alert("增加数量")
+            addCount(indexChoice)
+            break;
+          case "del":
+            // alert("删除")
+            delGoods(indexChoice)
+            break;
+        }
+      }
+     }
+     /**
+      * 删除商品
+      *  参数：表示商品在数组内下标位置
+       */
+      function delGoods(i) {
+        //删除对应商品
+        carProducts.splice(i,1)
+        //渲染页面
+        render(carProducts)
+      }
+     /**
+      * 增加数量
+      * 参数：表示商品在数组内下标位置
+       */
+      function addCount(i) {
+        carProducts[i].num++;
+        //渲染页面
+        render(carProducts)
+      }
+     /**
+      * 减少数量
+      * 参数：表示商品在数组内下标位置
+       */
+      function subCount(i) {
+        // console.log(i);
+        
+        if(carProducts[i].num>1){
+          carProducts[i].num--;
+        }else{
+          alert("数量至少为1")
+        }
+        //渲染页面
+        render(carProducts)
+      }
+
+    /**
+     * 渲染函数
+     * 参数：arr表示商品对象数组
+      */
+    function render(arr) {
+      //空字符串接收数据
+      let str = ""
+      //总价
+      let sum = 0
+      arr.forEach((element,index) => {
+        let allOne = element.price*element.num;
+        //总价计算
+        sum += allOne;
+        str +=`
+        <tr>
+          <td><input type="checkbox" class="todel"></td>
+          <td>${element.name}</td>
+          <td><img src=${element.imgSrc} alt="" /></td>
+          <td>${element.price}</td>
+          <td>
+            <button class="sub" index=${index}>-</button>
+            <span>${element.num}</span>
+            <button class="add" index=${index}>+</button>
+            <button class="del" index=${index}>删除</button>
+          </td>
+          <td>${allOne}</td>
+      </tr>
+        `
+      });
+      // console.log(str);
+      console.log(sum);
+      tbodyEle.innerHTML = str
+      //总价渲染
+      tdEle.innerHTML = sum
+    }
+    main()
+  </script>
+</body>
+
+</html>

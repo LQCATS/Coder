@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .banner {
+            width: 1110px;
+            height: 450px;
+            /* border: 1px solid red; */
+            margin: 0 auto;
+
+            /* 设置定位父级 */
+            position: relative;
+            border: 1px solid gray;
+        }
+
+        ul {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+
+            position: absolute;
+            bottom: 30px;
+            /* border: 1px solid red; */
+
+            display: flex;
+            width: 100%;
+            justify-content: center;
+        }
+
+        li {
+            width: 20px;
+            height: 20px;
+            background-color: pink;
+            margin: 0 15px;
+            cursor: pointer;
+        }
+
+        li.active {
+            background-color: tomato;
+        }
+
+        .left,
+        .right {
+            width: 20px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.3);
+            text-align: center;
+            line-height: 40px;
+            cursor: pointer;
+        }
+
+        .left {
+            position: absolute;
+            top: 200px;
+            left: 50px;
+        }
+
+        .right {
+            position: absolute;
+            top: 200px;
+            right: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="banner">
+        <!-- 大图 -->
+        <img src="https://woniufile.oss-cn-hangzhou.aliyuncs.com/banner/com.pc.jpg" alt="" id="big-img">
+        <ul id="list">
+            <!-- 小方块li，一个小方块代表一个图片，选中方块渲染对应图片，并且颜色为tomato -->
+            <!-- <li></li>
+            <li></li> -->
+
+        </ul>
+        <div class="left">&lt;</div>
+        <div class="right">&gt;</div>
+    </div>
+    <script>
+        let images = [
+            { id: 1, imgSrc: "https://woniufile.oss-cn-hangzhou.aliyuncs.com/banner/com.pc.jpg" },
+            { id: 2, imgSrc: "https://www.woniuxy.com/static/woniuopen/img/woniubanner-2.png" },
+            { id: 3, imgSrc: "https://www.woniuxy.com/static/woniuopen/img/woniubanner-1.png" },
+            { id: 4, imgSrc: "https://www.woniuxy.com/static/woniuopen/img/woniubanner-3.png" }
+        ]
+
+        /* 
+            (1)根据轮播图的数量，渲染小方块，图片的数据来自后端服务器
+            (2)初始化页面，将第一张图片作为轮播图图片展示，第一个小方块显示为tomato
+            (3)点击对应的小方块显示对应的图片
+            (4)点击left到上一张图片，第一张之后到最后一张图片
+            (5)点击right到下一张图片，最后一张之后返回到第一张图片
+        */
+
+
+        let ulEle = document.getElementById("list");
+        let bigImg = document.getElementById("big-img");
+        let fatherEle = document.querySelector(".banner");
+
+        //定义变量获取当前选中大图的下标,初始值为0下标对应的图片
+        let i = 0;
+
+        /**
+         * 主函数
+         */
+        function main() {
+            reader(images);
+            clickLi(images);
+            change(images);
+            time(images);
+            mouse(images);
+        };
+
+        
+        /**
+         * 间隔时间播放
+         */
+        function time(arr) {
+            //间隔1秒大图自动切换
+            let timer = setInterval(() => {
+                if (i < arr.length -1) {
+                    i++;
+                } else if(i = arr.length -1){
+                    i = 0;
+                }
+                bigImg.src = arr[i].imgSrc;
+                reader(arr);
+            },1000);
+            //鼠标移入大图触发事件，暂停间隔计时器
+            bigImg.onmouseover = function () {
+                clearInterval(timer);
+            } 
+            //鼠标移出大图触发事件，开始间隔计时器
+            bigImg.onmouseout= function () {
+                timer = setInterval(() => {
+                if (i < arr.length -1) {
+                    i++;
+                } else if(i = arr.length -1){
+                    i = 0;
+                }
+                bigImg.src = arr[i].imgSrc;
+                reader(arr);
+            },1000);
+            } 
+        };
+
+
+        /**
+         * 左右切换图片
+         */
+        function change(arr) {
+            let left = document.querySelector(".left");
+            let right = document.querySelector(".right");
+            left.onclick = function () {
+                if (i === 0) {
+                    i = arr.length - 1;
+                } else {
+                    i--;
+                }
+                reader(arr);
+            };
+            right.onclick = function () {
+                if (i === arr.length - 1) {
+                    i = 0;
+                } else {
+                    i++;
+                }
+                reader(arr);
+            };
+        };
+
+        /**
+         * li点击事件
+         */
+        function clickLi(arr) {
+            //通过委托ul给li添加点击事件
+
+            ulEle.onclick = function (event) {
+                //只有点击li才可以触发事件
+                let clickLiEle = event.target;
+                if (clickLiEle.id != "list") {
+                    i = clickLiEle.id - 1;
+                }
+                console.log(i);
+                reader(arr);
+            };
+        };
+
+        /**
+         * 渲染函数
+         */
+        function reader(arr) {
+            //小方块
+            let str = "";
+            arr.forEach((element, index) => {
+                if (i === index) {
+                    str += `<li class="active" id=${index + 1}></li>`
+                } else {
+                    str += `<li id=${index + 1}></li>`
+                }
+            });
+            //给ul标签赋值
+            ulEle.innerHTML = str;
+            //大图
+            bigImg.src = arr[i].imgSrc;
+
+        };
+
+        main();
+
+
+    </script>
+
+</body>
+
+</html>
