@@ -93,8 +93,7 @@
      */
     function main() {
       reader(carProducts);
-      changeGoodsNum();
-      delGoods();
+      clickBtn(carProducts);
     };
     main();
 
@@ -104,77 +103,154 @@
     function reader(arr) {
       //定义一个变量接受所有商品的总价格
       let sum = 0;
-      arr.forEach(value => {
-        //新建一个tr标签
-        let newTr = document.createElement("tr");
-        //填充tr标签内容
-        newTr.innerHTML =
-          `<td><input type="checkbox" class="todel"></td>
-      <td>${value.name}</td>
-      <td><img src=${value.imgSrc} alt="" /></td>
-      <td>${value.price}</td>
-      <td>
-        <button class="sub">-</button>
-        <span>${value.num}</span>
-        <button class="add">+</button>
-        <button class="del">删除</button>
-      </td>
-      <td>${value.num * value.price}</td>`
+      let str = "";
+      arr.forEach((value, index) => {
+        str +=
+          `<tr>
+              <td><input type="checkbox" class="todel"></td>
+              <td>${value.name}</td>
+              <td><img src=${value.imgSrc} alt="" /></td>
+              <td>${value.price}</td>
+              <td>
+                <button class="sub" index=${index}>-</button>
+                <span>${value.num}</span>
+                <button class="add" index=${index}>+</button>
+                <button class="del" index=${index}>删除</button>
+              </td>
+              <td>${value.num * value.price}</td>
+          </tr>`
         //将tr插入tbody的最后一个节点
-        tbodyEle.appendChild(newTr);
         sum += value.num * value.price;
       });
       //将总价格渲染到页面上
       totalPriceEle.innerText = sum;
-
-
+      tbodyEle.innerHTML = str
     };
+
+
+    /**
+     * 按钮点击事件
+     */
+    function clickBtn(arr) {
+      tbodyEle.addEventListener("click", function (event) {
+        let element = event.target;
+        let indexChoice = element.getAttribute("index");
+        switch (element.className) {
+          case "sub":
+            subCount(indexChoice, arr);
+            break;
+          case "add":
+            addCount(indexChoice, arr);
+            break;
+          case "del":
+            addCount(indexChoice, arr);
+            break;
+        }
+      })
+    }
+
+    /**
+     * 数量减少函数
+     */
+    function subCount(i, arr) {
+      if (arr[i].num > 1) {
+        arr[i].num--;
+      } else {
+        alert("数量不能小于1");
+      }
+      reader(arr);
+    }
+
+
+    /**
+     * 数量增加函数
+     */
+    function addCount(i, arr) {
+      arr[i].num++
+      reader(arr);
+    }
+
+    /**
+     * 删除函数
+     */
+    function delGoods(i, arr) {
+      arr.splice(i, 1);
+      reader(arr);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     /**
      * 商品数量增减函数
      */
-    function changeGoodsNum() {
+    // function changeGoodsNum() {
       //span标签类数组
-      tbodyEle.addEventListener("click", function (event) {
-        let changePrice = 0;//改变的价格
-        if (event.target.className === "sub" && event.target.nextElementSibling.innerText > 0) {
-          let spanEleNum = Number(event.target.nextElementSibling.innerText);//商品数量
-          spanEleNum--//商品数量减一
-          let addPrice = event.target.parentElement.nextElementSibling.innerText;//每个商品的总价格
-          let goodsPrice = event.target.parentElement.previousElementSibling.innerText;//每个商品单价
+      // tbodyEle.addEventListener("click", function (event) {
+      //   let changePrice = 0;//改变的价格
+      //   if (event.target.className === "sub" && event.target.nextElementSibling.innerText > 0) {
+      //     let spanEleNum = Number(event.target.nextElementSibling.innerText);//商品数量
+      //     spanEleNum--//商品数量减一
+      //     let addPrice = event.target.parentElement.nextElementSibling.innerText;//每个商品的总价格
+      //     let goodsPrice = event.target.parentElement.previousElementSibling.innerText;//每个商品单价
 
-          addPrice = spanEleNum * goodsPrice;
-          event.target.nextElementSibling.innerText = spanEleNum;
-          event.target.parentElement.nextElementSibling.innerText = addPrice;
+      //     addPrice = spanEleNum * goodsPrice;
+      //     event.target.nextElementSibling.innerText = spanEleNum;
+      //     event.target.parentElement.nextElementSibling.innerText = addPrice;
 
-          changePrice = -goodsPrice;
-        } else if (event.target.className === "add") {
-          let spanEleNum = Number(event.target.previousElementSibling.innerText);
-          spanEleNum++//商品数量加一
-          let addPrice = event.target.parentElement.nextElementSibling.innerText;//每个商品的总价格
-          let goodsPrice = event.target.parentElement.previousElementSibling.innerText;//每个商品单价
-          addPrice = spanEleNum * goodsPrice;
-          event.target.previousElementSibling.innerText = spanEleNum
-          event.target.parentElement.nextElementSibling.innerText = addPrice;
+      //     changePrice = -goodsPrice;
+      //   } else if (event.target.className === "add") {
+      //     let spanEleNum = Number(event.target.previousElementSibling.innerText);
+      //     spanEleNum++//商品数量加一
+      //     let addPrice = event.target.parentElement.nextElementSibling.innerText;//每个商品的总价格
+      //     let goodsPrice = event.target.parentElement.previousElementSibling.innerText;//每个商品单价
+      //     addPrice = spanEleNum * goodsPrice;
+      //     event.target.previousElementSibling.innerText = spanEleNum
+      //     event.target.parentElement.nextElementSibling.innerText = addPrice;
 
-          changePrice = goodsPrice;
-        }
+      //     changePrice = goodsPrice;
+      //   }
 
-        totalPriceEle.innerText = Number(totalPriceEle.innerText) + Number(changePrice);
-      })
+      //   totalPriceEle.innerText = Number(totalPriceEle.innerText) + Number(changePrice);
+      // })
 
-    };
+    // };
 
     /**
      * 删除商品函数
      */
-    function delGoods() {
-      tbodyEle.addEventListener("click", function (event) {
-        if (event.target.className === "del") {
-          event.target.parentElement.parentElement.remove()
-        }
-      });
-    };
+    // function delGoods() {
+    //   tbodyEle.addEventListener("click", function (event) {
+    //     if (event.target.className === "del") {
+    //       event.target.parentElement.parentElement.remove()
+    //     }
+    //   });
+    // };
 
   </script>
 </body>
