@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>06-数据处理练习</title>
+</head>
+<body>
+    <script>
+
+        // let obj = {
+        //     username :"小王",
+        //     password:"",
+        //     gender:0,
+        //     hobby:
+        // }
+
+        let obj ={
+            hobby:[]
+        }
+        console.log(location.search);
+        console.log(decodeURIComponent(location.search));
+        let message = decodeURIComponent(location.search)
+
+        //处理数据
+        //去掉问好
+        let res = message.substring(1)//从第一位截取到最后一位
+        
+        //把数据用&符号进行分割
+        res = res.split("&")
+        console.log(res)
+        //对数组进行遍历处理每一个数据
+        res.forEach(str => {
+            //用=进拆分
+            let arr =  str.split("=")
+            console.log(arr);
+            let prop = arr[0]
+            let val = arr[1]
+            // obj[arr[0]] = arr[1]
+            // console.log(prop,val);
+            if(prop == "hobby"){
+                obj[prop].push(val)
+            }else{
+                obj[prop] = val
+            }
+        });
+
+        // console.log(res);
+        console.log(obj);
+    </script>
+</body>
+</html>

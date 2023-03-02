@@ -97,118 +97,116 @@
             (5)点击right到下一张图片，最后一张之后返回到第一张图片
         */
 
-
-        let ulEle = document.getElementById("list");
-        let bigImg = document.getElementById("big-img");
-        let fatherEle = document.querySelector(".banner");
-
-        //定义变量获取当前选中大图的下标,初始值为0下标对应的图片
-        let i = 0;
+        //获取ul标签
+        let ulELem = document.querySelector("#list")
+        //获取主图标签
+        let bigElem = document.querySelector(`#big-img`)
+        //显示图片下标
+        let indexShow = 0;
 
         /**
-         * 主函数
-         */
+         * 主程序
+          */
         function main() {
-            reader(images);
-            clickLi(images);
-            change(images);
-            time(images);
-            mouse(images);
-        };
-
-
+            //渲染函数
+            render(images)
+            clickLi()
+            //切换左右图片
+            change();
+            //调用间隔定时器
+            autoPlay()
+        }
         /**
-         * 间隔时间播放
-         */
-        function time(arr) {
-            //间隔1秒大图自动切换
+         * 间隔定时器
+          */
+        function autoPlay() {
             timer = setInterval(() => {
-                //最后一张图切换到第一张，其余自动下一张，找到对应的下标，用渲染函数渲染到页面上
-                if (i === arr.length - 1) {
-                    i = 0;
-                } else  {
-                    i++;
+                //定义每段时间之后间隔执行的代码
+                if (indexShow == images.length - 1) {
+                    indexShow = 0;
+                } else {
+                    indexShow++;
                 }
-                reader(arr);
-            }, 1000);
-        };
-
-
+                //渲染函数
+                render(images)
+            }, 1000)
+        }
         /**
-         * 左右切换图片
-         */
-        function change(arr) {
-            let left = document.querySelector(".left");
-            let right = document.querySelector(".right");
-            //左边箭头点击切换上一张图片
+         * 左右切换图片事件
+          */
+        function change() {
+            let left = document.querySelector(".left")
+            let right = document.querySelector(".right")
             left.onclick = function () {
-                if (i === 0) {
-                    i = arr.length - 1;
+                //下标不为零则到上一张图，如果为零到最后一张图片
+                if (indexShow == 0) {
+                    indexShow = images.length - 1
                 } else {
-                    i--;
+                    indexShow--;
                 }
-                //得到大图的下标，渲染到页面上
-                reader(arr);
-                //清除间隔定时器，使页面始终只有一个定时器
-                clearInterval(timer);
-                //调用定时器
-                time(arr);
-            };
-            //右边箭头点击切换下一张图片
+                //调用渲染函数
+                render(images)
+                //清除间隔定时器
+                clearInterval(timer)
+                //调用自动轮播
+                autoPlay()
+            }
             right.onclick = function () {
-                if (i === arr.length - 1) {
-                    i = 0;
+                //下标为最后一个位置，回到下标0
+                if (indexShow == images.length - 1) {
+                    indexShow = 0
                 } else {
-                    i++;
+                    indexShow++;
                 }
-                reader(arr);
-                clearInterval(timer);
-                time(arr);
-            };
-        };
-
+                //调用渲染函数
+                render(images)
+                //清除间隔定时器
+                clearInterval(timer)
+                //调用自动轮播
+                autoPlay()
+            }
+        }
         /**
-         * li点击事件
-         */
-        function clickLi(arr) {
-            //通过委托ul给li添加点击事件
-
-            ulEle.onclick = function (event) {
-                //只有点击li才可以触发事件
-                let clickLiEle = event.target;
-                if (clickLiEle.id != "list") {
-                    i = clickLiEle.id - 1;
+         * li切换图片事件
+          */
+        function clickLi() {
+            //委托给父标签绑定点击事件
+            ulELem.onclick = function (event) {
+                let element = event.target;
+                //排除点击到ul标签的情况
+                if (element.id != "list") {
+                    //将点击li和位置建立关系
+                    // console.log(element.getAttribute("index"));
+                    indexShow = element.getAttribute("index") - 0
+                    // console.log(indexShow);
+                    //调用渲染函数重新渲染页面
+                    render(images)
                 }
-                console.log(i);
-                reader(arr);
-                clearInterval(timer);
-                time(arr);
-            };
-        };
-
+                //清除间隔定时器
+                clearInterval(timer)
+                //调用自动轮播
+                autoPlay()
+            }
+        }
         /**
          * 渲染函数
-         */
-        function reader(arr) {
+         * 参数：图片对象数组
+          */
+        function render(arr) {
             //小方块
-            let str = "";
+            ulELem.innerHTML = ""
             arr.forEach((element, index) => {
-                if (i === index) {
-                    str += `<li class="active" id=${index + 1}></li>`
-                } else {
-                    str += `<li id=${index + 1}></li>`
+                let newLi = document.createElement("li")
+                newLi.setAttribute("index", index)
+                if (index == indexShow) {
+                    newLi.style.backgroundColor = "tomato"
                 }
+                ulELem.appendChild(newLi)
             });
-            //给ul标签赋值
-            ulEle.innerHTML = str;
-            //大图
-            bigImg.src = arr[i].imgSrc;
-
-        };
-
-        main();
-
-
+            //渲染主图
+            bigElem.src = arr[indexShow].imgSrc
+        }
+        main()
     </script>
 
 </body>
