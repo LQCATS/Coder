@@ -104,7 +104,6 @@
   width: 1200px;
   display: flex;
   justify-content: space-between;
-  background-color: #c97777;
 }
 
 .content .content-center .titles {
@@ -149,7 +148,6 @@
 .content .content-center .content-left .playing-movies .content-items .content-item {
   width: 160px;
   margin-bottom: 30px;
-  border: 1px solid #e8e8e8;
 }
 
 .content .content-center .content-left .playing-movies .content-items .content-item img {
@@ -165,6 +163,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  border: 1px solid #e8e8e8;
+  border-top: 0;
 }
 
 .content .content-center .content-left .playing-movies .content-items .content-item .movie-name p {
@@ -178,11 +178,10 @@
 }
 
 .content .content-center .content-left .coming-soon {
-  background-color: #dfb543;
   margin-top: 30px;
 }
 
-.content .content-center .content-left .coming-soon .movie-name + p {
+.content .content-center .content-left .coming-soon .coming-soon-items .movie-name + p {
   width: 100%;
   height: 68px;
   line-height: 68px;
@@ -194,7 +193,6 @@
 .content .content-center .content-right {
   width: 363px;
   height: 100%;
-  background-color: #98ec37;
 }
 
 .content .content-center .content-right .active1 {
@@ -262,4 +260,33 @@
   font-size: 14px;
   color: #999;
   margin-top: 5px;
+}
+
+.content .content-center .content-right .amusement {
+  width: 100%;
+  margin-top: 50px;
+  font-size: 14px;
+  color: #333;
+}
+
+.content .content-center .content-right .amusement .amusement1 {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.content .content-center .content-right .amusement .amusement1 div {
+  padding-left: 10px;
+}
+
+.content .content-center .content-right .amusement p {
+  margin: 25px 0;
+}
+
+.content .content-center .content-right .amusement p i {
+  font-size: 16px;
+}
+
+.content .content-center .content-right .amusement .orange {
+  color: #f99135;
 }

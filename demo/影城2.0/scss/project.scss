@@ -50,6 +50,7 @@
 .movie-ticket {
     width: 100%;
     height: 140px;
+
     .ticket-center {
         width: 1200px;
         height: 100%;
@@ -60,6 +61,7 @@
         box-sizing: border-box;
         text-align: center;
         line-height: 44px;
+
         .buy-ticket {
             width: 150px;
             height: 44px;
@@ -69,6 +71,7 @@
             border-top-right-radius: 22px;
             border-bottom-right-radius: 22px;
         }
+
         select {
             width: 206px;
             height: 44px;
@@ -78,10 +81,12 @@
             padding-left: 20px;
             font-size: 16px;
             color: #8c8c8c;
+
             &:focus {
                 outline: none;
             }
         }
+
         .buying-ticket {
             width: 120px;
             height: 44px;
@@ -90,18 +95,19 @@
             color: #fffefe;
             font-size: 18px;
         }
-        
+
     }
 }
 
 .content {
     width: 100%;
+
     .content-center {
         margin: 0 auto;
         width: 1200px;
         display: flex;
         justify-content: space-between;
-        background-color: rgb(201, 119, 119);
+
         .titles {
             width: 100%;
             height: 26px;
@@ -109,38 +115,44 @@
             color: #f99135;
             display: flex;
             justify-content: space-between;
+
             span {
                 font-size: 26px;
                 line-height: 1;
+
                 span {
                     font-size: 20px;
                     margin-left: 15px;
                 }
             }
+
             a {
                 color: #f99135;
                 font-size: 14px;
             }
         }
+
         .content-left {
             width: 730px;
-            
+
             .playing-movies {
                 width: 100%;
-                
+
                 .content-items {
                     width: 100%;
                     display: flex;
                     justify-content: space-between;
                     flex-wrap: wrap;
+
                     .content-item {
                         width: 160px;
                         margin-bottom: 30px;
-                        border: 1px solid #e8e8e8;
+
                         img {
                             vertical-align: bottom;
                             width: 100%;
                         }
+
                         .movie-name {
                             width: 100%;
                             height: 40px;
@@ -149,10 +161,15 @@
                             display: flex;
                             justify-content: space-between;
                             align-items: center;
+                            border: 1px solid #e8e8e8;
+                            border-top: 0;
+
+
                             p {
                                 font-size: 16px;
                                 color: #003333;
                             }
+
                             span {
                                 font-size: 14px;
                                 color: #f99135;
@@ -163,22 +180,27 @@
             }
 
             .coming-soon {
-                background-color: rgb(223, 181, 67);
                 margin-top: 30px;
-                .movie-name + p {
-                    width: 100%;
-                    height: 68px;
-                    line-height: 68px;
-                    text-align: center;
-                    font-size: 14px;
-                    color: #999;
+
+                .coming-soon-items {
+
+                    .movie-name+p {
+                        width: 100%;
+                        height: 68px;
+                        line-height: 68px;
+                        text-align: center;
+                        font-size: 14px;
+                        color: #999;
+                    }
                 }
+
             }
         }
+
         .content-right {
             width: 363px;
             height: 100%;
-            background-color: rgb(152, 236, 55);
+
             .active1 {
                 width: 100%;
                 height: 196px;
@@ -187,52 +209,88 @@
                 box-sizing: border-box;
                 display: flex;
                 align-items: center;
+
                 img {
                     height: 100%;
                 }
+
                 .actives-message {
                     margin-left: 10px;
+
                     h5 {
                         color: #333;
                         font-size: 18px;
                         margin-bottom: 15px;
                     }
+
                     p {
                         color: #999;
                         font-size: 16px;
                         margin-bottom: 10px;
                     }
+
                     span {
                         color: #f99135;
                         font-size: 14px;
                     }
                 }
             }
+
             .active2 {
                 width: 100%;
                 height: 185px;
                 display: flex;
                 justify-content: space-between;
+
                 .active2-items {
                     width: 172px;
                     height: 100%;
                     box-sizing: border-box;
                     border: 1px solid #e8e8e8;
+
                     img {
                         width: 100%;
                         vertical-align: bottom;
                     }
+
                     p {
                         font-size: 18px;
                         color: #333;
                         margin: 10px 8px 0;
                         overflow: hidden;
+
                         &:nth-child(3) {
                             font-size: 14px;
                             color: #999;
                             margin-top: 5px;
                         }
                     }
+                }
+            }
+
+            .amusement {
+                width: 100%;
+                margin-top: 50px;
+                font-size: 14px;
+                color: #333;
+
+                .amusement1 {
+                    width: 100%;
+                    display: flex;
+                    align-items: center;
+
+                    div {
+                        padding-left: 10px;
+                    }
+                }
+                p {
+                    margin: 25px 0;
+                    i {
+                        font-size: 16px;
+                    }
+                }
+                .orange {
+                    color: #f99135;
                 }
             }
         }
