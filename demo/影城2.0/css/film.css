@@ -83,10 +83,14 @@
 }
 
 .content .content-center .allfilm-type .theater-massage div span {
-  padding: 5px 20px;
+  padding: 5px 0;
+  margin: 0 20px;
+  cursor: pointer;
 }
 
 .content .content-center .allfilm-type .theater-massage div span:first-child {
+  padding: 5px 20px;
+  margin: 0;
   color: #fff;
   background-color: #f99135;
   border-radius: 18px;
