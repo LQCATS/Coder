@@ -1,0 +1,34 @@
+.content {
+  width: 100%;
+}
+
+.content .content-center {
+  width: 1200px;
+  margin: 0 auto;
+  background-color: #f88d8d;
+  margin-top: 50px;
+}
+
+.content .content-center .img {
+  text-align: center;
+}
+
+.content .content-center .container {
+  width: 100%;
+  border: 1px solid #e5e5e5;
+  box-sizing: border-box;
+  display: flex;
+}
+
+.content .content-center .container .seat {
+  width: 683px;
+  height: 625px;
+}
+
+.content .content-center .container .seat .seat-state {
+  width: 100%;
+  height: 90px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

@@ -1,0 +1,256 @@
+@charset "UTF-8";
+.banner {
+  width: 100%;
+  height: 330px;
+  background: url(../影城img/bg01.jpg);
+  position: relative;
+  margin-top: 130px;
+}
+
+.banner .banner-center {
+  width: 1200px;
+  height: 100%;
+  margin-left: calc(50% - 600px);
+  display: flex;
+  align-items: flex-end;
+  position: absolute;
+  bottom: -20px;
+}
+
+.banner .banner-center .img {
+  width: 300px;
+  height: 300px;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #e0e0e0;
+}
+
+.banner .banner-center .message {
+  margin-left: 25px;
+  color: #fff;
+  font-size: 14px;
+  margin-bottom: 30px;
+}
+
+.banner .banner-center .message h4 {
+  font-size: 26px;
+  font-weight: 400;
+  margin-bottom: 10px;
+}
+
+.banner .banner-center .message h5 {
+  margin-bottom: 5px;
+  font-weight: 400;
+  font-size: 14px;
+}
+
+.banner .banner-center .message p {
+  margin-bottom: 10px;
+  font-size: 10px;
+}
+
+.banner .banner-center .message p span {
+  display: inline-block;
+  height: 20px;
+  width: 50px;
+  border: 1px solid #fff;
+  text-align: center;
+  line-height: 20px;
+}
+
+.banner .banner-center .message div {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.banner .banner-center .message div hr {
+  width: 380px;
+  height: 1px;
+  border: none;
+  background-color: #fff;
+  margin-left: 10px;
+}
+
+.banner .banner-center .map {
+  margin-left: 219px;
+  margin-bottom: 10px;
+  margin-bottom: 35px;
+}
+
+.content {
+  width: 100%;
+  margin-top: 60px;
+}
+
+.content .content-center {
+  width: 1200px;
+  margin: 0 auto;
+}
+
+.content .content-center p {
+  font-size: 14px;
+  color: #333;
+}
+
+.content .content-center .movies {
+  width: 100%;
+  height: 280px;
+  background-color: #eee;
+  margin-top: 25px;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.content .content-center .movies .movies-item {
+  width: 140px;
+  height: 194px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  margin: 0 20px;
+}
+
+.content .content-center .movies .movies-item img {
+  width: 132px;
+}
+
+.content .content-center .movies::after {
+  content: "";
+  display: block;
+  width: 0;
+  height: 0;
+  border: 11px solid transparent;
+  border-bottom: 11px solid #fff;
+  position: absolute;
+  bottom: 0;
+  left: 70px;
+}
+
+.content .content-center .movies .fa {
+  position: absolute;
+  color: #fff;
+  font-size: 36px;
+}
+
+.content .content-center .movies .fa-chevron-left {
+  left: 0;
+}
+
+.content .content-center .movies .fa-chevron-right {
+  right: 0;
+}
+
+.content .content-center .movies-message {
+  font-size: 14px;
+  color: #333;
+  border-bottom: 1px solid #e5e5e5;
+  padding-bottom: 20px;
+}
+
+.content .content-center .movies-message h4 {
+  margin: 25px 0;
+}
+
+.content .content-center .movies-message h4 span:first-child {
+  font-size: 26px;
+  margin-right: 20px;
+}
+
+.content .content-center .movies-message h4 span:nth-child(2) {
+  font-size: 24px;
+  color: #f99135;
+  margin-right: 0;
+}
+
+.content .content-center .movies-message h4 span:nth-child(3) {
+  color: #f99135;
+}
+
+.content .content-center .movies-message p span:nth-child(2n-1) {
+  color: #999;
+}
+
+.content .content-center .movies-message p span:nth-child(2n) {
+  margin-right: 40px;
+}
+
+.content .content-center .playing-time {
+  font-size: 14px;
+  color: #333;
+  margin: 25px 0 30px 0;
+}
+
+.content .content-center .playing-time span:first-child {
+  color: #999;
+  margin-right: 15px;
+}
+
+.content .content-center .playing-time span:nth-child(2) {
+  display: inline-block;
+  width: 90px;
+  height: 24px;
+  line-height: 24px;
+  text-align: center;
+  color: #fff;
+  background-color: #f99135;
+  border-radius: 12px;
+  margin-right: 130px;
+}
+
+.content .content-center table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.content .content-center table thead {
+  height: 53px;
+  background-color: #f7f7f7;
+  font-size: 16px;
+  color: #333;
+}
+
+.content .content-center table tbody {
+  text-align: center;
+}
+
+.content .content-center table tbody tr {
+  height: 82px;
+}
+
+.content .content-center table tbody tr:nth-child(2n) {
+  background-color: #f7f7f7;
+}
+
+.content .content-center table tbody tr td {
+  font-size: 14px;
+  color: #333;
+}
+
+.content .content-center table tbody tr td:nth-child(1) h5 {
+  font-size: 18px;
+}
+
+.content .content-center table tbody tr td:nth-child(1) p {
+  font-size: 12px;
+  color: #999;
+}
+
+.content .content-center table tbody tr td:nth-child(4) {
+  color: #f03d37;
+  font-weight: 700;
+}
+
+.content .content-center table tbody tr td:nth-child(5) p {
+  width: 80px;
+  height: 30px;
+  line-height: 30px;
+  background-color: #f99135;
+  margin: 0 auto;
+  border-radius: 15px;
+  color: #fff;
+}

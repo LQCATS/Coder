@@ -113,15 +113,44 @@
 .content .content-center {
   margin: 0 auto;
   width: 1200px;
-  background-color: #fad1d1;
   margin-top: 80px;
   display: flex;
   justify-content: space-between;
 }
 
+.content .content-center .introduce {
+  width: 100%;
+  height: 30px;
+  border-bottom: 2px solid #eeeeee;
+}
+
+.content .content-center .introduce span {
+  display: inline-block;
+  height: 100%;
+  margin-right: 30px;
+}
+
+.content .content-center .introduce .choice {
+  border-bottom: 2px solid #f99135;
+  color: #f99135;
+}
+
+.content .content-center .introduce-title {
+  width: 100%;
+  font-size: 18px;
+  line-height: 1;
+  margin-bottom: 30px;
+}
+
+.content .content-center .introduce-title i {
+  display: inline-block;
+  width: 4px;
+  height: 18px;
+  background-color: #f99135;
+}
+
 .content .content-center .content-left {
   width: 730px;
-  background-color: #f5f381;
   color: #333;
 }
 
@@ -130,104 +159,72 @@
   padding-bottom: 15px;
 }
 
-.content .content-center .content-left .introduce-title {
-  width: 100%;
-  font-size: 18px;
-  line-height: 1;
-  margin-bottom: 30px;
-}
-
-.content .content-center .content-left .introduce-title i {
-  display: inline-block;
-  width: 4px;
-  height: 18px;
-  background-color: #f99135;
-}
-
-.content .content-center .content-left .introduce {
-  width: 100%;
-  height: 30px;
-  border-bottom: 2px solid #eeeeee;
-}
-
-.content .content-center .content-left .introduce span {
-  display: inline-block;
-  box-sizing: border-box;
-  height: 100%;
-  margin-right: 30px;
-}
-
-.content .content-center .content-left .introduce .choice {
-  border-bottom: 2px solid #f99135;
-  color: #f99135;
-}
-
-.content .content-center .content-left .brief {
+.content .content-center .content-left .introduce-container .brief {
   width: 100%;
   margin-top: 40px;
 }
 
-.content .content-center .content-left .brief p {
+.content .content-center .content-left .introduce-container .brief p {
   font-size: 14px;
   line-height: 25px;
 }
 
-.content .content-center .content-left .actor {
+.content .content-center .content-left .introduce-container .actor {
   width: 100%;
   margin: 30px 0 60px 0;
 }
 
-.content .content-center .content-left .actor .introduce-title a {
+.content .content-center .content-left .introduce-container .actor .introduce-title a {
   color: #666;
   font-size: 14px;
   margin-left: 600px;
 }
 
-.content .content-center .content-left .actor > p {
+.content .content-center .content-left .introduce-container .actor > p {
   font-size: 16px;
 }
 
-.content .content-center .content-left .actor > p span {
+.content .content-center .content-left .introduce-container .actor > p span {
   display: inline-block;
   width: 149px;
   height: 30px;
 }
 
-.content .content-center .content-left .actor .actor-items {
+.content .content-center .content-left .introduce-container .actor .actor-items {
   width: 100%;
   display: flex;
   flex-wrap: wrap;
 }
 
-.content .content-center .content-left .actor .actor-items .actor-item {
+.content .content-center .content-left .introduce-container .actor .actor-items .actor-item {
   width: 128px;
   height: 221px;
-  background-color: #e2e188;
   margin-right: 21px;
   text-align: center;
 }
 
-.content .content-center .content-left .actor .actor-items .actor-item:nth-child(5n) {
+.content .content-center .content-left .introduce-container .actor .actor-items .actor-item:nth-child(5n) {
   margin-right: 0;
 }
 
-.content .content-center .content-left .actor .actor-items .actor-item img {
+.content .content-center .content-left .introduce-container .actor .actor-items .actor-item img {
   width: 128px;
   height: 170px;
+  vertical-align: bottom;
 }
 
-.content .content-center .content-left .actor .actor-items .actor-item p {
+.content .content-center .content-left .introduce-container .actor .actor-items .actor-item p {
   font-size: 16px;
   margin-top: 10px;
 }
 
-.content .content-center .content-left .actor .actor-items .actor-item p:nth-child(3) {
+.content .content-center .content-left .introduce-container .actor .actor-items .actor-item p:nth-child(3) {
   font-size: 14px;
   color: #666;
   margin-top: 0;
 }
 
-.content .content-center .content-left .short-comment .introduce-title span {
+.content .content-center .content-left .introduce-container .short-comment .introduce-title span {
   display: inline-block;
   width: 64px;
   height: 32px;
@@ -241,11 +238,216 @@
   cursor: pointer;
 }
 
-.content .content-center .content-left .short-comment .short-comment-users {
+.content .content-center .content-left .introduce-container .short-comment .short-comment-users {
   width: 100%;
 }
 
-.content .content-center .content-left .short-comment .short-comment-users .short-comment-user {
+.content .content-center .content-left .introduce-container .short-comment .short-comment-users .short-comment-user {
   width: 100%;
   margin-top: 20px;
+  display: flex;
+  font-size: 14px;
+  color: #333;
+}
+
+.content .content-center .content-left .introduce-container .short-comment .short-comment-users .short-comment-user img {
+  width: 50px;
+  height: 50px;
+  margin-right: 50px;
+}
+
+.content .content-center .content-left .introduce-container .short-comment .short-comment-users .short-comment-user div h4 {
+  font-size: 16px;
+  font-weight: 400;
+  margin-bottom: 5px;
+}
+
+.content .content-center .content-left .introduce-container .short-comment .short-comment-users .short-comment-user div h5 {
+  font-size: 16px;
+  color: #999;
+  font-weight: 400;
+  margin-bottom: 15px;
+}
+
+.content .content-center .content-left .introduce-container .short-comment .short-comment-users .short-comment-user div h5 .star-yellow {
+  color: #ffc600;
+}
+
+.content .content-center .content-left .introduce-container .short-comment .short-comment-users .short-comment-user div h5 .fa-thumbs-up {
+  margin-left: 400px;
+}
+
+.content .content-center .content-left .introduce-container .short-comment .short-comment-users .short-comment-user div h5 span {
+  font-size: 14px;
+}
+
+.content .content-center .content-left .introduce-container .short-comment .short-comment-users .short-comment-user div p {
+  line-height: 25px;
+  border-bottom: 1px solid #e5e5e5;
+  padding-bottom: 30px;
+}
+
+.content .content-center .content-left .actors-container {
+  width: 100%;
+  display: none;
+}
+
+.content .content-center .content-left .actors-container > p {
+  font-size: 16px;
+  color: #333;
+  margin: 40px 0 15px 0;
+}
+
+.content .content-center .content-left .actors-container > p span {
+  font-size: 14px;
+  color: #999;
+}
+
+.content .content-center .content-left .actors-container .director-items {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.content .content-center .content-left .actors-container .director-items .director-item {
+  width: 128px;
+  height: 221px;
+  text-align: center;
+}
+
+.content .content-center .content-left .actors-container .director-items .director-item img {
+  width: 100%;
+  height: 170px;
+  vertical-align: bottom;
+}
+
+.content .content-center .content-left .actors-container .director-items .director-item p {
+  font-size: 16px;
+  color: #333;
+  margin-top: 10px;
+}
+
+.content .content-center .content-left .actors-container .actors-items {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.content .content-center .content-left .actors-container .actors-items .actors-item {
+  width: 128px;
+  height: 223px;
+  text-align: center;
+  margin-right: 22px;
+  margin-bottom: 20px;
+}
+
+.content .content-center .content-left .actors-container .actors-items .actors-item:nth-child(5n) {
+  margin-right: 0;
+}
+
+.content .content-center .content-left .actors-container .actors-items .actors-item img {
+  width: 128px;
+  height: 170px;
+  vertical-align: bottom;
+}
+
+.content .content-center .content-left .actors-container .actors-items .actors-item h4 {
+  font-weight: 400;
+  font-size: 16px;
+  color: #333;
+  margin: 8px 0;
+}
+
+.content .content-center .content-left .actors-container .actors-items .actors-item p {
+  font-size: 14px;
+  color: #666;
+}
+
+.content .content-center .content-right {
+  width: 360px;
+  padding-top: 35px;
+}
+
+.content .content-center .content-right .preview {
+  margin-top: 40px;
+}
+
+.content .content-center .content-right .preview .preview-items {
+  width: 100%;
+}
+
+.content .content-center .content-right .preview .preview-items .preview-item {
+  width: 100%;
+  display: flex;
+  font-size: 12px;
+  color: #999;
+  margin-bottom: 15px;
+  position: relative;
+}
+
+.content .content-center .content-right .preview .preview-items .preview-item div {
+  margin-left: 15px;
+}
+
+.content .content-center .content-right .preview .preview-items .preview-item div p {
+  font-size: 16px;
+  color: #333;
+  margin: 10px 0;
+}
+
+.content .content-center .content-right .preview .preview-items .preview-item::after {
+  content: "1";
+  display: block;
+  width: 18px;
+  height: 18px;
+  font-size: 16px;
+  font-style: italic;
+  color: #fff;
+  background-color: #f99135;
+  text-align: center;
+  line-height: 18px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.content .content-center .content-right .preview .preview-items .preview-item:nth-child(2)::after {
+  content: "2";
+}
+
+.content .content-center .content-right .preview .preview-items .preview-item:nth-child(3)::after {
+  content: "3";
+}
+
+.content .content-center .content-right .film-related {
+  width: 100%;
+}
+
+.content .content-center .content-right .film-related .film-related-items {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.content .content-center .content-right .film-related .film-related-items .film-related-item {
+  width: 107px;
+  height: 201px;
+  font-size: 14px;
+  color: #333;
+  text-align: center;
+  line-height: 25px;
+}
+
+.content .content-center .content-right .film-related .film-related-items .film-related-item h4 {
+  font-weight: 400;
+}
+
+.content .content-center .content-right .film-related .film-related-items .film-related-item p {
+  color: #f99135;
+  font-size: 16px;
+}
+
+.content .content-center .content-right .film-related .film-related-items .film-related-item p span {
+  font-size: 12px;
 }

@@ -1,0 +1,121 @@
+.content {
+    width: 100%;
+    margin-top: 180px;
+
+    .content-center {
+        width: 1200px;
+        margin: 0 auto;
+
+        .img {
+            text-align: center;
+        }
+
+        .pay-success {
+            width: 100%;
+            height: 110px;
+            margin-top: 40px;
+            background-color: #fff3f3;
+            display: flex;
+            align-items: center;
+
+            img {
+                width: 41px;
+                height: 41px;
+                margin-left: 25px;
+            }
+
+            div {
+                margin-left: 15px;
+                color: #333;
+
+                h4 {
+                    font-size: 20px;
+                    margin: 0 0 10px 0;
+                }
+
+                p {
+                    font-size: 14px;
+
+                }
+            }
+        }
+
+        .movie-message {
+            margin-top: 40px;
+
+            .prompt {
+                display: flex;
+                align-items: center;
+
+                p {
+                    font-size: 12px;
+                    color: #333;
+                    margin-left: 5px;
+                }
+            }
+
+            table {
+                border: 1px solid #e5e5e5;
+                width: 100%;
+
+                thead {
+                    text-align: left;
+                    height: 51px;
+                    background-color: #f7f7f7;
+
+                    th {
+                        font-weight: 400;
+                        font-size: 14px;
+                        color: #333;
+                        padding-left: 15px;
+                        span {
+                            &:nth-child(2) {
+                                color: #999;
+                                padding-left: 35px;
+
+                            }
+                        }
+                    }
+                }
+
+                tbody {
+                    color: #333;
+                    font-size: 14px;
+                    td {
+                        text-align: right;
+                        &:first-child {
+                            text-align: left;
+                            display: flex;
+                            padding: 20px 0 20px 20px;
+                            div {
+                                margin-left: 10px;
+                                h4 {
+                                    font-size: 16px;
+                                    margin-top: 10px;
+                                }
+                                p {
+                                    font-size: 12px;
+                                    color: #999;
+                                    margin-top: 5px;
+                                    &:last-child {
+                                        color: #f99135;
+                                    }
+                                }
+                            }
+                        }
+                        button {
+                            width: 80px;
+                            height: 30px;
+                            background-color: #f99135;
+                            border-radius: 15px;
+                            border: none;
+                            color: #fff;
+                        }
+                        
+                    }
+                }
+            }
+        }
+
+    }
+}

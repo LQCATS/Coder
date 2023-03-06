@@ -1,0 +1,30 @@
+.content {
+    width: 100%;
+    .content-center {
+        width: 1200px;
+        margin: 0 auto;
+        background-color: rgb(248, 141, 141);
+        margin-top: 50px;
+        .img {
+            text-align: center;
+        }
+        .container {
+            width: 100%;
+            border: 1px solid #e5e5e5;
+            box-sizing: border-box;
+            display: flex;
+
+            .seat {
+                width: 683px;
+                height: 625px;
+                .seat-state {
+                    width: 100%;
+                    height: 90px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+            }
+        }
+    }
+}
