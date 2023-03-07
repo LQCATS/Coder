@@ -51,6 +51,9 @@ function main() {
 };
 
 
+main();
+
+
 /**
  * banner部分
  */
@@ -153,9 +156,8 @@ function reader(arr) {
  * 选择影院渲染
  */
 function theatreReader(arr) {
-    // let str = `<option value="">选择影院</option>`;
-    let str ="";
-    arr.forEach((value, index) => {
+    let str = `<option value="">选择影院</option>`;
+    arr.forEach(value => {
         str += `<option value="${value.movies}">${value.name}</option>`;
     });
     select1.innerHTML = str; 
@@ -168,9 +170,9 @@ function filmReader(arr) {
     let val = select1.value;
     //得到影院对应电影的id数组
     let newArr = val.split(",");
+    
     //选择的电影
-    // let str = `<option value="">选择电影</option>`;
-    let str ="";
+    let str = `<option value="">选择电影</option>`;
     arr.forEach(value => {
         //查找遍历正在热播电影id是不是在影院的电影id数组里面
         let isHave = newArr.includes(value.id);
@@ -187,11 +189,10 @@ function filmReader(arr) {
  */
 function timeReader() {
     let val = select2.value;
-    console.log(val)
     //得到电影对应的时间数组
-    let newArr = val.split(",");
+    let newArr = val.split(" ");
     //选择的时间
-    let str = "";
+    let str = `<option value="">选择时间</option>`;
     newArr.forEach(value => {
        str +=  `<option value="">${value}</option>`
     });
@@ -203,6 +204,7 @@ function timeReader() {
  * 影院改变事件
  */
 select1.onchange = function () {
+    
     //选择电影
     filmReader(nowPlaying);
     //选择时间
@@ -276,4 +278,3 @@ function soonReader(arr) {
 
 
 
-main();

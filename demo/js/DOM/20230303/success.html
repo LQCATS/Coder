@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    跳转成功！
+    <div>当前商品是什么，价格为多少</div>
+    <script src="./data.js"></script>
+    <script>
+        console.log(location.search);
+        let message =location.search
+        let arr = message.split("=")
+        console.log(arr[1]);
+        let getId = arr[1]
+
+        let divElem = document.querySelector("div")
+        //渲染
+        goods.forEach(element => {
+            if(element.id ==getId){
+                console.log(element);
+                divElem.innerHTML =`当前商品是${element.name}，价格为${element.price}`
+            }
+        });
+    </script>
+</body>
+</html>

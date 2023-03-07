@@ -18,7 +18,11 @@ let loginBox = document.querySelector(".login-border");//login-border
 let login2 = document.querySelector(".login-title1");//login-border
 let register2 = document.querySelector(".login-title2");//login-border
 
-
+//搜索电影全部变量
+let inputElem = document.querySelector(".search input");
+let headerList = document.querySelector(".header-list");
+let choiceId = 0;
+let jumpElem = document.querySelector(".search-right");
 
 
 //关闭登陆注册页面的标签
@@ -29,7 +33,10 @@ let iElem = document.querySelector(".fa-remove");
  */
 function main() {
     showLogin();
-    
+    searchReader(nowPlaying);
+    choiceLi();
+    jump();
+
 };
 
 /**
@@ -112,7 +119,60 @@ function showLogin() {
  * 登录函数
  */
 
+/**
+ * 页面跳转
+ */
+function jump() {
+    jumpElem.onclick = function () {
+        //判定当前是否选中商品，选中之后跳转
+        if(choiceId == 0){
+            alert("请选择电影");
+        }else{
+           location.href = `../html/particulars.html?id=${choiceId}`
+        }
+    };
+};
 
 
+/**
+ * li点击数据关联功能
+ */
+function choiceLi() {
+    //委托事件给父标签
+    headerList.onclick = function (event) {
+        let element = event.target;
+        if (element.className != "header-list") {
+           //将选中标签内容赋值给input的value
+           inputElem.value = element.innerText;
+           //隐藏ul列表
+           headerList.style.display = "none";
+           //将选中标签身上的data-id给全局变量
+           choiceId = element.getAttribute("data-id");
+           console.log(choiceId)
+        }
+    };
+};
+/**
+ * 搜索数据回显渲染
+ */
+function searchReader(arr) {
+    inputElem.oninput = function () {
+        //用户输入数据
+        let val = inputElem.value;
+        //将数据和数据库数据进行比对
+        let str = "";
+       arr.forEach(element => {
+        //模糊查询
+        
+        if (element.title.indexOf(val) != -1) {
+            str += `<li data-id="${element.id}">${element.title}</li> `
+        };
+       });
+       //将数据渲染到页面列表中
+       headerList.innerHTML = str;
+       //更改ul的css属性值
+       headerList.style.display = "block";
+    }
+};
 
 main();
