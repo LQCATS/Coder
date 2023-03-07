@@ -228,9 +228,6 @@ ul {
   top: 270px;
   left: calc(50% - 222px);
   z-index: 10;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   display: none;
 }
 
@@ -256,6 +253,8 @@ ul {
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
+  margin: calc(50% - 212px) auto;
+  display: none;
 }
 
 .login-border .login-register .login-title {
@@ -271,6 +270,7 @@ ul {
   margin-right: 15px;
   font-size: 16px;
   color: #999;
+  cursor: pointer;
 }
 
 .login-border .login-register .login-title .login-click {
@@ -291,6 +291,11 @@ ul {
 
 .login-border .login-register > input:focus {
   outline: none;
+}
+
+.login-border .login-register > input::placeholder {
+  color: #999;
+  font-size: 14px;
 }
 
 .login-border .login-register .captcha {
@@ -371,10 +376,6 @@ ul {
   font-size: 14px;
   margin-top: 20px;
   align-self: flex-end;
-}
-
-.login-border .register {
-  display: none;
 }
 
 .login-border i {

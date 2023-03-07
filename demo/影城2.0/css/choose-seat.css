@@ -1,11 +1,12 @@
+@charset "UTF-8";
 .content {
+  margin-top: 180px;
   width: 100%;
 }
 
 .content .content-center {
   width: 1200px;
   margin: 0 auto;
-  background-color: #f88d8d;
   margin-top: 50px;
 }
 
@@ -18,17 +19,218 @@
   border: 1px solid #e5e5e5;
   box-sizing: border-box;
   display: flex;
+  justify-content: space-between;
+  margin-top: 50px;
 }
 
-.content .content-center .container .seat {
+.content .content-center .container .seats {
   width: 683px;
   height: 625px;
+  margin: 30px 0 0 25px;
 }
 
-.content .content-center .container .seat .seat-state {
+.content .content-center .container .seats .seat-state {
   width: 100%;
-  height: 90px;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.content .content-center .container .seats .seat-state .seat {
+  margin-right: 50px;
+}
+
+.content .content-center .container .seats .seat-state .seat img {
+  vertical-align: middle;
+  margin-right: 10px;
+}
+
+.content .content-center .container .seats .seat-state .seat span {
+  vertical-align: middle;
+  font-size: 16px;
+  color: #666;
+}
+
+.content .content-center .container .seats .screen {
+  width: 100%;
+  text-align: center;
+  margin-top: 40px;
+}
+
+.content .content-center .container .seats > p {
+  width: 100%;
+  text-align: center;
+  margin-top: 10px;
+  font-size: 16px;
+  color: #666;
+}
+
+.content .content-center .container .seats .row {
+  width: 100%;
+  display: flex;
+  position: relative;
+  margin-bottom: 5px;
+}
+
+.content .content-center .container .seats .row::before {
+  content: "";
+  display: block;
+  height: 45px;
+  width: 0;
+  border: 1px dashed #e5e5e5;
+  position: absolute;
+  top: 0;
+  left: 342px;
+}
+
+.content .content-center .container .seats .row div {
+  width: 30px;
+  box-sizing: border-box;
+  font-size: 16px;
+  color: #999;
+  line-height: 28px;
+}
+
+.content .content-center .container .seats .row ul {
+  display: flex;
+}
+
+.content .content-center .container .seats .row ul li {
+  margin-right: 10px;
+  width: 30px;
+  height: 26px;
+}
+
+.content .content-center .container .seats .row6 {
+  margin-top: 30px;
+}
+
+.content .content-center .container .seat-chosen {
+  width: 378px;
+  height: 793px;
+  background-color: #f9f9f9;
+}
+
+.content .content-center .container .seat-chosen .message {
+  width: 342px;
+  height: 324px;
+  border-bottom: 1px dashed #e5e5e5;
+  margin: 0 auto;
+  margin-top: 20px;
+}
+
+.content .content-center .container .seat-chosen .seat-message {
+  width: 100%;
+  padding-left: 20px;
+}
+
+.content .content-center .container .seat-chosen .seat-message .max-seat {
+  margin-top: 20px;
+  display: none;
+}
+
+.content .content-center .container .seat-chosen .seat-message .max-seat p {
+  font-size: 14px;
+  color: #999;
+}
+
+.content .content-center .container .seat-chosen .seat-message .max-seat p:nth-child(2) {
+  color: #333;
+  line-height: 90px;
+  text-align: center;
+}
+
+.content .content-center .container .seat-chosen .seat-message .max-seat p:nth-child(2) span {
+  color: #f99135;
+}
+
+.content .content-center .container .seat-chosen .seat-message .choice-seat {
+  width: 100%;
+  display: flex;
+  margin-top: 20px;
+  padding-bottom: 40px;
+}
+
+.content .content-center .container .seat-chosen .seat-message .choice-seat span {
+  color: #999;
+  font-size: 14px;
+}
+
+.content .content-center .container .seat-chosen .seat-message .choice-seat .user-seats {
+  width: 280px;
+  display: flex;
+  flex-wrap: wrap;
+  text-align: center;
+}
+
+.content .content-center .container .seat-chosen .seat-message .choice-seat .user-seats .user-seat {
+  width: 65px;
+  height: 30px;
+  line-height: 30px;
+  color: #f99135;
+  background: url(../影城img/chooseSeat.png) no-repeat;
+  margin-bottom: 10px;
+  margin-right: 5px;
+}
+
+.content .content-center .container .seat-chosen .seat-message .price {
+  font-size: 14px;
+  color: #333;
+  margin-bottom: 40px;
+}
+
+.content .content-center .container .seat-chosen .seat-message .price span span {
+  color: #f04e39;
+  font-size: 24px;
+}
+
+.content .content-center .container .seat-chosen .seat-message input {
+  width: 260px;
+  height: 42px;
+  padding-left: 20px;
+  box-sizing: border-box;
+  border-radius: 21px;
+  border: 1px solid #e5e5e5;
+  margin-bottom: 10px;
+}
+
+.content .content-center .container .seat-chosen .seat-message input:focus {
+  outline: none;
+}
+
+.content .content-center .container .seat-chosen .seat-message input::placeholder {
+  color: #333;
+  font-size: 14px;
+}
+
+.content .content-center .container .seat-chosen .seat-message .code {
+  width: 260px;
+  height: 42px;
+  box-sizing: border-box;
+  border: 1px solid #e5e5e5;
+  border-radius: 21px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+  padding-right: 10px;
+}
+
+.content .content-center .container .seat-chosen .seat-message .code input {
+  width: 130px;
+  height: 30px;
+  border: 0;
+  margin: 0;
+}
+
+.content .content-center .container .seat-chosen .seat-message button {
+  width: 260px;
+  height: 42px;
+  box-sizing: border-box;
+  border-radius: 21px;
+  border: none;
+  background-color: #dedede;
+  margin-top: 50px;
+  font-size: 16px;
+  color: #fff;
 }

@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="referrer" content="no-referrer">
     <title>首页</title>
     <link rel="stylesheet" href="../css/common.min.css">
     <link rel="stylesheet" href="../css/project.min.css">
@@ -18,8 +19,8 @@
             <div class="top-center">
                 <a href="">下载APP</a>
                 <div class="top-right">
-                    <span>登录</span>
-                    <span>注册</span>
+                    <span id="login">登录</span>
+                    <span id="register">注册</span>
                 </div>
             </div>
         </div>
@@ -34,13 +35,13 @@
                 <div class="nav">
                     <ul>
                         <li>
-                            <a href="">首页</a>
+                            <a href="../html/project.html">首页</a>
                         </li>
                         <li>
-                            <a href="">影片</a>
+                            <a href="../html/film.html">影片</a>
                         </li>
                         <li>
-                            <a href="">影城</a>
+                            <a href="../html/theater.html">影城</a>
                         </li>
                         <li>
                             <a href="">影城资讯</a>
@@ -64,10 +65,10 @@
     <div class="banner">
         <img src="../影城img/slider01.png" alt="" class="big-img">
         <ul class="list">
+            <!-- <li></li>
             <li></li>
             <li></li>
-            <li></li>
-            <li></li>
+            <li></li> -->
         </ul>
         <i class="fa fa-chevron-left"></i>
         <i class="fa fa-chevron-right"></i>
@@ -78,13 +79,13 @@
     <div class="movie-ticket">
         <div class="ticket-center">
             <div class="buy-ticket">快速购票</div>
-            <select name="" id="">
+            <select name="" id="theatre">
                 <option value="">选择影院</option>
             </select>
-            <select name="" id="">
+            <select name="" id="film">
                 <option value="">选择电影</option>
             </select>
-            <select name="" id="">
+            <select name="" id="time">
                 <option value="">选择时间</option>
             </select>
             <select name="" id="">
@@ -101,7 +102,7 @@
             <div class="content-left">
                 <div class="hot-playing playing-movies">
                     <div class="hot-title titles">
-                        <span>正在热映<span>(73部)</span></span>
+                        <span>正在热映<span id="hot-num">(73部)</span></span>
                         <a href="">查看更多>></a>
                     </div>
                     <div class="hot-playing-items content-items">
@@ -115,60 +116,12 @@
                                 立即购票
                             </div>
                         </div>
-                        <!-- <div class="hot-playing-item content-item">
-                            <img src="../影城img/movies01.png" alt="">
-                            <div class="movie-name">
-                                <p>怒火重案</p>
-                                <span>9.5</span>
-                            </div>
-                        </div>
-                        <div class="hot-playing-item content-item">
-                            <img src="../影城img/movies01.png" alt="">
-                            <div class="movie-name">
-                                <p>怒火重案</p>
-                                <span>9.5</span>
-                            </div>
-                        </div>
-                        <div class="hot-playing-item content-item">
-                            <img src="../影城img/movies01.png" alt="">
-                            <div class="movie-name">
-                                <p>怒火重案</p>
-                                <span>9.5</span>
-                            </div>
-                        </div>
-                        <div class="hot-playing-item content-item">
-                            <img src="../影城img/movies01.png" alt="">
-                            <div class="movie-name">
-                                <p>怒火重案</p>
-                                <span>9.5</span>
-                            </div>
-                        </div>
-                        <div class="hot-playing-item content-item">
-                            <img src="../影城img/movies01.png" alt="">
-                            <div class="movie-name">
-                                <p>怒火重案</p>
-                                <span>9.5</span>
-                            </div>
-                        </div>
-                        <div class="hot-playing-item content-item">
-                            <img src="../影城img/movies01.png" alt="">
-                            <div class="movie-name">
-                                <p>怒火重案</p>
-                                <span>9.5</span>
-                            </div>
-                        </div>
-                        <div class="hot-playing-item content-item">
-                            <img src="../影城img/movies01.png" alt="">
-                            <div class="movie-name">
-                                <p>怒火重案</p>
-                                <span>9.5</span>
-                            </div>
-                        </div> -->
+                        
                     </div>
                 </div>
                 <div class="coming-soon playing-movies">
                     <div class="coming-title titles">
-                        <span>即将上映<span>(73部)</span></span>
+                        <span>即将上映<span id="soon-num">(73部)</span></span>
                         <a href="">查看更多>></a>
                     </div>
                     <div class="coming-soon-items content-items">
@@ -183,55 +136,7 @@
                                 <span>预售</span>
                             </div>
                         </div>
-                        <!-- <div class="coming-soon-item content-item">
-                            <img src="../影城img/movies01.png" alt="">
-                            <div class="movie-name">
-                                <p>怒火重案</p>
-                            </div>
-                            <p>8月6日上映</p>
-                        </div>
-                        <div class="coming-soon-item content-item">
-                            <img src="../影城img/movies01.png" alt="">
-                            <div class="movie-name">
-                                <p>怒火重案</p>
-                            </div>
-                            <p>8月6日上映</p>
-                        </div>
-                        <div class="coming-soon-item content-item">
-                            <img src="../影城img/movies01.png" alt="">
-                            <div class="movie-name">
-                                <p>怒火重案</p>
-                            </div>
-                            <p>8月6日上映</p>
-                        </div>
-                        <div class="coming-soon-item content-item">
-                            <img src="../影城img/movies01.png" alt="">
-                            <div class="movie-name">
-                                <p>怒火重案</p>
-                            </div>
-                            <p>8月6日上映</p>
-                        </div>
-                        <div class="coming-soon-item content-item">
-                            <img src="../影城img/movies01.png" alt="">
-                            <div class="movie-name">
-                                <p>怒火重案</p>
-                            </div>
-                            <p>8月6日上映</p>
-                        </div>
-                        <div class="coming-soon-item content-item">
-                            <img src="../影城img/movies01.png" alt="">
-                            <div class="movie-name">
-                                <p>怒火重案</p>
-                            </div>
-                            <p>8月6日上映</p>
-                        </div>
-                        <div class="coming-soon-item content-item">
-                            <img src="../影城img/movies01.png" alt="">
-                            <div class="movie-name">
-                                <p>怒火重案</p>
-                            </div>
-                            <p>8月6日上映</p>
-                        </div> -->
+                       
 
                     </div>
                 </div>
@@ -379,9 +284,9 @@
     <!-- 登录注册start -->
     <div class="login-border">
         <div class="login-register login">
-            <div class="login-title">
-                <span class="login-click">登录</span>
-                <span>注册</span>
+            <div class="login-title login-title1">
+                <span id="login2">登录</span>
+                <span id="register2">注册</span>
             </div>
             <input type="text" placeholder="请输入手机号">
             <input type="password" placeholder="请输入密码">
@@ -402,9 +307,9 @@
 
         </div>
         <div class="login-register register">
-            <div class="login-title">
-                <span class="login-click">登录</span>
-                <span>注册</span>
+            <div class="login-title login-title2">
+                <span id="login3">登录</span>
+                <span id="register3">注册</span>
             </div>
             <input type="text" placeholder="请输入手机号">
             <input type="password" placeholder="请输入密码">
@@ -420,6 +325,11 @@
         <i class="fa fa-remove"></i>
     </div>
     <!-- 登录注册end -->
+
+
+    <script src="../js/movieData.js"></script>
+    <script src="../js/common.js"></script>
+    <script src="../js/project.js"></script>
 </body>
 
 </html>
