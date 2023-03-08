@@ -14,7 +14,56 @@
 
 <body>
 
-    
+     <!-- header部分start -->
+     <div class="header">
+        <div class="header-top">
+            <div class="top-center">
+                <a href="">下载APP</a>
+                <div class="top-right">
+                    <span id="login">登录</span>
+                    <span id="register">注册</span>
+                </div>
+            </div>
+        </div>
+        <div class="header-bottom">
+            <div class="bottom-center">
+                <img src="../影城img/logo.png" alt="" class="logo">
+                <select name="" id="">
+                    <option value="">全国</option>
+                    <option value="">成都</option>
+                    <option value="">上海</option>
+                </select>
+                <div class="nav">
+                    <ul>
+                        <li>
+                            <a href="../html/project.html">首页</a>
+                        </li>
+                        <li>
+                            <a href="../html/film.html">影片</a>
+                        </li>
+                        <li>
+                            <a href="../html/theater.html">影城</a>
+                        </li>
+                        <li>
+                            <a href="">影城资讯</a>
+                        </li>
+                        <li>
+                            <a href="">会员中心</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="search">
+                    <input type="text" placeholder="佩奇 白蛇2 我是猫">
+                    <ul class="header-list">
+                        <!-- <li>1</li>
+                        <li>1</li> -->
+                    </ul>
+                    <div class="search-right"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- header部分end -->
 
 
     <!-- banner部分start -->
@@ -313,9 +362,108 @@
     </div>
     <!-- content部分end -->
 
+
+     <!-- footer部分start -->
+     <div class="footer">
+        <div class="footer-top">
+            <div class="footer-top-center">
+                <dl>
+                    <dt>新手上路</dt>
+                    <div></div>
+                    <dd>注册登录问题</dd>
+                    <dd>用户绑定会员卡问题</dd>
+                    <dd>影票相关问题</dd>
+                    <dd>票价和支付问题</dd>
+                    <dd>取票凭证和取票问题</dd>
+
+                </dl>
+                <dl>
+                    <dt>购票指南</dt>
+                    <div></div>
+                    <dd>用户购票流程</dd>
+                    <dd>取票观影指南</dd>
+                    <dd>会员卡支付相关说明</dd>
+                    <dd>网银支付相关说明</dd>
+                </dl>
+                <dl>
+                    <dt>会员权益</dt>
+                    <div></div>
+                    <dd>会员订票权益</dd>
+                    <dd>取票积分权益</dd>
+                    <dd>入会资格</dd>
+                    <dd>会员卡折扣说明</dd>
+                </dl>
+                <dl>
+                    <dt>联系我们</dt>
+                    <div></div>
+                    <dd>手机客服端介绍与下载</dd>
+                    <dd>影片信息查询</dd>
+                    <dd>手机自助购票</dd>
+                </dl>
+
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="footer-bottom-center">
+                <p>
+                    公司介绍 - 合作咨询 - 友情链接 - 网站地图 - 站长统计 - 网站声明
+                </p>
+                <p>
+                    Copyright @ 2021 ed by woniuxy
+                </p>
+            </div>
+        </div>
+    </div>
+    <!-- footer部分end -->
+
+    <!-- 登录注册start -->
+    <div class="login-border">
+        <div class="login-register login">
+            <div class="login-title login-title1">
+                <span id="login2">登录</span>
+                <span id="register2">注册</span>
+            </div>
+            <input type="text" placeholder="请输入手机号">
+            <input type="password" placeholder="请输入密码">
+            <div class="captcha">
+                <input type="text" placeholder="请输入验证码">
+                <div>ABCD</div>
+                <span>点击刷新</span>
+            </div>
+            <button type="submit">登录</button>
+            <div class="login-record">
+                <input type="checkbox" id="record"><label for="record">下次自动登录</label>
+                <a href="">忘记密码？</a>
+            </div>
+            <div class="agreement">
+                <input type="checkbox">
+                <a href="">已阅读并同意《服务设计启发式线上工具服务协议》</a>
+            </div>
+
+        </div>
+        <div class="login-register register">
+            <div class="login-title login-title2">
+                <span id="login3">登录</span>
+                <span id="register3">注册</span>
+            </div>
+            <input type="text" placeholder="请输入手机号">
+            <input type="password" placeholder="请输入密码">
+            <input type="password" placeholder="请确认密码">
+            <div class="captcha">
+                <input type="text" placeholder="请输入验证码">
+                <div>ABCD</div>
+                <span>点击刷新</span>
+            </div>
+            <button type="submit">注册</button>
+            <span>立即登录</span>
+        </div>
+        <i class="fa fa-remove"></i>
+    </div>
+    <!-- 登录注册end -->
+
     
    <script src="../js/movieData.js"></script> 
-   <!-- <script src="../js/common.js"></script> -->
+   <script src="../js/common.js"></script>
    <script src="../js/particulars.js"></script>
 
 </body>

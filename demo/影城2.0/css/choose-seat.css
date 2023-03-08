@@ -160,6 +160,7 @@
 
 .content .content-center .container .seat-chosen .message .message-movie div p span {
   color: #333;
+  margin-right: 5px;
 }
 
 .content .content-center .container .seat-chosen .message p {
@@ -274,6 +275,10 @@
   height: 30px;
   border: 0;
   margin: 0;
+}
+
+.content .content-center .container .seat-chosen .seat-message .code span {
+  cursor: pointer;
 }
 
 .content .content-center .container .seat-chosen .seat-message button {

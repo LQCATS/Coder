@@ -14,6 +14,7 @@ let seatArr = [
     [0, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 0, 0],
     [0, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0]
 ];
+let captchaArr = [1, 2, 3, 4, 5, 6, 7, 8, 9, "A", "B", "C", "D", "q", "w", "e", "r", "t", "y", "u", "i", "o", "a", "s", "d"];
 
 //所有座位
 let seats = document.querySelector(".seat-row");
@@ -26,10 +27,29 @@ let show2 = document.querySelector(".choice-seat");
 //价格
 let priceTotal = document.querySelector(".price span span");
 
+
+
+//获得电影id
+let choiceId = location.search.substring(4);
+
+//渲染电影信息的变量
+let movieImg = document.querySelector(".message-movie img");
+let movieName = document.querySelector(".message-movie div h4");
+let movieTypes = document.querySelector(".message-movie div p:nth-child(2)");
+let movieTime = document.querySelector(".message-movie div p:nth-child(3)");
+//验证码
+let captchaMoive = document.querySelector(".code span");
+//填写验证码
+let captchaInput = document.querySelector(".code input");
 //输入电话号码
 let telphone = document.querySelector(".seat-message>input");
 //确认选座
-let  buttonEle = document.querySelector(".seat-message>button");
+let buttonEle = document.querySelector(".seat-message>button");
+//验证码整个盒子
+let codeElem = document.querySelector(".code");
+
+
+
 
 
 
@@ -40,6 +60,8 @@ let  buttonEle = document.querySelector(".seat-message>button");
 function main() {
     seatReader(seatArr);
     seatClick(seatArr);
+    movieReader(nowPlaying);
+    jumpPay(captchaArr);
 };
 main();
 
@@ -94,7 +116,7 @@ function seatClick(arr) {
             show1.style.display = "none";
             show2.style.display = "block";
         }
-       
+
     };
 };
 
@@ -154,20 +176,127 @@ function seatReader(arr) {
     seats.innerHTML = str1;
     ticket.innerHTML = str2;
     //选中座位数量
-     let num = bg3Sum(arr);
-     //一张电影票的价格
-     let price = document.querySelector(".message>p:last-child span:nth-child(1)").innerText;
-     //总价格
-     priceTotal.innerHTML = `￥${price * num}`;
+    let num = bg3Sum(arr);
+    //一张电影票的价格
+    let price = document.querySelector(".message>p:last-child span:nth-child(1)").innerText;
+    //总价格
+    priceTotal.innerHTML = `￥${price * num}`;
 };
 
+/**
+ * 电影信息渲染
+ */
+function movieReader(arr) {
+    //遍历数组找到对应的电影信息
+    arr.forEach(element => {
+        if (element.id === choiceId) {
+            //渲染图片
+            movieImg.src = element.imgSrc;
+            //渲染名字
+            movieName.innerText = element.title.split(" ")[0];
+            //渲染电影类型
+            let typeArr1 = element.movieType.split(" ");
+            let typeArr2 = typeArr1.slice(0, typeArr1.length - 1);
+            let str = "类型："
+            typeArr2.forEach(element2 => {
+                str += `<span>${element2}</span>`
+            })
+            movieTypes.innerHTML = str;
+            //电影时长
+            movieTime.innerHTML = ` 时长： <span>${element.duration}</span>`;
+        }
+    });
+};
 /**
  * 跳转支付页面
  */
 
-buttonEle.onclick = function() {
-    //判断号码是否复合要求
+function jumpPay(arr) {
+    //电话号码验证规则
     let regExp = /^13[0-9]{9}$/;
-    console.log(regExp.test(telphone.value))
+    //随机生成四位数的验证码
+    let str = "";
+    for (let j = 1; j <= 4; j++) {
+        let i = parseInt(Math.random() * arr.length);
+        str += arr[i];
+    };
+    //点击验证码
+    captchaMoive.onclick = function () {
+        captchaMoive.innerText = str;
+    }
+
+    //电话号码失去焦点触发事件
+    let verifyResult = {
+        isTelTrue: false,
+        isCaptchaTrue: false,
+    };
+    telphone.onblur = function () {
+        //判断电话格式是否正确
+        let phoneTrue = regExp.test(telphone.value);
+        if (phoneTrue) {
+            telphone.style.border = "1px solid green";
+
+            verifyResult.isTelTrue = true;
+        } else {
+            telphone.style.border = "1px solid red";
+            verifyResult.isTelTrue = false;
+        }
+
+        if (verifyResult.isTelTrue && verifyResult.isCaptchaTrue) {
+            buttonEle.style.backgroundColor = '#f99135';
+        } else {
+            buttonEle.style.backgroundColor = '#dedede';
+        }
+    };
+
+    //验证码输入框失去焦点事件
+    captchaInput.onblur = function () {
+        if (captchaInput.value == str) {
+            codeElem.style.border = "1px solid green";
+            verifyResult.isCaptchaTrue = true;
+        } else {
+            codeElem.style.border = "1px solid red";
+            verifyResult.isCaptchaTrue = false;
+        }
+
+        if (verifyResult.isTelTrue && verifyResult.isCaptchaTrue) {
+            buttonEle.style.backgroundColor = '#f99135';
+        } else {
+            buttonEle.style.backgroundColor = '#dedede';
+        }
+    };
+
+    //密码和验证码都正确可以跳转支付页面
+    buttonEle.onclick = function () {
+        //判断号码和验证码是否复合要求
+
+        if (verifyResult.isTelTrue && verifyResult.isCaptchaTrue) {
+            location.href = `../html/pay.html?id=${choiceId}`
+        }
+    };
+
+
     
+}
+
+const renderTimer = () => {
+    // 获取到倒计时节点
+    // let node = document.getElementById();
+    let currTimeSecond = 70;
+
+    let timerId = setInterval(() => {
+        const minute = String(parseInt(currTimeSecond / 60)).padStart(2, '0');
+        const second = String(parseInt(currTimeSecond % 60)).padStart(2, '0');
+
+        // node.innerText = `${minute}分钟${second}秒`;
+        console.log(`${minute}分钟${second}秒`);
+
+        currTimeSecond--;
+
+        if (currTimeSecond < 0) {
+            clearInterval(timerId);
+        }
+    }, 1000);
 };
+
+renderTimer();

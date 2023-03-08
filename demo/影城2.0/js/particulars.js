@@ -1,3 +1,8 @@
+//全局变量
+//得到电影的id
+let herfStr = location.search;
+let movieId = herfStr.substring(4);
+
 //banner部分全局变量
 //电影图片
 let filmImg = document.querySelector(".img");
@@ -22,6 +27,9 @@ let actors = document.querySelector(".actor-items");
 //热门短评
 let shortComment = document.querySelector(".short-comment-users");
 
+//跳转页面到选座
+let submitElem = document.querySelector(".message button");
+
 
 
 /**
@@ -31,6 +39,7 @@ let shortComment = document.querySelector(".short-comment-users");
 function main() {
     movieReader(nowPlaying);
     movieReader(upComing);
+    jumpClick();
 };
 main();
 /**
@@ -38,9 +47,7 @@ main();
  */
 
 function movieReader(arr) {
-    //得到电影的id
-    let herfStr = location.search;
-    let movieId = herfStr.substring(4);
+    //全局变量里面获得点击电影的id
     //在数据库找到对应的电影
    
     arr.forEach(element => {
@@ -112,5 +119,14 @@ function movieReader(arr) {
 
 
 
+};
+
+/**
+ * 特惠购票跳转页面
+ */
+function jumpClick() {
+    submitElem.onclick = function () {
+        location.href = `../html/choose-seat.html?id=${movieId}`;
+    };
 };
 
