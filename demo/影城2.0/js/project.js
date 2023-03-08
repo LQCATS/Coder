@@ -16,6 +16,7 @@ let showIndex = 0;
 //正在热映全局变量
 let hotMoviesElem = document.querySelector(".hot-playing-items");
 let spanElem = document.querySelector("#hot-num");
+let choiceNum = 0;
 
 //即将上映全局变量
 let soonMoviesElem = document.querySelector(".coming-soon-items");
@@ -46,7 +47,7 @@ function main() {
     hotReader(nowPlaying);
     //即将上映
     soonReader(upComing);
-    
+
 
 };
 
@@ -54,9 +55,7 @@ function main() {
 main();
 
 
-/**
- * banner部分
- */
+//banner部分开始
 
 /**
  * 间隔定时器
@@ -152,6 +151,11 @@ function reader(arr) {
 
 };
 
+
+
+
+//选择影院电影信息
+
 /**
  * 选择影院渲染
  */
@@ -160,7 +164,7 @@ function theatreReader(arr) {
     arr.forEach(value => {
         str += `<option value="${value.movies}">${value.name}</option>`;
     });
-    select1.innerHTML = str; 
+    select1.innerHTML = str;
 };
 
 /**
@@ -170,7 +174,7 @@ function filmReader(arr) {
     let val = select1.value;
     //得到影院对应电影的id数组
     let newArr = val.split(",");
-    
+
     //选择的电影
     let str = `<option value="">选择电影</option>`;
     arr.forEach(value => {
@@ -179,7 +183,7 @@ function filmReader(arr) {
         if (isHave) {
             str += `<option value="${value.release}">${value.title}</option>`
         }
-       
+
     });
     select2.innerHTML = str;
 }
@@ -194,7 +198,7 @@ function timeReader() {
     //选择的时间
     let str = `<option value="">选择时间</option>`;
     newArr.forEach(value => {
-       str +=  `<option value="">${value}</option>`
+        str += `<option value="">${value}</option>`
     });
     select3.innerHTML = str;
 
@@ -204,7 +208,7 @@ function timeReader() {
  * 影院改变事件
  */
 select1.onchange = function () {
-    
+
     //选择电影
     filmReader(nowPlaying);
     //选择时间
@@ -215,6 +219,9 @@ select2.onchange = function () {
     //选择时间
     timeReader();
 };
+
+
+//所有电影部分
 
 /**
  * 正在热映
@@ -231,9 +238,10 @@ spanElem.innerText = `(${nowPlaying.length}部)`;
 
 function hotReader(arr) {
     let str = "";
-    arr.forEach((element, index) => {
+    arr.forEach(element => {
         str += `
         <div class="hot-playing-item content-item">
+            <div class="jump" numId="${element.id}"></div>
             <img src="${element.imgSrc}" alt="">
             <div class="movie-name">
                 <p>${element.title}</p>
@@ -249,6 +257,8 @@ function hotReader(arr) {
 };
 
 
+
+
 //即将上映总数
 soonSpanElem.innerText = `(${upComing.length}部)`;
 
@@ -257,9 +267,10 @@ soonSpanElem.innerText = `(${upComing.length}部)`;
  */
 function soonReader(arr) {
     let str = "";
-    arr.forEach((element, index) => {
+    arr.forEach(element => {
         str += `
-        <div class="coming-soon-item content-item">
+        <div class="coming-soon-item content-item" >
+            <div class="jump" numId="${element.id}"></div>
             <img src="${element.imgSrc}" alt="">
             <div class="movie-name">
                 <p>${element.title}</p>
@@ -274,6 +285,26 @@ function soonReader(arr) {
     //渲染到页面上
     soonMoviesElem.innerHTML = str;
 };
+
+/**
+ * 首页content点击跳转详情页事件
+ */
+
+//委托点击事件给父盒子,正在热映
+let jumFatherArr = document.querySelectorAll(".content-items");
+
+jumFatherArr.forEach(elements => {
+    elements.onclick = function (event) {
+        let element = event.target;
+        // console.log(element)
+        if (element.className === "jump") {
+            choiceNum = element.getAttribute("numId");
+            location.href = `../html/particulars.html?id=${choiceNum}`
+        }
+    };
+
+});
+
 
 
 

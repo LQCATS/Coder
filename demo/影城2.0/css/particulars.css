@@ -25,6 +25,11 @@
   align-items: center;
 }
 
+.banner .banner-center .img img {
+  width: 232px;
+  height: 322px;
+}
+
 .banner .banner-center .message {
   margin-left: 30px;
   color: #fff;
@@ -43,6 +48,10 @@
 .banner .banner-center .message p {
   font-size: 14px;
   margin-bottom: 5px;
+}
+
+.banner .banner-center .message p span {
+  margin-right: 5px;
 }
 
 .banner .banner-center .message div {

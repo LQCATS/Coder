@@ -1,0 +1,41 @@
+.content {
+    width: 600px;
+    margin: 0 auto;
+}
+
+.content .item {
+
+    display: flex;
+    height: 50px;
+}
+
+.content .item .line-num {
+    margin-right: 50px;
+}
+
+.content .item .group {
+    display: flex;
+    justify-content: center;
+    flex-grow: 1;
+}
+
+.content .item .group .tab {
+    display: block;
+    width: 40px;
+    height: 30px;
+    background-repeat: no-repeat;
+    /* border: 1px solid red; */
+    background-position: center center;
+}
+
+.content .item .group span.bg1 {
+    background-image: url(../img/bg1.jpg);
+}
+
+.content .item .group span.bg2 {
+    background-image: url(../img/bg2.jpg) ;
+}
+
+.content .item span.bg3 {
+    background-image: url(../img/bg3.jpg);
+}

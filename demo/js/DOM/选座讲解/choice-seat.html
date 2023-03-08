@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>选座系统</title>
+    <link rel="stylesheet" href="css/tab.css">
+    <style>
+        .ticket{
+            width: 500px;
+            height: 400px;
+            margin: 0 auto;
+            border: 1px solid black;
+            display: flex;
+            flex-wrap: wrap;
+            align-content: start;
+        }
+        .ticket .one{
+            text-align: center;
+            width: 100px;
+            height: 40px;
+            line-height: 40px;
+            border: 1px solid orange;
+            margin: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 选座位号区域 -->
+    <div class="content">
+
+        <div class="item">
+            <div class="line-num">1</div>
+            <div class="group">
+                <!-- 占位走廊位置 -->
+                <span class="tab"></span>
+                <!-- 未选座位 -->
+                <span class="tab bg1"></span>
+                <!-- 已选座位 -->
+                <span class="tab bg2"></span>
+                <!-- 不可选座位 -->
+                <span class="tab bg3"></span>
+            </div>
+        </div>
+        <div class="item">
+            <div class="line-num">1</div>
+            <div class="group">
+                <span class="tab"></span>
+                <span class="tab bg1"></span>
+                <span class="tab bg2"></span>
+                <span class="tab bg3"></span>
+            </div>
+        </div>
+    
+    </div>
+
+
+    <!--  票务信息 -->
+    <div class="ticket">
+        <div class="one">5排3座</div>
+        <div class="one">5排3座</div>
+        <div class="one">5排3座</div>
+        <div class="one">5排3座</div>
+        <div class="one">5排3座</div>
+        <div class="one">5排3座</div>
+    </div>
+    <script src="./js/index.js"></script>
+
+</body>
+
+
+</html>

@@ -148,10 +148,11 @@ function choiceLi() {
            headerList.style.display = "none";
            //将选中标签身上的data-id给全局变量
            choiceId = element.getAttribute("data-id");
-           console.log(choiceId)
         }
     };
 };
+
+
 /**
  * 搜索数据回显渲染
  */

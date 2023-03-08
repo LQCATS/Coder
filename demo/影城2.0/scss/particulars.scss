@@ -21,6 +21,10 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            img {
+                width: 232px;
+                height: 322px;
+            }
         }
 
         .message {
@@ -40,6 +44,9 @@
             p {
                 font-size: 14px;
                 margin-bottom: 5px;
+                span {
+                    margin-right: 5px;
+                }
             }
 
             div {
