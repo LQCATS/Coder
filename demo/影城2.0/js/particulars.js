@@ -30,6 +30,14 @@ let shortComment = document.querySelector(".short-comment-users");
 //跳转页面到选座
 let submitElem = document.querySelector(".message button");
 
+//切换演员列表标签
+let changeElem = document.querySelector(".introduce");
+//介绍部分标签
+let introduceElem = document.querySelector(".introduce-container");
+//演员部分标签
+let actorsElem = document.querySelector(".actors-container");
+
+
 
 
 /**
@@ -40,6 +48,7 @@ function main() {
     movieReader(nowPlaying);
     movieReader(upComing);
     jumpClick();
+    changePage();
 };
 main();
 /**
@@ -120,6 +129,28 @@ function movieReader(arr) {
 
 
 };
+
+/**
+ * 切换到演职人员列表
+ */
+// function changePage() {
+//     changeElem.onclick = (event) =>{
+//         let element = event.target;
+//         if (element.className = "choice"){
+//             //显示介绍页面
+//             introduceElem.style.display = "none";
+//             actorsElem.style.display = "none";
+//             introduceElem.style.display = "block";
+
+//         } else if (element.className = "choice2"){
+//             //显示演员界面
+//             introduceElem.style.display = "none";
+//             actorsElem.style.display = "none";
+//             actorsElem.style.display = "block";
+//         }
+//     }
+// };
+
 
 /**
  * 特惠购票跳转页面

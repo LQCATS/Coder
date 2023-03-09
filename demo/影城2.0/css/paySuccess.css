@@ -88,6 +88,11 @@
   text-align: right;
 }
 
+.content .content-center .movie-message table tbody td img {
+  width: 68px;
+  height: 93px;
+}
+
 .content .content-center .movie-message table tbody td:first-child {
   text-align: left;
   display: flex;

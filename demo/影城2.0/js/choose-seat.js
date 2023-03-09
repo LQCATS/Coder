@@ -61,6 +61,7 @@ function main() {
     seatReader(seatArr);
     seatClick(seatArr);
     movieReader(nowPlaying);
+    movieReader(upComing);
     jumpPay(captchaArr);
 };
 main();
@@ -207,6 +208,8 @@ function movieReader(arr) {
         }
     });
 };
+
+
 /**
  * 跳转支付页面
  */
@@ -271,7 +274,7 @@ function jumpPay(arr) {
         //判断号码和验证码是否复合要求
 
         if (verifyResult.isTelTrue && verifyResult.isCaptchaTrue) {
-            location.href = `../html/pay.html?id=${choiceId}`
+            location.href = `../html/pay.html?id=${choiceId};total=${priceTotal.innerText.substring(1)};ticket=${ticket.innerText}`
         }
     };
 
@@ -279,24 +282,3 @@ function jumpPay(arr) {
     
 }
 
-const renderTimer = () => {
-    // 获取到倒计时节点
-    // let node = document.getElementById();
-    let currTimeSecond = 70;
-
-    let timerId = setInterval(() => {
-        const minute = String(parseInt(currTimeSecond / 60)).padStart(2, '0');
-        const second = String(parseInt(currTimeSecond % 60)).padStart(2, '0');
-
-        // node.innerText = `${minute}分钟${second}秒`;
-        console.log(`${minute}分钟${second}秒`);
-
-        currTimeSecond--;
-
-        if (currTimeSecond < 0) {
-            clearInterval(timerId);
-        }
-    }, 1000);
-};
-
-renderTimer();

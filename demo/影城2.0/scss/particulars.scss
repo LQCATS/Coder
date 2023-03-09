@@ -138,6 +138,7 @@
                 display: inline-block;
                 height: 100%;
                 margin-right: 30px;
+                cursor: pointer;
             }
 
             .choice {
@@ -165,6 +166,7 @@
         .content-left {
             width: 730px;
             color: #333;
+            position: relative;
 
 
             >p {
@@ -175,6 +177,7 @@
 
 
             .introduce-container {
+               
                 .brief {
                     width: 100%;
                     margin-top: 40px;
@@ -314,6 +317,8 @@
 
             .actors-container {
                 width: 100%;
+                position: absolute;
+                top: 65px;
                 display: none;
                 
                     >p {

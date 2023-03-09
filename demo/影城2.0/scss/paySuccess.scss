@@ -83,6 +83,10 @@
                     font-size: 14px;
                     td {
                         text-align: right;
+                        img {
+                            width: 68px;
+                            height: 93px;
+                        }
                         &:first-child {
                             text-align: left;
                             display: flex;

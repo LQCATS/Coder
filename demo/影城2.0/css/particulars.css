@@ -137,6 +137,7 @@
   display: inline-block;
   height: 100%;
   margin-right: 30px;
+  cursor: pointer;
 }
 
 .content .content-center .introduce .choice {
@@ -161,6 +162,7 @@
 .content .content-center .content-left {
   width: 730px;
   color: #333;
+  position: relative;
 }
 
 .content .content-center .content-left > p {
@@ -298,6 +300,8 @@
 
 .content .content-center .content-left .actors-container {
   width: 100%;
+  position: absolute;
+  top: 65px;
   display: none;
 }
 
