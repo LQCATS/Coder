@@ -159,7 +159,7 @@ ul {
                     left: 15px;
                     cursor: pointer;
                     display: none;
-                   
+
                 }
 
                 .search-right {
@@ -247,9 +247,6 @@ ul {
     top: 270px;
     left: calc(50% - 222px);
     z-index: 10;
-    // display: flex;
-    // justify-content: center;
-    // align-items: center;
     display: none;
 
     &::before {
@@ -275,7 +272,7 @@ ul {
         display: flex;
         flex-direction: column;
         margin: calc(50% - 212px) auto;
-        display: none;
+        // display: none;
 
 
         .login-title {
@@ -291,13 +288,11 @@ ul {
                 font-size: 16px;
                 color: #999;
                 cursor: pointer;
+                padding-bottom: 10px;
 
             }
 
-            .login-click {
-                color: #333;
-                border-bottom: 2px solid #f99135;
-            }
+
 
             // .register-click {
             //     color: #333;
@@ -306,28 +301,80 @@ ul {
 
         }
 
-        >input {
-            box-sizing: border-box;
-            width: 340px;
-            height: 46px;
-            border-radius: 10px;
-            padding-left: 15px;
-            font-size: 14px;
-            color: #999;
-            margin: 20px 0;
+        .login {
+            // display: none;
 
-            &:focus {
-                outline: none;
-            }
-
-            &::placeholder {
-                color: #999;
+            >input {
+                box-sizing: border-box;
+                width: 340px;
+                height: 46px;
+                border-radius: 10px;
+                padding-left: 15px;
                 font-size: 14px;
+                color: #999;
+                margin: 20px 0;
+
+                &:focus {
+                    outline: none;
+                }
+
+                &::placeholder {
+                    color: #999;
+                    font-size: 14px;
+                }
+
+
+
             }
-
-
+            >p {
+                margin-top: -23px;
+                padding-left: 10px;
+            }
 
         }
+
+        .register {
+            display: none;
+            >input {
+                box-sizing: border-box;
+                width: 340px;
+                height: 46px;
+                border-radius: 10px;
+                padding-left: 15px;
+                font-size: 14px;
+                color: #999;
+                margin: 20px 0;
+
+                &:focus {
+                    outline: none;
+                }
+
+                &::placeholder {
+                    color: #999;
+                    font-size: 14px;
+                }
+
+
+
+            }
+            p {
+                font-size: 12px;
+                margin-top: -20px;
+                padding-left: 10px;
+            }
+
+            >span {
+                display: block;
+                width: 340px;
+                height: 46px;
+                color: #f99135;
+                font-size: 14px;
+                margin-top: 20px;
+                text-align: right;
+            }
+
+        }
+
 
         .captcha {
             display: flex;
@@ -342,6 +389,9 @@ ul {
                 border-radius: 10px;
                 padding-left: 15px;
                 margin-right: 15px;
+                &:focus {
+                    outline: none;
+                }
             }
 
             div {
@@ -354,6 +404,10 @@ ul {
                 line-height: 46px;
                 font-size: 20px;
                 letter-spacing: 5px;
+                
+            }
+            span {
+                cursor: pointer;
             }
         }
 
@@ -367,6 +421,7 @@ ul {
             // background-color: #f99135;
             background-color: #999;
             border: none;
+            margin-top: 28px;
 
         }
 
@@ -409,21 +464,10 @@ ul {
             }
         }
 
-        >span {
-            color: #f99135;
-            font-size: 14px;
-            margin-top: 20px;
-            align-self: flex-end;
-        }
+
     }
 
-    // .login {
-    //     display: none;
-    // }
 
-    // .register {
-    //     display: none;
-    // }
 
     i {
         position: absolute;

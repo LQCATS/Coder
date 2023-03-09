@@ -36,6 +36,10 @@ let changeElem = document.querySelector(".introduce");
 let introduceElem = document.querySelector(".introduce-container");
 //演员部分标签
 let actorsElem = document.querySelector(".actors-container");
+//点击切换div标签
+let choiceElem1 = document.querySelector(".choice");
+let choiceElem2 = document.querySelector(".choice2");
+
 
 
 
@@ -133,23 +137,29 @@ function movieReader(arr) {
 /**
  * 切换到演职人员列表
  */
-// function changePage() {
-//     changeElem.onclick = (event) =>{
-//         let element = event.target;
-//         if (element.className = "choice"){
-//             //显示介绍页面
-//             introduceElem.style.display = "none";
-//             actorsElem.style.display = "none";
-//             introduceElem.style.display = "block";
+function changePage() {
+    changeElem.onclick = (event) =>{
+        let element = event.target;
+        if (element.className == "choice"){
+            //显示介绍页面
+            actorsElem.style.display = "none";
+            introduceElem.style.display = "block";
+            element.style.borderBottom = "2px solid #f99135";
+            element.style.color = "#f99135";
+            choiceElem2.style.borderBottom = null;
+            choiceElem2.style.color = null;
 
-//         } else if (element.className = "choice2"){
-//             //显示演员界面
-//             introduceElem.style.display = "none";
-//             actorsElem.style.display = "none";
-//             actorsElem.style.display = "block";
-//         }
-//     }
-// };
+        } else if (element.className == "choice2"){
+            //显示演员界面
+            introduceElem.style.display = "none";
+            actorsElem.style.display = "block";
+            element.style.borderBottom = "2px solid #f99135";
+            element.style.color = "#f99135";
+            choiceElem1.style.borderBottom = null;
+            choiceElem1.style.color = null;
+        }
+    }
+};
 
 
 /**

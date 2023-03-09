@@ -267,7 +267,6 @@ ul {
   display: flex;
   flex-direction: column;
   margin: calc(50% - 212px) auto;
-  display: none;
 }
 
 .login-border .login-register .login-title {
@@ -284,14 +283,10 @@ ul {
   font-size: 16px;
   color: #999;
   cursor: pointer;
+  padding-bottom: 10px;
 }
 
-.login-border .login-register .login-title .login-click {
-  color: #333;
-  border-bottom: 2px solid #f99135;
-}
-
-.login-border .login-register > input {
+.login-border .login-register .login > input {
   box-sizing: border-box;
   width: 340px;
   height: 46px;
@@ -302,13 +297,58 @@ ul {
   margin: 20px 0;
 }
 
-.login-border .login-register > input:focus {
+.login-border .login-register .login > input:focus {
   outline: none;
 }
 
-.login-border .login-register > input::placeholder {
+.login-border .login-register .login > input::placeholder {
   color: #999;
   font-size: 14px;
+}
+
+.login-border .login-register .login > p {
+  margin-top: -23px;
+  padding-left: 10px;
+}
+
+.login-border .login-register .register {
+  display: none;
+}
+
+.login-border .login-register .register > input {
+  box-sizing: border-box;
+  width: 340px;
+  height: 46px;
+  border-radius: 10px;
+  padding-left: 15px;
+  font-size: 14px;
+  color: #999;
+  margin: 20px 0;
+}
+
+.login-border .login-register .register > input:focus {
+  outline: none;
+}
+
+.login-border .login-register .register > input::placeholder {
+  color: #999;
+  font-size: 14px;
+}
+
+.login-border .login-register .register p {
+  font-size: 12px;
+  margin-top: -20px;
+  padding-left: 10px;
+}
+
+.login-border .login-register .register > span {
+  display: block;
+  width: 340px;
+  height: 46px;
+  color: #f99135;
+  font-size: 14px;
+  margin-top: 20px;
+  text-align: right;
 }
 
 .login-border .login-register .captcha {
@@ -327,6 +367,10 @@ ul {
   margin-right: 15px;
 }
 
+.login-border .login-register .captcha input:focus {
+  outline: none;
+}
+
 .login-border .login-register .captcha div {
   width: 80px;
   height: 44px;
@@ -339,6 +383,10 @@ ul {
   letter-spacing: 5px;
 }
 
+.login-border .login-register .captcha span {
+  cursor: pointer;
+}
+
 .login-border .login-register button {
   box-sizing: border-box;
   width: 340px;
@@ -348,6 +396,7 @@ ul {
   color: #fff;
   background-color: #999;
   border: none;
+  margin-top: 28px;
 }
 
 .login-border .login-register .login-record {
@@ -382,13 +431,6 @@ ul {
   color: #999;
   font-size: 12px;
   vertical-align: middle;
-}
-
-.login-border .login-register > span {
-  color: #f99135;
-  font-size: 14px;
-  margin-top: 20px;
-  align-self: flex-end;
 }
 
 .login-border i {
