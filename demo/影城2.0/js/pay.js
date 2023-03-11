@@ -54,6 +54,8 @@ main();
 function timerReader() {
     //倒计时换算成总秒数
     let totalTime = 829;
+    // let totalTime = 63;
+
     let timers = setInterval(() => {
         let minute = String(parseInt(totalTime / 60)).padStart(2, "0");
         let second = String(parseInt(totalTime % 60)).padStart(2, "0");

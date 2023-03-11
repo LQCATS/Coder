@@ -11,14 +11,14 @@
     
 </head>
 <body>
-     <!-- header部分start -->
-     <div class="header">
+    <!-- header部分start -->
+    <div class="header">
         <div class="header-top">
             <div class="top-center">
                 <a href="">下载APP</a>
                 <div class="top-right">
-                    <span>登录</span>
-                    <span>注册</span>
+                    <span id="login">登录</span>
+                    <span id="register">注册</span>
                 </div>
             </div>
         </div>
@@ -51,6 +51,10 @@
                 </div>
                 <div class="search">
                     <input type="text" placeholder="佩奇 白蛇2 我是猫">
+                    <ul class="header-list">
+                        <!-- <li>1</li>
+                        <li>1</li> -->
+                    </ul>
                     <div class="search-right"></div>
                 </div>
             </div>
@@ -154,7 +158,7 @@
                         <td>2厅</td>
                         <td>￥26.9</td>
                         <td>
-                            <p>停止售票</p>
+                            <p>购票</p>
                         </td>
                         
                     </tr>
@@ -167,7 +171,7 @@
                         <td>2厅</td>
                         <td>￥26.9</td>
                         <td>
-                            <p>停止售票</p>
+                            <p>购票</p>
                         </td>
                         
                     </tr>
@@ -180,7 +184,7 @@
                         <td>2厅</td>
                         <td>￥26.9</td>
                         <td>
-                            <p>停止售票</p>
+                            <p>购票</p>
                         </td>
                         
                     </tr>
@@ -246,45 +250,52 @@
 
     <!-- 登录注册start -->
     <div class="login-border">
-        <div class="login-register login">
+        <div class="login-register">
             <div class="login-title">
-                <span class="login-click">登录</span>
-                <span>注册</span>
+                <span id="login2">登录</span>
+                <span id="register2">注册</span>
             </div>
-            <input type="text" placeholder="请输入手机号">
-            <input type="password" placeholder="请输入密码">
-            <div class="captcha">
-                <input type="text" placeholder="请输入验证码">
-                <div>ABCD</div>
-                <span>点击刷新</span>
+
+            <div class="login">
+                <input type="text" placeholder="请输入手机号">
+                <p class="login-p1"></p>
+                <input type="password" placeholder="请输入密码">
+                <p class="login-p2"></p>
+                <div class="captcha">
+                    <input type="text" placeholder="请输入验证码">
+                    <div>ABCD</div>
+                    <span>点击刷新</span>
+                </div>
+                <p class="login-p3"></p>
+                <button type="submit">登录</button>
+                <div class="login-record">
+                    <input type="checkbox" id="record"><label for="record">下次自动登录</label>
+                    <a href="">忘记密码？</a>
+                </div>
+                <div class="agreement">
+                    <input type="checkbox">
+                    <a href="">已阅读并同意《服务设计启发式线上工具服务协议》</a>
+                </div>
             </div>
-            <button type="submit">登录</button>
-            <div class="login-record">
-                <input type="checkbox" id="record"><label for="record">下次自动登录</label>
-                <a href="">忘记密码？</a>
-            </div>
-            <div class="agreement">
-                <input type="checkbox">
-                <a href="">已阅读并同意《服务设计启发式线上工具服务协议》</a>
+            <div class="register">
+                <input type="text" placeholder="请输入手机号">
+                <p class="register-p p1"></p>
+                <input type="password" placeholder="请输入6-12位，以字母开头,只包含数字和字母密码">
+                <p class="register-p p2"></p>
+                <input type="password" placeholder="请确认密码">
+                <p class="register-p p3"></p>
+                <div class="captcha">
+                    <input type="text" placeholder="请输入验证码">
+                    <div></div>
+                    <span>点击刷新</span>
+                </div>
+                <p class="register-p p4"></p>
+                <button type="submit">注册</button>
+                <span>立即登录</span>
             </div>
 
         </div>
-        <div class="login-register register">
-            <div class="login-title">
-                <span class="login-click">登录</span>
-                <span>注册</span>
-            </div>
-            <input type="text" placeholder="请输入手机号">
-            <input type="password" placeholder="请输入密码">
-            <input type="password" placeholder="请确认密码">
-            <div class="captcha">
-                <input type="text" placeholder="请输入验证码">
-                <div>ABCD</div>
-                <span>点击刷新</span>
-            </div>
-            <button type="submit">注册</button>
-            <span>立即登录</span>
-        </div>
+
         <i class="fa fa-remove"></i>
     </div>
     <!-- 登录注册end -->
