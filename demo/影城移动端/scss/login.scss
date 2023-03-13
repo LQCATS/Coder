@@ -2,8 +2,11 @@ header {
     .login-box {
         img {
             width: 0.35rem;
+            margin-top: 1.2rem;
         }
+
         p {
+            margin-top: 0.3rem;
             color: #fff;
             font-size: 0.36rem;
         }
@@ -12,6 +15,9 @@ header {
 
 main {
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 
 
 
@@ -27,7 +33,7 @@ main {
             width: 6.7rem;
 
             span {
-                color: rgb(253,28,28);
+                color: rgb(253, 28, 28);
             }
 
         }
@@ -47,9 +53,11 @@ main {
         border-radius: 10px;
         margin-left: 0.37rem;
         padding-left: 0.2rem;
+        margin-top: 0.15rem;
 
         &::placeholder {
             color: rgb(11, 25, 63);
+            font-size: 0.28rem;
         }
     }
 
