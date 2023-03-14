@@ -8,7 +8,6 @@
     <title>登录</title>
     <link rel="stylesheet" href="../css/common.css">
     <link rel="stylesheet" href="../css/login.css">
-    <link rel="stylesheet" href="../util/font-awesome-4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
@@ -23,15 +22,21 @@
 
     <!-- main -->
     <main>
-        <p>用户名</p>
-        <input type="text" placeholder="请输入用户名">
-        <p>
-            密码
-            <span>忘记密码?</span>
-        </p>
-        <input type="password">
+        <div class="main-login login-user">
+            <p>用户名</p>
+            <input type="text" placeholder="请输入用户名">
+        </div>
+        <div class="main-login login-pwd">
+            <p>
+                <span>密码</span>
+                <em>忘记密码?</em>
+            </p>
+            <input type="password">
+            <i></i>
+        </div>
         <button type="submit">立即登录</button>
         <p>立即注册</p>
+        
     </main>
     <!-- main -->
 
