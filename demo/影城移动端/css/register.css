@@ -25,6 +25,11 @@ main .main-register p {
   color: #666666;
 }
 
+main .main-register p:nth-child(3) {
+  color: red;
+  display: none;
+}
+
 main .main-register input {
   width: 6.7rem;
   height: 0.96rem;
@@ -52,6 +57,28 @@ main .register-pwd i {
   background: url(../images/eye.png) no-repeat;
   background-size: cover;
   background-position: center -0.1rem;
+}
+
+main .gender-box {
+  width: 6.7rem;
+  margin: 0 auto;
+  margin-top: 0.45rem;
+}
+
+main .gender-box input {
+  width: 0.5rem;
+  vertical-align: middle;
+}
+
+main .hobby-box {
+  width: 6.7rem;
+  margin: 0 auto;
+  margin-top: 0.45rem;
+}
+
+main .hobby-box input {
+  width: 0.5rem;
+  vertical-align: bottom;
 }
 
 main button {

@@ -25,6 +25,11 @@ main {
         p {
             font-size: 0.24rem;
             color: rgb(102, 102, 102);
+
+            &:nth-child(3) {
+                color: red;
+                display: none;
+            }
         }
 
         input {
@@ -44,6 +49,7 @@ main {
 
     .register-pwd {
         position: relative;
+
         i {
             width: 0.4rem;
             height: 0.22rem;
@@ -53,6 +59,28 @@ main {
             background: url(../images/eye.png) no-repeat;
             background-size: cover;
             background-position: center -0.1rem;
+        }
+    }
+
+    .gender-box {
+        width: 6.7rem;
+        margin: 0 auto;
+        margin-top: 0.45rem;
+
+        input {
+            width: 0.5rem;
+            vertical-align: middle;
+        }
+    }
+
+    .hobby-box {
+        width: 6.7rem;
+        margin: 0 auto;
+        margin-top: 0.45rem;
+
+        input {
+            width: 0.5rem;
+            vertical-align: bottom;
         }
     }
 

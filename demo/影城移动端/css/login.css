@@ -25,6 +25,11 @@ main .main-login p {
   color: #666666;
 }
 
+main .main-login p:nth-child(3) {
+  color: red;
+  display: none;
+}
+
 main .main-login input {
   width: 6.7rem;
   height: 0.96rem;
@@ -55,13 +60,13 @@ main .login-pwd p em {
 
 main .login-pwd i {
   width: 0.4rem;
-  height: 0.22rem;
+  height: 0.4rem;
   position: absolute;
   top: 0.9rem;
   right: 0.3rem;
   background: url(../images/eye.png) no-repeat;
   background-size: cover;
-  background-position: center -0.1rem;
+  background-position: center -0.05rem;
 }
 
 main button {

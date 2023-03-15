@@ -25,6 +25,11 @@ main {
         p {
             font-size: 0.24rem;
             color: rgb(102, 102, 102);
+
+            &:nth-child(3) {
+                color: red;
+                display: none;
+            }
         }
 
         input {
@@ -57,13 +62,13 @@ main {
 
         i {
             width: 0.4rem;
-            height: 0.22rem;
+            height: 0.4rem;
             position: absolute;
             top: 0.9rem;
             right: 0.3rem;
             background: url(../images/eye.png) no-repeat;
             background-size: cover;
-            background-position: center -0.1rem;
+            background-position: center -0.05rem;
         }
     }
 
