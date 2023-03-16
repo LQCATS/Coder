@@ -3,9 +3,9 @@
  */
 function main() {
     //渲染正在热映的电影
-    $('#hot-playing').html(readerHomepage(nowPlaying,1));
+    $('#hot-playing').html(readerHomepage(nowPlaying, 1));
     //渲染即将上映的电影
-    $('#play-soon').html(readerHomepage(upComing,2));
+    $('#play-soon').html(readerHomepage(upComing, 2));
 
     // footerRender('ft-items', 1);
     headerReader();
@@ -84,11 +84,11 @@ $('.ft-items').on('click', '.ft-item', function () {
         //每次循环先默认全部不选中
         item.isChoose = false;
 
-        if (item.id === _id ) {
+        if (item.id === _id) {
             item.isChoose = true;
         }
     });
-    footerReader(); 
+    footerReader();
 });
 
 
@@ -97,7 +97,13 @@ $('.ft-items').on('click', '.ft-item', function () {
  */
 function headerReader() {
     //获取等地登录的信息
-    let userLoginSucced = JSON.parse(localStorage.getItem('loginUser'));
+    let userLoginSucced = JSON.parse(localStorage.getItem('loginUser') || '[]');
     // console.log(userLoginSucced)
-    $('.title-box span').text(`您好，${userLoginSucced[0].userName}${userLoginSucced[0].gender}！`)
+
+    if (userLoginSucced[0]) {
+        $('.title-box span').text(`您好，${userLoginSucced[0].userName}${userLoginSucced[0].gender}！`)
+
+    } else {
+        $('.title-box span').text('您好，请登录！')
+    }
 };

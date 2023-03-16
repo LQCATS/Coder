@@ -62,6 +62,8 @@ const register = () => {
         }
     })
 
+
+    
     //注册按钮点击事件，将用户信息储存，跳转到登录页面
     $('#register-but').click(function () {
         //获取用户输入的用户名
