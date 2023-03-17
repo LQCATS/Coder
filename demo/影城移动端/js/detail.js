@@ -67,7 +67,7 @@ function filmReader(moviesArr) {
     // console.log(choiceMovieObj)
     //渲染头部背景图片
     const choiceMovieSrc = choiceMovieObj.imgSrc;
-    $('.big-img').css('backgroundImage',`url(${choiceMovieSrc})`);
+    $('.big-img').css('backgroundImage', `url(${choiceMovieSrc})`);
 
     // //渲染小图
     // $('.sml-img img').attr('src',`${choiceMovieSrc}`)
@@ -118,7 +118,7 @@ function cinemaReader(cinemaArr) {
         return `
             <div class="text">
                 <h4>${elemt.name}</h4>
-                <p> <img src="${elemt.img_src}" alt="">
+                <p class="map"> <img src="${elemt.img_src}" alt="">
                     ${elemt.address}</p>
                 <h5>英文 2D • ￥30.00</h5>
                 <ul>
@@ -152,7 +152,7 @@ function cinemaReader(cinemaArr) {
     } else {
         $('.item2').html('<div style="color:red;text-align:center;">暂无影院放映</div>');
     }
-    
+
 };
 
 /**
@@ -163,14 +163,42 @@ function cinemaReader(cinemaArr) {
 $('.film-schedule').click(function () {
     $('.item2').show();
     $('.item1').hide();
-    $(this).css('borderBottom','0.08rem solid #4073ff');
-    $('.brief').css('borderBottom','none');
+    $(this).css('borderBottom', '0.08rem solid #4073ff');
+    $('.brief').css('borderBottom', 'none');
 })
 
 //点击简介按钮
 $('.brief').click(function () {
     $('.item1').show();
     $('.item2').hide();
-    $(this).css('borderBottom','0.08rem solid #4073ff');
-    $('.film-schedule').css('borderBottom','none');
+    $(this).css('borderBottom', '0.08rem solid #4073ff');
+    $('.film-schedule').css('borderBottom', 'none');
 })
+
+/**
+ * 跳转地图页面
+ */
+
+//信息是渲染的需要事件委托
+$('.item2').on('click', '.map', function () {
+    location.assign(`./map.html?address=${$(this).text()}`)
+})
+
+/**
+ * 视频
+ */
+//获取video标签，使用原生的方法，不要是用jQuery
+const videoElem = document.querySelector('.video');
+
+//进入页面视频播放时间
+let continueTime = localStorage.getItem('videoCurrentTime') || '0';
+//~~将字符串转为数字（原理：一个~将原字符串隐式转换为负数再-1）
+videoElem.currentTime = ~~continueTime;
+
+//离开详情页面触发事件
+window.onunload = function () {
+    //获取视频当前播放的时间
+    let videoCurrentTime = videoElem.currentTime;
+    //将当前时间储存在本地
+    localStorage.setItem('videoCurrentTime', videoCurrentTime);
+}

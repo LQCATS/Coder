@@ -62,7 +62,7 @@ $('.seat').on('click', 'dd', function () {
     seats.forEach(item => {
 
         item.forEach(seat => {
-            //触发事件的是对应点击的dd标签
+            //触发事件点击的dd标签 在座位数组里面对应的信息
             if ($(this).data('id') === seat.id) {
 
                 if (seat.seat === 'kx') {
