@@ -117,7 +117,7 @@ function cinemaReader(cinemaArr) {
     const cinemaIsHaveMessage = cinemaIsHaveArr.map(elemt => {
         return `
             <div class="text">
-                <h4>${elemt.name}</h4>
+                <h4 data-id="${elemt.id}">${elemt.name}</h4>
                 <p class="map"> <img src="${elemt.img_src}" alt="">
                     ${elemt.address}</p>
                 <h5>英文 2D • ￥30.00</h5>
@@ -202,3 +202,34 @@ window.onunload = function () {
     //将当前时间储存在本地
     localStorage.setItem('videoCurrentTime', videoCurrentTime);
 }
+
+
+/**
+ * 跳转选座页面
+ */
+
+
+//影院选中开关变量，默认不选中
+let isCinemaChoice = false;
+
+let cinemaId;
+//委托事件给main，点击影院名字颜色变蓝
+$('main').on('click', '.text h4', function () {
+    $('.text h4').css('color', '#333');
+    $(this).css('color', '#4073ff');
+    cinemaId = $(this).data('id');
+    isCinemaChoice = true;
+
+})
+
+
+
+//选座按钮点击事件
+$('#toseat').click(function () {
+    //选择了影院才跳转
+    if (isCinemaChoice) {
+        location.assign(`./seats.html?movieId=${choiceMovieId}&cinemaId=${cinemaId}`);
+    } else {
+        alert('请选择影院');
+    }
+})

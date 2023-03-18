@@ -1,3 +1,32 @@
+//获取网页传参信息
+const parseSearch = (searchStr) => {
+    if (!searchStr || searchStr.length <= 1) {
+        //如果截取的信息没有或只有一个？
+        return {};
+    }
+
+    //截取的信息存在且长度不为1
+    //去掉？
+    const paramStr = searchStr.substring(1);
+    //将字符串以&转为数组
+    const paramStrSpitArr = paramStr.split('&');
+    //定义参数对象
+    const params = {};
+
+    //循环数组拆分键值对
+    for (let i = 0; i < paramStrSpitArr.length; i++) {
+        const tempStr = paramStrSpitArr[i];
+
+        const tempStrSplitArr = tempStr.split('=');
+
+        params[tempStrSplitArr[0]] = tempStrSplitArr[1];
+    }
+
+    return params;
+
+}
+
+
 // var seats = [
 //     [{ id: 1, seat: 'kx' }, { id: 2, seat: 'kx' }, { id: 3, seat: 'kx' }, { id: 4, seat: 'kx' }, { id: 5, seat: 'kx' }, { id: 6, seat: 'kx' }],
 //     [{ id: 7, seat: 'kx' }, { id: 8, seat: 'kx' }, { id: 9, seat: 'kx' }, { id: 10, seat: 'kx' }, { id: 11, seat: 'kx' }, { id: 12, seat: 'kx' }],
@@ -7,7 +36,7 @@
 //     [{ id: 31, seat: 'ys' }, { id: 32, seat: 'ys' }, { id: 33, seat: 'ys' }, { id: 34, seat: 'kx' }, { id: 35, seat: 'kx' }, { id: 36, seat: 'kx' }],
 // ]
 
-//将所有的座位信息存储在本地
+// // 将所有的座位信息存储在本地
 // localStorage.setItem('seats',JSON.stringify(seats))
 
 
@@ -34,12 +63,12 @@ function seatsReader() {
         return `
             <dl class="row">
                 ${item.map((seat, index) => {
-                    return `
+            return `
                         <dd data-id="${seat.id}">
                             <div class="${seat.seat}">${seatRow[idx]}${index + 1}</div>
                         </dd>
                     `
-                }).join(' ')}
+        }).join(' ')}
              </dl>  
             `
     }).join(' ');
@@ -48,7 +77,7 @@ function seatsReader() {
 }
 
 /**
- * 座位点解事件
+ * 座位点击事件
  */
 
 
@@ -81,7 +110,10 @@ $('.seat').on('click', 'dd', function () {
                     seatChoose = seatChoose.filter(newSeat => $(this).data('id') != newSeat.id)
                 }
 
-                // console.log(seatChoose)
+                console.log(seatChoose)
+                //将选择的座位信息储存在本地
+                localStorage.setItem('seatChoose', JSON.stringify(seatChoose));
+
             }
         })
     })
@@ -104,6 +136,34 @@ $('.seat').on('click', 'dd', function () {
 
 })
 
+/**
+ * 电影和影院信息渲染
+ */
+
+//获取电影id和影院id
+const parseResult = parseSearch(location.search);
+
+const choiceMovieId = parseResult.movieId;
+const choiceCinemaId = parseResult.cinemaId;
+
+function movieNameReader(moviesArr, cinemaArr) {
+    let movieName = '';
+    moviesArr.forEach(moiveItem => {
+        if (choiceMovieId == moiveItem.id) {
+            movieName += `<h3>${moiveItem.title.split(' ')[0]}</h3>`
+        }
+    })
+    let cinemaName = '';
+    cinemaArr.forEach(cinemaItem => {
+        if (choiceCinemaId == cinemaItem.id) {
+            cinemaName += `<p>${cinemaItem.name} • 2020-04-16 星期一 19：00 </p>`
+        }
+    })
+
+    $('.content').html(movieName + cinemaName)
+}
+
+movieNameReader(nowPlaying, opera);
 
 /**
  * 点击立即购票跳转页面
@@ -123,9 +183,11 @@ $('.buy').click(function () {
     localStorage.setItem('seats', JSON.stringify(seats))
 
     //跳转到订单页面
-    location.assign('./order.html')
+    location.assign(`./buySuccess.html?movieId=${choiceMovieId}&cinemaId=${choiceCinemaId}`)
 
 })
+
+
 
 
 

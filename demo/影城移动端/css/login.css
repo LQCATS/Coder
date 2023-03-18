@@ -69,6 +69,37 @@ main .login-pwd i {
   background-position: center -0.05rem;
 }
 
+main .code {
+  width: 6.7rem;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.5rem;
+}
+
+main .code .input-val {
+  width: 60%;
+  border-radius: 0.14rem;
+  border: 0.01rem solid #666;
+}
+
+main .code .input-val:focus {
+  outline: none;
+}
+
+main .code #canvas {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+main .information {
+  width: 6.7rem;
+  margin: 0 auto;
+  text-align: left;
+  color: #fd1c1c;
+}
+
 main button {
   width: 6.7rem;
   height: 0.96rem;

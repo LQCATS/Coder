@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>购票成功</title>
+    <link rel="stylesheet" href="../css/common.min.css">
+    <link rel="stylesheet" href="../css/buySucces.css">
+</head>
+
+<body>
+    <!-- header -->
+    <header>
+        <h4>购票成功</h4>
+    </header>
+    <!-- header -->
+
+    <!-- main -->
+    <main>
+        <div class="main-top-message">
+            <div class="image">
+                <img src="../images/movie-1111.jpg" alt="">
+            </div>
+            <div class="text">
+                <h5>订单号： 72132342241</h5>
+                <!-- <h4>哥斯拉大战金刚</h4>
+                <p>成都双楠电影城 • 英文 2D</p> -->
+            </div>
+        </div>
+        <div class="seat-order">
+            <div class="seat-left">
+                <p>观影日期</p>
+                <p>2020-04-16 星期一</p>
+                <div class="seat-message">
+                    <span>座位</span>
+                    <ul>
+                        <!-- <li>
+                            F4
+                        </li> -->
+                    </ul>
+                </div>
+            </div>
+            <div class="seat-right">
+                <p>时间</p>
+                <p>19:00</p>
+                <p>座位总数</p>
+                <span class="seats-total">3</span>
+            </div>
+        </div>
+        <div class="border"></div>
+        <div class="order-message">
+            <div class="order-num">
+                <span>兑换码</span>
+                <p>515334</p>
+            </div>
+            <div class="order-qrcode">
+                <p>二维码</p>
+                <div class="qrcode">
+                    <div id="output"></div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- main -->
+
+    <!-- footer  -->
+    <div class="footer">
+        <button>返回首页</button>
+    </div>
+    <!-- footer  -->
+
+    <script src="../js/auto-size.js"></script>
+    <!-- jq22 -->
+    <script src="../js/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="../js/jquery.qrcode.min.js"></script>
+    <!-- jq22 -->
+
+    <script src="../js/movieData.js"></script>
+    <script src="../js/buySuccess.js"></script>
+
+
+    <!-- <script>
+        jQuery(function () {
+            jQuery("#output").qrcode({
+                render: 'canvas',
+                text: 'https://www.woniuxy.com',
+                width: 50,
+                height: 50,
+
+            });
+        });
+    </script> -->
+
+</body>
+
+</html>

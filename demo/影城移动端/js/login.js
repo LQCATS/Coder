@@ -5,6 +5,8 @@ let isEyeShow = false;
 let isUserNameTrue = false;
 //正则密码开关变量，默认失败
 let isUserPwdTrue = false;
+//验证码开关变量，默认失败
+let isCodeTrue = false;
 
 /**
  * 登录函数
@@ -50,6 +52,45 @@ const login = () => {
         }
     })
 
+
+
+
+    //验证码判断
+    $(function () {
+        code_draw();
+        // 点击后刷新验证码
+        $("#canvas").on('click', function () {
+            code_draw();
+        })
+
+        $(".input-val").on('blur', function () {
+            // 将输入的内容转为大写，可通过这步进行大小写验证
+            var val = $(".input-val").val().toLowerCase();
+            // 获取生成验证码值
+            var num = $('#canvas').attr('data-code');
+
+            if (val == '') {
+                $(".input-val").css('borderColor', 'red');
+                $('.information').text('请输入验证码！');
+
+            } else if (val == num) {
+                $(".input-val").css('borderColor', 'green');
+                $('.information').text('');
+                //验证码正确
+                isCodeTrue = true
+
+            } else {
+                $(".input-val").css('borderColor', 'red');
+                $('.information').text('验证码错误！请重新输入！');
+                // alert('验证码错误！请重新输入！');
+                // $(".input-val").val('');
+                // draw(show_num);
+            }
+        })
+    })
+
+
+
     //密码隐藏显示
     $('.eye').click(function () {
         if (isEyeShow) {
@@ -74,7 +115,7 @@ const login = () => {
         let userLists = JSON.parse(localStorage.getItem('users') || '[]');
 
         //所有正则都正确，再判断用户登录账号和密码是不是本地储存的
-        if (isUserNameTrue && isUserPwdTrue) {
+        if (isUserNameTrue && isUserPwdTrue && isCodeTrue) {
             let usersHave = userLists.find(item => {
                 return userName === item.userName && password === item.password
             })
@@ -89,19 +130,23 @@ const login = () => {
                     gender,
                     hobbies
                 }];
-                localStorage.setItem('loginUser',JSON.stringify(loginUser))
+                localStorage.setItem('loginUser', JSON.stringify(loginUser))
                 location.assign('./homePage.html')
             } else {
                 alert('用户名、密码错误')
             }
         } else {
-            alert("用户名、密码格式不正确，请重新登录")
+            alert("用户名、密码格式不正确或者验证码错误，请重新登录")
         }
     })
 
-
-
-
-
 };
 login();
+
+/**
+ * 跳转到注册页面
+ */
+
+$('.toRegister').click(function () {
+    location.assign('./register.html')
+})
