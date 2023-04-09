@@ -25,6 +25,7 @@ header {
 
         img {
             width: 100%;
+            height: 100%;
         }
     }
 
@@ -34,6 +35,7 @@ header {
 
         img {
             width: 100%;
+            height: 100%;
         }
     }
 
@@ -45,7 +47,8 @@ header {
     height: 11.13rem;
     background: url(../images/首页背景3.png) no-repeat;
     background-size: cover;
-    overflow: hidden;
+    padding: 0.01rem; //解决margin-top的传递性
+    position: relative;
 
     .bannerMsg {
         margin-top: 0.85rem;
@@ -87,4 +90,178 @@ header {
         }
 
     }
+
+    .bannerNav {
+        width: 7.5rem;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        position: absolute;
+        top: 9.7rem;
+
+        .textBox {
+            width: 2.2rem;
+            height: 2.2rem;
+            margin: 0.14rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: #fff;
+            border-radius: 0.08rem;
+            box-shadow: 0 0 0.1rem rgba(174, 174, 174, 0.44);
+            font-size: 0.24rem;
+            color: #333;
+
+            img {
+                width: 1.21rem;
+                height: 1.17rem;
+                margin-bottom: 0.2rem;
+            }
+        }
+    }
+
+
+
 }
+
+.content {
+    width: 100%;
+    margin-top: 4.6rem;
+
+    .seriousExams {
+        width: 6.8rem;
+        height: 9.8rem;
+        margin: 0 auto;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        h1 {
+            font-size: 0.37rem;
+            font-weight: 400;
+            color: #373737;
+            position: absolute;
+            top: 0.03rem;
+        }
+
+        h2 {
+            font-size: 0.48rem;
+            font-weight: 400;
+            color: #e6e6e6;
+            margin-bottom: 0.83rem;
+
+        }
+
+        p {
+            font-size: 0.24rem;
+            color: #666666;
+            line-height: 0.65rem;
+        }
+
+        button {
+            width: 1.81rem;
+            height: 0.61rem;
+            border: none;
+            background-color: #726fff;
+            color: #fff;
+            font-size: 0.2rem;
+            margin-top: 0.79rem;
+        }
+
+        img {
+            width: 4.82rem;
+            height: 4.23rem;
+            margin-top: 0.76rem;
+        }
+    }
+
+    .statistics {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+        background: url(../images/首页背景4.png) no-repeat;
+        background-size: cover;
+        background-color: pink;
+
+        h1 {
+            font-size: 0.37rem;
+            font-weight: 400;
+            color: #373737;
+            position: absolute;
+            top: 2.1rem;
+        }
+
+        h2 {
+            font-size: 0.48rem;
+            font-weight: 400;
+            color: #e6e6e6;
+            letter-spacing: -0.05rem;
+            margin: 2.05rem 0 0.8rem 0;
+        }
+
+        .charts {
+            width: 5.9rem;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 1.91rem;
+
+            .chartsBox {
+                width: 2.8rem;
+                height: 3.2rem;
+                background-color: #fff;
+                margin-bottom: 0.27rem;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+
+                .circle {
+                    width: 1.6rem;
+                    height: 1.6rem;
+                    border-radius: 1rem;
+                    color: #fff;
+                    font-size: 0.44rem;
+                    text-align: center;
+                    line-height: 1.6rem;
+                    margin-top: 0.2rem;
+                    
+                    span {
+                        font-size: 0.24rem;
+                    }
+                }
+
+                p {
+                    color: #333;
+                    font-size: 0.24rem;
+                    margin-top: 0.4rem;
+
+                }
+
+                .color1 {
+                    box-shadow: 0 0 0 0.2rem #d1d0ff;
+                    background-color: #726fff;
+                }
+
+                .color2 {
+                    box-shadow: 0 0 0 0.2rem #f8cde3;
+                    background-color: #eb66ab;
+                }
+
+                .color3 {
+                    box-shadow: 0 0 0 0.2rem #e3cdf8;
+                    background-color: #ab66eb;
+                }
+
+                .color4 {
+                    box-shadow: 0 0 0 0.2rem #f6cdf8;
+                    background-color: #e366eb;
+                }
+            }
+        }
+    }
+}     
