@@ -1,0 +1,110 @@
+@import './footer.scss';
+
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+}
+
+body {
+    font-size: 0.14rem
+}
+
+.title {
+    width: 7.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2.3rem;
+    color: #3d3d3d;
+
+
+    h1 {
+        font-size: 0.48rem;
+    }
+
+    h2 {
+        font-size: 0.3rem;
+        margin-top: 0.24rem;
+    }
+}
+
+.content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0.88rem;
+    font-size: 0.24rem;
+    color: #666666;
+
+    p {
+        margin-bottom: 0.18rem;
+    }
+
+    input {
+        width: 6.7rem;
+        height: 0.96rem;
+        border-radius: 0.16rem;
+        border: 0.01rem solid #cccccc;
+        padding: 0.1rem;
+        margin-bottom: 0.53rem;
+
+        &:focus {
+            outline: none;
+        }
+    }
+
+    .password {
+        position: relative;
+
+        p {
+            display: flex;
+            justify-content: space-between;
+
+            span {
+                color: #fd1c1c;
+            }
+        }
+
+        .eyes {
+            width: 0.45rem;
+            height: 0.25rem;
+            position: absolute;
+            top: 0.82rem;
+            right: 0.3rem;
+            background: url(../images/闭眼睛.png) no-repeat;
+            background-size: cover;
+            background-position: 0rem 0rem;;
+        }
+    }
+
+    button {
+        width: 6.7rem;
+        height: 0.96rem;
+        border-radius: 0.16rem;
+        border: none;
+        background-color: #726fff;
+        font-size: 0.32rem;
+        color: #fff;
+        margin-top: 0.41rem;
+    } 
+
+    a {
+        color: #726fff;
+        font-size: 0.24rem;
+        margin-top: 0.51rem;
+    }
+
+}
+
+footer {
+    margin-top: 1.5rem;
+}

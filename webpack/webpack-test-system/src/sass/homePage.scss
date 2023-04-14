@@ -1,3 +1,4 @@
+@import './header.scss';
 @import './footer.scss';
 
 
@@ -11,39 +12,7 @@ body {
     font-size: 0.14rem
 }
 
-header {
-    width: 7.5rem;
-    height: 1.2rem;
-    background-color: #726fff;
-    border-bottom: 0.01rem solid #fff;
 
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 0.47rem 0 0.37rem;
-
-    .logo {
-        width: 2.31rem;
-        height: 0.4rem;
-
-        img {
-            width: 100%;
-            height: 100%;
-        }
-    }
-
-    .menu {
-        width: 0.64rem;
-        height: 0.47rem;
-
-        img {
-            width: 100%;
-            height: 100%;
-        }
-    }
-
-
-}
 
 .banner {
     width: 100%;
@@ -185,6 +154,7 @@ header {
         display: flex;
         flex-direction: column;
         align-items: center;
+        justify-content: center;
         position: relative;
         background: url(../images/首页背景4.png) no-repeat;
         background-size: cover;
