@@ -19,17 +19,28 @@ header {
     color: #fff;
     font-size: 0.3rem;
 
-    .returnPrevious {
-        width: 0.17rem;
-        height: 0.3rem;
-        background: url(../images/错题本_03.png) no-repeat;
-        background-size: cover;
+    .msgBox {
+        display: flex;
+
+        .returnPrevious {
+            width: 0.17rem;
+            height: 0.4rem;
+            background: url(../images/错题本_03.png) no-repeat;
+            background-size: cover;
+        }
+
+        p {
+            font-size: 0.3rem;
+            margin-left: 0.2rem;
+
+        }
     }
 
-    .changeQuestion {
-        .previous {
-            margin-right: 0.55rem;
-        }
+
+
+    .countdown {
+        color: #eaff00;
+        font-size: 0.36rem;
     }
 }
 
@@ -77,38 +88,24 @@ header {
         }
     }
 
-    .answer {
-        width: 6.7rem;
-        height: 1.8rem;
-        background-color: #f4f4f4;
-        border-radius: 0.04rem;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        padding: 0.3rem;
-        color: #333333;
-        font-size: 0.3rem;
 
-        h1 {
-            margin-bottom: 0.25rem;
-            font-size: 0.3rem;
-            font-weight: 400;
-        }
-    }
 }
 
 footer {
-    display: flex;
-    justify-content: space-between;
+    // display: flex;
+    // justify-content: space-between;
     align-items: center;
     padding: 0 0.41rem;
-    margin-top: 4.8rem;
+    margin-top: 6.5rem;
     border-top: 0.01rem solid #dbdbdb;
     padding-top: 0.18rem;
-    
-    .delete {
+    position: relative;
+
+    .collect {
+        float: left;
         font-size: 0.24rem;
         color: #333333;
+        line-height: 0.7rem;
 
         img {
             width: 0.21rem;
@@ -118,13 +115,16 @@ footer {
 
         span {
             vertical-align: middle;
+            color: #fe8545;
 
         }
     }
 
     button {
+        float: left;
         width: 2.6rem;
         height: 0.7rem;
+        margin-left: 1.27rem;
         border: none;
         border-radius: 0.35rem;
         background-color: #726fff;
@@ -135,6 +135,10 @@ footer {
 
     .questionNumber {
         font-size: 0.28rem;
+        float: right;
+        line-height: 0.7rem;
+
+
 
         img {
             width: 0.24rem;
@@ -148,13 +152,41 @@ footer {
             vertical-align: middle;
 
         }
+
         i {
             font-size: 0.18rem;
         }
-        .allQuestions {
+
+        .allQuestionsNUm {
             color: #666;
             vertical-align: middle;
 
+        }
+    }
+
+    .allQuestionBg {
+        width: 100%;
+        height: 13.5rem;
+        
+        position: absolute;
+        bottom: -0.8rem;
+        left: 0;
+        background-color: rgba(97, 95, 95, 0.61);
+
+        .allQuestion {
+            width: 100%;
+            padding: 0 0.41rem;
+            background-color: #fff;
+            position: absolute;
+            // bottom: 1rem;
+            top: 4rem;
+            left: 0;
+
+            .choiceHead {
+                height: 0.91rem;
+                margin-top: 0.19rem;
+                border-bottom: 0.01rem solid #d6d6d6;
+            }
         }
     }
 }

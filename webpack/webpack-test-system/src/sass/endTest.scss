@@ -1,0 +1,150 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-size: 0.14rem;
+    background: url(../images/开始考试.png) no-repeat;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+header {
+    width: 7.5rem;
+    display: flex;
+    justify-content: center;
+
+    .log {
+        width: 4rem;
+        height: 0.69rem;
+        background: url(../images/登录_06.png) no-repeat;
+        background-size: cover;
+        margin: 1.49rem 0 0.44rem;
+    }
+}
+
+.content {
+    width: 6.4rem;
+    background-color: #fff;
+    box-shadow: 0 0 0 0.2rem rgba(106, 144, 214, 0.5);
+    margin-top: 0.6rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .icon {
+        width: 1.3rem;
+        height: 1.3rem;
+        margin-top: 0.62rem;
+
+        img {
+            width: 1.3rem;
+            height: 1.3rem;
+            border-radius: 0.65rem;
+        }
+    }
+
+    h4 {
+        font-size: 0.36rem;
+        margin-top: 0.25rem;
+        margin-bottom: 0.54rem;
+    }
+
+    .score {
+        color: #6966eb;
+        font-size: 0.6rem;
+        font-weight: 700;
+        position: relative;
+
+        span {
+            font-size: 0.3rem;
+            font-weight: 400;
+
+        }
+
+        &::before {
+            content: '';
+            display: block;
+            width: 0.15rem;
+            height: 0.15rem;
+            position: absolute;
+            bottom: 0.1rem;
+            left: -0.3rem;
+            background: url(../images/结束考试_07.png) no-repeat;
+            background-size: cover;
+        }
+
+        &::after {
+            content: '';
+            display: block;
+            width: 0.15rem;
+            height: 0.15rem;
+            // border: 0.01rem solid red;
+            position: absolute;
+            top: 0.1rem;
+            right: -0.25rem;
+            background: url(../images/结束考试_07.png) no-repeat;
+            background-size: cover;
+        }
+    }
+
+    p {
+        font-size: 0.24rem;
+        color: #333;
+        margin-top: 0.29rem;
+    }
+
+    .examMsg {
+        display: flex;
+        width: 5.9rem;
+        margin-top: 0.6rem;
+
+        .examMsgBox {
+            width: 50%;
+            border-right: 0.01rem solid #d6d6d6;
+            text-align: center;
+
+            h1 {
+                font-size: 0.36rem;
+                color: #333;
+            }
+
+            h2 {
+                font-size: 0.24rem;
+                color: #666;
+                margin-top: 0.12rem;
+            }
+        }
+
+        .duration {
+            border: none;
+        }
+    }
+
+    button {
+        width: 5.9rem;
+        height: 0.8rem;
+        border: none;
+        border-radius: 0.04rem;
+        color: #fff;
+        font-size: 0.24rem;
+        background-color: #726fff;
+        margin-top: 0.43rem;
+    }
+
+    .return {
+        width: 5.9rem;
+        height: 0.8rem;
+        text-align: center;
+        line-height: 0.8rem;
+        border: 0.01rem solid #666;
+        border-radius: 0.04rem;
+        font-size: 0.24rem;
+        color: #666;
+        margin: 0.3rem 0 0.6rem;
+    }
+}

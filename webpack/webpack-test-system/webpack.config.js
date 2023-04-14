@@ -10,7 +10,7 @@ const CopyWebpackPlugin = require("copy-webpack-plugin");
 const webpack = require("webpack");
 
 //html文件名数组
-const htmlLists = ['homePage', 'login','register','collect'];
+const htmlLists = ['homePage', 'login', 'register', 'collect', 'tests', 'testsAll', 'startTest', 'endTest'];
 
 const { NODE_ENV } = process.env;
 module.exports = {

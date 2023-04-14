@@ -1,0 +1,101 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-size: 0.14rem;
+    background: url(../images/开始考试.png) no-repeat;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+header {
+    width: 7.5rem;
+    display: flex;
+    justify-content: center;
+
+    .log {
+        width: 4rem;
+        height: 0.69rem;
+        background: url(../images/登录_06.png) no-repeat;
+        background-size: cover;
+        margin: 1.49rem 0 0.44rem;
+    }
+}
+
+.content {
+    width: 6.4rem;
+    background-color: #fff;
+    box-shadow: 0 0 0 0.2rem rgba(106, 144, 214, 0.5);
+    margin-top: 0.6rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .title {
+        font-size: 0.3rem;
+        font-weight: 700;
+        margin: 0.67rem 0 0.73rem;
+    }
+
+    .testMsgBox {
+        width: 5.9rem;
+        height: 2rem;
+        border: 0.01rem solid #d6d6d6;
+        border-radius: 0.15rem;
+        padding-left: 0.2rem;
+        padding-top: 0.3rem;
+        position: relative;
+
+        .msgTitle {
+            width: 1.1rem;
+            font-size: 0.24rem;
+            color: #333;
+            position: absolute;
+            top: -0.15rem;
+            background-color: #fff;
+            text-align: center;
+        }
+
+        p {
+            font-size: 0.2rem;
+            color: #666;
+            margin-bottom: 0.1rem;
+
+            span {
+                color: #ff0000;
+            }
+        }
+    }
+
+    .studentMsg {
+        margin-top: 0.53rem;
+    }
+
+    button {
+        width: 5.9rem;
+        height: 0.8rem;
+        border: none;
+        border-radius: 0.04rem;
+        color: #fff;
+        font-size: 0.24rem;
+        background-color: #726fff;
+        margin-top: 0.43rem;
+    }
+
+    .return {
+        width: 5.9rem;
+        height: 0.8rem;
+        text-align: center;
+        line-height: 0.8rem;
+        border: 0.01rem solid #666;
+        border-radius: 0.04rem;
+        font-size: 0.24rem;
+        color: #666;
+        margin: 0.3rem 0 0.6rem;
+    }
+}
