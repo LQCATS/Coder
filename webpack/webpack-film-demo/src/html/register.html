@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>注册</title>
+</head>
+
+<body>
+    <!-- header -->
+    <header>
+        <div class="register-box">
+            <img src="../images/arrow_l.png" alt="">
+            <p>注册</p>
+        </div>
+    </header>
+    <!-- header -->
+
+    <!-- main -->
+    <main>
+        <div class="main-register register-user">
+            <p>用户名</p>
+            <input type="text" placeholder="请输入用户名">
+            <p>
+                请输入正确格式的手机号码
+            </p>
+        </div>
+        <div class="main-register register-pwd">
+            <p>密码</p>
+            <input type="password">
+            <p>
+                6~16位，首字符大写，只支持数字和字母！
+            </p>
+            <i class="eye"></i>
+        </div>
+        <!-- <div class="main-register register-pwd register-pwd-again">
+            <p>确认密码</p>
+            <input type="password">
+            <i></i>
+        </div> -->
+        <div class="gender-box">
+            <input type="radio" name="gender" value="1">男
+            <input type="radio" name="gender" value="0">女
+        </div>
+        <div class="hobby-box">
+            <input type="checkbox" name="hobby" value="sing">唱
+            <input type="checkbox" name="hobby" value="jump">跳
+            <input type="checkbox" name="hobby" value="rap">rap
+            <input type="checkbox" name="hobby" value="basketball">篮球
+        </div>
+        <button type="submit" id="register-but">立即注册</button>
+
+    </main>
+    <!-- main -->
+
+    <script src="../static/util/auto-size.js"></script>
+</body>
+
+</html>

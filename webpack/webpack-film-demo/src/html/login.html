@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登录</title>
+
+</head>
+
+<body>
+    <!-- header -->
+    <header>
+        <div class="login-box">
+            <img src="../images/arrow_l.png" alt="">
+            <p>登录</p>
+        </div>
+    </header>
+    <!-- header -->
+
+    <!-- main -->
+    <main>
+        <div class="main-login login-user">
+            <p>用户名</p>
+            <input type="text" placeholder="请输入用户名">
+            <p>
+                请输入正确格式的手机号码
+            </p>
+        </div>
+        <div class="main-login login-pwd">
+            <p>
+                <span>密码</span>
+                <em>忘记密码?</em>
+            </p>
+            <input type="password">
+            <p>
+                6~16位，首字符大写，只支持数字和字母！
+            </p>
+            <i class="eye"></i>
+        </div>
+        <div class="code">
+            <input type="text" value="" placeholder="请输入验证码（不区分大小写）" class="input-val" />
+            <canvas id="canvas" width="100" height="43"></canvas>
+        </div>
+        <p class="information"></p>
+        <button type="submit" id="login-but">立即登录</button>
+        <p class="toRegister">立即注册</p>
+
+    </main>
+    <!-- main -->
+
+    <script src="../static/util/auto-size.js"></script>
+
+    <!-- jq22 -->
+    <script src="../static/util/jquery-1.10.2.min.js"></script>
+    <script src="../static/util/code.js"></script>
+    <!-- jq22 -->
+
+
+</body>
+
+</html>
