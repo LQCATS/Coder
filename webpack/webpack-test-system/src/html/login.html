@@ -10,10 +10,10 @@
 
 <body>
     <!-- title -->
-    <header>
+    <div class="title">
         <h1>Welcome To Login</h1>
         <h2>欢迎登录考试系统</h2>
-    </header>
+    </div>
     <!-- title -->
 
     <!-- content -->
@@ -21,14 +21,19 @@
         <div class="userName">
             <p id="userName">用户名</p>
             <input type="text">
+            <p class="errorMsg">请输入正确格式的手机号码</p>
         </div>
         <div class="password">
             <p id="password">密码 <span>忘记密码？</span></p>
             <input type="password">
+            <p class="errorMsg">
+                6~16位，首字符大写，只支持数字和字母！
+            </p>
             <div class="eyes"></div>
+            
         </div>
-        <button>立即登录</button>
-        <a href="">立即注册</a>
+        <button id="login-but">立即登录</button>
+        <a href="./register.html">立即注册</a>
 
 
     </div>

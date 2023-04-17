@@ -12,97 +12,6 @@ body {
     font-size: 0.14rem
 }
 
-ul {
-    list-style: none;
-}
-
-header {
-    position: relative;
-
-    .navCommen {
-        width: 6.7rem;
-        height: 6.85rem;
-        background-color: #fff;
-        border-radius: 0.2rem;
-        padding: 0.67rem 0;
-        position: absolute;
-        top: 2.75rem;
-        z-index: 1;
-
-        ul {
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            align-items: center;
-
-            li {
-                font-size: 0.3rem;
-                line-height: 0.91rem;
-            }
-        }
-
-        .close {
-            width: 0.5rem;
-            height: 0.5rem;
-            border-radius: 0.25rem;
-            background: url(../images/close.png) no-repeat;
-            background-size: cover;
-            position: absolute;
-            top: 0.2rem;
-            right: 0.2rem;
-        }
-
-    }
-
-    .headerNav {
-        display: none;
-    }
-
-    .headerLoginNav {
-        display: none;
-        height: 7.72rem;
-    }
-
-    .headerSecondNav {
-        width: 6.7rem;
-        height: 7.72rem;
-        background-color: #fff;
-        border-radius: 0.2rem;
-        position: absolute;
-        top: 2.75rem;
-        z-index: 1;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 0.3rem;
-        color: #333;
-        text-align: center;
-        display: none;
-
-        table {
-            width: 5.07rem;
-
-            tr {
-                width: 100%;
-                height: 0.8rem;
-            }
-        }
-
-
-        .close {
-            width: 0.5rem;
-            height: 0.5rem;
-            border-radius: 0.25rem;
-            background: url(../images/close.png) no-repeat;
-            background-size: cover;
-            position: absolute;
-            top: 0.2rem;
-            right: 0.2rem;
-        }
-    }
-}
-
 .banner {
     width: 100%;
     height: 11.13rem;
@@ -364,12 +273,14 @@ header {
                 width: 0.9rem;
                 height: 0.38rem;
                 border-radius: 0.19rem;
-                color: #fff;
                 margin-right: 0.2rem;
+                border: 0.01rem solid #726fff;
             }
 
             .bgbule {
                 background-color: #726fff;
+                border: none;
+                color: #fff;
             }
 
             .recently {
@@ -406,6 +317,7 @@ header {
                     font-size: 0.24rem;
                     color: #666666;
                     margin: 0.49rem 0;
+                    text-indent: 0.5rem;
                 }
             }
 

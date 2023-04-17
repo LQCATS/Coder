@@ -32,19 +32,26 @@
         <div class="userName">
             <p id="userName">用户名</p>
             <input type="text">
+            <p class="errorMsg">请输入正确格式的手机号码</p>
         </div>
         <div class="password">
             <p id="password">密码</p>
             <input type="password">
+            <p class="errorMsg">
+                6~16位，首字符大写，只支持数字和字母！
+            </p>
             <div class="eyes"></div>
         </div>
-        <div class="password">
-            <p id="password">确认密码</span></p>
+        <div class="password pwdAgain">
+            <p id="PwdAgain">确认密码</span></p>
             <input type="password">
+            <p class="errorMsg">
+                两次密码不一致
+            </p>
             <div class="eyes"></div>
         </div>
-        <button>立即注册</button>
-        <a href="">立即登录</a>
+        <button id="register-but">立即注册</button>
+        <a href="./login.html">立即登录</a>
 
 
     </div>
