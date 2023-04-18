@@ -37,6 +37,20 @@ async function getTestData() {
             testId
         }
     });
+
+    // 获取学生收藏数据
+    const getCollectByStuIdRes = await http({
+        url: '/tests/getCollectByStuId',
+        data: {
+            testId,
+        }
+    });
+
+    // 学生收藏的题目id数组
+    // const studentCollectQuestionIdArr = getCollectByStuIdRes.data
+    const studentCollectQuestionIdArr = ['62a19d4fcc260000f20007ad', '62a19d4fcc260000f20007ae', '62a19d4fcc260000f20007b0'];
+    console.log(getCollectByStuIdRes);
+
     //后端返回的数据是数组，解构赋值将数据转换成对象
     const [test] = testArr.data
     console.log(test);
@@ -85,10 +99,12 @@ async function getTestData() {
         localStorage.setItem('studentAnswerArr', JSON.stringify(studentAnswerArr));
     })
 
+    localStorage.setItem('studentAnswerArr', JSON.stringify(studentAnswerArr));
+    localStorage.setItem('examQuestionArr', JSON.stringify(test.exerciseId));
+    localStorage.setItem('studentCollectQuestionIdArr', JSON.stringify(studentCollectQuestionIdArr));
+
     //渲染所有问题的模态框
-    allQuestionRender(test.exerciseId);
-
-
+    allQuestionRender(test.exerciseId, [], studentCollectQuestionIdArr);
 
 };
 
@@ -166,6 +182,12 @@ function testRender(data) {
  * 点击所有题目，显示所有题目弹框
  */
 $('.showOut').on('click', function () {
+    const examQuestionArr = JSON.parse(localStorage.getItem('examQuestionArr') || '[]');
+    const studentAnswerArr = JSON.parse(localStorage.getItem('studentAnswerArr') || '[]');
+    const studentCollectQuestionIdArr = JSON.parse(localStorage.getItem('studentCollectQuestionIdArr') || '[]');
+
+    allQuestionRender(examQuestionArr, studentAnswerArr, studentCollectQuestionIdArr);
+
     $('.allQuestionBg').css({ display: 'block' })
 });
 
@@ -180,7 +202,15 @@ $('.choiceHead').on('click', function () {
  * 渲染所有题目模态框的信息的函数
  */
 
-function allQuestionRender(data) {
+/**
+ * 
+ * @param {*} examQuestionArr 题目数据
+ * @param {*} answerListArr 学生选择答案列表
+ * @param {*} studentCollectQuestionIdArr 学生收藏考试题目id列表
+ */
+function allQuestionRender(examQuestionArr, answerListArr = [], studentCollectQuestionIdArr = []) {
+
+
     let radioHtml = '';//单选题的字符串
     let radioNum = 0;//单选题数量
     let radioScore = 0;//单选题总分数
@@ -189,13 +219,18 @@ function allQuestionRender(data) {
     let checkboxScore = 0;//多选题总分数
 
     //遍历数组判断type拼接对应的字符串
-    data.forEach((item, index) => {
+    examQuestionArr.forEach((item, index) => {
+        const answerList = answerListArr[index];
+        const isChooseAnswer = answerList && answerList.length;
+        const isCollect = studentCollectQuestionIdArr.includes(item._id);
+
+        // bgc
         if (item.type == 0) {
-            radioHtml += `<li class=${index} data-index=${index} data-score=${item.score}>${index + 1}</li>`;
+            radioHtml += `<li class='${isChooseAnswer ? 'bgc' : ''}' data-index=${index} data-score=${item.score}>${index + 1}${isCollect ? '⭐' : ''}</li>`;
             radioNum++
             radioScore += item.score
         } else if (item.type == 1) {
-            checkboxHtml += `<li data-index=${index} data-score=${item.score}>${index + 1}</li>`;
+            checkboxHtml += `<li class='${isChooseAnswer ? 'bgc' : ''}' data-index=${index} data-score=${item.score}>${index + 1}${isCollect ? '⭐' : ''}</li>`;
             checkboxNum++
             checkboxScore += item.score
         }
@@ -206,9 +241,6 @@ function allQuestionRender(data) {
     //渲染多选题
     $('#checkbox').html(checkboxHtml);
     $('.checkboxNum').text(`多选题（共${checkboxNum}题，合计${checkboxScore}分）`);
-
-
-
 };
 
 /**
