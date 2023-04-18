@@ -28,11 +28,15 @@
             <p>递接文件</p>
         </div>
         <div class="option">
-            <div> <input type="radio" name="poption" id="poption1"><label for="poption1">A. 正面朝向对方</label></div>
+            <!-- <div><input type="radio" name="poption" id="poption1"><label for="poption1">A. 正面朝向对方</label></div>
 
             <div><input type="radio" name="poption" id="poption2"><label for="poption2">B. 正面朝向对方</label></div>
 
-            <div><input type="radio" name="poption" id="poption3"><label for="poption3">C. 正面朝向对方</label></div>
+            <div><input type="radio" name="poption" id="poption3"><label for="poption3">C. 正面朝向对方</label></div> -->
+        </div>
+        <div class="changeBox">
+            <button class="previous">上一题</button>
+            <button class="next">下一题</button>
         </div>
     </div>
     <!-- content -->
@@ -44,8 +48,8 @@
             <span>收藏</span>
         </div>
         <button>提交试卷</button>
-        <div class="questionNumber">
-            <img src="../images/错题本2_07.png" alt="">
+        <div class="questionNumber showOut">
+            <img src="../images/错题本2_07.png" alt="" >
             <span class="atPresent">1</span><i>/</i><span class="allQuestionsNUm">100</span>
 
         </div>
@@ -66,28 +70,22 @@
                 </div>
                 <div class="allChoice">
                     <div class="commenStyle radioChoice">
-                        <p>单选题（共10题，合计20分）</p>
-                        <ul>
-                            <li class="bgc">1
+                        <p class="radioNum">单选题（共10题，合计20分）</p>
+                        <ul id="radioBox">
+                            <!-- <li class="bgc">1
                                 <div class="collectIcon"></div>
                             </li>
                             <li class="bgc">2</li>
                             <li>3
                                 <div class="collectIcon"></div>
-                            </li>
-                            <li>4</li>
-                            <li>5</li>
-                            <li>6</li>
-                            <li>7</li>
-                            <li>8</li>
-                            <li>9</li>
-                            <li>10</li>
+                            </li> -->
+                            
                         </ul>
                     </div>
                     <div class="commenStyle checkboxChoice">
-                        <p>多选题（共10题，合计20分）</p>
-                        <ul>
-                            <li>1</li>
+                        <p class="checkboxNum">多选题（共10题，合计20分）</p>
+                        <ul id="checkbox">
+                            <!-- <li>1</li>
                             <li>2</li>
                             <li>3</li>
                             <li>4</li>
@@ -96,7 +94,7 @@
                             <li>7</li>
                             <li>8</li>
                             <li>9</li>
-                            <li>10</li>
+                            <li>10</li> -->
                         </ul>
 
                     </div>

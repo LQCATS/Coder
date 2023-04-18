@@ -51,7 +51,7 @@ body {
             border-top: 0.01rem solid #dbdbdb;
             padding: 0.28rem 0.2rem;
             display: flex;
-            justify-content: space-between;
+            // justify-content: space-between;
             align-items: center;
 
             >img {
@@ -116,6 +116,7 @@ body {
                 line-height: 0.45rem;
                 color: #fff;
                 font-size: 0.24rem;
+                margin-left: 0.7rem;
             }
 
 
