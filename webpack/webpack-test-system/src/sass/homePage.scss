@@ -321,53 +321,56 @@ body {
                 }
             }
 
-            .alertBg {
-                width: 7.5rem;
-                height: 300rem;
-                background-color: rgba(97, 95, 95, 0.61);
+            
+
+        }
+
+        .alertBg {
+            width: 7.5rem;
+            height: 300rem;
+            background-color: rgba(97, 95, 95, 0.61);
+            position: absolute;
+            bottom: -3rem;
+            right: 0rem;
+            // visibility: hidden;
+            display: none;
+
+            .noticeAlert {
+                width: 6.7rem;
+                height: 7.72rem;
+                background-color: #fff;
+                border-radius: 0.2rem;
+                padding: 0 0.4rem;
                 position: absolute;
-                bottom: -3rem;
-                right: -0.4rem;
-                display: none;
+                bottom: 4.5rem;
+                left: 0.4rem;
 
-                .noticeAlert {
-                    width: 6.7rem;
-                    height: 7.72rem;
-                    background-color: #fff;
-                    border-radius: 0.2rem;
-                    padding: 0 0.4rem;
+                .close {
+                    width: 0.5rem;
+                    height: 0.5rem;
+                    border-radius: 0.25rem;
+                    background: url(../images/close.png) no-repeat;
+                    background-size: cover;
                     position: absolute;
-                    bottom: 4.5rem;
-                    left: 0.4rem;
+                    top: 0.2rem;
+                    right: 0.2rem;
+                }
 
-                    .close {
-                        width: 0.5rem;
-                        height: 0.5rem;
-                        border-radius: 0.25rem;
-                        background: url(../images/close.png) no-repeat;
-                        background-size: cover;
-                        position: absolute;
-                        top: 0.2rem;
-                        right: 0.2rem;
-                    }
+                h3 {
+                    position: static;
+                    font-size: 0.3rem;
+                    color: #373737;
+                    text-align: center;
+                    margin: 0.54rem 0;
+                }
 
-                    h1 {
-                        position: static;
-                        font-size: 0.3rem;
-                        color: #373737;
-                        text-align: center;
-                        margin: 0.54rem 0;
-                    }
-
-                    p {
-                        font-size: 0.24rem;
-                        color: #666666;
-                        line-height: 0.58rem;
-                        text-indent: 0.55rem;
-                    }
+                p {
+                    font-size: 0.24rem;
+                    color: #666666;
+                    line-height: 0.58rem;
+                    text-indent: 0.55rem;
                 }
             }
-
         }
     }
 }

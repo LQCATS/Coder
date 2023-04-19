@@ -75,6 +75,7 @@ header {
 .content {
     width: 100%;
     padding: 0.4rem;
+    margin-bottom: 1rem;
 
     .title {
         display: flex;
@@ -165,18 +166,39 @@ header {
         }
     }
 
+    .changeBox {
+        display: flex;
+        justify-content: space-between;
+        padding: 0.25rem 0.5rem;
+
+        button {
+            width: 1.6rem;
+            height: 0.6rem;
+            background-color: #726fff;
+            border: none;
+            border-radius: 0.05rem;
+            color: #fff;
+            font-size: 0.24rem;
+        }
+    }
+
 
 }
 
 footer {
     // display: flex;
     // justify-content: space-between;
+    width: 100%;
     align-items: center;
     padding: 0 0.41rem;
     margin-top: 3.5rem;
     border-top: 0.01rem solid #dbdbdb;
     padding-top: 0.18rem;
-    position: relative;
+    position: fixed;
+    // bottom: 0.2rem;
+    bottom: 0;
+    left: 0;
+    background-color: #fff;
 
     .collect {
         float: left;
@@ -192,7 +214,7 @@ footer {
 
         span {
             vertical-align: middle;
-            color: #fe8545;
+            // color: #fe8545;
 
         }
     }

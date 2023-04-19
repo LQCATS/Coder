@@ -144,7 +144,8 @@ footer {
 
         span {
             vertical-align: middle;
-            color: #fe8545;
+            // color: #fe8545;
+            color: #333;
 
         }
     }
@@ -279,7 +280,9 @@ footer {
     top: 0;
     display: flex;
     justify-content: center;
-    display: none;
+    // display: none;
+    visibility: hidden;
+
 
 
     .alert {

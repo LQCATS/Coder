@@ -7,7 +7,7 @@ import { http } from '../static/utils/http';
 import { getUrlData } from '../static/utils/getUrlData';
 
 //获取网页传参数据
-const { testId } = getUrlData();
+const { testId, typeId } = getUrlData();
 
 //获取用户token
 const token = localStorage.getItem('token');
@@ -73,6 +73,6 @@ $('.content').on('click', '.return', function () {
 });
 
 //跳转到开始答题
-$('.content').on('click','button',function () {
-    location.assign(`../html/tests.html?testId=${testId}`)
+$('.content').on('click', 'button', function () {
+    location.assign(`../html/tests.html?testId=${testId}&typeId=${typeId}`)
 });

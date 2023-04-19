@@ -42,8 +42,9 @@ header {
     padding: 0.4rem;
 
     .title {
+        // width: 6.5rem;
         display: flex;
-        align-items: center;
+        // align-items: center;
         margin-top: 0.48rem;
         margin-bottom: 0.49rem;
 
@@ -56,12 +57,17 @@ header {
             border-radius: 0.02rem;
             font-size: 0.2rem;
             color: #fff;
+            margin-top: 0.08rem;
+            flex-shrink: 0;
         }
 
         p {
             margin-left: 0.2rem;
             font-size: 0.3rem;
             color: #333333;
+            flex-shrink: 0;
+            width: 6rem;
+
         }
     }
 

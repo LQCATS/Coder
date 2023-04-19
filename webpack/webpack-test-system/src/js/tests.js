@@ -1,14 +1,18 @@
 import '../sass/tests.scss';
 import '../static/utils/auto-size';
 
+//引入收藏小心心图片
+import { starChoose } from '../images/Tests/test-star2.png';
+//引入收藏小心心图片
+import { star } from '../images/Tests/test-star.png';
 //引入工具函数获取试卷id
 import { getUrlData } from '../static/utils/getUrlData';
 //引入请求数据函数
 import { http } from '../static/utils/http';
 
 //获取试卷id
-const { testId } = getUrlData();
-console.log(testId);
+const { testId, typeId } = getUrlData();
+// console.log(testId);
 
 //当前显示的题目在数组中对应的下标，默认渲染第一道题
 let checkIndex = 0;
@@ -45,11 +49,14 @@ async function getTestData() {
             testId,
         }
     });
+    // console.log(getCollectByStuIdRes);
+
 
     // 学生收藏的题目id数组
-    // const studentCollectQuestionIdArr = getCollectByStuIdRes.data
-    const studentCollectQuestionIdArr = ['62a19d4fcc260000f20007ad', '62a19d4fcc260000f20007ae', '62a19d4fcc260000f20007b0'];
-    console.log(getCollectByStuIdRes);
+    const studentCollectQuestionArr = getCollectByStuIdRes.data.map(item => item.exerciseId);//收藏题目的所有信息
+    const studentCollectQuestionIdArr = studentCollectQuestionArr.map(item => item._id);
+    // const studentCollectQuestionIdArr = ['62a19d4fcc260000f20007ad', '62a19d4fcc260000f20007ae', '62a19d4fcc260000f20007b0'];
+    // console.log(studentCollectQuestionIdArr);
 
     //后端返回的数据是数组，解构赋值将数据转换成对象
     const [test] = testArr.data
@@ -62,7 +69,7 @@ async function getTestData() {
     countdownRender(test.durations * 60);
 
     //渲染题目
-    testRender(test)
+    testRender(test);
 
     //点击切换上一题
     $('.previous').on('click', function () {
@@ -83,7 +90,7 @@ async function getTestData() {
 
     //获取学生答案，储存在本地
     $('.option').on('change', 'input', function () {
-        console.log(checkIndex);
+        // console.log(checkIndex);
         //学生选择的答案
         let answerChecked = [];
         //先获取学生答案
@@ -105,6 +112,132 @@ async function getTestData() {
 
     //渲染所有问题的模态框
     allQuestionRender(test.exerciseId, [], studentCollectQuestionIdArr);
+
+    //点击答题卡题目，页面渲染对应的题目
+    $('.allChoice').on('click', 'li', function () {
+        console.log($(this).text());
+        checkIndex = $(this).text() - 1;
+        testRender(test);
+    });
+
+
+    //点击收藏按钮收藏题目
+    $('.collectStatus').on('click', async function () {
+        //获取收藏按钮绑定的题目id
+        const exerciseId = $(this).data('id');
+        //向后端发送请求
+
+        const getCollectRes = await http({
+            url: '/tests/addCollectOrDelet',
+            method: 'POST',
+            data: {
+                exerciseId,
+            }
+        });
+        console.log(getCollectRes);
+
+
+        // 获取学生收藏数据
+        const getCollectByStuIdRes = await http({
+            url: '/tests/getCollectByStuId',
+            data: {
+                testId,
+            }
+        });
+        console.log(getCollectByStuIdRes);
+
+
+        // 学生收藏的题目id数组
+        const studentCollectQuestionArr = getCollectByStuIdRes.data.map(item => item.exerciseId);//收藏题目的所有信息
+        const studentCollectQuestionIdArr = studentCollectQuestionArr.map(item => item._id);
+        // const studentCollectQuestionIdArr = ['62a19d4fcc260000f20007ad', '62a19d4fcc260000f20007ae', '62a19d4fcc260000f20007b0'];
+        console.log(studentCollectQuestionIdArr);
+        localStorage.setItem('studentCollectQuestionIdArr', JSON.stringify(studentCollectQuestionIdArr));
+
+
+
+        if (getCollectRes.msg == '收藏成功') {
+
+            testRender(test);
+        } else if (getCollectRes.msg == '删除成功') {
+
+            testRender(test);
+        }
+
+    });
+
+    //点击提交试卷弹出信息提示框
+    $('.submit').on('click', function () {
+        $('.alertBg').css({ visibility: 'visible' });
+        //从本地取出考试答案
+        const studentAnswerArr = JSON.parse(localStorage.getItem('studentAnswerArr'));
+        // console.log(studentAnswerArr);
+        if (studentAnswerArr.includes(null) || studentAnswerArr.includes(undefined)) {
+            $('.alert p').text('有试题未完成，是否现在交卷？');
+        } else {
+            if (studentAnswerArr.length < test.exerciseId.length) {
+                $('.alert p').text('有试题未完成，是否现在交卷？');
+            } else {
+                $('.alert p').text('考试已完成，是否现在交卷？');
+            }
+        }
+    });
+
+    //点击关闭考试信息弹窗提醒
+    $('.btn button:first-child').on('click', function () {
+        $('.alertBg').css({ visibility: 'hidden' });
+    });
+
+    //点击确认提交按钮，保存数据，跳转页面
+    $('.btn button:nth-child(2)').on('click', async function () {
+        //从本地取出考试答案
+        const studentAnswerArr = JSON.parse(localStorage.getItem('studentAnswerArr'));
+
+        //算考试总成绩
+        let totalScore = 0;//总成绩
+        let getTotalScore = 0;//得到的总成绩
+
+        test.exerciseId.forEach((item, index) => {
+            totalScore += item.score;
+            if (studentAnswerArr[index]) {
+                if (studentAnswerArr[index].join() == item.answer.join()) {
+                    getTotalScore += item.score;
+                }
+            }
+        })
+        // console.log(getTotalScore);
+        // console.log(totalScore);
+
+        //向后端发送请求，添加到已考试卷
+        //需要传递的参数testId, typeId, answers, score, durations, accuracy
+        const accuracy = (getTotalScore / totalScore) * 100 + '%';//准确率
+        // console.log(accurac);
+        const durationsArr = $('.countdown').text().split(':');
+        const timeNow = (durationsArr[0] - 0) * 3600 + (durationsArr[1] - 0) * 60 + (durationsArr[2] - 0)
+        const durations = test.durations * 60 - timeNow;
+        // console.log(durations);
+        const answers = localStorage.getItem('studentAnswerArr');
+        console.log(answers);
+
+        const addTestedRes = await http({
+            url: '/tests/addTested',
+            method: 'POST',
+            data: {
+                testId,
+                typeId,
+                answers,
+                score: getTotalScore,
+                durations,
+                accuracy
+            }
+        });
+        console.log(addTestedRes);
+
+        //跳转到结束考试界面
+        location.assign(`../html/endTest.html?testId=${testId}&typeId=${typeId}`)
+    })
+
+
 
 };
 
@@ -153,8 +286,11 @@ function countdownRender(totalTime) {
 function testRender(data) {
     // console.log(data.exerciseId[checkIndex]);
     const questionData = data.exerciseId[checkIndex];
+    const studentCollectQuestionIdArr = localStorage.getItem('studentCollectQuestionIdArr');
+    const isCollect = studentCollectQuestionIdArr.includes(data.exerciseId[checkIndex]._id);
+    // console.log(isCollect);
     //渲染题目类型和名字
-    $('.title p').text(questionData.topics);
+    $('.title p').text(`${checkIndex + 1}、${questionData.topics}`);
     $('.questionType').text(questionData.type == 0 ? '单选' : '多选')
 
     //选项的字符串拼接
@@ -175,7 +311,14 @@ function testRender(data) {
     //渲染当前题目序号
     $('.atPresent').text(checkIndex + 1);
     //渲染题目总数
-    $('.allQuestionsNUm').text(data.exerciseId.length)
+    $('.allQuestionsNUm').text(data.exerciseId.length);
+
+    //渲染左下角的收藏图片
+    $('.star').attr('src', `${isCollect ? starChoose : star}`);
+    //渲染左下角的收藏按钮
+    $('.orange').css({ color: isCollect ? '#fe8545' : '#333' });
+    //给收藏按钮绑定题目的_id
+    $('.collectStatus').data('id', data.exerciseId[checkIndex]._id);
 };
 
 /**
@@ -208,6 +351,8 @@ $('.choiceHead').on('click', function () {
  * @param {*} answerListArr 学生选择答案列表
  * @param {*} studentCollectQuestionIdArr 学生收藏考试题目id列表
  */
+
+
 function allQuestionRender(examQuestionArr, answerListArr = [], studentCollectQuestionIdArr = []) {
 
 
@@ -226,11 +371,11 @@ function allQuestionRender(examQuestionArr, answerListArr = [], studentCollectQu
 
         // bgc
         if (item.type == 0) {
-            radioHtml += `<li class='${isChooseAnswer ? 'bgc' : ''}' data-index=${index} data-score=${item.score}>${index + 1}${isCollect ? '⭐' : ''}</li>`;
+            radioHtml += `<li class='${isChooseAnswer ? 'bgc' : ''}' data-index=${index} data-score=${item.score}>${index + 1}${isCollect ? '<div class="collectIcon"></div>' : ''}</li>`;
             radioNum++
             radioScore += item.score
         } else if (item.type == 1) {
-            checkboxHtml += `<li class='${isChooseAnswer ? 'bgc' : ''}' data-index=${index} data-score=${item.score}>${index + 1}${isCollect ? '⭐' : ''}</li>`;
+            checkboxHtml += `<li class='${isChooseAnswer ? 'bgc' : ''}' data-index=${index} data-score=${item.score}>${index + 1}${isCollect ? '<div class="collectIcon"></div>' : ''}</li>`;
             checkboxNum++
             checkboxScore += item.score
         }
@@ -241,16 +386,21 @@ function allQuestionRender(examQuestionArr, answerListArr = [], studentCollectQu
     //渲染多选题
     $('#checkbox').html(checkboxHtml);
     $('.checkboxNum').text(`多选题（共${checkboxNum}题，合计${checkboxScore}分）`);
+
+
 };
 
 /**
- * 获取学生的答案，渲染已回答的背景颜色
+ * 点击返回上一页
  */
 
-studentAnswerArr.forEach((item,index) => {
-    if (item) {
-        
-    }
-})
+$('.msgBox').on('click', function () {
+    history.go(-1);
+});
+
+
+
+
+
 
 

@@ -1,6 +1,6 @@
 export function http({ url, method = 'GET', data = {} }) {
     const BASE_URL = 'http://127.0.0.1:8888';
-    const token = localStorage.getItem('token')
+    const token = localStorage.getItem('token');
     return new Promise((resolve, reject) => {
         $.ajax({
             url: BASE_URL + url,

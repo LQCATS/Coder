@@ -84,7 +84,7 @@ async function testedRender() {
                             <span>限时${item.testId.durations}分钟</span>
                         </div>
                     </div>
-                    <div class="button">查看</div>
+                    <div class="button" data-id=${item._id}>查看</div>
                 </div>`
         });
         //渲染该学生已经考完了的试卷信息
@@ -114,5 +114,18 @@ $('.testsDoing').on('click', '.button', function () {
     console.log(testId);
     //跳转到开始考试页面
     location.assign(`../html/startTest.html?testId=${testId}&typeId=${typeId}`)
+});
+
+/**
+ * 查看解析
+ */
+
+$('.tested').on('click', '.button', function () {
+    // console.log($(this));
+    //获取自定义属性，试卷id
+    const testId = $(this).data('id');
+    console.log(testId);
+    //跳转到开始考试页面
+    location.assign(`../html/analysis.html?testId=${testId}&typeId=${typeId}`)
 });
 

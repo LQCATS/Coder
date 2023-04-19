@@ -3,7 +3,6 @@ import '../sass/homePage.scss';
 import './header';
 
 import { http } from '../static/utils/http';
-import { data } from 'jquery';
 
 
 
@@ -11,9 +10,11 @@ import { data } from 'jquery';
  * 点击公告，弹出公告弹窗
  */
 
-$('.noticeBox').on('click', function () {
-    $('.alertBg').show();
-    $('.noticeAlert').show();
+$('.noticeContent').on('click', '.noticeBox', function () {
+    console.log($(this));
+    $('.alertBg').css({ display: 'block' });
+    $('.noticeAlert').css({ display: 'block' });
+    $('.noticeAlertMsg').html($(this).html())
 });
 
 /**
@@ -91,7 +92,7 @@ async function allNotice() {
 }
 
 
-//渲染公告
+//根据时间选项渲染公告
 $('.noticeType').on('click', '.type', async function () {
     //点击notice的类型，增加选中的样式，其他改为未选择的样式
     $('.type').removeClass('bgbule');
@@ -104,26 +105,26 @@ $('.noticeType').on('click', '.type', async function () {
     //获取当前时间，筛选对应的公告
     //当前时间
     const day = new Date();
-    
+
     //现在的时间戳
-    const seconde =  parseInt(day.getTime()/1000);
+    const seconde = parseInt(day.getTime() / 1000);
 
     //一个月前的时间戳
     const oneMonthAgo = seconde - 5184000;
 
     //最近7天的时间戳
     const oneWeek = seconde - 604800;
-    
+
     //筛选出一个月前的公告
     const oneMonthAgoNoticeArr = notice.data.filter(item => {
-        const noticeTime = parseInt(new Date(item.date).getTime() /1000);
+        const noticeTime = parseInt(new Date(item.date).getTime() / 1000);
         // console.log(noticeTime)
         return noticeTime < oneMonthAgo
     });
 
-   //筛选出一个星期内的公告
+    //筛选出一个星期内的公告
     const oneWeekNoticeArr = notice.data.filter(item => {
-        const noticeTime = parseInt(new Date(item.date).getTime() /1000);
+        const noticeTime = parseInt(new Date(item.date).getTime() / 1000);
         // console.log(noticeTime)
         return noticeTime > oneWeek
     })
@@ -148,4 +149,26 @@ $('.noticeType').on('click', '.type', async function () {
             break;
     };
 
+});
+
+/**
+ * 点击收藏夹，跳转收藏夹页面
+ */
+$('.colloct').on('click', function () {
+    location.assign('../html/collect.html');
+})
+
+/**
+ * 点击错题本跳转错题本页面
+ */
+
+$('.error').on('click', function () {
+    location.assign('../html/errorBook.html');
+});
+
+/**
+ * 点击考试进入考试页面
+ */
+$('.test').on('click', function () {
+    location.assign('../html/testsAll.html');
 });
