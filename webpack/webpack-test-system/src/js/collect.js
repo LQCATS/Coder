@@ -2,7 +2,7 @@ import '../sass/collect.scss';
 import '../static/utils/auto-size';
 
 import { http } from '../static/utils/http';
-import { deleteImg } from '../images/错题本2_05.png'
+import deleteImg from '../images/错题本2_05.png'
 
 //当前显示的题目在数组中对应的下标，默认渲染第一道题
 let checkIndex = 0;
@@ -67,7 +67,7 @@ async function getCollectAllBystudent() {
         console.log(allCollectMsgDetleteAfterArr);
         testRender(allCollectMsgDetleteAfterArr)
     });
-    
+
 }
 
 

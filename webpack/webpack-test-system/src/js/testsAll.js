@@ -23,18 +23,19 @@ console.log(typeId);
  */
 testsDoingRender();
 async function testsDoingRender() {
-    //向后端发送请求，通过typeId获取试卷信息
-    const testsData = await http({
-        url: '/tests/getIdByType',
-        data: {
-            typeId
-        }
-    });
-    console.log(testsData);
+    if (typeId) {
+        //向后端发送请求，通过typeId获取试卷信息
+        const testsData = await http({
+            url: '/tests/getIdByType',
+            data: {
+                typeId
+            }
+        });
+        console.log(testsData);
 
-    //渲染正在进行考试的页面
-    const testsHtml = testsData.data.map(item => {
-        return `
+        //渲染正在进行考试的页面
+        const testsHtml = testsData.data.map(item => {
+            return `
             <div class="testBox">
                 <img src=${testsDoingImg} alt="">
                 <div class="msg">
@@ -50,9 +51,38 @@ async function testsDoingRender() {
                 </div>
                 <div class="button" data-id=${item._id}>进入</div>
             </div>`
-    }).join('');
+        }).join('');
 
-    $('.testsDoing').append(testsHtml);
+        $('.testsDoing').append(testsHtml);
+    } else {
+        //向后端发送请求，获取试卷信息
+        const testsData = await http({
+            url: '/tests/findAllTests',
+        });
+        console.log(testsData);
+
+        //渲染正在进行考试的页面
+        const testsHtml = testsData.data.map(item => {
+            return `
+            <div class="testBox">
+                <img src=${testsDoingImg} alt="">
+                <div class="msg">
+                    <div class="testType">
+                        <h3>${item.title}</h3>
+                        <div class="testStatus">可参加</div>
+                    </div>
+                    <p>${item['start-time']}~${item['end-time']}</p>
+                    <div class="duration">
+                        <img src=${clock} alt="">
+                        <span>限时${item.durations}分钟</span>
+                    </div>
+                </div>
+                <div class="button" data-id=${item._id}>进入</div>
+            </div>`
+        }).join('');
+
+        $('.testsDoing').append(testsHtml);
+    }
 };
 
 /**
@@ -84,12 +114,12 @@ async function testedRender() {
                             <span>限时${item.testId.durations}分钟</span>
                         </div>
                     </div>
-                    <div class="button" data-id=${item._id}>查看</div>
+                    <div class="button" data-id=${item.testId._id} data-type=${item.typeId}>查看</div>
                 </div>`
         });
         //渲染该学生已经考完了的试卷信息
         $('.tested').append(testedHtml);
-        
+
     } else {
         const testedHtml = `
             <div class="testBox">
@@ -123,9 +153,12 @@ $('.testsDoing').on('click', '.button', function () {
 $('.tested').on('click', '.button', function () {
     // console.log($(this));
     //获取自定义属性，试卷id
-    const testId = $(this).data('id');
-    console.log(testId);
-    //跳转到开始考试页面
-    location.assign(`../html/analysis.html?testId=${testId}&typeId=${typeId}`)
+    const testId2 = $(this).data('id');
+    console.log(testId2);
+    //获取试卷类型的type
+    const typeId2 = $(this).data('type');
+    console.log(typeId2);
+    //跳转到解析页面
+    location.assign(`../html/analysis.html?testId=${testId2}&typeId=${typeId2}`);
 });
 

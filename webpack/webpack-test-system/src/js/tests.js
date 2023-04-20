@@ -1,14 +1,15 @@
 import '../sass/tests.scss';
 import '../static/utils/auto-size';
 
-//引入收藏小心心图片
-import { starChoose } from '../images/Tests/test-star2.png';
-//引入收藏小心心图片
-import { star } from '../images/Tests/test-star.png';
+
 //引入工具函数获取试卷id
 import { getUrlData } from '../static/utils/getUrlData';
 //引入请求数据函数
 import { http } from '../static/utils/http';
+//引入收藏小心心图片
+import starChoose  from '../images/Tests/test-star2.png';
+//引入收藏小心心图片
+import  star  from '../images/Tests/test-star.png';
 
 //获取试卷id
 const { testId, typeId } = getUrlData();
@@ -314,7 +315,7 @@ function testRender(data) {
     $('.allQuestionsNUm').text(data.exerciseId.length);
 
     //渲染左下角的收藏图片
-    $('.star').attr('src', `${isCollect ? starChoose : star}`);
+    $('.star').attr('src', isCollect ? starChoose : star);
     //渲染左下角的收藏按钮
     $('.orange').css({ color: isCollect ? '#fe8545' : '#333' });
     //给收藏按钮绑定题目的_id

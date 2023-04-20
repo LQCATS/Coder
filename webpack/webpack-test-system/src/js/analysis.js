@@ -92,6 +92,24 @@ async function getTestedData() {
     //渲染考生答案
     testedRender(test);
 
+    //点击切换上一题
+    $('.previous').on('click', function () {
+        if (checkIndex > 0) {
+            testedRender(test);
+            answersMsg()
+        }
+    });
+
+    //点击切换下一题
+    $('.next').on('click', function () {
+
+        if (checkIndex < test.answers.length - 1) {
+            testedRender(test);
+            answersMsg()
+        }
+    });
+
+
 
 
 
@@ -160,8 +178,8 @@ function testedRender(data) {
     $('.time').text(time);
 
     //渲染考生答案
-    if (data.answers.length != 0) {
-        const answer = data.answers.map(i => {
+    if (data.answers[checkIndex] != null || data.answers[checkIndex] != undefined) {
+        const answer = data.answers[checkIndex].map(i => {
             return `
         ${optionLetter[i]}`
         });
@@ -174,18 +192,7 @@ function testedRender(data) {
 
 }
 
-/**
- * 答题提示
- */
 
-const resultStudent = $('.answer h2').text().substring(5);
-const resultRight = $('.answer h1').text().substring(5);
-
-if (resultStudent == resultRight) {
-    $('.img').css({ backgroundColor: 'green' });
-    $('.result p').css({ color: 'green' });
-    $('.result p').text('答对了');
-}
 
 /**
  * 点击返回试卷中心
@@ -194,3 +201,29 @@ if (resultStudent == resultRight) {
 $('.returnTestAll').on('click', function () {
     location.assign(`../html/testsAll.html?typeId=${typeId}&testId=${testId}`);
 });
+
+$('.msgBox').on('click', function () {
+    location.assign(`../html/testsAll.html?typeId=${typeId}&testId=${testId}`);
+});
+
+/**
+ * 答题提示
+ */
+function answersMsg() {
+    const resultStudent = $('.answer h2').text().substring(5);
+    const resultRight = $('.answer h1').text().substring(5);
+
+    if (resultStudent == resultRight) {
+        $('.img').css({ backgroundColor: 'green' });
+        $('.result p').css({ color: 'green' });
+        $('.result p').text('答对了');
+        $('.answer h2 span').css({ color: 'green' })
+    } else {
+        $('.img').css({ backgroundColor: '#ff4b50' });
+        $('.result p').css({ color: '#ff4b50' });
+        $('.result p').text('答错了');
+        $('.answer h2 span').css({ color: '#ff4b50' })
+
+    }
+};
+

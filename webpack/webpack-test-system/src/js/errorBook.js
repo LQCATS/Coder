@@ -2,8 +2,8 @@ import '../static/utils/auto-size';
 import '../sass/errorBook.scss';
 
 import { http } from '../static/utils/http';
-import { deleteImg } from '../images/错题本2_05.png'
-import { jiexiImg } from '../images/错题本2_03.png'
+import deleteImg from '../images/错题本2_05.png'
+import jiexiImg from '../images/错题本2_03.png'
 
 //当前显示的题目在数组中对应的下标，默认渲染第一道题
 let checkIndex = 0;
@@ -72,7 +72,7 @@ async function getCollectAllBystudent() {
     });
 
 
-    
+
     //点击重新复习，回到第一题
     $('.returnFrist').on('click', function () {
         checkIndex = 0;
