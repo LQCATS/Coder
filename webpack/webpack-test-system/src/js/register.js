@@ -1,5 +1,6 @@
 import '../static/utils/auto-size';
 import '../sass/register.scss';
+import './header';
 
 import { http } from '../static/utils/http';
 
