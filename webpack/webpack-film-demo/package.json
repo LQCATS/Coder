@@ -4,7 +4,7 @@
   "main": "./src/js/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "server": "cross-env NODE_ENV=development webpack-dev-server --config webpack.config.js",
+    "serve": "cross-env NODE_ENV=development webpack-dev-server --config webpack.config.js",
     "build": "cross-env NODE_ENV=production webpack --config webpack.config.js"
   },
   "keywords": [],
