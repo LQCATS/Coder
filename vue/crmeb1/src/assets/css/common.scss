@@ -1,0 +1,131 @@
+body,div {
+    margin: 0px;
+    padding: 0px;
+}
+
+.container {
+    display: flex;
+    background-color: #f5f5f5;
+    .nav {
+        width:15vw;
+        height:100vh;
+        background: #304156;
+    }
+}
+
+
+
+.content {
+    width:85vw;
+    height:100vh;
+    background: #f5f5f5;
+    display: flex;
+    flex-direction: column;
+
+    .page_content {
+        margin-left:20px;
+        width: calc(85vw - 40px);
+        flex: 1;
+        background: #fff;
+        border: 1px solid #ccc;
+        margin-bottom: 20px;
+
+        .search_content {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 10px 20px;
+        }
+
+        .btn_warp {
+            
+            display: flex;
+            margin: 10px 20px;
+        }
+
+        .table_warp {
+            display: flex;
+            margin: 10px 0px;
+            border-top: 1px solid #ccc;
+        }
+    }
+}
+
+.search_item {
+    display:flex;
+    height: 40px;
+    align-items: center;
+    margin-right: 20px;
+
+    .item_txt {
+        font-size: 15px;
+    }
+
+    .item_form {
+        margin-left: 10px;
+    }
+}
+
+.btn_common {
+    border: 1px solid #ccc;
+    background:#fff;
+    padding:5px 15px;
+    cursor:pointer;
+    font-size: 13px;
+    &:hover {
+        border-color: #badeff;
+        color:#1890ff;
+        background: #e8f4ff;
+    }
+}
+
+.data_table {
+    // margin-top:20px;
+    margin-left: 20px;
+    width: calc(100% - 40px);
+    border-collapse: collapse;
+    .myth {
+        height: 50px;
+        font-weight: 800;
+        border-bottom: 1px solid #ccc;
+        font-size: 13px;
+    }
+    .mytr {
+        height: 50px;
+        border-bottom: 1px solid #ccc;
+        font-size: 13px;
+
+        td {
+            height: 40px;
+        }
+    }
+}
+
+
+.detailDialog {
+    position: absolute;
+    width: 50vw;
+    height: 50vh;
+    top: 25vh;
+    left: 25vw;
+    background: #ccc;
+    border: 1px solid #000;
+
+    
+}
+.dialogMask {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    left: 0px;
+    top: 0px;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.opItem {
+    width: 80px;
+    height: 30px;
+    line-height: 30px;
+    text-align:center;
+    cursor: pointer;
+    border: 1px solid pink;
+}
