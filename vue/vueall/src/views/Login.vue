@@ -1,6 +1,10 @@
 <template>
     <div class="bg">
+        <particles></particles>
         <el-card class="login_box">
+            <div class="log">
+                <img src="@/assets/resource/images/logo.png" alt="">
+            </div>
             <el-row :gutter="20" class="row">
                 <el-col :span="6">
                     <div class="title">用户名:</div>
@@ -27,14 +31,25 @@
 
                 </el-col>
             </el-row>
+            <el-row :gutter="20" class="row">
+                <el-col :span="6">
+                    <div class="title"></div>
+                </el-col>
+                <el-col :span="16">
+                    <el-button type="primary" class="loginBtn">登录</el-button>
+                </el-col>
+            </el-row>
         </el-card>
 
     </div>
 </template>
 
 <script>
+import particles from '@/components/particles';
 export default {
-
+    components: {
+        particles,
+    }
 }
 </script>
 
@@ -55,16 +70,28 @@ export default {
     width: 500px;
     height: 350px;
     background-color: #fff;
+    z-index: 999;
 
     .row {
         display: flex;
         align-items: center;
         margin-top: 20px;
-        
+
         .title {
             text-align: right;
         }
     }
 
+}
+
+
+.loginBtn {
+        width: 75%;
+
+    }
+.log {
+    width: 271px;
+    height: 74px;
+    margin: 0 auto;
 }
 </style>

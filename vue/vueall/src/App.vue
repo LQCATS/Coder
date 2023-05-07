@@ -1,15 +1,28 @@
 <template>
   <div id="app">
-    <Login></Login>
+    <!-- <Login></Login> -->
+    <Order></Order>
+    <!-- <RoleManagement></RoleManagement> -->
+    <!-- <Managers></Managers> -->
+    <!-- <Power></Power> -->
+
   </div>
 </template>
 
 <script>
 import Login from '@/views/Login.vue';
+import Order from '@/views/Order.vue';
+import RoleManagement from '@/views/RoleManagement.vue';
+import Managers from '@/views/Managers.vue';
+import Power from '@/views/Power.vue';
 
 export default {
   components: {
-    Login
+    Login,
+    Order,
+    RoleManagement,
+    Managers,
+    Power
   }
 }
 
