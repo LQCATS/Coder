@@ -36,7 +36,7 @@
                     <div class="title"></div>
                 </el-col>
                 <el-col :span="16">
-                    <el-button type="primary" class="loginBtn">登录</el-button>
+                    <el-button type="primary" class="loginBtn" @click="goPage">登录</el-button>
                 </el-col>
             </el-row>
         </el-card>
@@ -49,6 +49,11 @@ import particles from '@/components/particles';
 export default {
     components: {
         particles,
+    },
+    methods: {
+        goPage() {
+            this.$router.push('/layout/order');
+        }
     }
 }
 </script>

@@ -1,43 +1,18 @@
 <template>
     <div>
         <el-container>
-            <el-aside width="200px">
-                <!-- logo图片 -->
-                <div class="log">
-                    <img src="@/assets/resource/images/logo.png" alt="">
-                </div>
-
-                <!-- 侧边栏导航区域，elementUi -->
-                <el-row class="tac">
-                    <el-menu default-active="2" class="el-menu-vertical-demo" background-color="rgb(48, 65, 86)"
-                        text-color="#fff" active-text-color="#ffd04b" style="box-sizing: border-box;border: 0px;">
-                        <el-submenu index="1">
-                            <template slot="title">
-                                <i class="el-icon-s-order"></i>
-                                <span>管理权限</span>
-                            </template>
-                            <el-menu-item-group>
-                                <el-menu-item index="1-1">角色管理</el-menu-item>
-                                <el-menu-item index="1-2">管理员列表</el-menu-item>
-                                <el-menu-item index="1-3">权限规则</el-menu-item>
-                            </el-menu-item-group>
-
-                        </el-submenu>
-                    </el-menu>
-
-                </el-row>
-            </el-aside>
+            
             <el-container>
                 <!-- 头部导航 -->
-                <el-header style="display: flex;justify-content: space-between;">
-                    <!-- 左边 -->
+                <!-- <el-header style="display: flex;justify-content: space-between;">
+                    
                     <el-breadcrumb separator="/">
                         <el-breadcrumb-item :to="{ path: '/' }">主页</el-breadcrumb-item>
                         <el-breadcrumb-item><a href="/">设置</a></el-breadcrumb-item>
                         <el-breadcrumb-item><a href="/">管理权限</a></el-breadcrumb-item>
                         <el-breadcrumb-item>权限规则</el-breadcrumb-item>
                     </el-breadcrumb>
-                    <!-- 右边 -->
+                    
                     <div style="display: flex;align-items: flex-end;">
                         <span class="el-icon-search" style="margin-right: 20px;"></span>
                         <span class="el-icon-full-screen" style="margin-right: 20px;"></span>
@@ -57,7 +32,7 @@
                             </el-dropdown>
                         </el-col>
                     </div>
-                </el-header>
+                </el-header> -->
 
 
                 <el-main>

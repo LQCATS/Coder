@@ -1,11 +1,12 @@
 <template>
   <div id="app">
-    <!-- <Login></Login> -->
+    <!-- <Login></Login>
     <Order></Order>
-    <!-- <RoleManagement></RoleManagement> -->
-    <!-- <Managers></Managers> -->
-    <!-- <Power></Power> -->
-
+    <RoleManagement></RoleManagement>
+    <Managers></Managers>
+    <Power></Power> -->
+    <!-- 路由出口 -->
+    <router-view></router-view>
   </div>
 </template>
 
