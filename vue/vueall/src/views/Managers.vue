@@ -49,20 +49,21 @@
                                     :value="item.value">
                                 </el-option>
                             </el-select> -->
-                            <el-input placeholder="身份Id" v-model="fkRoleId" class="input-with-select"
+                            <el-input placeholder="身份Id" v-model="condition.fkRoleId" class="input-with-select"
                                 style="width: 200px;margin-right: 20px;">
-                                <el-button slot="append" icon="el-icon-search" @click="doSearch"></el-button>
+                                <el-button slot="append" icon="el-icon-search" @click="search(1)"></el-button>
                             </el-input>
 
-                            <el-select v-model="statusVal" placeholder="状态" style="margin-right: 10px;">
+                            <!-- <el-select v-model="statusVal" placeholder="状态" style="margin-right: 10px;">
                                 <el-option v-for="item in status" :key="item.value" :label="item.label" :value="item.value">
                                 </el-option>
-                            </el-select>
-                            <el-input placeholder="姓名或者账号" style="width: 300px;" v-model="magagersName"></el-input>
-                            <el-button type="primary" style="margin-left: 10px;" @click="doSearch">查询</el-button>
-
+                            </el-select> -->
+                            <el-input placeholder="姓名或者账号" style="width: 300px;"
+                                v-model="condition.magagersName"></el-input>
+                            <el-button type="primary" style="margin-left: 10px;" @click="search(1)">查询</el-button>
+                            <el-button type="info" plain icon="el-icon-refresh" @click="doReset">重置</el-button>
                             <div style="margin-top: 20px;">
-                                <el-radio-group v-model="managersStatus" size="medium" @change="doSearch">
+                                <el-radio-group v-model.number="condition.managersStatus" size="medium" @change="search(1)">
                                     <el-radio-button label="">全部状态</el-radio-button>
                                     <el-radio-button label="0">已失效</el-radio-button>
                                     <el-radio-button label="1">已生效</el-radio-button>
@@ -79,6 +80,18 @@
                             <!-- <el-table-column type="index" width="80" label="ID"></el-table-column> -->
                             <el-table-column prop="fkRoleId" label="ID"></el-table-column>
                             <el-table-column prop="name" label="姓名"></el-table-column>
+                            <el-table-column prop="headImg" label="头像">
+                                <template slot-scope="scope">
+                                    <div style="width: 100px;height: 100px;">
+                                        <el-image :src="scope.row.headImg" fit="contain"
+                                            :preview-src-list="[scope.row.headImg]">
+
+                                        </el-image>
+                                    </div>
+
+                                </template>
+                            </el-table-column>
+
                             <el-table-column prop="accountNumber" label="账号"></el-table-column>
                             <el-table-column prop="mobile" label="手机号"></el-table-column>
                             <el-table-column prop="identity" label="身份"></el-table-column>
@@ -92,7 +105,7 @@
                             </el-table-column>
                         </el-table>
 
-                        <el-pagination @size-change="changeSize" @current-change="changePage"
+                        <el-pagination @size-change="changeSize" @current-change="search"
                             layout="->,total, sizes, prev, pager, next, jumper" :page-sizes="[3, 5, 10, 15]"
                             :page-size="pageSize" :total="total" :current-page="curPage">
                         </el-pagination>
@@ -114,9 +127,12 @@ export default {
 
     data() {
         return {
-            managersStatus: '',
-            magagersName: '',
-            fkRoleId: '',
+            condition: {
+                managersStatus: '',
+                magagersName: '',
+                fkRoleId: '',
+            },
+            statusVal: '',
             pageSize: 5,
             curPage: 1,
             total: 0,
@@ -155,18 +171,23 @@ export default {
                 value: '选项3',
                 label: '不显示'
             }],
-            statusVal: '',
+
         };
     },
     methods: {
-        search() {
+        search(page) {
+            //参数处理
+            if (page) {
+                this.curPage = page;
+            }
+            //分页查询用户接口
             managers.searchManagers({
                 pageSize: this.pageSize,
                 curPage: this.curPage,
                 condition: {
-                    fkRoleId: this.fkRoleId,
-                    name: this.magagersName,
-                    status: this.managersStatus,
+                    fkRoleId: this.condition.fkRoleId,
+                    name: this.condition.magagersName,
+                    status: this.condition.managersStatus,
                 }
 
             }).then(res => {
@@ -176,10 +197,16 @@ export default {
                 this.total = res.data.total;
             })
         },
-        doSearch() {
-            this.curPage = 1;
-            this.search();
+        doReset() {
+            this.condition.fkRoleId = '';
+            this.condition.magagersName = '';
+            this.condition.managersStatus = '';
+            this.search(1);
         },
+        // doSearch() {
+        //     this.curPage = 1;
+        //     this.search();
+        // },
         changeSize(pageSize) {
             //确定参数
             this.pageSize = pageSize;
@@ -187,18 +214,18 @@ export default {
             //发送请求
             this.search();
         },
-        changePage(cuePage) {
-            //确定参数
-            this.curPage = cuePage;
-            //发送请求
-            this.search();
+        // changePage(cuePage) {
+        //     //确定参数
+        //     this.curPage = cuePage;
+        //     //发送请求
+        //     this.search();
 
-        }
+        // }
 
     },
     created() {
         console.log('managers', "created");
-        this.search();
+        this.search(1);
     }
 }
 

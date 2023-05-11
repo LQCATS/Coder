@@ -53,6 +53,19 @@ const routes = [
         path: 'power',
         component: () => import('@/views/Power'),
       },
+      {
+        name: 'OrderDetails',
+        path: 'orderDetails',
+        component: () => import('@/views/OrderDetails'),
+      },
+      //动态路由传参
+      // {
+      //   name: 'OrderDetails',
+      //   path: 'orderDetails/:id/:name?',
+      //   component: () => import('@/views/OrderDetails'),
+      //   props: true
+      // },
+
     ]
   },
 
