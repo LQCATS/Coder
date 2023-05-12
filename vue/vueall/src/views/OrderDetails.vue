@@ -101,6 +101,12 @@ export default {
         // this.$order.getOrderById({ id: this.id }).then(res => {
         //     this.objOrder = res.data;
         // })
+    },
+    activated() {
+        console.log('activated');
+        this.$order.getOrderById(this.$route.query).then(res => {
+            this.objOrder = res.data;
+        })
     }
 
 }

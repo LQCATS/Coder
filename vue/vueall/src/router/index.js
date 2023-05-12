@@ -65,7 +65,16 @@ const routes = [
       //   component: () => import('@/views/OrderDetails'),
       //   props: true
       // },
-
+      {
+        name: 'GoodsType',
+        path: 'goodsType',
+        component: () => import('@/views/GoodsType'),
+      },
+      {
+        name: 'Dictionary',
+        path: 'dictionary',
+        component: () => import('@/views/Dictionary'),
+      },
     ]
   },
 

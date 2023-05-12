@@ -1,7 +1,7 @@
 <template>
     <div>
         <el-container>
-            
+
             <el-container>
                 <!-- 头部导航 -->
                 <!-- <el-header style="display: flex;justify-content: space-between;">
@@ -56,15 +56,19 @@
                         <!-- 底部表格 -->
                         <el-table :data="tableData" style="width: 100%">
 
-                            <el-table-column prop="roleNum" label="角色编号"></el-table-column>
-                            <el-table-column prop="roleName" label="角色昵称"></el-table-column>
+                            <el-table-column prop="code" label="角色编号"></el-table-column>
+                            <el-table-column prop="name" label="角色昵称"></el-table-column>
                             <el-table-column prop="status" label="状态"></el-table-column>
-                            <el-table-column prop="startTime" label="创建时间"></el-table-column>
-                            <el-table-column prop="newTime" label="更新时间"></el-table-column>
                             <el-table-column fixed="right" label="操作">
                                 <el-button type="text">编辑</el-button>
                             </el-table-column>
                         </el-table>
+
+                        <!-- 分页 -->
+                        <el-pagination @size-change="changeSize" @current-change="search" :current-page="curPage"
+                            :page-sizes="[3, 5, 10, 15]" :page-size="pageSize"
+                            layout="->,total, sizes, prev, pager, next, jumper" :total="total">
+                        </el-pagination>
                     </el-card>
 
 
@@ -89,32 +93,37 @@ export default {
             radio3: '',
             date: '',
             orderNum: '',
-            tableData: [
-                {
-                    roleNum: 1,
-                    roleName: '超级管理员',
-                    status: '',
-                    startTime: '2023-05-07',
-                    newTime: '2023-05-07'
-                },
-                {
-                    roleNum: 1,
-                    roleName: '超级管理员',
-                    status: '',
-                    startTime: '2023-05-07',
-                    newTime: '2023-05-07'
-                },
-                {
-                    roleNum: 1,
-                    roleName: '超级管理员',
-                    status: '',
-                    startTime: '2023-05-07',
-                    newTime: '2023-05-07'
-                }
-
-            ]
+            tableData: [],
+            curPage: 1,
+            pageSize: 3,
+            total: 0,
         };
     },
+    methods: {
+        changeSize(size) {
+            this.pageSize = size;
+            this.search(1);
+        },
+        search(page) {
+            //参数处理
+            if (page) {
+                this.curPage = page;
+            }
+            //请求接口
+            this.$managers.searchUmsRole({
+                curPage: this.curPage,
+                pageSize: this.pageSize,
+            }).then(res => {
+                this.tableData = res.data.rows;
+                this.total = res.data.total;
+            }).catch(err => {
+                console.log(err);
+            })
+        }
+    },
+    created() {
+        this.search(1);
+    }
 }
 
 </script>

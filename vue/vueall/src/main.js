@@ -13,9 +13,15 @@ import 'element-ui/lib/theme-chalk/index.css';
 // !加载elementui组件，也可以称为安装elementui组件到vue框架中。
 Vue.use(ElementUI);
 
-
+//全局注册接口
 import order from '@/apis/order';
 Vue.prototype.$order = order;
+import managers from '@/apis/managers';
+Vue.prototype.$managers = managers;
+import goods from '@/apis/goods';
+Vue.prototype.$goods = goods;
+import dictionary from '@/apis/dictionary';
+Vue.prototype.$dictionary = dictionary;
 
 new Vue({
   router,

@@ -19,7 +19,7 @@
                             <el-menu-item-group>
                                 <el-menu-item index="/layout/order">订单</el-menu-item>
                             </el-menu-item-group>
-                            
+
 
                         </el-submenu>
                         <el-submenu index="2">
@@ -34,7 +34,29 @@
                             </el-menu-item-group>
 
                         </el-submenu>
-                        
+
+                        <el-submenu index="3">
+                            <template slot="title">
+                                <i class="el-icon-s-order"></i>
+                                <span>商品</span>
+                            </template>
+                            <el-menu-item-group>
+                                <el-menu-item index="/layout/goodsType">商品分类</el-menu-item>
+                            </el-menu-item-group>
+
+                        </el-submenu>
+
+                        <el-submenu index="4">
+                            <template slot="title">
+                                <i class="el-icon-s-order"></i>
+                                <span>系统管理</span>
+                            </template>
+                            <el-menu-item-group>
+                                <el-menu-item index="/layout/dictionary">字典管理</el-menu-item>
+                            </el-menu-item-group>
+
+                        </el-submenu>
+
                     </el-menu>
 
                 </el-row>
@@ -73,7 +95,10 @@
                     </div>
                 </el-header>
                 <el-main>
-                    <router-view></router-view>
+                    <!-- 路由出口 -->
+                    <KeepAlive>
+                        <router-view></router-view>
+                    </KeepAlive>
                 </el-main>
 
             </el-container>

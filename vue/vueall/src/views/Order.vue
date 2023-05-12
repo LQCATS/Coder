@@ -109,20 +109,23 @@
                     <el-table-column label="操作" fixed="right">
 
                         <template slot-scope="scope">
-                            <el-button type="text" v-if="scope.row.status == 1" @click="showSend(scope.row)">发货</el-button>
+                            <!-- <el-button type="text" v-if="scope.row.status == 1" @click="showSend(scope.row)">发货</el-button>
                             <el-button type="text" v-else-if="scope.row.status == 5"
                                 @click="showVerification(scope.row)">核销</el-button>
-                            <!-- <el-button type="text" @click="goDetails(scope.row)">详情</el-button> -->
+                            <el-button type="text" @click="goDetails(scope.row)">详情</el-button> -->
 
 
-                            <el-dropdown trigger="click" :hide-on-click="false" style="margin-left:5px">
+                            <el-dropdown trigger="click" style="margin-left:5px" @command="cmd => doCmd(cmd, scope.row)">
                                 <span class="el-dropdown-link">
                                     更多<i class="el-icon-arrow-down el-icon--right"></i>
                                 </span>
                                 <el-dropdown-menu slot="dropdown">
-                                    <el-dropdown-item><el-button type="text" @click="goDetails(scope.row)">订单详情</el-button></el-dropdown-item>
-                                    <el-dropdown-item>订单记录</el-dropdown-item>
-                                    <el-dropdown-item>订单备注</el-dropdown-item>
+                                    <el-dropdown-item command="detail" @click="goDetails(scope.row)">订单详情</el-dropdown-item>
+
+                                    <el-dropdown-item command="send" v-if="scope.row.status == 1">发货</el-dropdown-item>
+
+                                    <el-dropdown-item command="verification" v-else-if="scope.row.status == 5">核销</el-dropdown-item>
+
                                     <el-dropdown-item>打印小票</el-dropdown-item>
                                 </el-dropdown-menu>
                             </el-dropdown>
@@ -345,6 +348,16 @@ export default {
         };
     },
     methods: {
+        //
+        doCmd(cmd, row) {
+            if ('detail' == cmd) {
+                this.goDetails(row);
+            } else if ('send' == cmd) {
+                this.showVerification(row);
+            } else if ('verification' == cmd) {
+                this.showSend(row);
+            }
+        },
         //跳转订单详情页面,?传参
         goDetails(row) {
             console.log('goDetails', row.id);
