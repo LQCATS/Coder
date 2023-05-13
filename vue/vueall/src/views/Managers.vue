@@ -4,10 +4,7 @@
 
         <el-container>
             <el-main>
-                <!-- 页签 -->
-                <el-tag v-for="tag in tags" :key="tag.name" closable disable-transitions :type="tag.type">
-                    {{ tag.name }}
-                </el-tag>
+                
 
                 <!-- content,订单页面content头部筛选单选框 -->
                 <el-card class="box-card">
@@ -331,10 +328,7 @@ export default {
     background-color: rgb(48, 65, 86);
 }
 
-.el-main {
-    background-color: #E9EEF3;
-    color: #333;
-}
+
 
 .log {
     width: 100%;
@@ -358,7 +352,7 @@ export default {
 }
 
 .el-main {
-    padding: 10px 20px;
+    padding: 0 20px;
     background-color: #f5f5f5;
 }
 

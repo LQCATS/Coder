@@ -1,80 +1,42 @@
 <template>
     <div>
         <el-container>
+            <el-main>
 
-            <el-container>
-                <!-- 头部导航 -->
-                <!-- <el-header style="display: flex;justify-content: space-between;">
-                    
-                    <el-breadcrumb separator="/">
-                        <el-breadcrumb-item :to="{ path: '/' }">主页</el-breadcrumb-item>
-                        <el-breadcrumb-item><a href="/">设置</a></el-breadcrumb-item>
-                        <el-breadcrumb-item><a href="/">管理权限</a></el-breadcrumb-item>
-                        <el-breadcrumb-item>角色管理</el-breadcrumb-item>
-                    </el-breadcrumb>
-                    
-                    <div style="display: flex;align-items: flex-end;">
-                        <span class="el-icon-search" style="margin-right: 20px;"></span>
-                        <span class="el-icon-full-screen" style="margin-right: 20px;"></span>
-                        <span class="el-icon-bell" style="margin-right: 20px;"></span>
-                        <el-col style="width: 100px;">
-
-                            <el-dropdown trigger="click">
-                                <span class="el-dropdown-link" style="color: #666;">
-                                    demo<i class="el-icon-arrow-down el-icon--right"></i>
-                                </span>
-                                <el-dropdown-menu slot="dropdown">
-                                    <el-dropdown-item>主页</el-dropdown-item>
-                                    <el-dropdown-item>个人中心</el-dropdown-item>
-                                    <el-dropdown-item>布局设置</el-dropdown-item>
-                                    <el-dropdown-item>退出</el-dropdown-item>
-                                </el-dropdown-menu>
-                            </el-dropdown>
-                        </el-col>
+                <!-- content,订单页面content头部筛选单选框 -->
+                <el-card class="box-card">
+                    <div class="searchBox">
+                        <el-input placeholder="请输入角色昵称" style="width: 300px;"></el-input>
+                        <el-button type="primary" style="margin-left: 20px;">查询</el-button>
+                        <el-button type="primary" icon="el-icon-refresh"
+                            style="background-color: #fff;border-color: #dbdbdb;color: #666;">重置</el-button>
                     </div>
-                </el-header> -->
+                    <div style="margin: 10px 0 10px 0;">
+                        <el-button type="primary" style="margin-left: 20px;margin-left: 10px;">添加角色</el-button>
+
+                    </div>
+                    <!-- 底部表格 -->
+                    <el-table :data="tableData" style="width: 100%">
+
+                        <el-table-column prop="code" label="角色编号"></el-table-column>
+                        <el-table-column prop="name" label="角色昵称"></el-table-column>
+                        <el-table-column prop="status" label="状态"></el-table-column>
+                        <el-table-column fixed="right" label="操作">
+                            <el-button type="text">编辑</el-button>
+                        </el-table-column>
+                    </el-table>
+
+                    <!-- 分页 -->
+                    <el-pagination @size-change="changeSize" @current-change="search" :current-page="curPage"
+                        :page-sizes="[3, 5, 10, 15]" :page-size="pageSize"
+                        layout="->,total, sizes, prev, pager, next, jumper" :total="total">
+                    </el-pagination>
+                </el-card>
 
 
-                <el-main>
-                    <!-- 页签 -->
-                    <el-tag v-for="tag in tags" :key="tag.name" closable disable-transitions :type="tag.type">
-                        {{ tag.name }}
-                    </el-tag>
-
-                    <!-- content,订单页面content头部筛选单选框 -->
-                    <el-card class="box-card">
-                        <div class="searchBox">
-                            <el-input placeholder="请输入角色昵称" style="width: 300px;"></el-input>
-                            <el-button type="primary" style="margin-left: 20px;">查询</el-button>
-                            <el-button type="primary" icon="el-icon-refresh"
-                                style="background-color: #fff;border-color: #dbdbdb;color: #666;">重置</el-button>
-                        </div>
-                        <div style="margin: 10px 0 10px 0;">
-                            <el-button type="primary" style="margin-left: 20px;margin-left: 10px;">添加角色</el-button>
-
-                        </div>
-                        <!-- 底部表格 -->
-                        <el-table :data="tableData" style="width: 100%">
-
-                            <el-table-column prop="code" label="角色编号"></el-table-column>
-                            <el-table-column prop="name" label="角色昵称"></el-table-column>
-                            <el-table-column prop="status" label="状态"></el-table-column>
-                            <el-table-column fixed="right" label="操作">
-                                <el-button type="text">编辑</el-button>
-                            </el-table-column>
-                        </el-table>
-
-                        <!-- 分页 -->
-                        <el-pagination @size-change="changeSize" @current-change="search" :current-page="curPage"
-                            :page-sizes="[3, 5, 10, 15]" :page-size="pageSize"
-                            layout="->,total, sizes, prev, pager, next, jumper" :total="total">
-                        </el-pagination>
-                    </el-card>
-
-
-                </el-main>
-            </el-container>
+            </el-main>
         </el-container>
+
     </div>
 </template>
 
@@ -83,11 +45,6 @@ export default {
 
     data() {
         return {
-            tags: [
-                { name: '主页', type: '' },
-                { name: '角色管理', type: 'roleManagement' },
-
-            ],
             radio1: '',
             radio2: '',
             radio3: '',
@@ -147,11 +104,6 @@ export default {
     background-color: rgb(48, 65, 86);
 }
 
-.el-main {
-    background-color: #E9EEF3;
-    color: #333;
-}
-
 .log {
     width: 100%;
     margin: 20px 0;
@@ -174,7 +126,7 @@ export default {
 }
 
 .el-main {
-    padding: 10px 20px;
+    padding: 0 20px;
     background-color: #f5f5f5;
 }
 

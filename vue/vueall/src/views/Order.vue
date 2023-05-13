@@ -31,11 +31,6 @@
                     </div>
                 </el-header> -->
         <el-main>
-            <!-- 页签 -->
-            <el-tag v-for="tag in tags" :key="tag.name" closable disable-transitions :type="tag.type">
-                {{ tag.name }}
-            </el-tag>
-
             <!-- content,订单页面content头部筛选单选框 -->
             <el-card class="box-card">
                 <div style="margin-top: 20px" class="radio_box">
@@ -331,11 +326,7 @@ export default {
             pageSize: 3,
             total: 0,
 
-            tags: [
-                { name: '主页', type: '' },
-                { name: '订单', type: 'order' },
-
-            ],
+            
             condition: {
                 orderType: '',
                 orderStatus: '',
@@ -552,17 +543,6 @@ export default {
     color: #409EFF;
 }
 
-
-
-.el-main {
-    background-color: #E9EEF3;
-    color: #333;
-}
-
-
-
-
-
 .el-tag {
     background-color: #fff;
     color: #333;
@@ -570,7 +550,7 @@ export default {
 }
 
 .el-main {
-    padding: 10px 20px;
+    padding: 0 20px;
     background-color: #f5f5f5;
 }
 

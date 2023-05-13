@@ -75,6 +75,16 @@ const routes = [
         path: 'dictionary',
         component: () => import('@/views/Dictionary'),
       },
+      {
+        name: 'Article',
+        path: 'article',
+        component: () => import('@/views/Article'),
+      },
+      {
+        name: 'ArticleType',
+        path: 'articleType',
+        component: () => import('@/views/ArticleType'),
+      },
     ]
   },
 

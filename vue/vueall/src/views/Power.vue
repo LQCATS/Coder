@@ -3,43 +3,8 @@
         <el-container>
             
             <el-container>
-                <!-- 头部导航 -->
-                <!-- <el-header style="display: flex;justify-content: space-between;">
-                    
-                    <el-breadcrumb separator="/">
-                        <el-breadcrumb-item :to="{ path: '/' }">主页</el-breadcrumb-item>
-                        <el-breadcrumb-item><a href="/">设置</a></el-breadcrumb-item>
-                        <el-breadcrumb-item><a href="/">管理权限</a></el-breadcrumb-item>
-                        <el-breadcrumb-item>权限规则</el-breadcrumb-item>
-                    </el-breadcrumb>
-                    
-                    <div style="display: flex;align-items: flex-end;">
-                        <span class="el-icon-search" style="margin-right: 20px;"></span>
-                        <span class="el-icon-full-screen" style="margin-right: 20px;"></span>
-                        <span class="el-icon-bell" style="margin-right: 20px;"></span>
-                        <el-col style="width: 100px;">
-
-                            <el-dropdown trigger="click">
-                                <span class="el-dropdown-link" style="color: #666;">
-                                    demo<i class="el-icon-arrow-down el-icon--right"></i>
-                                </span>
-                                <el-dropdown-menu slot="dropdown">
-                                    <el-dropdown-item>主页</el-dropdown-item>
-                                    <el-dropdown-item>个人中心</el-dropdown-item>
-                                    <el-dropdown-item>布局设置</el-dropdown-item>
-                                    <el-dropdown-item>退出</el-dropdown-item>
-                                </el-dropdown-menu>
-                            </el-dropdown>
-                        </el-col>
-                    </div>
-                </el-header> -->
-
-
                 <el-main>
-                    <!-- 页签 -->
-                    <el-tag v-for="tag in tags" :key="tag.name" closable disable-transitions :type="tag.type">
-                        {{ tag.name }}
-                    </el-tag>
+                    
 
                     <!-- content,订单页面content头部筛选单选框 -->
                     <el-card class="box-card">
@@ -197,10 +162,6 @@ export default {
     background-color: rgb(48, 65, 86);
 }
 
-.el-main {
-    background-color: #E9EEF3;
-    color: #333;
-}
 
 .log {
     width: 100%;
@@ -224,7 +185,7 @@ export default {
 }
 
 .el-main {
-    padding: 10px 20px;
+    padding: 0 20px;
     background-color: #f5f5f5;
 }
 

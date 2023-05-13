@@ -22,6 +22,8 @@ import goods from '@/apis/goods';
 Vue.prototype.$goods = goods;
 import dictionary from '@/apis/dictionary';
 Vue.prototype.$dictionary = dictionary;
+import article from '@/apis/article';
+Vue.prototype.$article = article;
 
 new Vue({
   router,

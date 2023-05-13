@@ -57,6 +57,18 @@
 
                         </el-submenu>
 
+                        <el-submenu index="5">
+                            <template slot="title">
+                                <i class="el-icon-s-order"></i>
+                                <span>内容</span>
+                            </template>
+                            <el-menu-item-group>
+                                <el-menu-item index="/layout/article">文章管理</el-menu-item>
+                                <el-menu-item index="/layout/articleType">文章分类</el-menu-item>
+                            </el-menu-item-group>
+
+                        </el-submenu>
+
                     </el-menu>
 
                 </el-row>
@@ -96,6 +108,12 @@
                 </el-header>
                 <el-main>
                     <!-- 路由出口 -->
+                    <!-- 页签 -->
+                    <div style="margin: 10px 0 10px 20px;">
+                        <el-tag closable disable-transitions>主页</el-tag>
+                        <el-tag closable disable-transitions>{{ $route.name }}</el-tag>
+
+                    </div>
                     <KeepAlive>
                         <router-view></router-view>
                     </KeepAlive>
@@ -113,6 +131,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.el-tag {
+    background-color: #fff;
+    color: #333;
+    margin-right: 10px;
+}
+
 .logout {
     color: #333;
     text-decoration: none;
