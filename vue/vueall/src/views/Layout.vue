@@ -69,6 +69,17 @@
 
                         </el-submenu>
 
+                        <el-submenu index="6">
+                            <template slot="title">
+                                <i class="el-icon-s-order"></i>
+                                <span>会员</span>
+                            </template>
+                            <el-menu-item-group>
+                                <el-menu-item index="/layout/member">会员管理</el-menu-item>
+                            </el-menu-item-group>
+
+                        </el-submenu>
+
                     </el-menu>
 
                 </el-row>

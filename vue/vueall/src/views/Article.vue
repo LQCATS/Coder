@@ -2,6 +2,13 @@
     <div>
         <el-card class="box-card">
             <div slot="header" class="clearfix">
+                <div style="margin-bottom: 20px;display: flex;align-items: center;">
+                    <div>id查询：</div>
+                    <el-input placeholder="请输入id" class="input-with-select" style="width: 50%" v-model.trim="id">
+                        <el-button slot="append" icon="el-icon-search" @click="getNewsById"></el-button>
+                    </el-input>
+
+                </div>
                 <el-button type="primary" @click="showArticle()">添加文章</el-button>
             </div>
 
@@ -116,9 +123,25 @@ export default {
             isShowAddArticle: false,
             //添加文章表单对象
             form: Object.assign({}, defaultForm),
+            //id查询
+            id: '',
         }
     },
     methods: {
+        //根据id查询一条文章数据
+        getNewsById() {
+            this.$article.getNewsById({ id: this.id }).then(res => {
+                if (200 == res.code) {
+                    this.$message.success('查询成功！');
+                    this.tableData = [res.data];
+                    this.total = this.tableData.length;
+                } else {
+                    this.$message.error('查询失败，请稍后重试！')
+                }
+            }).catch(err => {
+                console.log(err);
+            })
+        },
         //删除文章
         doDelete(row) {
             this.$confirm('此操作将永久删除该文件, 是否继续?', '提示', {

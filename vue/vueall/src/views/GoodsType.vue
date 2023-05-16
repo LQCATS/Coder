@@ -100,7 +100,6 @@ export default {
     methods: {
         //图片上传后的回调函数
         uploadSuccess(res, file) {
-            console.log(res);
             this.imageUrl = res.imgUrl;
             //将上传成功的图片地址赋值给form对象中的icon，便于在点击保存按钮时能够更新图片地址
             this.form.icon = res.imgUrl;

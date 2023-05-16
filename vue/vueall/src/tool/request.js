@@ -5,7 +5,7 @@ axios.defaults.baseURL = 'http://127.0.0.1:3000';
 
 //*配置响应拦截器，可以拦截接口的返回值
 axios.interceptors.response.use((res) => {
-    console.log('响应拦截器', res.data);
+    // console.log('响应拦截器', res.data);
     return res.data;
 });
 

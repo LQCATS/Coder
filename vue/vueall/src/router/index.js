@@ -85,6 +85,11 @@ const routes = [
         path: 'articleType',
         component: () => import('@/views/ArticleType'),
       },
+      {
+        name: 'Member',
+        path: 'member',
+        component: () => import('@/views/Member'),
+      },
     ]
   },
 

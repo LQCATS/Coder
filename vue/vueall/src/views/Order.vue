@@ -1,35 +1,5 @@
 <template>
     <div>
-
-        <!-- 头部导航 -->
-        <!-- <el-header style="display: flex;justify-content: space-between;">
-                    
-                    <el-breadcrumb separator="/">
-                        <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-                        <el-breadcrumb-item><a href="/">订单</a></el-breadcrumb-item>
-                        <el-breadcrumb-item>订单</el-breadcrumb-item>
-                    </el-breadcrumb>
-                    
-                    <div style="display: flex;align-items: flex-end;">
-                        <span class="el-icon-search" style="margin-right: 20px;"></span>
-                        <span class="el-icon-full-screen" style="margin-right: 20px;"></span>
-                        <span class="el-icon-bell" style="margin-right: 20px;"></span>
-                        <el-col style="width: 100px;">
-
-                            <el-dropdown trigger="click">
-                                <span class="el-dropdown-link" style="color: #666;">
-                                    demo<i class="el-icon-arrow-down el-icon--right"></i>
-                                </span>
-                                <el-dropdown-menu slot="dropdown">
-                                    <el-dropdown-item>主页</el-dropdown-item>
-                                    <el-dropdown-item>个人中心</el-dropdown-item>
-                                    <el-dropdown-item>布局设置</el-dropdown-item>
-                                    <el-dropdown-item>退出</el-dropdown-item>
-                                </el-dropdown-menu>
-                            </el-dropdown>
-                        </el-col>
-                    </div>
-                </el-header> -->
         <el-main>
             <!-- content,订单页面content头部筛选单选框 -->
             <el-card class="box-card">
@@ -119,7 +89,8 @@
 
                                     <el-dropdown-item command="send" v-if="scope.row.status == 1">发货</el-dropdown-item>
 
-                                    <el-dropdown-item command="verification" v-else-if="scope.row.status == 5">核销</el-dropdown-item>
+                                    <el-dropdown-item command="verification"
+                                        v-else-if="scope.row.status == 5">核销</el-dropdown-item>
 
                                     <el-dropdown-item>打印小票</el-dropdown-item>
                                 </el-dropdown-menu>
@@ -131,10 +102,12 @@
                 </el-table>
 
                 <!-- 分页 -->
-                <el-pagination @size-change="changeSize" @current-change="search"
+                <!-- <el-pagination @size-change="changeSize" @current-change="search"
                     layout="->,total, sizes, prev, pager, next, jumper" :page-sizes="[3, 5, 10, 15]" :page-size="pageSize"
                     :total="total" :current-page="curPage">
-                </el-pagination>
+                </el-pagination> -->
+                <CPaging :curPage="curPage" :total="total" @changeSize="changeSize" @search="search"></CPaging>
+
 
                 <!-- 发货模态框 -->
                 <el-dialog title="提示" :visible.sync="isShowSend" width="50%" :close-on-click-modal="false">
@@ -326,7 +299,7 @@ export default {
             pageSize: 3,
             total: 0,
 
-            
+
             condition: {
                 orderType: '',
                 orderStatus: '',
