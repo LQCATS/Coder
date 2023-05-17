@@ -8,30 +8,69 @@
 </template>
 
 <script>
+import code from '@/config/code';
 export default {
     props: {
         value: {
-            type: String,
+            type: [String, Number],
             default: '',
         },
-        options: {
-            type: Array,
-            default: () => {
-                return [];
-            }
+        opType: {
+            type: String,
+            default: '',
         }
     },
     data() {
         return {
-            curVal: this.value,
+            curVal: '',
+            options: [],
+        }
+    },
+    created() {
+        if (this.opType.startsWith('def')) {
+            //查询数据库
+            if ('defRole' == this.opType) {
+                //查角色表
+                this.$role.getAllUmsRole({}).then(res => {
+                    let list = res.data.rows;
+                    for (let item of list) {
+                        this.options.push({
+                            label: item.name,
+                            value: item.id,
+                        })
+                    }
+                })
+            } else if ('defFirstMenu' == this.opType) {
+                this.$power.getAllSysPrivilege({
+                    condition: {
+                        level: 1,
+                    }
+                }).then(res => {
+                    let list = res.data.rows;
+                    for (let item of list) {
+                        this.options.push({
+                            label: item.name,
+                            value: item.id,
+                        })
+                    }
+                })
+            }
+        } else {
+            //直接调取字典的配置信息
+            this.options = Object.assign([], code[this.opType]);
+
         }
     },
     watch: {
-        curVal: {
+        value: {
             handler(nv, ov) {
-                this.$emit('input', nv);
-            }
-        }
+                this.curVal = nv;
+            },
+            immediate: true,
+        },
+        curVal(nv, ov) {
+            this.$emit('input', nv);
+        },
     }
 }
 </script>

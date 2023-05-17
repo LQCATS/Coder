@@ -30,6 +30,27 @@ export default {
     searchUmsRole: params => request.post('/api/searchUmsRole', params),
 
     /**
+     * 删除角色
+     * @param {*} params 
+     * @returns 
+     */
+    delUmsRole: params => request.post('/api/delUmsRole', params),
+
+    /**
+     * 修改单个角色数据
+     * @param {*} params 
+     * @returns 
+     */
+    updateUmsRole: params => request.post('/api/updateUmsRole', params),
+
+    /**
+     * 新增角色数据
+     * @param {*} params 
+     * @returns 
+     */
+    saveUmsRole: params => request.post('/api/saveUmsRole', params),
+
+    /**
      * 分页查询会员
      * @param {*} params 
      * @returns 
@@ -56,5 +77,12 @@ export default {
      * @returns 
      */
     delUmsMember: params => request.post('/api/delUmsMember', params),
+
+    /**
+     * 删除会员
+     * @param {*} params 
+     * @returns 
+     */
+    searchUmsOrg: params => request.post('/api/searchUmsOrg', params),
 
 }

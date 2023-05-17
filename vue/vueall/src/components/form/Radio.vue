@@ -11,7 +11,7 @@ export default {
     props: {
         //单选框的值
         value: {
-            type: Number,
+            type: [String, Number],
             default: 0,
         },
         //单选框的选项数组
@@ -24,14 +24,21 @@ export default {
     },
     data() {
         return {
-            curVal: this.value,
+            curVal: '',
         }
     },
     watch: {
+        value: {
+            handler(nv, ov) {
+                this.curVal = nv;
+            },
+            immediate: true,
+        },
         curVal: {
             handler(nv, ov) {
                 this.$emit('input', nv);
-            }
+            },
+            immediate: true,
         }
     }
 }

@@ -18,5 +18,18 @@ export default {
         '0': '微信',
         '1': '支付宝',
         '2': '余额支付',
-    }
+    },
+    userStatus: [
+        { label: '正常', value: 0 },
+        { label: '长久锁定', value: 1 },
+        { label: '临时锁定', value: 2 },
+    ],
+    privilegeType: [
+        { label: '一级菜单', value: 'fristMenu' },
+        { label: '二级菜单', value: 'secondMenu' },
+    ],
+    menuLeve: [
+        { label: '一级', value: 1 },
+        { label: '二级', value: 2 },
+    ]
 }

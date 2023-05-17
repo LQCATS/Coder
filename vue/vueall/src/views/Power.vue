@@ -14,14 +14,6 @@
                                 <el-input placeholder="请输入菜单名称" style="width: 300px;" v-model="condition.name"></el-input>
 
                             </div>
-                            <!-- <div style="display: flex;align-items: center;">
-                                <div style="margin-right: 10px;">状态</div>
-                                <el-select v-model="statusVal" placeholder="菜单状态" style="margin-right: 10px;">
-                                    <el-option v-for="item in status" :key="item.value" :label="item.label"
-                                        :value="item.value">
-                                    </el-option>
-                                </el-select>
-                            </div> -->
 
                             <el-button type="primary" icon="el-icon-search"
                                 style="background-color: #1890ff;border-color: #dbdbdb;color: #fff;"
@@ -38,17 +30,25 @@
                         </div>
                         <!-- 底部表格 -->
                         <el-table :data="tableData" style="width: 100%">
-
-                            <el-table-column prop="name" label="权限名称"></el-table-column>
-                            <el-table-column prop="icon" label="权限图标"></el-table-column>
-                            <el-table-column prop="sortNum" label="排序"></el-table-column>
-                            <el-table-column prop="permission" label="权限标识"></el-table-column>
-                            <el-table-column prop="path" label="组件路径"></el-table-column>
-                            <el-table-column prop="privilegeType" label="类型"></el-table-column>
-                            <el-table-column label="操作">
+                            <el-table-column type="index" width="50" label='序号'></el-table-column>
+                            <el-table-column prop="id" label="ID"></el-table-column>
+                            <el-table-column prop="parentName" label="父节点"></el-table-column>
+                            <el-table-column prop="name" label="名称"></el-table-column>
+                            <el-table-column prop="path" label="路由路径"></el-table-column>
+                            <el-table-column prop="component" label="组件路径"></el-table-column>
+                            <el-table-column prop="icon" label="图标">
                                 <template slot-scope="scope">
-                                    <el-button type="primary" size="mini" @click="showEdit(scope.row)">修改</el-button>
-                                    <el-button type="primary" size="mini" @click="doDel(scope.row)">删除</el-button>
+                                    <i :class="scope.row.icon"></i>
+                                </template>
+                            </el-table-column>
+                            <el-table-column prop="privilegeType" label="权限类型"></el-table-column>
+                            <el-table-column prop="level" label="层次"></el-table-column>
+                            <el-table-column label="操作" width="150">
+                                <template slot-scope="scope">
+                                    <el-button type="primary" size="mini" circle icon="el-icon-edit"
+                                        @click="showEdit(scope.row)"></el-button>
+                                    <el-button type="primary" size="mini" circle icon="el-icon-delete"
+                                        @click="doDel(scope.row)"></el-button>
                                 </template>
                             </el-table-column>
                         </el-table>
@@ -58,37 +58,35 @@
                     </el-card>
 
                     <!-- 添加 or 修改 权限 -->
-                    <el-dialog title=" 添加 or 修改 权限" :visible.sync="isShowEdit" width="50%" :close-on-click-modal="false">
+                    <el-dialog title=" 添加 or 修改 权限" :visible.sync="isShowAdd" width="50%" :close-on-click-modal="false">
 
-                        <el-form ref="inForm" :model="form" label-width="80px" :inline="true" :rules="rules">
+                        <el-form ref="inForm" :model="form" label-width="80px" :inline="true">
                             <el-form-item label="父节点id">
-                                <el-input v-model="form.fkPerentId"></el-input>
-                                <!-- <CInput v-model="form.fkPerentId"></CInput> -->
+                                <CSelect v-model="form.fkPerentId" opType="defFirstMenu"></CSelect>
                             </el-form-item>
                             <el-form-item label="权限名称" prop="name">
-                                <!-- <CInput v-model="form.name"></CInput> -->
-                                <el-input v-model="form.name"></el-input>
+                                <CInput v-model="form.name"></CInput>
                             </el-form-item>
-                            <el-form-item label="路径">
-                                <!-- <CInput v-model="form.path"></CInput> -->
-                                <el-input v-model="form.path"></el-input>
+                            <el-form-item label="路由路径">
+                                <CInput v-model="form.path"></CInput>
+                            </el-form-item>
+                            <el-form-item label="组件路径">
+                                <CInput v-model="form.component"></CInput>
+                            </el-form-item>
+                            <el-form-item label="图标">
+                                <CInput v-model="form.icon"></CInput>
                             </el-form-item>
                             <el-form-item label="权限类型">
-                                <!-- <CInput v-model="form.privilegeType"></CInput> -->
-                                <el-input v-model="form.privilegeType"></el-input>
+                                <CSelect v-model="form.privilegeType" opType="privilegeType"></CSelect>
                             </el-form-item>
                             <el-form-item label="层级">
-                                <!-- <CInput v-model="form.level"></CInput> -->
-                                <el-input v-model="form.level"></el-input>
+                                <CSelect v-model="form.level" opType="menuLeve"></CSelect>
                             </el-form-item>
-                            <el-form-item label="是否删除">
-                                <!-- <CInput v-model="form.dr"></CInput> -->
-                                <el-input v-model="form.dr"></el-input>
-                            </el-form-item>
+
                         </el-form>
 
                         <span slot="footer" class="dialog-footer">
-                            <el-button @click="isShowEdit = false">取 消</el-button>
+                            <el-button @click="isShowAdd = false">取 消</el-button>
                             <el-button type="primary" @click="doSave">确 定</el-button>
                         </span>
                     </el-dialog>
@@ -100,183 +98,39 @@
 </template>
 
 <script>
-const defaultForm = {
-    fkPerentId: '',
-    name: '',
-    path: '',
-    privilegeType: '',
-    level: 0,
-    dr: 0,
-};
-export default {
 
+import pageMixin from '@/mixin/pageMixin';
+export default {
+    mixins: [pageMixin],
     data() {
         return {
-            tags: [
-                { name: '主页', type: '' },
-                { name: '权限规则', type: 'power' },
-
-            ],
-            radio1: '',
-            radio2: '',
-            radio3: '',
-            date: '',
-            orderNum: '',
-            tableData: [],
-            options: [{
-                value: '选项1',
-                label: '超级管理员'
-            }, {
-                value: '选项2',
-                label: '演示站'
-            }, {
-                value: '选项3',
-                label: '核销员'
-            }, {
-                value: '选项4',
-                label: '速度大师的撒'
-            }],
-            optionsVal: '',
-            status: [{
-                value: '选项1',
-                label: '目录'
-            }, {
-                value: '选项2',
-                label: '菜单'
-            }, {
-                value: '选项3',
-                label: '按钮'
-            }],
-            statusVal: '',
-            //分页参数
-            curPage: 1,
-            pageSize: 3,
-            total: 0,
             condition: {
                 name: ''
             },
-            //新增的参数
-            isShowEdit: false,
-            form: Object.assign({}, defaultForm),
-            rules: {
-                //验证名字
-                name: [
-                    { required: true, message: '不能为空', trigger: 'blur' }
-                ]
-            }
+            defaultForm: {
+                fkPerentId: '',
+                name: '',
+                path: '',
+                privilegeType: '',
+                level: 0,
+                dr: 0,
+            },
+            
         };
     },
     methods: {
-        //删除
-        doDel(row) {
-            this.$confirm('此操作将永久删除该文件, 是否继续?', '提示', {
-                confirmButtonText: '确定',
-                cancelButtonText: '取消',
-                type: 'warning'
-            }).then(() => {
-                this.$power.delSysPrivilege({ id: row.id }).then(res => {
-                    if (200 == res.code) {
-                        this.$message.success('删除成功！');
-                        this.search();
-                    } else {
-                        this.$message.error('删除失败！');
-                    }
-                })
-            }).catch(() => {
-                this.$message({
-                    type: 'info',
-                    message: '已取消删除'
-                });
-            });
-        },
-        //保存数据
-        doSave() {
-            this.$refs.inForm.validate((valid, listProp) => {
-                if (valid) {
-                    if (this.form.id) {
-                        this.$power.updateSysPrivilege(this.form).then(res => {
-                            if (200 == res.code) {
-                                //修改成功提示消息
-                                this.$message.success('保存成功！');
-                                //重新渲染页面
-                                this.search();
-                            } else {
-                                //修改失败消息
-                                this.$message.error('保存失败，请稍后重试！')
-                            }
-                        })
-                    } else {
-                        this.$power.saveSysPrivilege(this.form).then(res => {
-                            if (200 == res.code) {
-                                //修改成功提示消息
-                                this.$message.success('保存成功！');
-                                //重新渲染页面
-                                this.search();
-                            } else {
-                                //修改失败消息
-                                this.$message.error('保存失败，请稍后重试！')
-                            }
-                        })
-                    }
-                    //关闭模态框
-                    this.isShowEdit = false;
-                } else {
-                    return false
-                }
-            })
-
-        },
-        //修改 or 新增 模态框数据回显or初始化
-        showEdit(row) {
-            // console.log(row);
-            if (row) {
-                //修改，回显数据
-                this.form = Object.assign({}, row);
-            } else {
-                //新增，初始化数据
-                this.form = Object.assign({}, defaultForm);
-            }
-            //打开模态框
-            this.isShowEdit = true;
-
-        },
         //重置
         doRest() {
             this.condition.name = '';
             this.search(1);
         },
-        //根据pagesize查询
-        changeSize(size) {
-            this.pageSize = size;
-            this.search(1);
-        },
-        //分页查询
-        search(page) {
-            //参数处理
-            if (page) {
-                this.curPage = page;
-            }
-            //发送请求
-            this.$power.searchSysPrivilege({
-                curPage: this.curPage,
-                pageSize: this.pageSize,
-                condition: this.condition,
-            }).then(res => {
-                if (200 == res.code) {
-                    //查询成功
-                    this.tableData = res.data.rows;
-                    this.total = res.data.total;
-                } else {
-                    //查询失败
-                    this.$message.error('查询失败');
-                }
-            }).catch(err => {
-                console.log(err);
-            })
-        },
-
     },
     created() {
+        this.searchMethod = this.$power.searchSysPrivilege;
+        this.saveMethod = this.$power.saveSysPrivilege;
+        this.updateMethod = this.$power.updateSysPrivilege;
+        this.delMethod = this.$power.delSysPrivilege;
+        this.getByIdMethod = this.$power.getSysPrivilegeById;
         this.search(1);
     },
 }

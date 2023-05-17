@@ -85,7 +85,7 @@
                                     更多<i class="el-icon-arrow-down el-icon--right"></i>
                                 </span>
                                 <el-dropdown-menu slot="dropdown">
-                                    <el-dropdown-item command="detail" @click="goDetails(scope.row)">订单详情</el-dropdown-item>
+                                    <el-dropdown-item command="detail">订单详情</el-dropdown-item>
 
                                     <el-dropdown-item command="send" v-if="scope.row.status == 1">发货</el-dropdown-item>
 

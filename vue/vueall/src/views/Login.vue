@@ -10,7 +10,7 @@
                     <div class="title">用户名:</div>
                 </el-col>
                 <el-col :span="16">
-                    <el-input placeholder="请输入用户名"></el-input>
+                    <el-input placeholder="请输入用户名" v-model="userName"></el-input>
                 </el-col>
             </el-row>
             <el-row :gutter="20" class="row">
@@ -18,7 +18,7 @@
                     <div class="title">密码:</div>
                 </el-col>
                 <el-col :span="16">
-                    <el-input placeholder="请输入密码"></el-input>
+                    <el-input placeholder="请输入密码" v-model="pwd"></el-input>
 
                 </el-col>
             </el-row>
@@ -27,7 +27,7 @@
                     <div class="title">确认密码:</div>
                 </el-col>
                 <el-col :span="16">
-                    <el-input placeholder="请确认密码"></el-input>
+                    <el-input placeholder="请确认密码" v-model="pwdAgain"></el-input>
 
                 </el-col>
             </el-row>
@@ -47,12 +47,32 @@
 <script>
 import particles from '@/components/particles';
 export default {
+    data() {
+        return {
+            userName: '',
+            pwd: '',
+            pwdAgain: '',
+        }
+    },
     components: {
         particles,
     },
     methods: {
         goPage() {
-            this.$router.push('/layout/order');
+            // this.$router.push('/layout/order');
+
+            this.$login.login({
+                username: this.userName,
+                pwd: this.pwd,
+            }).then(res => {
+                if (200 == res.code) {
+                    //登录成功，跳转页面
+                    this.$router.push('/layout/order');
+                } else {
+                    //登录失败，提示用户
+                    this.$message.error('登录失败，请稍后重试！');
+                }
+            })
         }
     }
 }
@@ -91,9 +111,10 @@ export default {
 
 
 .loginBtn {
-        width: 75%;
+    width: 75%;
 
-    }
+}
+
 .log {
     width: 271px;
     height: 74px;

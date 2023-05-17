@@ -28,4 +28,18 @@ export default {
      * @returns 
      */
     delSysPrivilege: params => request.post('/api/delSysPrivilege', params),
+
+    /**
+     * 取得所有权限数据
+     * @param {*} params 
+     * @returns 
+     */
+    getAllSysPrivilege: params => request.post('/api/getAllSysPrivilege', params),
+
+    /**
+     * 根据id取得一个权限
+     * @param {*} params 
+     * @returns 
+     */
+    getSysPrivilegeById: params => request.post('/api/getSysPrivilegeById', params),
 }

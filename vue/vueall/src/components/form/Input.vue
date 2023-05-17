@@ -1,6 +1,6 @@
 <template>
     <div>
-        <el-input v-model="curVal"></el-input>
+        <el-input v-model="curVal" placeholder="请输入"></el-input>
     </div>
 </template>
 
@@ -14,14 +14,21 @@ export default {
     },
     data() {
         return {
-            curVal: this.value,
+            curVal: '',
         }
     },
     watch: {
+        value: {
+            handler(nv, ov) {
+                this.curVal = nv;
+            },
+            immediate: true,
+        },
         curVal: {
             handler(nv, ov) {
                 this.$emit('input', nv);
-            }
+            },
+            immediate: true,
         }
     }
 }

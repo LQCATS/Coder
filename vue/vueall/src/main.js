@@ -26,6 +26,10 @@ import article from '@/apis/article';
 Vue.prototype.$article = article;
 import power from '@/apis/power';
 Vue.prototype.$power = power;
+import role from '@/apis/role';
+Vue.prototype.$role = role;
+import login from '@/apis/login';
+Vue.prototype.$login = login;
 
 //!全局注册组件
 import SingleUpload from '@/components/form/SingleUpload';
@@ -38,6 +42,10 @@ import Input from '@/components/form/Input';
 Vue.component('CInput', Input);
 import Select from '@/components/form/Select';
 Vue.component('CSelect', Select);
+import DeptControl from '@/components/form/DeptControl';
+Vue.component('CDept', DeptControl);
+
+
 
 new Vue({
   router,

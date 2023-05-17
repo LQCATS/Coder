@@ -49,16 +49,16 @@
         </el-card>
 
         <!-- 新增 or 修改会员模态框 -->
-        <el-dialog title="新增 or 修改会员" v-if="isShowMember" :visible.sync="isShowMember" width="50%"
-            :close-on-click-modal="false">
+        <el-dialog title="新增 or 修改会员" v-if="isShowAdd" :visible.sync="isShowAdd" width="50%" :close-on-click-modal="false">
 
             <el-form ref="Inform" :model="form" :rules="rules" label-width="80px" :inline="true">
                 <el-form-item label="公司" prop="fkOrgId">
-                    <!-- <el-input v-model="form.fkOrgId"></el-input> -->
-                    <CInput v-model="form.fkOrgId"></CInput>
+                    <el-input v-model="form.fkOrgId"></el-input>
+                    <!-- <CInput v-model="form.fkOrgId"></CInput> -->
                 </el-form-item>
                 <el-form-item label="部门">
-                    <el-input v-model="form.fkDeptId"></el-input>
+                    <!-- <el-input v-model="form.fkDeptId"></el-input> -->
+                    <CDept v-model="form.fkDeptId"></CDept>
                 </el-form-item>
                 <el-form-item label="名称" prop="name">
                     <!-- <el-input v-model="form.name"></el-input> -->
@@ -66,7 +66,7 @@
                 </el-form-item>
                 <el-form-item label="角色id">
                     <!-- <el-input v-model="form.fkRoleId"></el-input> -->
-                    <CSelect v-model="form.fkRoleId" :options="options"></CSelect>
+                    <CSelect v-model="form.fkRoleId" opType="defRole"></CSelect>
                 </el-form-item>
                 <el-form-item label="头像">
                     <!-- <el-input v-model="form.headImg"></el-input> -->
@@ -85,14 +85,15 @@
                     <el-input v-model="form.age"></el-input>
                 </el-form-item>
                 <el-form-item label="状态">
-                    <el-input v-model="form.status"></el-input>
+                    <!-- <el-input v-model="form.status"></el-input> -->
+                    <CSelect v-model="form.status" opType="userStatus"></CSelect>
                 </el-form-item>
                 <el-form-item label="用户类型">
                     <CRadio v-model="form.userType" :radioData="radioData"></CRadio>
                 </el-form-item>
             </el-form>
             <span slot="footer" class="dialog-footer">
-                <el-button @click="isShowMember = false">取 消</el-button>
+                <el-button @click="isShowAdd = false">取 消</el-button>
                 <el-button type="primary" @click="doSave">确 定</el-button>
             </span>
         </el-dialog>
@@ -100,19 +101,7 @@
 </template>
 
 <script>
-const defaultForm = {
-    fkOrgId: '',
-    fkDeptId: '',
-    name: '',
-    fkRoleId: '',
-    headImg: '',
-    address: '',
-    tel: '',
-    sex: '',
-    age: 0,
-    status: 0,
-    userType: 0
-};
+
 
 //自定义验证的函数
 let checkName = (rule, val, callback) => {
@@ -125,20 +114,18 @@ let checkName = (rule, val, callback) => {
     }
 };
 
+import pageMixin from '@/mixin/pageMixin';
+
 export default {
+    mixins: [pageMixin],
     data() {
         return {
-            tableData: [],
-            //分页参数
-            curPage: 1,
-            pageSize: 3,
-            total: 0,
             condition: {
                 name: '',
             },
             //新增 Or 修改需要的参数
-            isShowMember: false,
-            form: Object.assign({}, defaultForm),
+            isShowAdd: false,
+
             //表单验证
             rules: {
                 //验证公司
@@ -168,50 +155,57 @@ export default {
                     label: 1,
                 },
             ],
-            //下拉框选项数组
-            options: [
-                {
-                    value: 'f4544150-3641-11ed-b179-c14b061ea979',
-                    label: '管理员',
-                },
-                {
-                    value: 'r-2',
-                    label: '仓库管理员',
-                }
-            ]
-
+            defaultForm: {
+                fkOrgId: '',
+                fkDeptId: '',
+                name: '',
+                fkRoleId: '',
+                headImg: '',
+                address: '',
+                tel: '',
+                sex: '',
+                age: 0,
+                status: 0,
+                userType: 0
+            },
         }
     },
     created() {
+        this.searchMethod = this.$managers.searchUmsMember;
+        this.saveMethod = this.$managers.saveUmsMember;
+        this.updateMethod = this.$managers.updateUmsMember;
+        this.delMethod = this.$managers.delUmsMember;
+
+        this.form = Object.assign({}, this.defaultForm)
         this.search(1);
     },
     methods: {
-        //删除会员
-        doDel(row) {
-            this.$confirm('此操作将永久删除该数据, 是否继续?', '提示', {
-                confirmButtonText: '确定',
-                cancelButtonText: '取消',
-                type: 'warning'
-            }).then(() => {
-                this.$managers.delUmsMember({ id: row.id }).then(res => {
-                    if (200 == res.code) {
-                        //删除成功提示消息
-                        this.$message.success('删除成功！');
-                        //重新渲染页面
-                        this.search();
-                    } else {
-                        //删除失败提示消息
-                        this.$message.error('删除失败，请稍后再试！');
-                    }
-                })
-            }).catch(() => {
-                this.$message({
-                    type: 'info',
-                    message: '已取消删除'
-                });
-            });
-        },
-        //新增 or 修改会员数据
+        // //删除会员
+        // doDel(row) {
+        //     this.$confirm('此操作将永久删除该数据, 是否继续?', '提示', {
+        //         confirmButtonText: '确定',
+        //         cancelButtonText: '取消',
+        //         type: 'warning'
+        //     }).then(() => {
+        //         this.$managers.delUmsMember({ id: row.id }).then(res => {
+        //             if (200 == res.code) {
+        //                 //删除成功提示消息
+        //                 this.$message.success('删除成功！');
+        //                 //重新渲染页面
+        //                 this.search();
+        //             } else {
+        //                 //删除失败提示消息
+        //                 this.$message.error('删除失败，请稍后再试！');
+        //             }
+        //         })
+        //     }).catch(() => {
+        //         this.$message({
+        //             type: 'info',
+        //             message: '已取消删除'
+        //         });
+        //     });
+        // },
+        // //新增 or 修改会员数据
         doSave() {
             this.$refs.Inform.validate((valid, listProp) => {
                 console.log('listProp', listProp);
@@ -246,7 +240,7 @@ export default {
                     }
 
                     //关闭模态框
-                    this.isShowMember = false;
+                    this.isShowAdd = false;
                 } else {
                     //表单验证失败
                     return false
@@ -260,36 +254,36 @@ export default {
                 //修改，回显数据
                 this.form = Object.assign({}, row);
                 //打开模态框
-                this.isShowMember = true;
+                this.isShowAdd = true;
             } else {
                 //新增，初始化数据
-                this.form = Object.assign({}, defaultForm);
+                this.form = Object.assign({}, this.defaultForm);
                 //打开模态框
-                this.isShowMember = true;
+                this.isShowAdd = true;
             }
 
         },
-        changeSize(size) {
-            this.pageSize = size;
-            this.search(1);
-        },
-        //分页查询
-        search(page) {
-            if (page) {
-                this.curPage = page;
-            }
+        // changeSize(size) {
+        //     this.pageSize = size;
+        //     this.search(1);
+        // },
+        // //分页查询
+        // search(page) {
+        //     if (page) {
+        //         this.curPage = page;
+        //     }
 
-            this.$managers.searchUmsMember({
-                pageSize: this.pageSize,
-                curPage: this.curPage,
-                condition: this.condition,
-            }).then(res => {
-                this.tableData = res.data.rows;
-                this.total = res.data.total;
-            }).catch(err => {
-                console.log(err);
-            })
-        }
+        //     this.$managers.searchUmsMember({
+        //         pageSize: this.pageSize,
+        //         curPage: this.curPage,
+        //         condition: this.condition,
+        //     }).then(res => {
+        //         this.tableData = res.data.rows;
+        //         this.total = res.data.total;
+        //     }).catch(err => {
+        //         console.log(err);
+        //     })
+        // }
     }
 }
 </script>
