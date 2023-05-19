@@ -49,6 +49,7 @@
                                         @click="showEdit(scope.row)"></el-button>
                                     <el-button type="primary" size="mini" circle icon="el-icon-delete"
                                         @click="doDel(scope.row)"></el-button>
+                                    
                                 </template>
                             </el-table-column>
                         </el-table>
@@ -91,6 +92,9 @@
                         </span>
                     </el-dialog>
 
+                    
+
+
                 </el-main>
             </el-container>
         </el-container>
@@ -116,6 +120,7 @@ export default {
                 dr: 0,
             },
             
+
         };
     },
     methods: {
@@ -124,6 +129,7 @@ export default {
             this.condition.name = '';
             this.search(1);
         },
+        
     },
     created() {
         this.searchMethod = this.$power.searchSysPrivilege;

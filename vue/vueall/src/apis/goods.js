@@ -28,6 +28,13 @@ export default {
      * @returns 
      */
     updateInfoProducttype: params => request.post('/api/updateInfoProducttype', params),
+    
+    /**
+     * 取得所有商品数据
+     * @param {*} params 
+     * @returns 
+     */
+    getAllEcomProduct: params => request.post('/api/getAllEcomProduct', params),
 
     
 }

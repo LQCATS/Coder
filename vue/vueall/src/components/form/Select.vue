@@ -1,6 +1,6 @@
 <template>
     <div>
-        <el-select v-model="curVal" placeholder="请选择">
+        <el-select v-model="curVal" placeholder="请选择" clearable>
             <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
             </el-option>
         </el-select>

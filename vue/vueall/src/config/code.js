@@ -31,5 +31,8 @@ export default {
     menuLeve: [
         { label: '一级', value: 1 },
         { label: '二级', value: 2 },
-    ]
+    ],
+    goodsType: [
+        {label: '家用电器', value: 1 }
+    ],
 }

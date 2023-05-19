@@ -10,8 +10,21 @@
                 <!-- 侧边栏导航区域，elementUi -->
                 <el-row class="tac">
                     <el-menu router default-active="2" class="el-menu-vertical-demo" background-color="rgb(48, 65, 86)"
-                        text-color="#fff" active-text-color="#ffd04b" style="box-sizing: border-box;border: 0px;">
-                        <el-submenu index="1">
+                        text-color="#fff" active-text-color="#ffd04b" style="box-sizing: border-box;border: 0px;"
+                        :unique-opened="true">
+
+                        <el-submenu :index="first.id" v-for="first in listMenu">
+                            <template slot="title">
+                                <i :class="first.icon"></i>
+                                <span>{{ first.name }}</span>
+                            </template>
+                            <!-- <el-menu-item-group> -->
+                            <el-menu-item v-for="second in first.children" :index="second.path">{{ second.name
+                            }}</el-menu-item>
+                            <!-- </el-menu-item-group> -->
+                        </el-submenu>
+
+                        <!-- <el-submenu index="1">
                             <template slot="title">
                                 <i class="el-icon-s-order"></i>
                                 <span>订单</span>
@@ -19,9 +32,8 @@
                             <el-menu-item-group>
                                 <el-menu-item index="/layout/order">订单</el-menu-item>
                             </el-menu-item-group>
-
-
                         </el-submenu>
+
                         <el-submenu index="2">
                             <template slot="title">
                                 <i class="el-icon-s-order"></i>
@@ -32,7 +44,6 @@
                                 <el-menu-item index="/layout/managers">管理员列表</el-menu-item>
                                 <el-menu-item index="/layout/power">权限规则</el-menu-item>
                             </el-menu-item-group>
-
                         </el-submenu>
 
                         <el-submenu index="3">
@@ -43,7 +54,6 @@
                             <el-menu-item-group>
                                 <el-menu-item index="/layout/goodsType">商品分类</el-menu-item>
                             </el-menu-item-group>
-
                         </el-submenu>
 
                         <el-submenu index="4">
@@ -54,7 +64,6 @@
                             <el-menu-item-group>
                                 <el-menu-item index="/layout/dictionary">字典管理</el-menu-item>
                             </el-menu-item-group>
-
                         </el-submenu>
 
                         <el-submenu index="5">
@@ -66,7 +75,6 @@
                                 <el-menu-item index="/layout/article">文章管理</el-menu-item>
                                 <el-menu-item index="/layout/articleType">文章分类</el-menu-item>
                             </el-menu-item-group>
-
                         </el-submenu>
 
                         <el-submenu index="6">
@@ -77,8 +85,7 @@
                             <el-menu-item-group>
                                 <el-menu-item index="/layout/member">会员管理</el-menu-item>
                             </el-menu-item-group>
-
-                        </el-submenu>
+                        </el-submenu> -->
 
                     </el-menu>
 
@@ -100,17 +107,17 @@
                         <span class="el-icon-bell" style="margin-right: 20px;"></span>
                         <el-col style="width: 100px;">
 
-                            <el-dropdown trigger="click">
+                            <el-dropdown trigger="click" @command="doCmd">
                                 <span class="el-dropdown-link" style="color: #666;cursor: pointer;">
-                                    demo<i class="el-icon-arrow-down el-icon--right"></i>
+                                    {{ loginUser.name }}<i class="el-icon-arrow-down el-icon--right"></i>
                                 </span>
                                 <el-dropdown-menu slot="dropdown">
                                     <el-dropdown-item>主页</el-dropdown-item>
                                     <el-dropdown-item>个人中心</el-dropdown-item>
                                     <el-dropdown-item>布局设置</el-dropdown-item>
-                                    <el-dropdown-item>
-                                        <router-link to="/login" active-class="active" class="logout">退出</router-link>
-
+                                    <el-dropdown-item command="logOut">
+                                        <!-- <router-link to="/login" active-class="active" class="logout">退出</router-link> -->
+                                        退出
                                     </el-dropdown-item>
                                 </el-dropdown-menu>
                             </el-dropdown>
@@ -121,7 +128,7 @@
                     <!-- 路由出口 -->
                     <!-- 页签 -->
                     <div style="margin: 10px 0 10px 20px;">
-                        <el-tag closable disable-transitions>主页</el-tag>
+                        <!-- <el-tag closable disable-transitions>主页</el-tag> -->
                         <el-tag closable disable-transitions>{{ $route.name }}</el-tag>
 
                     </div>
@@ -137,7 +144,42 @@
 
 <script>
 export default {
+    data() {
+        return {
+            loginUser: {},
+            listMenu: [],
+        }
+    },
+    methods: {
+        doCmd(cmd) {
+            if ('logOut' == cmd) {
+                //点击退出，移出本地储存的用户
+                localStorage.removeItem('LoginUser');
+                //跳转到登录页面
+                this.$router.push('/login');
+            }
+        }
+    },
+    created() {
+        //本地获取用户信息
+        this.loginUser = JSON.parse(localStorage.getItem('LoginUser')) || {};
+        // console.log(this.loginUser);
+        //本地获取用户菜单权限数组
+        this.listMenu = JSON.parse(localStorage.getItem('listMenu')) || [];
 
+    },
+    beforeRouteEnter(to, from, next) {
+        console.log('组件内守卫-进入路由前beforeRouteEnter');
+        next();
+    },
+    beforeRouteUpdate(to, from, next) {
+        console.log('组件内守卫-路由更新beforeRouteUpdate');
+        next();
+    },
+    beforeRouteLeave(to, from, next) {
+        console.log('组件内守卫-离开当前路由时beforeRouteLeave');
+        next();
+    }
 }
 </script>
 

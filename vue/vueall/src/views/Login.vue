@@ -64,8 +64,17 @@ export default {
             this.$login.login({
                 username: this.userName,
                 pwd: this.pwd,
-            }).then(res => {
+            }).then(async res => {
                 if (200 == res.code) {
+                    // console.log(res);
+                    //本地存储用户信息
+                    localStorage.setItem('LoginUser', JSON.stringify(res.data));
+
+                    //本地存储当前用户的所有菜单权限
+                    let powerRes = await this.$role.getAllMenu({
+                        userid: res.data.id
+                    });
+                    localStorage.setItem('listMenu', JSON.stringify(powerRes.data));
                     //登录成功，跳转页面
                     this.$router.push('/layout/order');
                 } else {

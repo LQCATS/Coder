@@ -9,7 +9,8 @@
 
                         <el-button type="primary" style="margin-left: 20px;" @click="search(1)">查询</el-button>
                         <el-button type="primary" icon="el-icon-refresh"
-                            style="background-color: #fff;border-color: #dbdbdb;color: #666;" @click="doReset">重置</el-button>
+                            style="background-color: #fff;border-color: #dbdbdb;color: #666;"
+                            @click="doReset">重置</el-button>
                     </div>
                     <div style="margin: 10px 0 10px 0;">
                         <el-button type="primary" style="margin-left: 20px;margin-left: 10px;"
@@ -25,6 +26,8 @@
                             <template slot-scope="scope">
                                 <el-button type="text" @click="showEdit(scope.row)">编辑</el-button>
                                 <el-button type="text" @click="doDel(scope.row)">删除</el-button>
+                                <el-button type="primary" size="mini" circle icon="el-icon-star-off"
+                                    @click="showVote(scope.row)"></el-button>
                             </template>
                         </el-table-column>
                     </el-table>
@@ -55,6 +58,26 @@
                     </span>
                 </el-dialog>
 
+
+                <!-- 授权面板 -->
+                <el-dialog title="授权面板" v-if="isShowVote" :visible.sync="isShowVote" width="50%"
+                    :close-on-click-modal="false">
+
+                    <div style="height: 300px;overflow-y: auto;">
+                        <el-tree ref="menuTree" :data="treeData" show-checkbox node-key="id"
+                            :default-expanded-keys="defaultExpand" :default-checked-keys="defaultSelect"
+                            :props="defaultProps">
+                        </el-tree>
+                    </div>
+
+
+                    <span slot="footer" class="dialog-footer">
+                        <el-button @click="isShowVote = false">取 消</el-button>
+                        <el-button type="primary" @click="saveVote">确 定</el-button>
+                    </span>
+
+                </el-dialog>
+
             </el-main>
         </el-container>
 
@@ -67,11 +90,6 @@ export default {
     mixins: [pageMixin],
     data() {
         return {
-            radio1: '',
-            radio2: '',
-            radio3: '',
-            date: '',
-            orderNum: '',
             condition: {
                 name: '',
             },
@@ -79,7 +97,22 @@ export default {
                 code: '',
                 name: '',
                 status: '',
-            }
+            },
+            //树形模态框显示隐藏控制变量
+            isShowVote: false,
+            //树形需要的参数
+            treeData: [],
+            defaultProps: {
+                children: 'children',
+                label: 'name'
+            },
+            //当前行的角色对象
+            selectRow: {},
+            //默认选中的权限id数组
+            defaultSelect: [],
+            //默认展开的权限id数组
+            defaultExpand: [],
+
 
         };
     },
@@ -111,8 +144,58 @@ export default {
         doReset() {
             this.condition.name = '';
             this.search(1);
-        }
-        
+        },
+        //显示授权面板的模态框
+        async showVote(row) {
+
+            let menuRes = await this.$role.getAllMenu();
+            //设置树形菜单的数据
+            this.treeData = menuRes.data;
+            //在data中保存当前选中的角色数据
+            this.selectRow = row;
+
+
+            let selectRes = await this.$role.getAllSysRolePrivilege({
+                condition: {
+                    fkRoleId: row.id
+                }
+            });
+            // console.log('selectRes', selectRes);
+
+            this.defaultSelect = selectRes.data.rows.map(item => item.fkPrivilegeId);
+            this.defaultExpand = selectRes.data.rows.map(item => item.fkPrivilegeId);
+
+            //显示授权面板模态框
+            this.isShowVote = true;
+        },
+        saveVote() {
+            //获取选中的菜单数组
+            let tempArr = this.$refs.menuTree.getCheckedNodes();
+            // console.log(tempArr);
+            //获取选中的菜单的id,放到新的数组里面
+            let listVote = [];
+            for (let item of tempArr) {
+                if (!item.children) {
+                    //二级菜单
+                    listVote.push(item.id);
+                }
+            };
+            //调用接口保存角色权限
+            this.$role.saveRolePrivilege({
+                roleId: this.selectRow.id,
+                listVote: listVote,
+            }).then(res => {
+                if (200 == res.code) {
+                    this.isShowVote = false;
+                    //保存成功提示消息
+                    this.$message.success('保存成功！');
+                } else {
+                    //保存失败提示消息
+                    this.$message.error('保存失败！');
+                }
+            });
+        },
+
     }
 }
 

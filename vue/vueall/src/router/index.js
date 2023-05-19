@@ -31,6 +31,10 @@ const routes = [
     name: 'Layout',
     path: '/layout',
     component: () => import('@/views/Layout'),
+    beforeEnter(to, from, next) {
+      console.log('路由独享守卫beforeEnter');
+      next();
+    },
     children: [
       {
         name: 'Order',
@@ -90,6 +94,11 @@ const routes = [
         path: 'member',
         component: () => import('@/views/Member'),
       },
+      {
+        name: 'GoodsManage',
+        path: 'goodsManage',
+        component: () => import('@/views/GoodsManage'),
+      },
     ]
   },
 
@@ -100,4 +109,41 @@ const router = new VueRouter({
   routes
 })
 
+/**
+ * 前置守卫
+ * to：去到哪里的路由配置项
+ * from：从哪里来的路由配置项
+ * next：放行函数
+ */
+router.beforeEach((to, from, next) => {
+  console.log('前置守卫beforeEach');
+  let loginUser = localStorage.getItem('LoginUser');
+
+  if (loginUser) {
+    //已经登录
+    next();
+  } else {
+    //未登录
+    if ('/login' == to.path) {
+      next();
+    } else {
+      next('/login');
+    }
+  }
+});
+
+/**
+ * 解析守卫
+ */
+router.beforeResolve((to, from, next) => {
+  console.log('解析守卫beforeResolve');
+  next();
+});
+
+/**
+ * 后置守卫
+ */
+router.afterEach((to, from) => {
+  console.log('后置守卫afterEach');
+})
 export default router
