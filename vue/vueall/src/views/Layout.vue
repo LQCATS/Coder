@@ -155,6 +155,8 @@ export default {
             if ('logOut' == cmd) {
                 //点击退出，移出本地储存的用户
                 localStorage.removeItem('LoginUser');
+                //点击退出，移出本地储存的用户菜单权限数组
+                localStorage.removeItem('ListMenu');
                 //跳转到登录页面
                 this.$router.push('/login');
             }
@@ -162,22 +164,33 @@ export default {
     },
     created() {
         //本地获取用户信息
-        this.loginUser = JSON.parse(localStorage.getItem('LoginUser')) || {};
+        // this.loginUser = JSON.parse(localStorage.getItem('LoginUser')) || {};
+        this.loginUser = localStorage.getItem('LoginUser');
+        if (this.loginUser) {
+            this.loginUser = JSON.parse(this.loginUser);
+        } else {
+            this.loginUser = {};
+        }
         // console.log(this.loginUser);
         //本地获取用户菜单权限数组
-        this.listMenu = JSON.parse(localStorage.getItem('listMenu')) || [];
+        this.listMenu = localStorage.getItem('ListMenu');
+        if (this.listMenu) {
+            this.listMenu = JSON.parse(this.listMenu);
+        } else {
+            this.listMenu = [];
+        }
 
     },
     beforeRouteEnter(to, from, next) {
-        console.log('组件内守卫-进入路由前beforeRouteEnter');
+        // console.log('组件内守卫-进入路由前beforeRouteEnter');
         next();
     },
     beforeRouteUpdate(to, from, next) {
-        console.log('组件内守卫-路由更新beforeRouteUpdate');
+        // console.log('组件内守卫-路由更新beforeRouteUpdate');
         next();
     },
     beforeRouteLeave(to, from, next) {
-        console.log('组件内守卫-离开当前路由时beforeRouteLeave');
+        // console.log('组件内守卫-离开当前路由时beforeRouteLeave');
         next();
     }
 }

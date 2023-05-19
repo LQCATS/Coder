@@ -46,6 +46,8 @@
 
 <script>
 import particles from '@/components/particles';
+import sessionTool from '@/tool/sessionTool';
+
 export default {
     data() {
         return {
@@ -74,9 +76,18 @@ export default {
                     let powerRes = await this.$role.getAllMenu({
                         userid: res.data.id
                     });
-                    localStorage.setItem('listMenu', JSON.stringify(powerRes.data));
+                    localStorage.setItem('ListMenu', JSON.stringify(powerRes.data));
+
+                    let listMenu = powerRes.data;
+                    
+                    //调用封装的动态渲染路由方法
+                    sessionTool.loadRoute(listMenu, this.$router);
+
+                    console.log(this.$router);
+
                     //登录成功，跳转页面
-                    this.$router.push('/layout/order');
+                    this.$router.push('/layout/home');
+
                 } else {
                     //登录失败，提示用户
                     this.$message.error('登录失败，请稍后重试！');

@@ -6,6 +6,7 @@ import RoleManagement from '@/views/RoleManagement';
 import Managers from '@/views/Managers';
 import Power from '@/views/Power';
 import NotFound from '@/views/NotFound';
+import sessionTool from '@/tool/sessionTool';
 
 //!安装路由插件到Vue中，也可以叫注册到vue中
 Vue.use(VueRouter);
@@ -27,82 +28,101 @@ const routes = [
     path: '/login',
     component: Login
   },
-  {
-    name: 'Layout',
-    path: '/layout',
-    component: () => import('@/views/Layout'),
-    beforeEnter(to, from, next) {
-      console.log('路由独享守卫beforeEnter');
-      next();
-    },
-    children: [
-      {
-        name: 'Order',
-        path: 'order',
-        //!懒加载订单页面
-        component: () => import('@/views/Order'),
-      },
-      {
-        name: 'RoleManagement',
-        path: 'roleManagement',
-        component: () => import('@/views/RoleManagement'),
-      },
-      {
-        name: 'Managers',
-        path: 'managers',
-        component: () => import('@/views/Managers'),
-      },
-      {
-        name: 'Power',
-        path: 'power',
-        component: () => import('@/views/Power'),
-      },
-      {
-        name: 'OrderDetails',
-        path: 'orderDetails',
-        component: () => import('@/views/OrderDetails'),
-      },
-      //动态路由传参
-      // {
-      //   name: 'OrderDetails',
-      //   path: 'orderDetails/:id/:name?',
-      //   component: () => import('@/views/OrderDetails'),
-      //   props: true
-      // },
-      {
-        name: 'GoodsType',
-        path: 'goodsType',
-        component: () => import('@/views/GoodsType'),
-      },
-      {
-        name: 'Dictionary',
-        path: 'dictionary',
-        component: () => import('@/views/Dictionary'),
-      },
-      {
-        name: 'Article',
-        path: 'article',
-        component: () => import('@/views/Article'),
-      },
-      {
-        name: 'ArticleType',
-        path: 'articleType',
-        component: () => import('@/views/ArticleType'),
-      },
-      {
-        name: 'Member',
-        path: 'member',
-        component: () => import('@/views/Member'),
-      },
-      {
-        name: 'GoodsManage',
-        path: 'goodsManage',
-        component: () => import('@/views/GoodsManage'),
-      },
-    ]
-  },
+  // {
+  //   name: 'Layout',
+  //   path: '/layout',
+  //   component: () => import('@/views/Layout'),
+  //   beforeEnter(to, from, next) {
+  //     console.log('路由独享守卫beforeEnter');
+  //     next();
+  //   },
+  //   children: [
+  //     {
+  //       name: 'Order',
+  //       path: 'order',
+  //       //!懒加载订单页面
+  //       component: () => import('@/views/Order'),
+  //     },
+  //     {
+  //       name: 'RoleManagement',
+  //       path: 'roleManagement',
+  //       component: () => import('@/views/RoleManagement'),
+  //     },
+  //     {
+  //       name: 'Managers',
+  //       path: 'managers',
+  //       component: () => import('@/views/Managers'),
+  //     },
+  //     {
+  //       name: 'Power',
+  //       path: 'power',
+  //       component: () => import('@/views/Power'),
+  //     },
+  //     {
+  //       name: 'OrderDetails',
+  //       path: 'orderDetails',
+  //       component: () => import('@/views/OrderDetails'),
+  //     },
+  //     //动态路由传参
+  //     // {
+  //     //   name: 'OrderDetails',
+  //     //   path: 'orderDetails/:id/:name?',
+  //     //   component: () => import('@/views/OrderDetails'),
+  //     //   props: true
+  //     // },
+  //     {
+  //       name: 'GoodsType',
+  //       path: 'goodsType',
+  //       component: () => import('@/views/GoodsType'),
+  //     },
+  //     {
+  //       name: 'Dictionary',
+  //       path: 'dictionary',
+  //       component: () => import('@/views/Dictionary'),
+  //     },
+  //     {
+  //       name: 'Article',
+  //       path: 'article',
+  //       component: () => import('@/views/Article'),
+  //     },
+  //     {
+  //       name: 'ArticleType',
+  //       path: 'articleType',
+  //       component: () => import('@/views/ArticleType'),
+  //     },
+  //     {
+  //       name: 'Member',
+  //       path: 'member',
+  //       component: () => import('@/views/Member'),
+  //     },
+  //     {
+  //       name: 'GoodsManage',
+  //       path: 'goodsManage',
+  //       component: () => import('@/views/GoodsManage'),
+  //     },
+  //   ]
+  // },
 
 ]
+
+//!动态加载路由项，layout
+//获取本地储存的菜单权限数组ListMenu
+let listMenu = localStorage.getItem('ListMenu');
+
+if (listMenu) {
+  listMenu = JSON.parse(listMenu);
+  // console.log(listMenu);
+
+  //调用封装的动态渲染路由方法
+  sessionTool.loadRoute(listMenu, null, routes);
+
+
+} else {
+  console.log('未获取到路由');
+}
+
+
+
 
 // ! 实例化路由实例
 const router = new VueRouter({
@@ -116,7 +136,7 @@ const router = new VueRouter({
  * next：放行函数
  */
 router.beforeEach((to, from, next) => {
-  console.log('前置守卫beforeEach');
+  // console.log('前置守卫beforeEach');
   let loginUser = localStorage.getItem('LoginUser');
 
   if (loginUser) {
@@ -136,7 +156,7 @@ router.beforeEach((to, from, next) => {
  * 解析守卫
  */
 router.beforeResolve((to, from, next) => {
-  console.log('解析守卫beforeResolve');
+  // console.log('解析守卫beforeResolve');
   next();
 });
 
@@ -144,6 +164,6 @@ router.beforeResolve((to, from, next) => {
  * 后置守卫
  */
 router.afterEach((to, from) => {
-  console.log('后置守卫afterEach');
+  // console.log('后置守卫afterEach');
 })
 export default router
