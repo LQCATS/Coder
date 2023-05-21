@@ -71,7 +71,7 @@ Vue.directive('btnPower', {
       }
     }
   }
-})
+});
 
 new Vue({
   router,
