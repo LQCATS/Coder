@@ -1,5 +1,6 @@
 import axios from "axios";
-import { Message } from 'element-ui'
+import { Message } from 'element-ui';
+import sessionTool from "./sessionTool";
 
 //!设置接口请求的基础地址，接口调用时不需要再写前面的基础地址
 axios.defaults.baseURL = 'http://127.0.0.1:3000';
@@ -43,11 +44,9 @@ axios.interceptors.response.use((res) => {
 
 //!配置请求拦截器
 axios.interceptors.request.use(req => {
-    let loginUser = localStorage.getItem('LoginUser');
-
-    if (loginUser) {
-        loginUser = JSON.parse(loginUser);
-        req.headers.Authorization = `bearer ${loginUser.token}`;
+    if (sessionTool.isLogin()) {
+        let loginUser = sessionTool.getLoginUser();
+        req.headers.Authorization = `Bearer ${loginUser.token}`;
     }
     return req
 })

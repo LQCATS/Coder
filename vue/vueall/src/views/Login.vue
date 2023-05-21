@@ -69,19 +69,35 @@ export default {
             }).then(async res => {
                 if (200 == res.code) {
                     // console.log(res);
+
+                    //1.调用接口拿到当前登录用户的按钮权限，并存储在本地
+                    let btnPower = [
+                        {
+                            '/layout/member': [ "update"]
+                        }
+                    ]
+                    sessionTool.setLocalItem('BtnPower', JSON.stringify(btnPower));
+
+
                     //本地存储用户信息
-                    localStorage.setItem('LoginUser', JSON.stringify(res.data));
+                    // localStorage.setItem('LoginUser', JSON.stringify(res.data));
+                    sessionTool.setLoginUser(res.data);
 
                     //本地存储当前用户的所有菜单权限
                     let powerRes = await this.$role.getAllMenu({
                         userid: res.data.id
                     });
-                    localStorage.setItem('ListMenu', JSON.stringify(powerRes.data));
+                    // localStorage.setItem('ListMenu', JSON.stringify(powerRes.data));
+                    sessionTool.saveSysMenu(powerRes.data);
 
                     let listMenu = powerRes.data;
-                    
-                    //调用封装的动态渲染路由方法
-                    sessionTool.loadRoute(listMenu, this.$router);
+
+                    //调用封装的动态加载路由方法
+                    if (!this.$router.options.routes.find(item => 'Layout' == item.name)) {
+                        //如果没有加载过路由，才加载新路由
+                        sessionTool.loadRoute(listMenu, this.$router);
+                    };
+
 
                     console.log(this.$router);
 

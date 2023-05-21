@@ -107,13 +107,13 @@ const routes = [
 
 //!动态加载路由项，layout
 //获取本地储存的菜单权限数组ListMenu
-let listMenu = localStorage.getItem('ListMenu');
+let listMenu = sessionTool.getSysMenu();
 
-if (listMenu) {
-  listMenu = JSON.parse(listMenu);
+if (listMenu && listMenu.length > 0) {
+  // listMenu = JSON.parse(listMenu);
   // console.log(listMenu);
 
-  //调用封装的动态渲染路由方法
+  //调用封装的动态加载路由方法
   sessionTool.loadRoute(listMenu, null, routes);
 
 
@@ -137,9 +137,9 @@ const router = new VueRouter({
  */
 router.beforeEach((to, from, next) => {
   // console.log('前置守卫beforeEach');
-  let loginUser = localStorage.getItem('LoginUser');
+  // let loginUser = localStorage.getItem('LoginUser');
 
-  if (loginUser) {
+  if (sessionTool.isLogin()) {
     //已经登录
     next();
   } else {

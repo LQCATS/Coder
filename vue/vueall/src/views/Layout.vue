@@ -143,6 +143,7 @@
 </template>
 
 <script>
+import sessionTool from '@/tool/sessionTool';
 export default {
     data() {
         return {
@@ -165,20 +166,23 @@ export default {
     created() {
         //本地获取用户信息
         // this.loginUser = JSON.parse(localStorage.getItem('LoginUser')) || {};
-        this.loginUser = localStorage.getItem('LoginUser');
-        if (this.loginUser) {
-            this.loginUser = JSON.parse(this.loginUser);
-        } else {
-            this.loginUser = {};
-        }
+        // this.loginUser = localStorage.getItem('LoginUser');
+        // if (this.loginUser) {
+        //     this.loginUser = JSON.parse(this.loginUser);
+        // } else {
+        //     this.loginUser = {};
+        // }
+        this.loginUser = sessionTool.getLoginUser();
+
         // console.log(this.loginUser);
         //本地获取用户菜单权限数组
-        this.listMenu = localStorage.getItem('ListMenu');
-        if (this.listMenu) {
-            this.listMenu = JSON.parse(this.listMenu);
-        } else {
-            this.listMenu = [];
-        }
+        // this.listMenu = localStorage.getItem('ListMenu');
+        // if (this.listMenu) {
+        //     this.listMenu = JSON.parse(this.listMenu);
+        // } else {
+        //     this.listMenu = [];
+        // }
+        this.listMenu = sessionTool.getSysMenu();
 
     },
     beforeRouteEnter(to, from, next) {

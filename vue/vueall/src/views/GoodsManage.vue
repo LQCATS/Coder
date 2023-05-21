@@ -50,9 +50,9 @@
             </el-table>
 
             <!-- 分页 -->
-            <Cpaging :curPage="curPage" :pageSize="pageSize" :total="total" @search="search" @changeSize="changeSize">
+            <CPaging :curPage="curPage" :pageSize="pageSize" :total="total" @search="search" @changeSize="changeSize">
                 
-            </Cpaging>
+            </CPaging>
         </el-card>
 
     </div>

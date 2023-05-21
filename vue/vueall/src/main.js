@@ -43,9 +43,35 @@ Vue.component('CInput', Input);
 import Select from '@/components/form/Select';
 Vue.component('CSelect', Select);
 import DeptControl from '@/components/form/DeptControl';
+import sessionTool from './tool/sessionTool';
 Vue.component('CDept', DeptControl);
 
+/**
+ * 自定义权限按钮指令
+ */
 
+Vue.directive('btnPower', {
+  inserted(el, binding, vnode, oldnode) {
+    let curPath = vnode.context.$route.path;
+    let btnPower = sessionTool.getLocalItem('BtnPower');
+    if (btnPower) {
+      btnPower = JSON.parse(btnPower);
+      let btnName = binding.value;
+      let isFind = false;
+      for (let powerBtn of btnPower) {
+        let key = curPath;
+        let exist = powerBtn[key].find(item => btnName == item);
+        if (exist) {
+          isFind = true;
+          break;
+        }
+      }
+      if (!isFind) {
+        el.remove();
+      }
+    }
+  }
+})
 
 new Vue({
   router,

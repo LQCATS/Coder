@@ -12,7 +12,7 @@
         <el-card class="box-card">
             <!-- 添加会员点击按钮 -->
             <div slot="header" class="clearfix">
-                <el-button type="primary" @click="showEdit()">添加会员</el-button>
+                <el-button v-btnPower="'add'" type="primary" @click="showEdit()">添加会员</el-button>
             </div>
 
             <!-- 表格 -->
@@ -38,7 +38,7 @@
 
                 <el-table-column label="操作">
                     <template slot-scope="scope">
-                        <el-button type="text" @click="showEdit(scope.row)">修改</el-button>
+                        <el-button v-btnPower="'update'" type="text" @click="showEdit(scope.row)">修改</el-button>
                         <el-button type="text" @click="doDel(scope.row)">删除</el-button>
                     </template>
                 </el-table-column>
