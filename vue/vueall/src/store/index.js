@@ -13,6 +13,10 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   //!保存数据用的容器，固定写法
   state: {
+    //页签数组
+    listTabs: [
+      { name: '主页', path: '/layout/home' }
+    ],
     count: 1,
     userName: '张三',
     isBoy: false,
@@ -35,12 +39,27 @@ export default new Vuex.Store({
     setName(state) {
       state.userName = '张大师';
       return state.userName;
+    },
+    getTabs(state) {
+      return state.listTabs;
     }
   },
   //! 同步方法：用于获取或者设置state中的数据
   mutations: {
     CURTIME(state, val) {
       state.count = state.count + val;
+    },
+    PUSH_TAB(state, objTab) {
+      let tab = state.listTabs.find(item => item.name == objTab.name);
+      if (!tab) {
+        state.listTabs.push(objTab);
+      }
+    },
+    DEL_TAB(state, curTab) {
+      let index = state.listTabs.findIndex(item => item.path == curTab.path);
+      if (-1 != index) {
+        state.listTabs.splice(index, 1);
+      }
     }
   },
   //! 异步方法：用于获取或者设置state中的数据，在actions中可以执行一些异步的任务，例如调用接口，setTimeout

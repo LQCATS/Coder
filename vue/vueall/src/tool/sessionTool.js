@@ -13,6 +13,10 @@ export default {
             name: 'Home',
             path: 'home',
             component: () => import('@/views/Home'),
+            //!路由元信息
+            meta: {
+                tabName: '主页'
+            }
         })
 
         //循环遍历菜单权限数组，动态渲染路由
@@ -23,13 +27,16 @@ export default {
                 layoutRoute.children.push({
                     path: path,
                     component: () => import(`@/views${second.component}`),
+                    meta: {
+                        tabName: second.name
+                    }
                 })
             }
         }
 
         // console.log('layoutRoute', layoutRoute);
 
-    if (router) {
+        if (router) {
             //将路由配置放入路由配置数组中
             router.options.routes.push(layoutRoute);
             //让路由实例加载新的路由项
