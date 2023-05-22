@@ -73,7 +73,7 @@ export default {
                     //1.调用接口拿到当前登录用户的按钮权限，并存储在本地
                     let btnPower = [
                         {
-                            '/layout/member': [ "update"]
+                            '/layout/member': ["update", 'add']
                         }
                     ]
                     sessionTool.setLocalItem('BtnPower', JSON.stringify(btnPower));

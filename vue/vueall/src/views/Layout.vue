@@ -128,7 +128,7 @@
                     <!-- 路由出口 -->
                     <!-- 页签 -->
                     <div style="margin: 10px 0 10px 20px;">
-                        <!-- <el-tag closable disable-transitions>主页</el-tag> -->
+                        <el-tag closable disable-transitions>主页</el-tag>
                         <el-tag closable disable-transitions>{{ $route.name }}</el-tag>
 
                     </div>
