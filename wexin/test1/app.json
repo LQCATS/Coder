@@ -1,0 +1,73 @@
+{
+  "pages": [
+    "pages/home/home",
+    "pages/index/index",
+    "pages/mybooking/mybooking",
+    "pages/my/my",
+    "pages/newsDetials/newsDetials",
+    "pages/test1/test1",
+    "pages/test2/test2",
+    "pages/meeting/meeting",
+    "pages/meetingbooking/meetingbooking",
+    "pages/testmap/testmap"
+  ],
+  "requiredPrivateInfos": [
+    "getLocation"
+  ],
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序位置接口的效果展示"
+    }
+  },
+  "usingComponents": {
+    "cbtn": "/components/cbutton/cbutton",
+    "van-button": "/miniprogram_npm/@vant/weapp/button",
+    "van-cell": "/miniprogram_npm/@vant/weapp/cell/index",
+    "van-cell-group": "/miniprogram_npm/@vant/weapp/cell-group/index",
+    "van-icon": "/miniprogram_npm/@vant/weapp/icon/index",
+    "van-row": "/miniprogram_npm/@vant/weapp/row/index",
+    "van-col": "/miniprogram_npm/@vant/weapp/col/index",
+    "van-popup": "/miniprogram_npm/@vant/weapp/popup/index",
+    "van-toast": "/miniprogram_npm/@vant/weapp/toast/index",
+    "van-radio": "/miniprogram_npm/@vant/weapp/radio/index",
+    "van-radio-group": "/miniprogram_npm/@vant/weapp/radio-group/index",
+    "van-grid": "/miniprogram_npm/@vant/weapp/grid/index",
+    "van-grid-item": "/miniprogram_npm/@vant/weapp/grid-item/index",
+    "ctabtn": "/components/ctabutton/ctabutton",
+    "van-dialog": "/miniprogram_npm/@vant/weapp/dialog/index",
+    "van-notify": "/miniprogram_npm/@vant/weapp/notify/index"
+  },
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "布丁会议室",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#000",
+    "selectedColor": "#f00",
+    "backgroundColor": "#fff",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "text": "首页",
+        "iconPath": "/statics/images/icon/index_A.png",
+        "selectedIconPath": "/statics/images/icon/index_B.png"
+      },
+      {
+        "pagePath": "pages/mybooking/mybooking",
+        "text": "我的预定",
+        "iconPath": "/statics/images/icon/orders_A.png",
+        "selectedIconPath": "/statics/images/icon/orders_B.png"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "text": "我的",
+        "iconPath": "/statics/images/icon/personal_A.png",
+        "selectedIconPath": "/statics/images/icon/personal_B.png"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json"
+}

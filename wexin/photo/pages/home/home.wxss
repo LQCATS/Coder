@@ -1,0 +1,98 @@
+.tab_warp {
+    width: 100vw;
+}
+
+.van-tab {
+    background-color: #e5526c;
+    height: 80rpx;
+}
+
+.user_warp {
+    display: flex;
+    align-items: center;
+    padding: 0 30rpx;
+    box-sizing: border-box;
+}
+
+.user_img {
+    width: 100rpx;
+    height: 100rpx;
+    background-color: pink;
+    border-radius: 50rpx;
+}
+
+.user_name {
+    font-size: 30rpx;
+    margin-left: 20rpx;
+    letter-spacing: 5rpx;
+}
+
+.login_time {
+    font-size: 25rpx;
+    color: #666;
+}
+
+.user_icon {
+    margin-left: auto;
+    margin-right: 20rpx;
+    transform: rotate(90deg);
+}
+
+.img_warp {
+    width: 90vw;
+    /* height: 30vh; */
+    margin: 20rpx auto;
+}
+
+.img_warp  image{
+    width: 100%;
+}
+
+.text_warp {
+    width: 90vw;
+    color: #666;
+    margin: 0 auto;
+    font-size: 30rpx;
+    letter-spacing: 10rpx;
+}
+
+.text_title {
+    text-decoration: underline;
+}
+
+.sing_warp {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10rpx 40rpx;
+    font-size: 30rpx;
+    color: #666;
+    background-color: #dbdbdb;
+    border-radius: 10rpx;
+    padding: 0 0 0 20rpx;
+    box-sizing: border-box;
+}
+
+.sing_warp image {
+    width: 80rpx;
+    height: 80rpx;
+}
+
+.btn_warp {
+    display: flex;
+    width: 100%;
+    /* background-color: red; */
+    margin-left: 20rpx;
+}
+
+.btn {
+    width: 100rpx;
+    height: 35rpx;
+    line-height: 35rpx;
+    font-size: 28rpx;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 35rpx;
+    margin: 10rpx 20rpx 0 20rpx;
+    color: #666;
+}

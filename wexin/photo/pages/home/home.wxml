@@ -1,0 +1,56 @@
+<!-- header -->
+<view>
+    <van-tabs color="#fff" class="tab_warp" title-active-color="#fff" title-inactive-color="#fff" line-height="2px">
+        <van-tab title="关注">
+            <!-- 关注页面的内容 -->
+            <view class="user_warp">
+                <view class="user_img"></view>
+                <view class="user_name">
+                    <view>
+                        包圈网小包子
+                    </view>
+                    <view class="login_time">
+                        10分钟前
+                    </view>
+                </view>
+                <view class="user_icon">
+                    <van-icon name="ellipsis" />
+                </view>
+            </view>
+            <view class="img_warp">
+                <image src="/statics/images/home_content1.png" mode="widthFix" />
+            </view>
+            <view class="text_warp">
+                <view class="text_title">
+                    《离别的时候》
+                </view>
+                <view>
+                    离别的时候。总是要道珍重，对你想挽留,
+                    口难开，心里无祈求分手的时候，总是要找
+                    藉口。对你说问候，对你说心里无祈求。
+                </view>
+            </view>
+            <view class="sing_warp">
+                <view>
+                    郑怡——《离别的时候》
+                </view>
+                <image src="/statics/images/home_content1.png" />
+            </view>
+            <view class="btn_warp">
+                <view class="btn">
+                    摄影
+                </view>
+                <view class="btn">
+                    图片
+                </view>
+                <view class="btn">
+                    城市
+                </view>
+                <view class="btn">
+                    歌词
+                </view>
+            </view>
+        </van-tab>
+        <van-tab title="订阅">内容 2</van-tab>
+    </van-tabs>
+</view>

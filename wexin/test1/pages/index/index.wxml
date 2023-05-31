@@ -1,0 +1,22 @@
+<!--index.wxml-->
+<view>
+hellow woniu
+</view>
+<view class="bg">
+  {{name}}
+</view>
+<view>
+  {{objUser.id}}-{{objUser.name}}-{{objUser.age}}
+</view>
+<view wx:if="{{age < 20}}">
+  小伙子
+</view>
+<view wx:elif="{{age >= 20 && age<30}}">
+  小青年
+</view>
+<view hidden="{{!sex == 0}}">
+  男
+</view>
+<view wx:for="{{listUser}}" wx:key="id" wx:for-item='user' wx:for-index='i'>
+  {{user.id}}-{{user.name}}-{{user.age}}-{{i}}
+</view>

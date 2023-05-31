@@ -1,0 +1,81 @@
+<!-- scroll-view -->
+<scroll-view class="scroll-view_H" scroll-x="{{true}}" style="height: 300rpx;">
+  <view id="demo1" class="scroll-view-item_H demo-text-1"></view>
+  <view id="demo2" class="scroll-view-item_H demo-text-2"></view>
+  <view id="demo3" class="scroll-view-item_H demo-text-3"></view>
+</scroll-view>
+
+<!-- icon -->
+<icon class="icon-box-img" type="success" size="93"></icon>
+
+<!-- progress -->
+<view>
+  ------
+</view>
+<progress percent="{{progress}}" show-info stroke-width="3" />
+<view bindtap="changeprogress">
+  点击改变进度
+</view>
+
+<!-- checkbox -->
+<view>
+  ------
+</view>
+<checkbox-group bindchange="checkboxChange">
+  <label class="weui-cell weui-check__label">
+    <checkbox value="tw" checked="{{false}}" />跳舞
+  </label>
+  <label class="weui-cell weui-check__label">
+    <checkbox value="cg" checked="{{false}}" />唱歌
+  </label>
+</checkbox-group>
+<view>
+  选择的爱好： {{hobby}}
+</view>
+
+<!-- picker -->
+<view>------</view>
+<view>
+  普通选择器：
+</view>
+<picker mode="selector" bindchange="changenum" value="{{num}}" range="{{numOptions}}">
+  <text wx:if="{{num}}">{{num}}</text>
+  <text wx:else>点我选择数字</text>
+</picker>
+
+<view>------</view>
+<view>
+  时间选择器：
+</view>
+<picker mode="time" bindchange="changetime">
+  <text wx:if="{{time}}">{{time}}</text>
+  <text wx:else>点我选择时间</text>
+</picker>
+
+<view>------</view>
+<view>
+  日期选择器:
+</view>
+<picker mode="date" bindchange="changedate">
+  <text wx:if="{{date}}">{{date}}</text>
+  <text wx:else>点我选择日期</text>
+</picker>
+
+<view>------</view>
+<view>
+  省市区选择器:
+</view>
+<picker mode="region" bindchange="changeregion">
+  <text wx:if="{{region}}">{{region}}</text>
+  <text wx:else>点我选择省市区</text>
+</picker>
+
+
+
+<view>------</view>
+<view>
+  多列选择器:
+</view>
+<picker mode="multiSelector"  bindcolumnchange="changecolumn" range="{{multiArray}}">
+  点我选择家居，当前选中的选项：{{multiIndex}}
+</picker>

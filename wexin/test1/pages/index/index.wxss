@@ -1,0 +1,8 @@
+/**index.wxss**/
+.bg{
+  color: red;
+}
+view {
+  color: green;
+  font-size: 12px;
+}

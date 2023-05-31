@@ -1,0 +1,49 @@
+<!-- 头部search -->
+<view class="search">
+  <picker mode="date" bindchange='changedate'>
+    <view class="date_item">日期:{{chooseDate}}</view>
+  </picker>
+
+  <picker mode="time" bindchange='changetime'>
+    <view class="time_item">时间:{{chooseTime}}</view>
+  </picker>
+  <van-icon name="scan" class="scan_item" size="25px" color="#fff" />
+</view>
+
+<!-- 选择会议类型 -->
+<view class="type_warp">
+  <view class="type_title">
+    类型:
+  </view>
+  <ctabtn checked="{{seltype == 0}}" bindchange="changetx">腾讯会议</ctabtn>
+  <ctabtn checked="{{seltype == 1}}" bindchange="changewn">蜗牛会议</ctabtn>
+</view>
+
+<!-- 选择会议室 -->
+<view class="type_warp">
+  <view class="type_title">
+    会议室:
+  </view>
+  <ctabtn checked="{{selmeeting == 0}}" bindchange="checkmeeting" data-num="{{0}}">会议室A</ctabtn>
+  <ctabtn checked="{{selmeeting == 1}}" bindchange="checkmeeting" data-num="{{1}}">会议室B</ctabtn>
+  <ctabtn checked="{{selmeeting == 2}}" bindchange="checkmeeting" data-num="{{2}}">会议室C</ctabtn>
+</view>
+
+<!-- 会议室平面图 -->
+<view>
+  会议室平面图：
+  <view class="img_warp">
+    <image class="meeting_img" src="http://127.0.0.1:3000/public/img/ico_ditu.png" mode="widthFix" />
+  </view>
+</view>
+<button class="submit" bindtap="dosumbit">提交</button>
+
+<van-dialog use-slot title="填写用户信息" show="{{ showdituser }}" show-cancel-button bind:confirm="enterUpdate">
+
+  <input type="nickname" placeholder="请输入昵称" model:value="{{nickname}}" style="height: 50rpx;border: 1px solid red" />
+  <button open-type="chooseAvatar" bind:chooseavatar="uploadavatar">
+    上传头像
+  </button>
+</van-dialog>
+
+<van-notify id="van-notify" />

@@ -1,0 +1,33 @@
+<!-- 轮播图 -->
+<swiper indicator-dots="{{true}}" autoplay="{{true}}" interval="{{3000}}" duration="{{1000}}" class="bannerWarp">
+  <swiper-item wx:for="{{listImg}}" wx:key="*this" class="bannerItem">
+    <image class="bannerImg" src="{{item}}" mode="widthFix" />
+  </swiper-item>
+</swiper>
+
+<!-- 导航 -->
+
+<view class="navWarp">
+  <!-- <view class="navItem" wx:for="{{listNav}}" wx:key="src" bindtap="doScan" data-params1="阿里" data-params2="裁员了">
+    <image catchtap="doImg" data-params3='员工网上吐槽' class="navImg" src="{{item.src}}" mode="widthFix" />
+    <text class="navText">{{item.text}}</text>
+  </view> -->
+<cbtn src='/statics/images/icon/notice_B.png' text='扫描预定' bindclick="doScan" bindtap="gomeetingbooking"></cbtn>
+<cbtn src='/statics/images/icon/ico_huiyi_.png' text='参与会议' bindclick='gomeeting'></cbtn>
+<cbtn src='/statics/images/icon/ico_zuowei_.png' text='预约会议室'></cbtn>
+</view>
+
+<!-- 新闻 -->
+<view class="newsWarp">
+  <navigator url="/pages/newsDetials/newsDetials" hover-class="navigator-hover" wx:for="{{10}}" wx:key="item">
+    <view class="newsItem" >
+      <image class="newsImg" src="/statics/images/notice-2.png" mode="aspectFill" />
+      <view class="newsText">
+        <text>钱可以不赚，气质不能输!
+        </text>
+        <text class="newContent">2015年3月16日成都蜗牛创想科技有限公司正式登记成立。彼时彼刻，正是互联网行业的春天...</text>
+      </view>
+    </view>
+  </navigator>
+
+</view>

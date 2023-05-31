@@ -1,0 +1,1 @@
+<view class="btn_warp"><image src="{{imgurl}}" mode="widthFix"></image><text>{{text}}</text></view>

@@ -1,0 +1,15 @@
+.btnwarp {
+  width: auto;
+  height: 30rpx;
+  line-height: 30rpx;
+  padding: 20rpx;
+  background-color: #ccc;
+  border-radius: 10rpx;
+  font-size: 28rpx;
+  margin: auto 10rpx;
+}
+
+.btnactive {
+  background-color: #b02923;
+  color: #fff;
+}

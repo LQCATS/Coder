@@ -1,0 +1,44 @@
+<!-- 头部search -->
+<view class="search">
+  <view class="date_item">日期：</view>
+  <view class="time_item">时间：</view>
+  <van-icon name="scan" class="scan_item" size="25px" color="#fff" />
+</view>
+
+<!-- 类型选择 -->
+<view class="type_warp">
+  <view>类型：</view>
+  <van-radio-group value="{{ radio }}" bind:change="onChange" direction="horizontal">
+    <van-radio name="1" checked-color="#b02923" icon-size="16px">蜗牛会议</van-radio>
+    <van-radio name="2" checked-color="#b02923" icon-size="16px">班会</van-radio>
+  </van-radio-group>
+</view>
+
+<!-- 会议选项 -->
+<view>
+  <view class="meeting_type">
+    腾讯会议：
+  </view>
+  <view>
+    <van-grid column-num="2" gutter="{{ 10 }}" border="{{ false }}">
+      <van-grid-item use-slot wx:for="{{ 4 }}" wx:key="item">
+        <view class="meeting_img"></view>
+        <view>bb</view>
+      </van-grid-item>
+    </van-grid>
+  </view>
+</view>
+
+<view>
+  <view class="meeting_type">
+    微信会议：
+  </view>
+  <view>
+    <van-grid column-num="2" gutter="{{ 10 }}" border="{{ false }}">
+      <van-grid-item use-slot wx:for="{{ 4 }}" wx:key="item">
+        <view class="meeting_img"></view>
+        <view>bb</view>
+      </van-grid-item>
+    </van-grid>
+  </view>
+</view>

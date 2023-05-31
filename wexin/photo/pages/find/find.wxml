@@ -1,0 +1,53 @@
+<van-search value="{{ value }}" placeholder="搜索关键词" background="#e5526c" shape="round" input-class="search_input" />
+
+<van-tabs active="{{ active }}" color="#fff" class="tab_warp" title-active-color="#fff" title-inactive-color="#fff" line-height="2px">
+    <van-tab title="推荐">
+        <view class="item_warp">
+            <view class="item_box">
+                <image src="/statics/images/find_content1.png" mode="widthFix" />
+                <view class="item_title">
+                    舒适的家
+                </view>
+                <view class="btn_warp">
+                    <view class="btn">
+                        摄影
+                    </view>
+                    <view class="btn">
+                        图片
+                    </view>
+                </view>
+                <view class="item_like">
+                    <van-icon name="like-o" />
+                    <view>
+                        16人喜欢
+                    </view>
+                </view>
+            </view>
+            <view class="item_box">
+                <image src="/statics/images/find_content2.png" mode="widthFix" />
+                <view class="item_title">
+                    舒适的家
+                </view>
+                <view class="btn_warp">
+                    <view class="btn">
+                        摄影
+                    </view>
+                    <view class="btn">
+                        图片
+                    </view>
+                </view>
+                <view class="item_like">
+                    <van-icon name="like-o" />
+                    <view>
+                        16人喜欢
+                    </view>
+                </view>
+            </view>
+
+        </view>
+    </van-tab>
+    <van-tab title="娱乐">内容 2</van-tab>
+    <van-tab title="摄影">内容 3</van-tab>
+    <van-tab title="影视">内容 4</van-tab>
+    <!-- <van-tab title="比赛">内容 5</van-tab> -->
+</van-tabs>

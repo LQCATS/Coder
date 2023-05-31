@@ -1,0 +1,15 @@
+.page {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.newsDetialsImg {
+  width: 85vw;
+  height: 40vh;
+  background-color: #dbdbdb;
+}
+
+.newsDetialsContent {
+  width: 90%;
+  font-size: 30rpx;
+}

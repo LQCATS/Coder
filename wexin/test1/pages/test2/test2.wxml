@@ -1,0 +1,19 @@
+
+<van-button loading type="info" loading-text="加载中..." />
+
+<van-cell-group>
+  <van-cell title="单元格" value="内容" />
+  <van-cell title="单元格" value="内容" label="描述信息" border="{{ false }}" />
+</van-cell-group>
+
+<van-icon name="chat" dot />
+<van-icon name="chat" info="99+" />
+
+<van-row>
+  <van-col span="8">span: 8</van-col>
+  <van-col span="8">span: 8</van-col>
+  <van-col span="8">span: 8</van-col>
+</van-row>
+
+<van-cell title="展示弹出层" is-link bind:click="showPopup" />
+<van-popup show="{{ show }}" bind:close="onClose">内容</van-popup>

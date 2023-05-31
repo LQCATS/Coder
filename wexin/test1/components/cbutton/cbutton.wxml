@@ -1,0 +1,4 @@
+<view class="navItem" bindtap="doClick">
+  <image class="navImg" src="{{src}}" mode="widthFix" />
+  <text class="navText">{{text}}</text>
+</view>

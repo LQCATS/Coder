@@ -1,0 +1,3 @@
+<view class="btnwarp {{checked ? 'btnactive' : ''}}" bindtap="changesel">
+  <slot></slot>
+</view>

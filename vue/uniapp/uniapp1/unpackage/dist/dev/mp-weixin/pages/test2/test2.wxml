@@ -1,0 +1,1 @@
+<view><view class="warp"><view data-event-opts="{{[['tap',[['e0',['$event']]]]]}}" class="{{['defaul',(curpos==0)?'active':'']}}" bindtap="__e">菜单1</view><view data-event-opts="{{[['tap',[['e1',['$event']]]]]}}" class="{{['defaul',(curpos==1)?'active':'']}}" bindtap="__e">菜单2</view></view></view>
