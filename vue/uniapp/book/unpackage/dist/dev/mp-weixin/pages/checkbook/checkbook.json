@@ -1,5 +1,8 @@
 {
-  "navigationBarTitleText": "",
+  "navigationBarTitleText": "选书",
   "enablePullDownRefresh": false,
-  "usingComponents": {}
+  "usingComponents": {
+    "mysearch": "/components/mysearch/mysearch",
+    "u-tabs": "/uni_modules/uview-ui/components/u-tabs/u-tabs"
+  }
 }

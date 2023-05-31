@@ -1,12 +1,7 @@
 <template>
 	<view class="content">
 		<view class="header">
-			<view class="search">
-				<view class="search_icon">
-					<img src="/static/images/search.png" alt="">
-				</view>
-				<input type="text" class="header_input" placeholder="请输入书名/作者/ISBN等关键字">
-			</view>
+			<mysearch></mysearch>
 			<view class="banner"></view>
 			<view class="address">
 				<view class="text">
@@ -36,7 +31,7 @@
 					</view>
 				</view>
 				<view class="type_content">
-					<view class="type_item" v-for="item in typeagelist" :key="item">
+					<view class="type_item" v-for="item in typeagelist" :key="item.src">
 						<img :src="item.src" alt="">
 						<view class="">
 							{{item.text}}
@@ -54,7 +49,7 @@
 					</view>
 				</view>
 				<view class="type_content">
-					<view class="type_item" v-for="item in typeagelist" :key="item">
+					<view class="type_item" v-for="item in typeagelist" :key="item.text">
 						<img :src="item.src" alt="">
 						<view class="">
 							{{item.text}}
@@ -67,7 +62,19 @@
 					榜单
 				</view>
 				<view class="booklist_warp">
-					<view class="booklist_item" v-for="i in 6" :key="i">
+					<view class="booklist_item">
+						<img src="/static/images/图层 9@3x.png" alt="">
+						<view class="book_title">
+							0-4岁世界认知纸板书：全6册
+						</view>
+						<view class="">
+							从0岁开始看世界!30+国家，110种特色交通工具、房子、人种..
+						</view>
+						<view class="shopping">
+							借阅
+						</view>
+					</view>
+					<view class="booklist_item">
 						<img src="/static/images/图层 9@3x.png" alt="">
 						<view class="book_title">
 							0-4岁世界认知纸板书：全6册
@@ -133,43 +140,7 @@
 		align-items: center;
 	}
 
-	.search {
-		width: 100%;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		position: relative;
-
-		.header_input {
-			background-color: #f0faff;
-			width: 95%;
-			height: 50rpx;
-			border-radius: 30rpx;
-			padding-left: 100rpx;
-			box-sizing: border-box;
-
-		}
-
-		.search_icon {
-			height: 50rpx;
-			width: 40rpx;
-			position: absolute;
-			top: 0;
-			left: 60rpx;
-			display: flex;
-			align-items: center;
-			justify-content: center;
-
-			img {
-				width: 90%;
-			}
-		}
-	}
-
-	.uni-input-placeholder {
-		color: #ccc;
-		font-size: 25rpx;
-	}
+	
 
 	.banner {
 		width: 95%;
@@ -298,12 +269,12 @@
 		color: #ccc;
 		line-height: 40rpx;
 		margin-bottom: 20rpx;
-		
+
 		.book_title {
 			color: #333;
 		}
-		
-		.shopping{
+
+		.shopping {
 			background-color: #1da0f3;
 			width: 100rpx;
 			height: 50rpx;

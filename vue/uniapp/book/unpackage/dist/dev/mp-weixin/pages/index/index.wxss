@@ -24,6 +24,7 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
+/* uni.scss */
 .content {
   width: 750rpx;
   background: linear-gradient(#2badff, #d1eeff, #f0faff);
@@ -36,38 +37,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-.search {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-}
-.search .header_input {
-  background-color: #f0faff;
-  width: 95%;
-  height: 50rpx;
-  border-radius: 30rpx;
-  padding-left: 100rpx;
-  box-sizing: border-box;
-}
-.search .search_icon {
-  height: 50rpx;
-  width: 40rpx;
-  position: absolute;
-  top: 0;
-  left: 60rpx;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.search .search_icon ._img {
-  width: 90%;
-}
-.uni-input-placeholder {
-  color: #ccc;
-  font-size: 25rpx;
 }
 .banner {
   width: 95%;

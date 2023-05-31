@@ -1,1 +1,1 @@
-<view>选书</view>
+<view class="header"><mysearch vue-id="4440a948-1" bind:__l="__l"></mysearch></view>

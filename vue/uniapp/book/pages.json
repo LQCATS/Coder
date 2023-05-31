@@ -15,7 +15,7 @@
 		}, {
 			"path": "pages/checkbook/checkbook",
 			"style": {
-				"navigationBarTitleText": "",
+				"navigationBarTitleText": "选书",
 				"enablePullDownRefresh": false
 			}
 
