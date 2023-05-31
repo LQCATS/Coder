@@ -24,7 +24,7 @@ export default {
 
 <style lang="scss" scoped>
 .el-tag .curTab {
-    color: red;
+    color: orange;
     text-decoration: none;
 }
 
