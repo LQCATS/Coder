@@ -3,5 +3,19 @@
   "projectname": "book",
   "setting": {
     "compileHotReLoad": true
-  }
+  },
+  "condition": {
+    "miniprogram": {
+      "list": [
+        {
+          "name": "type",
+          "pathName": "pages/checkbook/checkbook",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        }
+      ]
+    }
+  },
+  "libVersion": "2.25.2"
 }

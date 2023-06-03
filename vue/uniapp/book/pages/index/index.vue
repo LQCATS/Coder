@@ -32,7 +32,7 @@
 				</view>
 				<view class="type_content">
 					<view class="type_item" v-for="item in typeagelist" :key="item.src">
-						<img :src="item.src" alt="">
+						<image :src="item.src" alt=""></image>
 						<view class="">
 							{{item.text}}
 						</view>
@@ -50,7 +50,7 @@
 				</view>
 				<view class="type_content">
 					<view class="type_item" v-for="item in typeagelist" :key="item.text">
-						<img :src="item.src" alt="">
+						<image :src="item.src" alt=""></image>
 						<view class="">
 							{{item.text}}
 						</view>
@@ -62,30 +62,19 @@
 					榜单
 				</view>
 				<view class="booklist_warp">
-					<view class="booklist_item">
-						<img src="/static/images/图层 9@3x.png" alt="">
+					<view class="booklist_item" v-for="book in booklist">
+						<image :src="book.img1" alt="" mode="widthFix"></image>
 						<view class="book_title">
-							0-4岁世界认知纸板书：全6册
+							{{book.bookName}}
 						</view>
 						<view class="">
-							从0岁开始看世界!30+国家，110种特色交通工具、房子、人种..
+							{{book.bookDesc}}
 						</view>
-						<view class="shopping">
+						<view class="shopping" @tap="gocar">
 							借阅
 						</view>
 					</view>
-					<view class="booklist_item">
-						<img src="/static/images/图层 9@3x.png" alt="">
-						<view class="book_title">
-							0-4岁世界认知纸板书：全6册
-						</view>
-						<view class="">
-							从0岁开始看世界!30+国家，110种特色交通工具、房子、人种..
-						</view>
-						<view class="shopping">
-							借阅
-						</view>
-					</view>
+
 				</view>
 
 			</view>
@@ -97,6 +86,7 @@
 	export default {
 		data() {
 			return {
+				booklist: [],
 				typeagelist: [{
 					src: "/static/images/图层 3.png",
 					text: '0-3岁'
@@ -115,8 +105,67 @@
 		onLoad() {
 
 		},
+		onReady() {
+			this.$serivce.pctService.searchInfoBook().then(res => {
+				if (200 == res.code) {
+					this.booklist = res.data.rows;
+				}
+			})
+		},
 		methods: {
+			gocar() {
+				// #ifdef MP
+				//判断用户是否登录
+				//getUserProfile
+				let userPromise = new Promise((resolve, reject) => {
+					uni.getUserProfile({
+						desc: '登录',
+						success: (res) => {
+							resolve(res);
+						},
+						fail: (err) => {
+							reject(err);
+						}
+					})
+				});
 
+				//login
+				let loginPromise = new Promise((resolve, reject) => {
+					uni.login({
+						success: (res) => {
+							resolve(res);
+						},
+						fail: (err) => {
+							reject(err);
+						}
+					})
+				});
+
+				//wxLogin
+				userPromise.then(userRes => {
+					console.log("userRes", userRes);
+
+					loginPromise.then(loginRes => {
+						console.log("loginRes", userRes);
+
+						this.$serivce.umsService.wxLogin({
+							code: loginRes.code,
+							rowData: userRes.encryptedData,
+							iv: userRes.iv,
+							
+						}).then(res => {
+							if (200 == res.code) {
+								uni.switchTab({
+									url:'/pages/shopping/shopping'
+								})
+							}
+						})
+					})
+				})
+
+
+				// #endif
+			}
 		}
 	}
 </script>
@@ -140,14 +189,14 @@
 		align-items: center;
 	}
 
-	
+
 
 	.banner {
 		width: 95%;
 		height: 300rpx;
 		margin-top: 20rpx;
 		border-radius: 10rpx;
-		background: url(/static/images/home_banner.jpg) no-repeat;
+		background: url(http://localhost:3000/public/img/banner1.png) no-repeat;
 		background-size: cover;
 
 	}
@@ -179,6 +228,7 @@
 			width: 110rpx;
 			height: 110rpx;
 			background: url(/static/images/address_btn.png) no-repeat;
+			background-size: cover;
 			margin-right: 20rpx;
 		}
 	}
@@ -231,7 +281,8 @@
 
 			.type_item {
 
-				img {
+				image {
+					width: 100%;
 					max-height: 130rpx;
 				}
 			}
@@ -262,16 +313,27 @@
 
 	.booklist_item {
 		width: 340rpx;
-		height: 550rpx;
+		height: 500rpx;
 		background-color: #fff;
 		border-radius: 20rpx;
 		font-size: 20rpx;
 		color: #ccc;
 		line-height: 40rpx;
 		margin-bottom: 20rpx;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+
+		image {
+			width: 80%;
+		}
 
 		.book_title {
 			color: #333;
+			width: 100%;
+			font-size: 25rpx;
+			text-align: center;
+
 		}
 
 		.shopping {

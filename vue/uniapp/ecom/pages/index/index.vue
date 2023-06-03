@@ -18,13 +18,14 @@
 				</swiper-item>
 				<swiper-item>
 					<view class="banner_img">
-						<image class="_image" src="http://localhost:3000/public/img/banner1.png" mode="widthFix"></image>
+						<image class="_image" src="http://localhost:3000/public/img/banner1.png" mode="widthFix">
+						</image>
 					</view>
 				</swiper-item>
 
 			</swiper>
 		</view>
-		
+
 		<!-- 新闻简报 -->
 		<view class="news_warp">
 			<view class="news_title">
@@ -39,7 +40,7 @@
 				&gt;
 			</view>
 		</view>
-		
+
 		<!-- card -->
 		<mycard>
 			<mybtn></mybtn>
@@ -56,6 +57,11 @@
 		},
 		onLoad() {
 
+		},
+		onTabItemTap() {
+			let app = getApp();
+			// app.globalData.goodsdetial = null;
+			app.globalData.prepage = '';
 		},
 		methods: {
 
@@ -127,7 +133,7 @@
 		}
 
 	}
-	
+
 	.news_warp {
 		width: 700rpx;
 		height: 100rpx;
@@ -136,23 +142,23 @@
 		display: flex;
 		align-items: center;
 		margin-bottom: 30rpx;
-		
+
 		.news_title {
 			font-weight: 700;
 			margin-left: 20rpx;
-			
+
 			.red {
 				color: red;
 			}
 		}
-		
+
 		.border {
 			margin: 0 30rpx;
 			width: 1rpx;
 			height: 35rpx;
 			border-left: 2rpx solid gray;
 		}
-		
+
 		.right {
 			margin-left: auto;
 			margin-right: 20rpx;

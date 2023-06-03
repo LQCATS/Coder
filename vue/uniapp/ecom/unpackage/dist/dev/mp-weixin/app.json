@@ -1,11 +1,46 @@
 {
   "pages": [
+    "pages/category/category",
     "pages/index/index",
-    "pages/test1/test1"
+    "pages/test1/test1",
+    "pages/goodlist/goodlist",
+    "pages/goodsdetial/goodsdetial"
   ],
   "subPackages": [],
   "window": {
     "navigationStyle": "custom"
+  },
+  "tabBar": {
+    "color": "#7A7E83",
+    "selectedColor": "#f00",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "static/images/icon_home.png",
+        "selectedIconPath": "static/images/icon_home.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/test1/test1",
+        "iconPath": "static/images/icon_gift.png",
+        "selectedIconPath": "static/images/icon_gift.png",
+        "text": "地区联动"
+      },
+      {
+        "pagePath": "pages/category/category",
+        "iconPath": "static/images/icon_fd.png",
+        "selectedIconPath": "static/images/icon_fd.png",
+        "text": "商品分类"
+      },
+      {
+        "pagePath": "pages/goodlist/goodlist",
+        "iconPath": "static/images/icon_cs.png",
+        "selectedIconPath": "static/images/icon_cs.png",
+        "text": "商品列表"
+      }
+    ]
   },
   "usingComponents": {}
 }

@@ -1,0 +1,1 @@
+<u-tabs vue-id="d1137d7c-1" list="{{tablist}}" scrollable="{{true}}" lineColor="transparent" activeStyle="{{({color:'#fff',backgroundColor:'#2badff',padding:'10rpx 10rpx',borderRadius:'40rpx',fontSize:'25rpx',width:'100'})}}" inactiveStyle="{{({color:'#333',fontSize:'25rpx'})}}" itemStyle="width:100rpx;height:100rpx" bind:__l="__l"></u-tabs>

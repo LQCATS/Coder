@@ -3,6 +3,7 @@
   "enablePullDownRefresh": false,
   "usingComponents": {
     "mysearch": "/components/mysearch/mysearch",
-    "u-tabs": "/uni_modules/uview-ui/components/u-tabs/u-tabs"
+    "mytabs": "/components/mytabs/mytabs",
+    "myagetab": "/components/myagetab/myagetab"
   }
 }

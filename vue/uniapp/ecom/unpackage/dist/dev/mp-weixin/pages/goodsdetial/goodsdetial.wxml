@@ -1,0 +1,1 @@
+<view><u-navbar vue-id="65c4f350-1" title="商品详情" autoBack="{{true}}" data-event-opts="{{[['^leftClick',[['goback']]]]}}" bind:leftClick="__e" bind:__l="__l"></u-navbar><view style="margin-top:200rpx;">{{'商品详情'+goodsdetial.productName+''}}</view></view>

@@ -1557,7 +1557,7 @@ function initData(vueOptions, context) {
     try {
       data = data.call(context); // 支持 Vue.prototype 上挂的数据
     } catch (e) {
-      if (Object({"VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"book","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"NODE_ENV":"development","VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"book","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.warn('根据 Vue 的 data 函数初始化小程序 data 失败，请尽量确保 data 函数中不访问 vm 对象，否则可能影响首次数据渲染速度。', data);
       }
     }
@@ -8938,7 +8938,7 @@ function type(obj) {
 
 function flushCallbacks$1(vm) {
     if (vm.__next_tick_callbacks && vm.__next_tick_callbacks.length) {
-        if (Object({"VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"book","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
+        if (Object({"NODE_ENV":"development","VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"book","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:flushCallbacks[' + vm.__next_tick_callbacks.length + ']');
@@ -8959,14 +8959,14 @@ function nextTick$1(vm, cb) {
     //1.nextTick 之前 已 setData 且 setData 还未回调完成
     //2.nextTick 之前存在 render watcher
     if (!vm.__next_tick_pending && !hasRenderWatcher(vm)) {
-        if(Object({"VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"book","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"NODE_ENV":"development","VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"book","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:nextVueTick');
         }
         return nextTick(cb, vm)
     }else{
-        if(Object({"VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"book","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"NODE_ENV":"development","VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"book","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance$1 = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance$1.is || mpInstance$1.route) + '][' + vm._uid +
                 ']:nextMPTick');
@@ -9062,7 +9062,7 @@ var patch = function(oldVnode, vnode) {
     });
     var diffData = this.$shouldDiffData === false ? data : diff(data, mpData);
     if (Object.keys(diffData).length) {
-      if (Object({"VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"book","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"NODE_ENV":"development","VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"book","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + this._uid +
           ']差量更新',
           JSON.stringify(diffData));
@@ -9649,41 +9649,7 @@ uni.addInterceptor({
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
-/* 34 */,
-/* 35 */,
-/* 36 */,
-/* 37 */,
-/* 38 */,
-/* 39 */,
-/* 40 */,
-/* 41 */,
-/* 42 */,
-/* 43 */,
-/* 44 */,
-/* 45 */,
-/* 46 */,
-/* 47 */,
-/* 48 */,
-/* 49 */,
-/* 50 */,
-/* 51 */,
-/* 52 */,
-/* 53 */,
-/* 54 */,
-/* 55 */,
-/* 56 */,
-/* 57 */,
-/* 58 */,
-/* 59 */,
-/* 60 */,
-/* 61 */,
-/* 62 */,
-/* 63 */,
-/* 64 */,
-/* 65 */,
-/* 66 */,
-/* 67 */,
-/* 68 */
+/* 34 */
 /*!**************************************************************************!*\
   !*** D:/web/vscode/Coder/vue/uniapp/book/node_modules/uview-ui/index.js ***!
   \**************************************************************************/
@@ -9699,20 +9665,20 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 var _defineProperty2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/defineProperty */ 11));
-var _mixin = _interopRequireDefault(__webpack_require__(/*! ./libs/mixin/mixin.js */ 79));
-var _mpMixin = _interopRequireDefault(__webpack_require__(/*! ./libs/mixin/mpMixin.js */ 80));
-var _luchRequest = _interopRequireDefault(__webpack_require__(/*! ./libs/luch-request */ 81));
-var _route = _interopRequireDefault(__webpack_require__(/*! ./libs/util/route.js */ 99));
-var _colorGradient = _interopRequireDefault(__webpack_require__(/*! ./libs/function/colorGradient.js */ 103));
-var _test = _interopRequireDefault(__webpack_require__(/*! ./libs/function/test.js */ 104));
-var _debounce = _interopRequireDefault(__webpack_require__(/*! ./libs/function/debounce.js */ 105));
-var _throttle = _interopRequireDefault(__webpack_require__(/*! ./libs/function/throttle.js */ 106));
-var _index = _interopRequireDefault(__webpack_require__(/*! ./libs/function/index.js */ 107));
-var _config = _interopRequireDefault(__webpack_require__(/*! ./libs/config/config.js */ 110));
-var _props = _interopRequireDefault(__webpack_require__(/*! ./libs/config/props.js */ 111));
-var _zIndex = _interopRequireDefault(__webpack_require__(/*! ./libs/config/zIndex.js */ 201));
-var _color = _interopRequireDefault(__webpack_require__(/*! ./libs/config/color.js */ 159));
-var _platform = _interopRequireDefault(__webpack_require__(/*! ./libs/function/platform */ 202));
+var _mixin = _interopRequireDefault(__webpack_require__(/*! ./libs/mixin/mixin.js */ 35));
+var _mpMixin = _interopRequireDefault(__webpack_require__(/*! ./libs/mixin/mpMixin.js */ 36));
+var _luchRequest = _interopRequireDefault(__webpack_require__(/*! ./libs/luch-request */ 37));
+var _route = _interopRequireDefault(__webpack_require__(/*! ./libs/util/route.js */ 55));
+var _colorGradient = _interopRequireDefault(__webpack_require__(/*! ./libs/function/colorGradient.js */ 59));
+var _test = _interopRequireDefault(__webpack_require__(/*! ./libs/function/test.js */ 60));
+var _debounce = _interopRequireDefault(__webpack_require__(/*! ./libs/function/debounce.js */ 61));
+var _throttle = _interopRequireDefault(__webpack_require__(/*! ./libs/function/throttle.js */ 62));
+var _index = _interopRequireDefault(__webpack_require__(/*! ./libs/function/index.js */ 63));
+var _config = _interopRequireDefault(__webpack_require__(/*! ./libs/config/config.js */ 66));
+var _props = _interopRequireDefault(__webpack_require__(/*! ./libs/config/props.js */ 67));
+var _zIndex = _interopRequireDefault(__webpack_require__(/*! ./libs/config/zIndex.js */ 157));
+var _color = _interopRequireDefault(__webpack_require__(/*! ./libs/config/color.js */ 115));
+var _platform = _interopRequireDefault(__webpack_require__(/*! ./libs/function/platform */ 158));
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { (0, _defineProperty2.default)(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
 // 看到此报错，是因为没有配置vue.config.js的【transpileDependencies】，详见：https://www.uviewui.com/components/npmSetting.html#_5-cli模式额外配置
@@ -9772,17 +9738,7 @@ exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
-/* 69 */,
-/* 70 */,
-/* 71 */,
-/* 72 */,
-/* 73 */,
-/* 74 */,
-/* 75 */,
-/* 76 */,
-/* 77 */,
-/* 78 */,
-/* 79 */
+/* 35 */
 /*!*************************************************************************************!*\
   !*** D:/web/vscode/Coder/vue/uniapp/book/node_modules/uview-ui/libs/mixin/mixin.js ***!
   \*************************************************************************************/
@@ -9950,7 +9906,7 @@ exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
-/* 80 */
+/* 36 */
 /*!***************************************************************************************!*\
   !*** D:/web/vscode/Coder/vue/uniapp/book/node_modules/uview-ui/libs/mixin/mpMixin.js ***!
   \***************************************************************************************/
@@ -9973,7 +9929,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 81 */
+/* 37 */
 /*!********************************************************************************************!*\
   !*** D:/web/vscode/Coder/vue/uniapp/book/node_modules/uview-ui/libs/luch-request/index.js ***!
   \********************************************************************************************/
@@ -9988,12 +9944,12 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-var _Request = _interopRequireDefault(__webpack_require__(/*! ./core/Request */ 82));
+var _Request = _interopRequireDefault(__webpack_require__(/*! ./core/Request */ 38));
 var _default = _Request.default;
 exports.default = _default;
 
 /***/ }),
-/* 82 */
+/* 38 */
 /*!***************************************************************************************************!*\
   !*** D:/web/vscode/Coder/vue/uniapp/book/node_modules/uview-ui/libs/luch-request/core/Request.js ***!
   \***************************************************************************************************/
@@ -10011,12 +9967,12 @@ exports.default = void 0;
 var _defineProperty2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/defineProperty */ 11));
 var _classCallCheck2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ 23));
 var _createClass2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/createClass */ 24));
-var _dispatchRequest = _interopRequireDefault(__webpack_require__(/*! ./dispatchRequest */ 83));
-var _InterceptorManager = _interopRequireDefault(__webpack_require__(/*! ./InterceptorManager */ 91));
-var _mergeConfig = _interopRequireDefault(__webpack_require__(/*! ./mergeConfig */ 92));
-var _defaults = _interopRequireDefault(__webpack_require__(/*! ./defaults */ 93));
-var _utils = __webpack_require__(/*! ../utils */ 86);
-var _clone = _interopRequireDefault(__webpack_require__(/*! ../utils/clone */ 94));
+var _dispatchRequest = _interopRequireDefault(__webpack_require__(/*! ./dispatchRequest */ 39));
+var _InterceptorManager = _interopRequireDefault(__webpack_require__(/*! ./InterceptorManager */ 47));
+var _mergeConfig = _interopRequireDefault(__webpack_require__(/*! ./mergeConfig */ 48));
+var _defaults = _interopRequireDefault(__webpack_require__(/*! ./defaults */ 49));
+var _utils = __webpack_require__(/*! ../utils */ 42);
+var _clone = _interopRequireDefault(__webpack_require__(/*! ../utils/clone */ 50));
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { (0, _defineProperty2.default)(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
 var Request = /*#__PURE__*/function () {
@@ -10199,7 +10155,7 @@ var Request = /*#__PURE__*/function () {
 exports.default = Request;
 
 /***/ }),
-/* 83 */
+/* 39 */
 /*!***********************************************************************************************************!*\
   !*** D:/web/vscode/Coder/vue/uniapp/book/node_modules/uview-ui/libs/luch-request/core/dispatchRequest.js ***!
   \***********************************************************************************************************/
@@ -10214,14 +10170,14 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-var _index = _interopRequireDefault(__webpack_require__(/*! ../adapters/index */ 84));
+var _index = _interopRequireDefault(__webpack_require__(/*! ../adapters/index */ 40));
 var _default = function _default(config) {
   return (0, _index.default)(config);
 };
 exports.default = _default;
 
 /***/ }),
-/* 84 */
+/* 40 */
 /*!*****************************************************************************************************!*\
   !*** D:/web/vscode/Coder/vue/uniapp/book/node_modules/uview-ui/libs/luch-request/adapters/index.js ***!
   \*****************************************************************************************************/
@@ -10237,10 +10193,10 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 var _defineProperty2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/defineProperty */ 11));
-var _buildURL = _interopRequireDefault(__webpack_require__(/*! ../helpers/buildURL */ 85));
-var _buildFullPath = _interopRequireDefault(__webpack_require__(/*! ../core/buildFullPath */ 87));
-var _settle = _interopRequireDefault(__webpack_require__(/*! ../core/settle */ 90));
-var _utils = __webpack_require__(/*! ../utils */ 86);
+var _buildURL = _interopRequireDefault(__webpack_require__(/*! ../helpers/buildURL */ 41));
+var _buildFullPath = _interopRequireDefault(__webpack_require__(/*! ../core/buildFullPath */ 43));
+var _settle = _interopRequireDefault(__webpack_require__(/*! ../core/settle */ 46));
+var _utils = __webpack_require__(/*! ../utils */ 42);
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { (0, _defineProperty2.default)(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
 /**
@@ -10302,7 +10258,7 @@ exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
-/* 85 */
+/* 41 */
 /*!*******************************************************************************************************!*\
   !*** D:/web/vscode/Coder/vue/uniapp/book/node_modules/uview-ui/libs/luch-request/helpers/buildURL.js ***!
   \*******************************************************************************************************/
@@ -10317,7 +10273,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = buildURL;
-var utils = _interopRequireWildcard(__webpack_require__(/*! ../utils */ 86));
+var utils = _interopRequireWildcard(__webpack_require__(/*! ../utils */ 42));
 function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
 function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 function encode(val) {
@@ -10372,7 +10328,7 @@ function buildURL(url, params) {
 }
 
 /***/ }),
-/* 86 */
+/* 42 */
 /*!********************************************************************************************!*\
   !*** D:/web/vscode/Coder/vue/uniapp/book/node_modules/uview-ui/libs/luch-request/utils.js ***!
   \********************************************************************************************/
@@ -10525,7 +10481,7 @@ function isUndefined(val) {
 }
 
 /***/ }),
-/* 87 */
+/* 43 */
 /*!*********************************************************************************************************!*\
   !*** D:/web/vscode/Coder/vue/uniapp/book/node_modules/uview-ui/libs/luch-request/core/buildFullPath.js ***!
   \*********************************************************************************************************/
@@ -10540,8 +10496,8 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = buildFullPath;
-var _isAbsoluteURL = _interopRequireDefault(__webpack_require__(/*! ../helpers/isAbsoluteURL */ 88));
-var _combineURLs = _interopRequireDefault(__webpack_require__(/*! ../helpers/combineURLs */ 89));
+var _isAbsoluteURL = _interopRequireDefault(__webpack_require__(/*! ../helpers/isAbsoluteURL */ 44));
+var _combineURLs = _interopRequireDefault(__webpack_require__(/*! ../helpers/combineURLs */ 45));
 /**
  * Creates a new URL by combining the baseURL with the requestedURL,
  * only when the requestedURL is not already an absolute URL.
@@ -10559,7 +10515,7 @@ function buildFullPath(baseURL, requestedURL) {
 }
 
 /***/ }),
-/* 88 */
+/* 44 */
 /*!************************************************************************************************************!*\
   !*** D:/web/vscode/Coder/vue/uniapp/book/node_modules/uview-ui/libs/luch-request/helpers/isAbsoluteURL.js ***!
   \************************************************************************************************************/
@@ -10587,7 +10543,7 @@ function isAbsoluteURL(url) {
 }
 
 /***/ }),
-/* 89 */
+/* 45 */
 /*!**********************************************************************************************************!*\
   !*** D:/web/vscode/Coder/vue/uniapp/book/node_modules/uview-ui/libs/luch-request/helpers/combineURLs.js ***!
   \**********************************************************************************************************/
@@ -10613,7 +10569,7 @@ function combineURLs(baseURL, relativeURL) {
 }
 
 /***/ }),
-/* 90 */
+/* 46 */
 /*!**************************************************************************************************!*\
   !*** D:/web/vscode/Coder/vue/uniapp/book/node_modules/uview-ui/libs/luch-request/core/settle.js ***!
   \**************************************************************************************************/
@@ -10645,7 +10601,7 @@ function settle(resolve, reject, response) {
 }
 
 /***/ }),
-/* 91 */
+/* 47 */
 /*!**************************************************************************************************************!*\
   !*** D:/web/vscode/Coder/vue/uniapp/book/node_modules/uview-ui/libs/luch-request/core/InterceptorManager.js ***!
   \**************************************************************************************************************/
@@ -10709,7 +10665,7 @@ var _default = InterceptorManager;
 exports.default = _default;
 
 /***/ }),
-/* 92 */
+/* 48 */
 /*!*******************************************************************************************************!*\
   !*** D:/web/vscode/Coder/vue/uniapp/book/node_modules/uview-ui/libs/luch-request/core/mergeConfig.js ***!
   \*******************************************************************************************************/
@@ -10725,7 +10681,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 var _defineProperty2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/defineProperty */ 11));
-var _utils = __webpack_require__(/*! ../utils */ 86);
+var _utils = __webpack_require__(/*! ../utils */ 42);
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { (0, _defineProperty2.default)(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
 /**
@@ -10785,7 +10741,7 @@ var _default = function _default(globalsConfig) {
 exports.default = _default;
 
 /***/ }),
-/* 93 */
+/* 49 */
 /*!****************************************************************************************************!*\
   !*** D:/web/vscode/Coder/vue/uniapp/book/node_modules/uview-ui/libs/luch-request/core/defaults.js ***!
   \****************************************************************************************************/
@@ -10817,7 +10773,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 94 */
+/* 50 */
 /*!**************************************************************************************************!*\
   !*** D:/web/vscode/Coder/vue/uniapp/book/node_modules/uview-ui/libs/luch-request/utils/clone.js ***!
   \**************************************************************************************************/
@@ -11066,10 +11022,10 @@ var clone = function () {
 }();
 var _default = clone;
 exports.default = _default;
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../../../../../../../../../软件/chormexiazai/HBuilderX.3.8.3.20230526/HBuilderX/plugins/uniapp-cli/node_modules/buffer/index.js */ 95).Buffer))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../../../../../../../../../软件/chormexiazai/HBuilderX.3.8.3.20230526/HBuilderX/plugins/uniapp-cli/node_modules/buffer/index.js */ 51).Buffer))
 
 /***/ }),
-/* 95 */
+/* 51 */
 /*!**************************************!*\
   !*** ./node_modules/buffer/index.js ***!
   \**************************************/
@@ -11087,9 +11043,9 @@ exports.default = _default;
 
 
 
-var base64 = __webpack_require__(/*! base64-js */ 96)
-var ieee754 = __webpack_require__(/*! ieee754 */ 97)
-var isArray = __webpack_require__(/*! isarray */ 98)
+var base64 = __webpack_require__(/*! base64-js */ 52)
+var ieee754 = __webpack_require__(/*! ieee754 */ 53)
+var isArray = __webpack_require__(/*! isarray */ 54)
 
 exports.Buffer = Buffer
 exports.SlowBuffer = SlowBuffer
@@ -12870,7 +12826,7 @@ function isnan (val) {
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../webpack/buildin/global.js */ 3)))
 
 /***/ }),
-/* 96 */
+/* 52 */
 /*!*****************************************!*\
   !*** ./node_modules/base64-js/index.js ***!
   \*****************************************/
@@ -13031,7 +12987,7 @@ function fromByteArray (uint8) {
 
 
 /***/ }),
-/* 97 */
+/* 53 */
 /*!***************************************!*\
   !*** ./node_modules/ieee754/index.js ***!
   \***************************************/
@@ -13126,7 +13082,7 @@ exports.write = function (buffer, value, offset, isLE, mLen, nBytes) {
 
 
 /***/ }),
-/* 98 */
+/* 54 */
 /*!***************************************!*\
   !*** ./node_modules/isarray/index.js ***!
   \***************************************/
@@ -13141,7 +13097,7 @@ module.exports = Array.isArray || function (arr) {
 
 
 /***/ }),
-/* 99 */
+/* 55 */
 /*!************************************************************************************!*\
   !*** D:/web/vscode/Coder/vue/uniapp/book/node_modules/uview-ui/libs/util/route.js ***!
   \************************************************************************************/
@@ -13156,8 +13112,8 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-var _regenerator = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/regenerator */ 100));
-var _asyncToGenerator2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/asyncToGenerator */ 102));
+var _regenerator = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/regenerator */ 56));
+var _asyncToGenerator2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/asyncToGenerator */ 58));
 var _classCallCheck2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ 23));
 var _createClass2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/createClass */ 24));
 /**
@@ -13329,7 +13285,7 @@ exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
-/* 100 */
+/* 56 */
 /*!************************************************************************************************!*\
   !*** ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/@babel/runtime/regenerator/index.js ***!
   \************************************************************************************************/
@@ -13338,11 +13294,11 @@ exports.default = _default;
 
 // TODO(Babel 8): Remove this file.
 
-var runtime = __webpack_require__(/*! @babel/runtime/helpers/regeneratorRuntime */ 101)();
+var runtime = __webpack_require__(/*! @babel/runtime/helpers/regeneratorRuntime */ 57)();
 module.exports = runtime;
 
 /***/ }),
-/* 101 */
+/* 57 */
 /*!*******************************************************************!*\
   !*** ./node_modules/@babel/runtime/helpers/regeneratorRuntime.js ***!
   \*******************************************************************/
@@ -13663,7 +13619,7 @@ function _regeneratorRuntime() {
 module.exports = _regeneratorRuntime, module.exports.__esModule = true, module.exports["default"] = module.exports;
 
 /***/ }),
-/* 102 */
+/* 58 */
 /*!*****************************************************************!*\
   !*** ./node_modules/@babel/runtime/helpers/asyncToGenerator.js ***!
   \*****************************************************************/
@@ -13703,7 +13659,7 @@ function _asyncToGenerator(fn) {
 module.exports = _asyncToGenerator, module.exports.__esModule = true, module.exports["default"] = module.exports;
 
 /***/ }),
-/* 103 */
+/* 59 */
 /*!************************************************************************************************!*\
   !*** D:/web/vscode/Coder/vue/uniapp/book/node_modules/uview-ui/libs/function/colorGradient.js ***!
   \************************************************************************************************/
@@ -13858,7 +13814,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 104 */
+/* 60 */
 /*!***************************************************************************************!*\
   !*** D:/web/vscode/Coder/vue/uniapp/book/node_modules/uview-ui/libs/function/test.js ***!
   \***************************************************************************************/
@@ -14163,7 +14119,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 105 */
+/* 61 */
 /*!*******************************************************************************************!*\
   !*** D:/web/vscode/Coder/vue/uniapp/book/node_modules/uview-ui/libs/function/debounce.js ***!
   \*******************************************************************************************/
@@ -14210,7 +14166,7 @@ var _default = debounce;
 exports.default = _default;
 
 /***/ }),
-/* 106 */
+/* 62 */
 /*!*******************************************************************************************!*\
   !*** D:/web/vscode/Coder/vue/uniapp/book/node_modules/uview-ui/libs/function/throttle.js ***!
   \*******************************************************************************************/
@@ -14259,7 +14215,7 @@ var _default = throttle;
 exports.default = _default;
 
 /***/ }),
-/* 107 */
+/* 63 */
 /*!****************************************************************************************!*\
   !*** D:/web/vscode/Coder/vue/uniapp/book/node_modules/uview-ui/libs/function/index.js ***!
   \****************************************************************************************/
@@ -14276,8 +14232,8 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = void 0;
 var _slicedToArray2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/slicedToArray */ 5));
 var _typeof2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/typeof */ 13));
-var _test = _interopRequireDefault(__webpack_require__(/*! ./test.js */ 104));
-var _digit = __webpack_require__(/*! ./digit.js */ 108);
+var _test = _interopRequireDefault(__webpack_require__(/*! ./test.js */ 60));
+var _digit = __webpack_require__(/*! ./digit.js */ 64);
 /**
  * @description 如果value小于min，取min；如果value大于max，取max
  * @param {number} min 
@@ -15016,7 +14972,7 @@ exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
-/* 108 */
+/* 64 */
 /*!****************************************************************************************!*\
   !*** D:/web/vscode/Coder/vue/uniapp/book/node_modules/uview-ui/libs/function/digit.js ***!
   \****************************************************************************************/
@@ -15037,7 +14993,7 @@ exports.minus = minus;
 exports.plus = plus;
 exports.round = round;
 exports.times = times;
-var _toArray2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/toArray */ 109));
+var _toArray2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/toArray */ 65));
 var _boundaryCheckingState = true; // 是否进行越界检查的全局开关
 
 /**
@@ -15218,7 +15174,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 109 */
+/* 65 */
 /*!********************************************************!*\
   !*** ./node_modules/@babel/runtime/helpers/toArray.js ***!
   \********************************************************/
@@ -15235,7 +15191,7 @@ function _toArray(arr) {
 module.exports = _toArray, module.exports.__esModule = true, module.exports["default"] = module.exports;
 
 /***/ }),
-/* 110 */
+/* 66 */
 /*!***************************************************************************************!*\
   !*** D:/web/vscode/Coder/vue/uniapp/book/node_modules/uview-ui/libs/config/config.js ***!
   \***************************************************************************************/
@@ -15279,7 +15235,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 111 */
+/* 67 */
 /*!**************************************************************************************!*\
   !*** D:/web/vscode/Coder/vue/uniapp/book/node_modules/uview-ui/libs/config/props.js ***!
   \**************************************************************************************/
@@ -15295,95 +15251,95 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 var _defineProperty2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/defineProperty */ 11));
-var _config = _interopRequireDefault(__webpack_require__(/*! ./config */ 110));
-var _actionSheet = _interopRequireDefault(__webpack_require__(/*! ./props/actionSheet.js */ 112));
-var _album = _interopRequireDefault(__webpack_require__(/*! ./props/album.js */ 113));
-var _alert = _interopRequireDefault(__webpack_require__(/*! ./props/alert.js */ 114));
-var _avatar = _interopRequireDefault(__webpack_require__(/*! ./props/avatar */ 115));
-var _avatarGroup = _interopRequireDefault(__webpack_require__(/*! ./props/avatarGroup */ 116));
-var _backtop = _interopRequireDefault(__webpack_require__(/*! ./props/backtop */ 117));
-var _badge = _interopRequireDefault(__webpack_require__(/*! ./props/badge */ 118));
-var _button = _interopRequireDefault(__webpack_require__(/*! ./props/button */ 119));
-var _calendar = _interopRequireDefault(__webpack_require__(/*! ./props/calendar */ 120));
-var _carKeyboard = _interopRequireDefault(__webpack_require__(/*! ./props/carKeyboard */ 121));
-var _cell = _interopRequireDefault(__webpack_require__(/*! ./props/cell */ 122));
-var _cellGroup = _interopRequireDefault(__webpack_require__(/*! ./props/cellGroup */ 123));
-var _checkbox = _interopRequireDefault(__webpack_require__(/*! ./props/checkbox */ 124));
-var _checkboxGroup = _interopRequireDefault(__webpack_require__(/*! ./props/checkboxGroup */ 125));
-var _circleProgress = _interopRequireDefault(__webpack_require__(/*! ./props/circleProgress */ 126));
-var _code = _interopRequireDefault(__webpack_require__(/*! ./props/code */ 127));
-var _codeInput = _interopRequireDefault(__webpack_require__(/*! ./props/codeInput */ 128));
-var _col = _interopRequireDefault(__webpack_require__(/*! ./props/col */ 129));
-var _collapse = _interopRequireDefault(__webpack_require__(/*! ./props/collapse */ 130));
-var _collapseItem = _interopRequireDefault(__webpack_require__(/*! ./props/collapseItem */ 131));
-var _columnNotice = _interopRequireDefault(__webpack_require__(/*! ./props/columnNotice */ 132));
-var _countDown = _interopRequireDefault(__webpack_require__(/*! ./props/countDown */ 133));
-var _countTo = _interopRequireDefault(__webpack_require__(/*! ./props/countTo */ 134));
-var _datetimePicker = _interopRequireDefault(__webpack_require__(/*! ./props/datetimePicker */ 135));
-var _divider = _interopRequireDefault(__webpack_require__(/*! ./props/divider */ 136));
-var _empty = _interopRequireDefault(__webpack_require__(/*! ./props/empty */ 137));
-var _form = _interopRequireDefault(__webpack_require__(/*! ./props/form */ 138));
-var _formItem = _interopRequireDefault(__webpack_require__(/*! ./props/formItem */ 139));
-var _gap = _interopRequireDefault(__webpack_require__(/*! ./props/gap */ 140));
-var _grid = _interopRequireDefault(__webpack_require__(/*! ./props/grid */ 141));
-var _gridItem = _interopRequireDefault(__webpack_require__(/*! ./props/gridItem */ 142));
-var _icon = _interopRequireDefault(__webpack_require__(/*! ./props/icon */ 143));
-var _image = _interopRequireDefault(__webpack_require__(/*! ./props/image */ 144));
-var _indexAnchor = _interopRequireDefault(__webpack_require__(/*! ./props/indexAnchor */ 145));
-var _indexList = _interopRequireDefault(__webpack_require__(/*! ./props/indexList */ 146));
-var _input = _interopRequireDefault(__webpack_require__(/*! ./props/input */ 147));
-var _keyboard = _interopRequireDefault(__webpack_require__(/*! ./props/keyboard */ 148));
-var _line = _interopRequireDefault(__webpack_require__(/*! ./props/line */ 149));
-var _lineProgress = _interopRequireDefault(__webpack_require__(/*! ./props/lineProgress */ 150));
-var _link = _interopRequireDefault(__webpack_require__(/*! ./props/link */ 151));
-var _list = _interopRequireDefault(__webpack_require__(/*! ./props/list */ 152));
-var _listItem = _interopRequireDefault(__webpack_require__(/*! ./props/listItem */ 153));
-var _loadingIcon = _interopRequireDefault(__webpack_require__(/*! ./props/loadingIcon */ 154));
-var _loadingPage = _interopRequireDefault(__webpack_require__(/*! ./props/loadingPage */ 155));
-var _loadmore = _interopRequireDefault(__webpack_require__(/*! ./props/loadmore */ 156));
-var _modal = _interopRequireDefault(__webpack_require__(/*! ./props/modal */ 157));
-var _navbar = _interopRequireDefault(__webpack_require__(/*! ./props/navbar */ 158));
-var _noNetwork = _interopRequireDefault(__webpack_require__(/*! ./props/noNetwork */ 160));
-var _noticeBar = _interopRequireDefault(__webpack_require__(/*! ./props/noticeBar */ 161));
-var _notify = _interopRequireDefault(__webpack_require__(/*! ./props/notify */ 162));
-var _numberBox = _interopRequireDefault(__webpack_require__(/*! ./props/numberBox */ 163));
-var _numberKeyboard = _interopRequireDefault(__webpack_require__(/*! ./props/numberKeyboard */ 164));
-var _overlay = _interopRequireDefault(__webpack_require__(/*! ./props/overlay */ 165));
-var _parse = _interopRequireDefault(__webpack_require__(/*! ./props/parse */ 166));
-var _picker = _interopRequireDefault(__webpack_require__(/*! ./props/picker */ 167));
-var _popup = _interopRequireDefault(__webpack_require__(/*! ./props/popup */ 168));
-var _radio = _interopRequireDefault(__webpack_require__(/*! ./props/radio */ 169));
-var _radioGroup = _interopRequireDefault(__webpack_require__(/*! ./props/radioGroup */ 170));
-var _rate = _interopRequireDefault(__webpack_require__(/*! ./props/rate */ 171));
-var _readMore = _interopRequireDefault(__webpack_require__(/*! ./props/readMore */ 172));
-var _row = _interopRequireDefault(__webpack_require__(/*! ./props/row */ 173));
-var _rowNotice = _interopRequireDefault(__webpack_require__(/*! ./props/rowNotice */ 174));
-var _scrollList = _interopRequireDefault(__webpack_require__(/*! ./props/scrollList */ 175));
-var _search = _interopRequireDefault(__webpack_require__(/*! ./props/search */ 176));
-var _section = _interopRequireDefault(__webpack_require__(/*! ./props/section */ 177));
-var _skeleton = _interopRequireDefault(__webpack_require__(/*! ./props/skeleton */ 178));
-var _slider = _interopRequireDefault(__webpack_require__(/*! ./props/slider */ 179));
-var _statusBar = _interopRequireDefault(__webpack_require__(/*! ./props/statusBar */ 180));
-var _steps = _interopRequireDefault(__webpack_require__(/*! ./props/steps */ 181));
-var _stepsItem = _interopRequireDefault(__webpack_require__(/*! ./props/stepsItem */ 182));
-var _sticky = _interopRequireDefault(__webpack_require__(/*! ./props/sticky */ 183));
-var _subsection = _interopRequireDefault(__webpack_require__(/*! ./props/subsection */ 184));
-var _swipeAction = _interopRequireDefault(__webpack_require__(/*! ./props/swipeAction */ 185));
-var _swipeActionItem = _interopRequireDefault(__webpack_require__(/*! ./props/swipeActionItem */ 186));
-var _swiper = _interopRequireDefault(__webpack_require__(/*! ./props/swiper */ 187));
-var _swipterIndicator = _interopRequireDefault(__webpack_require__(/*! ./props/swipterIndicator */ 188));
-var _switch2 = _interopRequireDefault(__webpack_require__(/*! ./props/switch */ 189));
-var _tabbar = _interopRequireDefault(__webpack_require__(/*! ./props/tabbar */ 190));
-var _tabbarItem = _interopRequireDefault(__webpack_require__(/*! ./props/tabbarItem */ 191));
-var _tabs = _interopRequireDefault(__webpack_require__(/*! ./props/tabs */ 192));
-var _tag = _interopRequireDefault(__webpack_require__(/*! ./props/tag */ 193));
-var _text = _interopRequireDefault(__webpack_require__(/*! ./props/text */ 194));
-var _textarea = _interopRequireDefault(__webpack_require__(/*! ./props/textarea */ 195));
-var _toast = _interopRequireDefault(__webpack_require__(/*! ./props/toast */ 196));
-var _toolbar = _interopRequireDefault(__webpack_require__(/*! ./props/toolbar */ 197));
-var _tooltip = _interopRequireDefault(__webpack_require__(/*! ./props/tooltip */ 198));
-var _transition = _interopRequireDefault(__webpack_require__(/*! ./props/transition */ 199));
-var _upload = _interopRequireDefault(__webpack_require__(/*! ./props/upload */ 200));
+var _config = _interopRequireDefault(__webpack_require__(/*! ./config */ 66));
+var _actionSheet = _interopRequireDefault(__webpack_require__(/*! ./props/actionSheet.js */ 68));
+var _album = _interopRequireDefault(__webpack_require__(/*! ./props/album.js */ 69));
+var _alert = _interopRequireDefault(__webpack_require__(/*! ./props/alert.js */ 70));
+var _avatar = _interopRequireDefault(__webpack_require__(/*! ./props/avatar */ 71));
+var _avatarGroup = _interopRequireDefault(__webpack_require__(/*! ./props/avatarGroup */ 72));
+var _backtop = _interopRequireDefault(__webpack_require__(/*! ./props/backtop */ 73));
+var _badge = _interopRequireDefault(__webpack_require__(/*! ./props/badge */ 74));
+var _button = _interopRequireDefault(__webpack_require__(/*! ./props/button */ 75));
+var _calendar = _interopRequireDefault(__webpack_require__(/*! ./props/calendar */ 76));
+var _carKeyboard = _interopRequireDefault(__webpack_require__(/*! ./props/carKeyboard */ 77));
+var _cell = _interopRequireDefault(__webpack_require__(/*! ./props/cell */ 78));
+var _cellGroup = _interopRequireDefault(__webpack_require__(/*! ./props/cellGroup */ 79));
+var _checkbox = _interopRequireDefault(__webpack_require__(/*! ./props/checkbox */ 80));
+var _checkboxGroup = _interopRequireDefault(__webpack_require__(/*! ./props/checkboxGroup */ 81));
+var _circleProgress = _interopRequireDefault(__webpack_require__(/*! ./props/circleProgress */ 82));
+var _code = _interopRequireDefault(__webpack_require__(/*! ./props/code */ 83));
+var _codeInput = _interopRequireDefault(__webpack_require__(/*! ./props/codeInput */ 84));
+var _col = _interopRequireDefault(__webpack_require__(/*! ./props/col */ 85));
+var _collapse = _interopRequireDefault(__webpack_require__(/*! ./props/collapse */ 86));
+var _collapseItem = _interopRequireDefault(__webpack_require__(/*! ./props/collapseItem */ 87));
+var _columnNotice = _interopRequireDefault(__webpack_require__(/*! ./props/columnNotice */ 88));
+var _countDown = _interopRequireDefault(__webpack_require__(/*! ./props/countDown */ 89));
+var _countTo = _interopRequireDefault(__webpack_require__(/*! ./props/countTo */ 90));
+var _datetimePicker = _interopRequireDefault(__webpack_require__(/*! ./props/datetimePicker */ 91));
+var _divider = _interopRequireDefault(__webpack_require__(/*! ./props/divider */ 92));
+var _empty = _interopRequireDefault(__webpack_require__(/*! ./props/empty */ 93));
+var _form = _interopRequireDefault(__webpack_require__(/*! ./props/form */ 94));
+var _formItem = _interopRequireDefault(__webpack_require__(/*! ./props/formItem */ 95));
+var _gap = _interopRequireDefault(__webpack_require__(/*! ./props/gap */ 96));
+var _grid = _interopRequireDefault(__webpack_require__(/*! ./props/grid */ 97));
+var _gridItem = _interopRequireDefault(__webpack_require__(/*! ./props/gridItem */ 98));
+var _icon = _interopRequireDefault(__webpack_require__(/*! ./props/icon */ 99));
+var _image = _interopRequireDefault(__webpack_require__(/*! ./props/image */ 100));
+var _indexAnchor = _interopRequireDefault(__webpack_require__(/*! ./props/indexAnchor */ 101));
+var _indexList = _interopRequireDefault(__webpack_require__(/*! ./props/indexList */ 102));
+var _input = _interopRequireDefault(__webpack_require__(/*! ./props/input */ 103));
+var _keyboard = _interopRequireDefault(__webpack_require__(/*! ./props/keyboard */ 104));
+var _line = _interopRequireDefault(__webpack_require__(/*! ./props/line */ 105));
+var _lineProgress = _interopRequireDefault(__webpack_require__(/*! ./props/lineProgress */ 106));
+var _link = _interopRequireDefault(__webpack_require__(/*! ./props/link */ 107));
+var _list = _interopRequireDefault(__webpack_require__(/*! ./props/list */ 108));
+var _listItem = _interopRequireDefault(__webpack_require__(/*! ./props/listItem */ 109));
+var _loadingIcon = _interopRequireDefault(__webpack_require__(/*! ./props/loadingIcon */ 110));
+var _loadingPage = _interopRequireDefault(__webpack_require__(/*! ./props/loadingPage */ 111));
+var _loadmore = _interopRequireDefault(__webpack_require__(/*! ./props/loadmore */ 112));
+var _modal = _interopRequireDefault(__webpack_require__(/*! ./props/modal */ 113));
+var _navbar = _interopRequireDefault(__webpack_require__(/*! ./props/navbar */ 114));
+var _noNetwork = _interopRequireDefault(__webpack_require__(/*! ./props/noNetwork */ 116));
+var _noticeBar = _interopRequireDefault(__webpack_require__(/*! ./props/noticeBar */ 117));
+var _notify = _interopRequireDefault(__webpack_require__(/*! ./props/notify */ 118));
+var _numberBox = _interopRequireDefault(__webpack_require__(/*! ./props/numberBox */ 119));
+var _numberKeyboard = _interopRequireDefault(__webpack_require__(/*! ./props/numberKeyboard */ 120));
+var _overlay = _interopRequireDefault(__webpack_require__(/*! ./props/overlay */ 121));
+var _parse = _interopRequireDefault(__webpack_require__(/*! ./props/parse */ 122));
+var _picker = _interopRequireDefault(__webpack_require__(/*! ./props/picker */ 123));
+var _popup = _interopRequireDefault(__webpack_require__(/*! ./props/popup */ 124));
+var _radio = _interopRequireDefault(__webpack_require__(/*! ./props/radio */ 125));
+var _radioGroup = _interopRequireDefault(__webpack_require__(/*! ./props/radioGroup */ 126));
+var _rate = _interopRequireDefault(__webpack_require__(/*! ./props/rate */ 127));
+var _readMore = _interopRequireDefault(__webpack_require__(/*! ./props/readMore */ 128));
+var _row = _interopRequireDefault(__webpack_require__(/*! ./props/row */ 129));
+var _rowNotice = _interopRequireDefault(__webpack_require__(/*! ./props/rowNotice */ 130));
+var _scrollList = _interopRequireDefault(__webpack_require__(/*! ./props/scrollList */ 131));
+var _search = _interopRequireDefault(__webpack_require__(/*! ./props/search */ 132));
+var _section = _interopRequireDefault(__webpack_require__(/*! ./props/section */ 133));
+var _skeleton = _interopRequireDefault(__webpack_require__(/*! ./props/skeleton */ 134));
+var _slider = _interopRequireDefault(__webpack_require__(/*! ./props/slider */ 135));
+var _statusBar = _interopRequireDefault(__webpack_require__(/*! ./props/statusBar */ 136));
+var _steps = _interopRequireDefault(__webpack_require__(/*! ./props/steps */ 137));
+var _stepsItem = _interopRequireDefault(__webpack_require__(/*! ./props/stepsItem */ 138));
+var _sticky = _interopRequireDefault(__webpack_require__(/*! ./props/sticky */ 139));
+var _subsection = _interopRequireDefault(__webpack_require__(/*! ./props/subsection */ 140));
+var _swipeAction = _interopRequireDefault(__webpack_require__(/*! ./props/swipeAction */ 141));
+var _swipeActionItem = _interopRequireDefault(__webpack_require__(/*! ./props/swipeActionItem */ 142));
+var _swiper = _interopRequireDefault(__webpack_require__(/*! ./props/swiper */ 143));
+var _swipterIndicator = _interopRequireDefault(__webpack_require__(/*! ./props/swipterIndicator */ 144));
+var _switch2 = _interopRequireDefault(__webpack_require__(/*! ./props/switch */ 145));
+var _tabbar = _interopRequireDefault(__webpack_require__(/*! ./props/tabbar */ 146));
+var _tabbarItem = _interopRequireDefault(__webpack_require__(/*! ./props/tabbarItem */ 147));
+var _tabs = _interopRequireDefault(__webpack_require__(/*! ./props/tabs */ 148));
+var _tag = _interopRequireDefault(__webpack_require__(/*! ./props/tag */ 149));
+var _text = _interopRequireDefault(__webpack_require__(/*! ./props/text */ 150));
+var _textarea = _interopRequireDefault(__webpack_require__(/*! ./props/textarea */ 151));
+var _toast = _interopRequireDefault(__webpack_require__(/*! ./props/toast */ 152));
+var _toolbar = _interopRequireDefault(__webpack_require__(/*! ./props/toolbar */ 153));
+var _tooltip = _interopRequireDefault(__webpack_require__(/*! ./props/tooltip */ 154));
+var _transition = _interopRequireDefault(__webpack_require__(/*! ./props/transition */ 155));
+var _upload = _interopRequireDefault(__webpack_require__(/*! ./props/upload */ 156));
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { (0, _defineProperty2.default)(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
 var color = _config.default.color;
@@ -15391,7 +15347,7 @@ var _default = _objectSpread(_objectSpread(_objectSpread(_objectSpread(_objectSp
 exports.default = _default;
 
 /***/ }),
-/* 112 */
+/* 68 */
 /*!**************************************************************************************************!*\
   !*** D:/web/vscode/Coder/vue/uniapp/book/node_modules/uview-ui/libs/config/props/actionSheet.js ***!
   \**************************************************************************************************/
@@ -15435,7 +15391,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 113 */
+/* 69 */
 /*!********************************************************************************************!*\
   !*** D:/web/vscode/Coder/vue/uniapp/book/node_modules/uview-ui/libs/config/props/album.js ***!
   \********************************************************************************************/
@@ -15479,7 +15435,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 114 */
+/* 70 */
 /*!********************************************************************************************!*\
   !*** D:/web/vscode/Coder/vue/uniapp/book/node_modules/uview-ui/libs/config/props/alert.js ***!
   \********************************************************************************************/
@@ -15518,7 +15474,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 115 */
+/* 71 */
 /*!*********************************************************************************************!*\
   !*** D:/web/vscode/Coder/vue/uniapp/book/node_modules/uview-ui/libs/config/props/avatar.js ***!
   \*********************************************************************************************/
@@ -15563,7 +15519,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 116 */
+/* 72 */
 /*!**************************************************************************************************!*\
   !*** D:/web/vscode/Coder/vue/uniapp/book/node_modules/uview-ui/libs/config/props/avatarGroup.js ***!
   \**************************************************************************************************/
@@ -15605,7 +15561,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 117 */
+/* 73 */
 /*!**********************************************************************************************!*\
   !*** D:/web/vscode/Coder/vue/uniapp/book/node_modules/uview-ui/libs/config/props/backtop.js ***!
   \**********************************************************************************************/
@@ -15651,7 +15607,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 118 */
+/* 74 */
 /*!********************************************************************************************!*\
   !*** D:/web/vscode/Coder/vue/uniapp/book/node_modules/uview-ui/libs/config/props/badge.js ***!
   \********************************************************************************************/
@@ -15697,7 +15653,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 119 */
+/* 75 */
 /*!*********************************************************************************************!*\
   !*** D:/web/vscode/Coder/vue/uniapp/book/node_modules/uview-ui/libs/config/props/button.js ***!
   \*********************************************************************************************/
@@ -15756,7 +15712,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 120 */
+/* 76 */
 /*!***********************************************************************************************!*\
   !*** D:/web/vscode/Coder/vue/uniapp/book/node_modules/uview-ui/libs/config/props/calendar.js ***!
   \***********************************************************************************************/
@@ -15819,7 +15775,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 121 */
+/* 77 */
 /*!**************************************************************************************************!*\
   !*** D:/web/vscode/Coder/vue/uniapp/book/node_modules/uview-ui/libs/config/props/carKeyboard.js ***!
   \**************************************************************************************************/
@@ -15851,7 +15807,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 122 */
+/* 78 */
 /*!*******************************************************************************************!*\
   !*** D:/web/vscode/Coder/vue/uniapp/book/node_modules/uview-ui/libs/config/props/cell.js ***!
   \*******************************************************************************************/
@@ -15903,7 +15859,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 123 */
+/* 79 */
 /*!************************************************************************************************!*\
   !*** D:/web/vscode/Coder/vue/uniapp/book/node_modules/uview-ui/libs/config/props/cellGroup.js ***!
   \************************************************************************************************/
@@ -15937,7 +15893,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 124 */
+/* 80 */
 /*!***********************************************************************************************!*\
   !*** D:/web/vscode/Coder/vue/uniapp/book/node_modules/uview-ui/libs/config/props/checkbox.js ***!
   \***********************************************************************************************/
@@ -15981,7 +15937,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 125 */
+/* 81 */
 /*!****************************************************************************************************!*\
   !*** D:/web/vscode/Coder/vue/uniapp/book/node_modules/uview-ui/libs/config/props/checkboxGroup.js ***!
   \****************************************************************************************************/
@@ -16029,7 +15985,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 126 */
+/* 82 */
 /*!*****************************************************************************************************!*\
   !*** D:/web/vscode/Coder/vue/uniapp/book/node_modules/uview-ui/libs/config/props/circleProgress.js ***!
   \*****************************************************************************************************/
@@ -16061,7 +16017,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 127 */
+/* 83 */
 /*!*******************************************************************************************!*\
   !*** D:/web/vscode/Coder/vue/uniapp/book/node_modules/uview-ui/libs/config/props/code.js ***!
   \*******************************************************************************************/
@@ -16098,7 +16054,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 128 */
+/* 84 */
 /*!************************************************************************************************!*\
   !*** D:/web/vscode/Coder/vue/uniapp/book/node_modules/uview-ui/libs/config/props/codeInput.js ***!
   \************************************************************************************************/
@@ -16143,7 +16099,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 129 */
+/* 85 */
 /*!******************************************************************************************!*\
   !*** D:/web/vscode/Coder/vue/uniapp/book/node_modules/uview-ui/libs/config/props/col.js ***!
   \******************************************************************************************/
@@ -16179,7 +16135,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 130 */
+/* 86 */
 /*!***********************************************************************************************!*\
   !*** D:/web/vscode/Coder/vue/uniapp/book/node_modules/uview-ui/libs/config/props/collapse.js ***!
   \***********************************************************************************************/
@@ -16213,7 +16169,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 131 */
+/* 87 */
 /*!***************************************************************************************************!*\
   !*** D:/web/vscode/Coder/vue/uniapp/book/node_modules/uview-ui/libs/config/props/collapseItem.js ***!
   \***************************************************************************************************/
@@ -16255,7 +16211,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 132 */
+/* 88 */
 /*!***************************************************************************************************!*\
   !*** D:/web/vscode/Coder/vue/uniapp/book/node_modules/uview-ui/libs/config/props/columnNotice.js ***!
   \***************************************************************************************************/
@@ -16296,7 +16252,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 133 */
+/* 89 */
 /*!************************************************************************************************!*\
   !*** D:/web/vscode/Coder/vue/uniapp/book/node_modules/uview-ui/libs/config/props/countDown.js ***!
   \************************************************************************************************/
@@ -16331,7 +16287,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 134 */
+/* 90 */
 /*!**********************************************************************************************!*\
   !*** D:/web/vscode/Coder/vue/uniapp/book/node_modules/uview-ui/libs/config/props/countTo.js ***!
   \**********************************************************************************************/
@@ -16373,7 +16329,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 135 */
+/* 91 */
 /*!*****************************************************************************************************!*\
   !*** D:/web/vscode/Coder/vue/uniapp/book/node_modules/uview-ui/libs/config/props/datetimePicker.js ***!
   \*****************************************************************************************************/
@@ -16428,7 +16384,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 136 */
+/* 92 */
 /*!**********************************************************************************************!*\
   !*** D:/web/vscode/Coder/vue/uniapp/book/node_modules/uview-ui/libs/config/props/divider.js ***!
   \**********************************************************************************************/
@@ -16467,7 +16423,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 137 */
+/* 93 */
 /*!********************************************************************************************!*\
   !*** D:/web/vscode/Coder/vue/uniapp/book/node_modules/uview-ui/libs/config/props/empty.js ***!
   \********************************************************************************************/
@@ -16509,7 +16465,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 138 */
+/* 94 */
 /*!*******************************************************************************************!*\
   !*** D:/web/vscode/Coder/vue/uniapp/book/node_modules/uview-ui/libs/config/props/form.js ***!
   \*******************************************************************************************/
@@ -16554,7 +16510,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 139 */
+/* 95 */
 /*!***********************************************************************************************!*\
   !*** D:/web/vscode/Coder/vue/uniapp/book/node_modules/uview-ui/libs/config/props/formItem.js ***!
   \***********************************************************************************************/
@@ -16593,7 +16549,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 140 */
+/* 96 */
 /*!******************************************************************************************!*\
   !*** D:/web/vscode/Coder/vue/uniapp/book/node_modules/uview-ui/libs/config/props/gap.js ***!
   \******************************************************************************************/
@@ -16629,7 +16585,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 141 */
+/* 97 */
 /*!*******************************************************************************************!*\
   !*** D:/web/vscode/Coder/vue/uniapp/book/node_modules/uview-ui/libs/config/props/grid.js ***!
   \*******************************************************************************************/
@@ -16663,7 +16619,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 142 */
+/* 98 */
 /*!***********************************************************************************************!*\
   !*** D:/web/vscode/Coder/vue/uniapp/book/node_modules/uview-ui/libs/config/props/gridItem.js ***!
   \***********************************************************************************************/
@@ -16696,7 +16652,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 143 */
+/* 99 */
 /*!*******************************************************************************************!*\
   !*** D:/web/vscode/Coder/vue/uniapp/book/node_modules/uview-ui/libs/config/props/icon.js ***!
   \*******************************************************************************************/
@@ -16711,7 +16667,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-var _config = _interopRequireDefault(__webpack_require__(/*! ../config */ 110));
+var _config = _interopRequireDefault(__webpack_require__(/*! ../config */ 66));
 /*
  * @Author       : LQ
  * @Description  :
@@ -16748,7 +16704,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 144 */
+/* 100 */
 /*!********************************************************************************************!*\
   !*** D:/web/vscode/Coder/vue/uniapp/book/node_modules/uview-ui/libs/config/props/image.js ***!
   \********************************************************************************************/
@@ -16795,7 +16751,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 145 */
+/* 101 */
 /*!**************************************************************************************************!*\
   !*** D:/web/vscode/Coder/vue/uniapp/book/node_modules/uview-ui/libs/config/props/indexAnchor.js ***!
   \**************************************************************************************************/
@@ -16831,7 +16787,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 146 */
+/* 102 */
 /*!************************************************************************************************!*\
   !*** D:/web/vscode/Coder/vue/uniapp/book/node_modules/uview-ui/libs/config/props/indexList.js ***!
   \************************************************************************************************/
@@ -16869,7 +16825,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 147 */
+/* 103 */
 /*!********************************************************************************************!*\
   !*** D:/web/vscode/Coder/vue/uniapp/book/node_modules/uview-ui/libs/config/props/input.js ***!
   \********************************************************************************************/
@@ -16934,7 +16890,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 148 */
+/* 104 */
 /*!***********************************************************************************************!*\
   !*** D:/web/vscode/Coder/vue/uniapp/book/node_modules/uview-ui/libs/config/props/keyboard.js ***!
   \***********************************************************************************************/
@@ -16981,7 +16937,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 149 */
+/* 105 */
 /*!*******************************************************************************************!*\
   !*** D:/web/vscode/Coder/vue/uniapp/book/node_modules/uview-ui/libs/config/props/line.js ***!
   \*******************************************************************************************/
@@ -17018,7 +16974,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 150 */
+/* 106 */
 /*!***************************************************************************************************!*\
   !*** D:/web/vscode/Coder/vue/uniapp/book/node_modules/uview-ui/libs/config/props/lineProgress.js ***!
   \***************************************************************************************************/
@@ -17054,7 +17010,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 151 */
+/* 107 */
 /*!*******************************************************************************************!*\
   !*** D:/web/vscode/Coder/vue/uniapp/book/node_modules/uview-ui/libs/config/props/link.js ***!
   \*******************************************************************************************/
@@ -17069,7 +17025,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-var _config = _interopRequireDefault(__webpack_require__(/*! ../config */ 110));
+var _config = _interopRequireDefault(__webpack_require__(/*! ../config */ 66));
 /*
  * @Author       : LQ
  * @Description  :
@@ -17096,7 +17052,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 152 */
+/* 108 */
 /*!*******************************************************************************************!*\
   !*** D:/web/vscode/Coder/vue/uniapp/book/node_modules/uview-ui/libs/config/props/list.js ***!
   \*******************************************************************************************/
@@ -17141,7 +17097,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 153 */
+/* 109 */
 /*!***********************************************************************************************!*\
   !*** D:/web/vscode/Coder/vue/uniapp/book/node_modules/uview-ui/libs/config/props/listItem.js ***!
   \***********************************************************************************************/
@@ -17173,7 +17129,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 154 */
+/* 110 */
 /*!**************************************************************************************************!*\
   !*** D:/web/vscode/Coder/vue/uniapp/book/node_modules/uview-ui/libs/config/props/loadingIcon.js ***!
   \**************************************************************************************************/
@@ -17188,7 +17144,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-var _config = _interopRequireDefault(__webpack_require__(/*! ../config */ 110));
+var _config = _interopRequireDefault(__webpack_require__(/*! ../config */ 66));
 /*
  * @Author       : LQ
  * @Description  :
@@ -17219,7 +17175,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 155 */
+/* 111 */
 /*!**************************************************************************************************!*\
   !*** D:/web/vscode/Coder/vue/uniapp/book/node_modules/uview-ui/libs/config/props/loadingPage.js ***!
   \**************************************************************************************************/
@@ -17258,7 +17214,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 156 */
+/* 112 */
 /*!***********************************************************************************************!*\
   !*** D:/web/vscode/Coder/vue/uniapp/book/node_modules/uview-ui/libs/config/props/loadmore.js ***!
   \***********************************************************************************************/
@@ -17304,7 +17260,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 157 */
+/* 113 */
 /*!********************************************************************************************!*\
   !*** D:/web/vscode/Coder/vue/uniapp/book/node_modules/uview-ui/libs/config/props/modal.js ***!
   \********************************************************************************************/
@@ -17351,7 +17307,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 158 */
+/* 114 */
 /*!*********************************************************************************************!*\
   !*** D:/web/vscode/Coder/vue/uniapp/book/node_modules/uview-ui/libs/config/props/navbar.js ***!
   \*********************************************************************************************/
@@ -17366,7 +17322,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-var _color = _interopRequireDefault(__webpack_require__(/*! ../color */ 159));
+var _color = _interopRequireDefault(__webpack_require__(/*! ../color */ 115));
 /*
  * @Author       : LQ
  * @Description  :
@@ -17400,7 +17356,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 159 */
+/* 115 */
 /*!**************************************************************************************!*\
   !*** D:/web/vscode/Coder/vue/uniapp/book/node_modules/uview-ui/libs/config/color.js ***!
   \**************************************************************************************/
@@ -17433,7 +17389,7 @@ var _default = color;
 exports.default = _default;
 
 /***/ }),
-/* 160 */
+/* 116 */
 /*!************************************************************************************************!*\
   !*** D:/web/vscode/Coder/vue/uniapp/book/node_modules/uview-ui/libs/config/props/noNetwork.js ***!
   \************************************************************************************************/
@@ -17467,7 +17423,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 161 */
+/* 117 */
 /*!************************************************************************************************!*\
   !*** D:/web/vscode/Coder/vue/uniapp/book/node_modules/uview-ui/libs/config/props/noticeBar.js ***!
   \************************************************************************************************/
@@ -17513,7 +17469,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 162 */
+/* 118 */
 /*!*********************************************************************************************!*\
   !*** D:/web/vscode/Coder/vue/uniapp/book/node_modules/uview-ui/libs/config/props/notify.js ***!
   \*********************************************************************************************/
@@ -17552,7 +17508,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 163 */
+/* 119 */
 /*!************************************************************************************************!*\
   !*** D:/web/vscode/Coder/vue/uniapp/book/node_modules/uview-ui/libs/config/props/numberBox.js ***!
   \************************************************************************************************/
@@ -17604,7 +17560,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 164 */
+/* 120 */
 /*!*****************************************************************************************************!*\
   !*** D:/web/vscode/Coder/vue/uniapp/book/node_modules/uview-ui/libs/config/props/numberKeyboard.js ***!
   \*****************************************************************************************************/
@@ -17638,7 +17594,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 165 */
+/* 121 */
 /*!**********************************************************************************************!*\
   !*** D:/web/vscode/Coder/vue/uniapp/book/node_modules/uview-ui/libs/config/props/overlay.js ***!
   \**********************************************************************************************/
@@ -17673,7 +17629,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 166 */
+/* 122 */
 /*!********************************************************************************************!*\
   !*** D:/web/vscode/Coder/vue/uniapp/book/node_modules/uview-ui/libs/config/props/parse.js ***!
   \********************************************************************************************/
@@ -17712,7 +17668,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 167 */
+/* 123 */
 /*!*********************************************************************************************!*\
   !*** D:/web/vscode/Coder/vue/uniapp/book/node_modules/uview-ui/libs/config/props/picker.js ***!
   \*********************************************************************************************/
@@ -17763,7 +17719,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 168 */
+/* 124 */
 /*!********************************************************************************************!*\
   !*** D:/web/vscode/Coder/vue/uniapp/book/node_modules/uview-ui/libs/config/props/popup.js ***!
   \********************************************************************************************/
@@ -17809,7 +17765,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 169 */
+/* 125 */
 /*!********************************************************************************************!*\
   !*** D:/web/vscode/Coder/vue/uniapp/book/node_modules/uview-ui/libs/config/props/radio.js ***!
   \********************************************************************************************/
@@ -17853,7 +17809,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 170 */
+/* 126 */
 /*!*************************************************************************************************!*\
   !*** D:/web/vscode/Coder/vue/uniapp/book/node_modules/uview-ui/libs/config/props/radioGroup.js ***!
   \*************************************************************************************************/
@@ -17900,7 +17856,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 171 */
+/* 127 */
 /*!*******************************************************************************************!*\
   !*** D:/web/vscode/Coder/vue/uniapp/book/node_modules/uview-ui/libs/config/props/rate.js ***!
   \*******************************************************************************************/
@@ -17943,7 +17899,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 172 */
+/* 128 */
 /*!***********************************************************************************************!*\
   !*** D:/web/vscode/Coder/vue/uniapp/book/node_modules/uview-ui/libs/config/props/readMore.js ***!
   \***********************************************************************************************/
@@ -17982,7 +17938,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 173 */
+/* 129 */
 /*!******************************************************************************************!*\
   !*** D:/web/vscode/Coder/vue/uniapp/book/node_modules/uview-ui/libs/config/props/row.js ***!
   \******************************************************************************************/
@@ -18016,7 +17972,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 174 */
+/* 130 */
 /*!************************************************************************************************!*\
   !*** D:/web/vscode/Coder/vue/uniapp/book/node_modules/uview-ui/libs/config/props/rowNotice.js ***!
   \************************************************************************************************/
@@ -18054,7 +18010,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 175 */
+/* 131 */
 /*!*************************************************************************************************!*\
   !*** D:/web/vscode/Coder/vue/uniapp/book/node_modules/uview-ui/libs/config/props/scrollList.js ***!
   \*************************************************************************************************/
@@ -18091,7 +18047,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 176 */
+/* 132 */
 /*!*********************************************************************************************!*\
   !*** D:/web/vscode/Coder/vue/uniapp/book/node_modules/uview-ui/libs/config/props/search.js ***!
   \*********************************************************************************************/
@@ -18149,7 +18105,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 177 */
+/* 133 */
 /*!**********************************************************************************************!*\
   !*** D:/web/vscode/Coder/vue/uniapp/book/node_modules/uview-ui/libs/config/props/section.js ***!
   \**********************************************************************************************/
@@ -18190,7 +18146,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 178 */
+/* 134 */
 /*!***********************************************************************************************!*\
   !*** D:/web/vscode/Coder/vue/uniapp/book/node_modules/uview-ui/libs/config/props/skeleton.js ***!
   \***********************************************************************************************/
@@ -18232,7 +18188,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 179 */
+/* 135 */
 /*!*********************************************************************************************!*\
   !*** D:/web/vscode/Coder/vue/uniapp/book/node_modules/uview-ui/libs/config/props/slider.js ***!
   \*********************************************************************************************/
@@ -18274,7 +18230,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 180 */
+/* 136 */
 /*!************************************************************************************************!*\
   !*** D:/web/vscode/Coder/vue/uniapp/book/node_modules/uview-ui/libs/config/props/statusBar.js ***!
   \************************************************************************************************/
@@ -18306,7 +18262,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 181 */
+/* 137 */
 /*!********************************************************************************************!*\
   !*** D:/web/vscode/Coder/vue/uniapp/book/node_modules/uview-ui/libs/config/props/steps.js ***!
   \********************************************************************************************/
@@ -18344,7 +18300,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 182 */
+/* 138 */
 /*!************************************************************************************************!*\
   !*** D:/web/vscode/Coder/vue/uniapp/book/node_modules/uview-ui/libs/config/props/stepsItem.js ***!
   \************************************************************************************************/
@@ -18379,7 +18335,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 183 */
+/* 139 */
 /*!*********************************************************************************************!*\
   !*** D:/web/vscode/Coder/vue/uniapp/book/node_modules/uview-ui/libs/config/props/sticky.js ***!
   \*********************************************************************************************/
@@ -18416,7 +18372,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 184 */
+/* 140 */
 /*!*************************************************************************************************!*\
   !*** D:/web/vscode/Coder/vue/uniapp/book/node_modules/uview-ui/libs/config/props/subsection.js ***!
   \*************************************************************************************************/
@@ -18456,7 +18412,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 185 */
+/* 141 */
 /*!**************************************************************************************************!*\
   !*** D:/web/vscode/Coder/vue/uniapp/book/node_modules/uview-ui/libs/config/props/swipeAction.js ***!
   \**************************************************************************************************/
@@ -18488,7 +18444,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 186 */
+/* 142 */
 /*!******************************************************************************************************!*\
   !*** D:/web/vscode/Coder/vue/uniapp/book/node_modules/uview-ui/libs/config/props/swipeActionItem.js ***!
   \******************************************************************************************************/
@@ -18526,7 +18482,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 187 */
+/* 143 */
 /*!*********************************************************************************************!*\
   !*** D:/web/vscode/Coder/vue/uniapp/book/node_modules/uview-ui/libs/config/props/swiper.js ***!
   \*********************************************************************************************/
@@ -18583,7 +18539,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 188 */
+/* 144 */
 /*!*******************************************************************************************************!*\
   !*** D:/web/vscode/Coder/vue/uniapp/book/node_modules/uview-ui/libs/config/props/swipterIndicator.js ***!
   \*******************************************************************************************************/
@@ -18619,7 +18575,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 189 */
+/* 145 */
 /*!*********************************************************************************************!*\
   !*** D:/web/vscode/Coder/vue/uniapp/book/node_modules/uview-ui/libs/config/props/switch.js ***!
   \*********************************************************************************************/
@@ -18660,7 +18616,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 190 */
+/* 146 */
 /*!*********************************************************************************************!*\
   !*** D:/web/vscode/Coder/vue/uniapp/book/node_modules/uview-ui/libs/config/props/tabbar.js ***!
   \*********************************************************************************************/
@@ -18699,7 +18655,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 191 */
+/* 147 */
 /*!*************************************************************************************************!*\
   !*** D:/web/vscode/Coder/vue/uniapp/book/node_modules/uview-ui/libs/config/props/tabbarItem.js ***!
   \*************************************************************************************************/
@@ -18736,7 +18692,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 192 */
+/* 148 */
 /*!*******************************************************************************************!*\
   !*** D:/web/vscode/Coder/vue/uniapp/book/node_modules/uview-ui/libs/config/props/tabs.js ***!
   \*******************************************************************************************/
@@ -18793,7 +18749,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 193 */
+/* 149 */
 /*!******************************************************************************************!*\
   !*** D:/web/vscode/Coder/vue/uniapp/book/node_modules/uview-ui/libs/config/props/tag.js ***!
   \******************************************************************************************/
@@ -18839,7 +18795,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 194 */
+/* 150 */
 /*!*******************************************************************************************!*\
   !*** D:/web/vscode/Coder/vue/uniapp/book/node_modules/uview-ui/libs/config/props/text.js ***!
   \*******************************************************************************************/
@@ -18895,7 +18851,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 195 */
+/* 151 */
 /*!***********************************************************************************************!*\
   !*** D:/web/vscode/Coder/vue/uniapp/book/node_modules/uview-ui/libs/config/props/textarea.js ***!
   \***********************************************************************************************/
@@ -18948,7 +18904,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 196 */
+/* 152 */
 /*!********************************************************************************************!*\
   !*** D:/web/vscode/Coder/vue/uniapp/book/node_modules/uview-ui/libs/config/props/toast.js ***!
   \********************************************************************************************/
@@ -18994,7 +18950,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 197 */
+/* 153 */
 /*!**********************************************************************************************!*\
   !*** D:/web/vscode/Coder/vue/uniapp/book/node_modules/uview-ui/libs/config/props/toolbar.js ***!
   \**********************************************************************************************/
@@ -19031,7 +18987,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 198 */
+/* 154 */
 /*!**********************************************************************************************!*\
   !*** D:/web/vscode/Coder/vue/uniapp/book/node_modules/uview-ui/libs/config/props/tooltip.js ***!
   \**********************************************************************************************/
@@ -19075,7 +19031,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 199 */
+/* 155 */
 /*!*************************************************************************************************!*\
   !*** D:/web/vscode/Coder/vue/uniapp/book/node_modules/uview-ui/libs/config/props/transition.js ***!
   \*************************************************************************************************/
@@ -19110,7 +19066,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 200 */
+/* 156 */
 /*!*********************************************************************************************!*\
   !*** D:/web/vscode/Coder/vue/uniapp/book/node_modules/uview-ui/libs/config/props/upload.js ***!
   \*********************************************************************************************/
@@ -19169,7 +19125,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 201 */
+/* 157 */
 /*!***************************************************************************************!*\
   !*** D:/web/vscode/Coder/vue/uniapp/book/node_modules/uview-ui/libs/config/zIndex.js ***!
   \***************************************************************************************/
@@ -19205,7 +19161,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 202 */
+/* 158 */
 /*!*******************************************************************************************!*\
   !*** D:/web/vscode/Coder/vue/uniapp/book/node_modules/uview-ui/libs/function/platform.js ***!
   \*******************************************************************************************/
@@ -19233,6 +19189,392 @@ platform = 'weixin';
 platform = 'mp';
 var _default = platform;
 exports.default = _default;
+
+/***/ }),
+/* 159 */
+/*!*********************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/book/apis/index.js ***!
+  \*********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _pctService = _interopRequireDefault(__webpack_require__(/*! ./pctService.js */ 160));
+var _ums = _interopRequireDefault(__webpack_require__(/*! ./ums.js */ 162));
+var _default = {
+  pctService: _pctService.default,
+  umsService: _ums.default
+};
+exports.default = _default;
+
+/***/ }),
+/* 160 */
+/*!**************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/book/apis/pctService.js ***!
+  \**************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _request = _interopRequireDefault(__webpack_require__(/*! ../utils/request.js */ 161));
+var _default = {
+  //分页查询书籍
+  searchInfoBook: function searchInfoBook(params) {
+    return _request.default.post("/api/searchInfoBook", params);
+  }
+};
+exports.default = _default;
+
+/***/ }),
+/* 161 */
+/*!************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/book/utils/request.js ***!
+  \************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(uni) {
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var BASE_URL = 'http://localhost:3000';
+var _default = {
+  post: function post(url, params) {
+    var promise = new Promise(function (resolve, reject) {
+      // 发送请求前显示load
+      uni.showLoading({
+        title: '正在请求中...',
+        mask: true
+      });
+      uni.request({
+        url: "".concat(BASE_URL).concat(url),
+        method: 'POST',
+        data: params,
+        header: {
+          "content-type": 'application/json'
+        },
+        success: function success(res) {
+          resolve(res.data);
+        },
+        fail: function fail(err) {
+          reject(err);
+        },
+        complete: function complete() {
+          //请求失败或者成功都取消load图片
+          uni.hideLoading();
+        }
+      });
+    });
+    return promise;
+  },
+  get: function get(url, params) {
+    var promise = new Promise(function (resolve, reject) {
+      // 发送请求前显示load
+      uni.showLoading({
+        title: '正在请求中...',
+        mask: true
+      });
+      uni.request({
+        url: "".concat(BASE_URL).concat(url),
+        method: 'GET',
+        data: params,
+        header: {
+          "content-type": 'application/json'
+        },
+        success: function success(res) {
+          resolve(res.data);
+        },
+        fail: function fail(err) {
+          reject(err);
+        },
+        complete: function complete() {
+          //请求失败或者成功都取消load图片
+          uni.hideLoading();
+        }
+      });
+    });
+    return promise;
+  }
+};
+exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
+
+/***/ }),
+/* 162 */
+/*!*******************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/book/apis/ums.js ***!
+  \*******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _request = _interopRequireDefault(__webpack_require__(/*! ../utils/request.js */ 161));
+var _default = {
+  //微信登录
+  wxLogin: function wxLogin(params) {
+    return _request.default.post("/api/wxLogin", params);
+  }
+};
+exports.default = _default;
+
+/***/ }),
+/* 163 */,
+/* 164 */,
+/* 165 */,
+/* 166 */,
+/* 167 */,
+/* 168 */,
+/* 169 */,
+/* 170 */,
+/* 171 */,
+/* 172 */,
+/* 173 */,
+/* 174 */,
+/* 175 */,
+/* 176 */,
+/* 177 */,
+/* 178 */,
+/* 179 */,
+/* 180 */,
+/* 181 */,
+/* 182 */,
+/* 183 */,
+/* 184 */,
+/* 185 */,
+/* 186 */,
+/* 187 */,
+/* 188 */,
+/* 189 */,
+/* 190 */,
+/* 191 */,
+/* 192 */,
+/* 193 */,
+/* 194 */,
+/* 195 */,
+/* 196 */,
+/* 197 */,
+/* 198 */,
+/* 199 */,
+/* 200 */,
+/* 201 */,
+/* 202 */,
+/* 203 */,
+/* 204 */,
+/* 205 */,
+/* 206 */,
+/* 207 */,
+/* 208 */,
+/* 209 */,
+/* 210 */,
+/* 211 */,
+/* 212 */,
+/* 213 */,
+/* 214 */,
+/* 215 */,
+/* 216 */,
+/* 217 */,
+/* 218 */,
+/* 219 */
+/*!*******************************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/book/uni_modules/uview-ui/components/u-tabs/props.js ***!
+  \*******************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(uni) {
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _default = {
+  props: {
+    // 滑块的移动过渡时间，单位ms
+    duration: {
+      type: Number,
+      default: uni.$u.props.tabs.duration
+    },
+    // tabs标签数组
+    list: {
+      type: Array,
+      default: uni.$u.props.tabs.list
+    },
+    // 滑块颜色
+    lineColor: {
+      type: String,
+      default: uni.$u.props.tabs.lineColor
+    },
+    // 菜单选择中时的样式
+    activeStyle: {
+      type: [String, Object],
+      default: uni.$u.props.tabs.activeStyle
+    },
+    // 菜单非选中时的样式
+    inactiveStyle: {
+      type: [String, Object],
+      default: uni.$u.props.tabs.inactiveStyle
+    },
+    // 滑块长度
+    lineWidth: {
+      type: [String, Number],
+      default: uni.$u.props.tabs.lineWidth
+    },
+    // 滑块高度
+    lineHeight: {
+      type: [String, Number],
+      default: uni.$u.props.tabs.lineHeight
+    },
+    // 滑块背景显示大小，当滑块背景设置为图片时使用
+    lineBgSize: {
+      type: String,
+      default: uni.$u.props.tabs.lineBgSize
+    },
+    // 菜单item的样式
+    itemStyle: {
+      type: [String, Object],
+      default: uni.$u.props.tabs.itemStyle
+    },
+    // 菜单是否可滚动
+    scrollable: {
+      type: Boolean,
+      default: uni.$u.props.tabs.scrollable
+    },
+    // 当前选中标签的索引
+    current: {
+      type: [Number, String],
+      default: uni.$u.props.tabs.current
+    },
+    // 默认读取的键名
+    keyName: {
+      type: String,
+      default: uni.$u.props.tabs.keyName
+    }
+  }
+};
+exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
+
+/***/ }),
+/* 220 */,
+/* 221 */,
+/* 222 */,
+/* 223 */,
+/* 224 */,
+/* 225 */,
+/* 226 */,
+/* 227 */
+/*!********************************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/book/uni_modules/uview-ui/components/u-badge/props.js ***!
+  \********************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(uni) {
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _default = {
+  props: {
+    // 是否显示圆点
+    isDot: {
+      type: Boolean,
+      default: uni.$u.props.badge.isDot
+    },
+    // 显示的内容
+    value: {
+      type: [Number, String],
+      default: uni.$u.props.badge.value
+    },
+    // 是否显示
+    show: {
+      type: Boolean,
+      default: uni.$u.props.badge.show
+    },
+    // 最大值，超过最大值会显示 '{max}+'
+    max: {
+      type: [Number, String],
+      default: uni.$u.props.badge.max
+    },
+    // 主题类型，error|warning|success|primary
+    type: {
+      type: String,
+      default: uni.$u.props.badge.type
+    },
+    // 当数值为 0 时，是否展示 Badge
+    showZero: {
+      type: Boolean,
+      default: uni.$u.props.badge.showZero
+    },
+    // 背景颜色，优先级比type高，如设置，type参数会失效
+    bgColor: {
+      type: [String, null],
+      default: uni.$u.props.badge.bgColor
+    },
+    // 字体颜色
+    color: {
+      type: [String, null],
+      default: uni.$u.props.badge.color
+    },
+    // 徽标形状，circle-四角均为圆角，horn-左下角为直角
+    shape: {
+      type: String,
+      default: uni.$u.props.badge.shape
+    },
+    // 设置数字的显示方式，overflow|ellipsis|limit
+    // overflow会根据max字段判断，超出显示`${max}+`
+    // ellipsis会根据max判断，超出显示`${max}...`
+    // limit会依据1000作为判断条件，超出1000，显示`${value/1000}K`，比如2.2k、3.34w，最多保留2位小数
+    numberType: {
+      type: String,
+      default: uni.$u.props.badge.numberType
+    },
+    // 设置badge的位置偏移，格式为 [x, y]，也即设置的为top和right的值，absolute为true时有效
+    offset: {
+      type: Array,
+      default: uni.$u.props.badge.offset
+    },
+    // 是否反转背景和字体颜色
+    inverted: {
+      type: Boolean,
+      default: uni.$u.props.badge.inverted
+    },
+    // 是否绝对定位
+    absolute: {
+      type: Boolean,
+      default: uni.$u.props.badge.absolute
+    }
+  }
+};
+exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ })
 ]]);

@@ -1,5 +1,9 @@
 <script>
 	export default {
+		globalData: {
+			goodsdetial: null,
+			prepage: ''
+		},
 		onLaunch: function() {
 			console.log('App Launch')
 		},
