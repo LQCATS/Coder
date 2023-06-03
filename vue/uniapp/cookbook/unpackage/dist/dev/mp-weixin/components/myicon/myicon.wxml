@@ -1,0 +1,1 @@
+<view class="icon_warp data-v-4aff9ca4"><image class="icon_image data-v-4aff9ca4" src="{{src}}" mode="widthFix"></image><text class="data-v-4aff9ca4">{{text}}</text></view>

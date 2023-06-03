@@ -1,0 +1,38 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/member/member",
+    "pages/my/my"
+  ],
+  "subPackages": [],
+  "window": {
+    "navigationStyle": "custom"
+  },
+  "tabBar": {
+    "color": "#858585",
+    "selectedColor": "#da7a35",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "static/images/shouye1.png",
+        "selectedIconPath": "static/images/shouye2.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/member/member",
+        "iconPath": "static/images/huiyuan1.png",
+        "selectedIconPath": "static/images/huiyuan2.png",
+        "text": "会员"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "iconPath": "static/images/wode1.png",
+        "selectedIconPath": "static/images/wode2.png",
+        "text": "会员"
+      }
+    ]
+  },
+  "usingComponents": {}
+}

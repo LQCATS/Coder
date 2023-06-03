@@ -1,0 +1,1 @@
+<view class="search data-v-2bf6e884"><u-icon vue-id="52e6a902-1" name="search" color="#f2a063" size="20" class="data-v-2bf6e884" bind:__l="__l"></u-icon><input class="header_input data-v-2bf6e884" type="text" placeholder="请输入关键字" placeholder-style="color: #ccc;font-size: 20rpx;"/></view>
