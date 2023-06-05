@@ -19,9 +19,9 @@
 	.card {
 		width: 686rpx;
 		min-height: 100rpx;
-		background-color: pink;
 		border-radius: 10rpx;
 		display: flex;
 		flex-wrap: wrap;
+		justify-content: space-between;
 	}
 </style>

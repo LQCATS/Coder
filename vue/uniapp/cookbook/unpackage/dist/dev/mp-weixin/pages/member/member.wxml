@@ -1,1 +1,1 @@
-<view></view>
+<view><myheader vue-id="31fc4540-1" title="VIP会员" bind:__l="__l"></myheader><mytabs vue-id="31fc4540-2" tabslist="{{tabslist}}" bind:__l="__l"></mytabs><view class="banner"><view class="banner_bg"><view class="banner_top"><view class="top_left"><image src mode></image></view><view class="top_right"><view class="right_top"><view class="title">欢迎你，新朋友</view><view class="member_status">开通</view></view></view></view><view class="banner_bootom"></view></view></view></view>

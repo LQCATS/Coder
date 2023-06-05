@@ -16,52 +16,42 @@
 		<view class="banner">
 			<swiper class="swiper" circular :indicator-dots="true" :autoplay="true" :interval="3000" :duration="1000"
 				indicator-active-color="#d86f32">
-				<swiper-item>
-					<image src="../../static/bgimages/NoPath-(91).png" mode="widthFix" class="banner_image"></image>
+				<swiper-item v-for="banner in bannerlist" :key="banner._id">
+					<view class="banner_image">
+						<image :src="banner.image_src" mode="widthFix" class="_image"></image>
+					</view>
 				</swiper-item>
-				<swiper-item>
-					<image src="../../static/bgimages/NoPath-(91).png" mode="widthFix" class="banner_image"></image>
-				</swiper-item>
-
 			</swiper>
 		</view>
 
 		<!-- nav -->
 		<view class="nav">
 			<mycard>
-				<myicon class="myicon" src="../../static/images/jiachangcia588@3x.png" text="家常菜"></myicon>
-				<myicon class="myicon" src="../../static/images/jiachangcia588@3x.png" text="家常菜"></myicon>
-				<myicon class="myicon" src="../../static/images/jiachangcia588@3x.png" text="家常菜"></myicon>
-				<myicon class="myicon" src="../../static/images/jiachangcia588@3x.png" text="家常菜"></myicon>
-				<myicon class="myicon" src="../../static/images/jiachangcia588@3x.png" text="家常菜"></myicon>
-				<myicon class="myicon" src="../../static/images/jiachangcia588@3x.png" text="家常菜"></myicon>
-				<myicon class="myicon" src="../../static/images/jiachangcia588@3x.png" text="家常菜"></myicon>
-				<myicon class="myicon" src="../../static/images/jiachangcia588@3x.png" text="家常菜"></myicon>
-				<myicon class="myicon" src="../../static/images/jiachangcia588@3x.png" text="家常菜"></myicon>
-				<myicon class="myicon" src="../../static/images/jiachangcia588@3x.png" text="家常菜"></myicon>
+				<myicon class="myicon" v-for="icon in iconlist" :key="icon._id" :src="icon.image_src" :text="icon.name">
+				</myicon>
 			</mycard>
-
 		</view>
-		
+
 		<!-- content -->
 		<view class="content_warp">
 			<!-- 内容部分上面的推荐菜谱 -->
 			<mycard>
 				<view class="recommend_left">
-					
+					<myfloorbig :text="floorsbiglist.floor_title" :swiperlist='floorsbiglist.floor_imgs'></myfloorbig>
 				</view>
 				<view class="recommend_right">
-					<view class="right">
-						
-					</view>
-					<view class="right right_bottom">
-						
-					</view>
-					
+					<myfloorsmall v-for="img in floorssmalllist" :key="img._id" :src='img.floor_imgs[0]'
+						:text="img.floor_title"></myfloorsmall>
 				</view>
-				
+
 			</mycard>
-			
+
+			<!-- 内容部分下面的推荐菜谱 -->
+			<mycard class="card_bottom">
+				<mymenu v-for="menu in recommendlist" :key="menu._id" :text="menu.name" :src="menu.coverpic"
+					:pageview="menu.pageview" :collection="menu.collections" class="recommend_item"></mymenu>
+			</mycard>
+
 		</view>
 	</view>
 </template>
@@ -70,10 +60,42 @@
 	export default {
 		data() {
 			return {
-
+				bannerlist: [],
+				iconlist: [],
+				floorsbiglist: [],
+				floorssmalllist: [],
+				recommendlist: [],
 			}
 		},
 		onLoad() {
+			//获取banner图片
+			this.$service.homeService.swiperdata().then(res => {
+				if (200 == res.meta.status) {
+					this.bannerlist = res.message;
+				}
+			});
+
+			//获取菜单导航
+			this.$service.homeService.catitems().then(res => {
+				if (200 == res.meta.status) {
+					this.iconlist = res.message;
+				}
+			});
+
+			//获取楼层图片
+			this.$service.homeService.floorsdata().then(res => {
+				if (200 == res.meta.status) {
+					this.floorssmalllist = res.message.slice(1);
+					this.floorsbiglist = res.message[0];
+				}
+			})
+
+			//获取首页推荐商品
+			this.$service.homeService.recommend().then(res => {
+				if (200 == res.meta.status) {
+					this.recommendlist = res.message;
+				}
+			})
 
 		},
 		methods: {
@@ -88,9 +110,11 @@
 		height: 220rpx;
 		background: url('../../static/bgimages/home_header.png') no-repeat;
 		background-size: cover;
-		position: relative;
-		border: 1rpx solid transparent;
+		position: fixed;
+		top: 0;
+		z-index: 999;
 		box-sizing: border-box;
+
 
 		.header_title {
 			width: 240rpx;
@@ -123,33 +147,37 @@
 	.banner {
 		width: 750rpx;
 		height: 304rpx;
-		margin-top: 62rpx;
-		display: flex;
-		align-items: center;
-		justify-content: center;
+		margin-top: 282rpx;
 
-		.swiper {
-			width: 686rpx;
-			height: 304rpx;
-		}
 
-		.swiper-item {
-			display: block;
-			width: 686rpx;
-			height: 304rpx;
-			background-color: yellow;
-
-		}
 	}
 
+	// banner 的 swiper样式开始
 	.uni-swiper-dots-horizontal {
 		bottom: 0px;
 	}
 
-	.banner_image {
-		width: 100%;
-		border-radius: 16rpx;
+	.swiper {
+		width: 750rpx;
+		height: 304rpx;
 	}
+
+	
+
+	.banner_image {
+		width: 750rpx;
+		height: 304rpx;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		._image {
+			width: 686rpx;
+			border-radius: 16rpx;
+		}
+	}
+
+	// banner 的 swiper样式结束
 
 	.nav {
 		display: flex;
@@ -165,35 +193,37 @@
 			}
 		}
 	}
-	
+
 	.content_warp {
 		width: 100%;
 		display: flex;
-		justify-content: center;
 		margin-top: 10rpx;
-		
+		flex-direction: column;
+		align-items: center;
+
 		.recommend_left {
 			width: 334rpx;
 			height: 362rpx;
-			background-color: skyblue;
 			border-radius: 8rpx;
 			margin-right: 20rpx;
+			position: relative;
 		}
-		
+
 		.recommend_right {
 			width: 332rpx;
 			height: 362rpx;
-			
-			.right {
-				width: 100%;
-				height: 176rpx;
-				background-color: yellow;
-				border-radius: 8rpx;
-				margin-bottom: 10rpx;
-			}
-			.right_bottom {
-				margin-bottom: 0;
-			}
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+
+		}
+	}
+
+	.card_bottom {
+		margin-top: 26rpx;
+
+		.recommend_item {
+			margin-bottom: 30rpx;
 		}
 	}
 </style>

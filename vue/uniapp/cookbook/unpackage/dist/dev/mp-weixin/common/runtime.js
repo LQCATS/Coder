@@ -105,11 +105,11 @@
 /******/
 /******/
 /******/ 		// mini-css-extract-plugin CSS loading
-/******/ 		var cssChunks = {"components/mycard/mycard":1,"components/myicon/myicon":1,"components/mysearch/mysearch":1,"uni_modules/uview-ui/components/u-icon/u-icon":1};
+/******/ 		var cssChunks = {"components/mycard/mycard":1,"components/myfloorbig/myfloorbig":1,"components/myfloorsmall/myfloorsmall":1,"components/myicon/myicon":1,"components/mymenu/mymenu":1,"components/mysearch/mysearch":1,"components/myheader/myheader":1,"uni_modules/uview-ui/components/u-icon/u-icon":1,"uni_modules/uview-ui/components/u-tabs/u-tabs":1,"uni_modules/uview-ui/components/u-text/u-text":1,"uni_modules/uview-ui/components/u-badge/u-badge":1,"uni_modules/uview-ui/components/u-link/u-link":1};
 /******/ 		if(installedCssChunks[chunkId]) promises.push(installedCssChunks[chunkId]);
 /******/ 		else if(installedCssChunks[chunkId] !== 0 && cssChunks[chunkId]) {
 /******/ 			promises.push(installedCssChunks[chunkId] = new Promise(function(resolve, reject) {
-/******/ 				var href = "" + ({"components/mycard/mycard":"components/mycard/mycard","components/myicon/myicon":"components/myicon/myicon","components/mysearch/mysearch":"components/mysearch/mysearch","uni_modules/uview-ui/components/u-icon/u-icon":"uni_modules/uview-ui/components/u-icon/u-icon"}[chunkId]||chunkId) + ".wxss";
+/******/ 				var href = "" + ({"components/mycard/mycard":"components/mycard/mycard","components/myfloorbig/myfloorbig":"components/myfloorbig/myfloorbig","components/myfloorsmall/myfloorsmall":"components/myfloorsmall/myfloorsmall","components/myicon/myicon":"components/myicon/myicon","components/mymenu/mymenu":"components/mymenu/mymenu","components/mysearch/mysearch":"components/mysearch/mysearch","components/myheader/myheader":"components/myheader/myheader","components/mytabs/mytabs":"components/mytabs/mytabs","uni_modules/uview-ui/components/u--text/u--text":"uni_modules/uview-ui/components/u--text/u--text","uni_modules/uview-ui/components/u-icon/u-icon":"uni_modules/uview-ui/components/u-icon/u-icon","uni_modules/uview-ui/components/u-tabs/u-tabs":"uni_modules/uview-ui/components/u-tabs/u-tabs","uni_modules/uview-ui/components/u-text/u-text":"uni_modules/uview-ui/components/u-text/u-text","uni_modules/uview-ui/components/u-badge/u-badge":"uni_modules/uview-ui/components/u-badge/u-badge","uni_modules/uview-ui/components/u-link/u-link":"uni_modules/uview-ui/components/u-link/u-link"}[chunkId]||chunkId) + ".wxss";
 /******/ 				var fullhref = __webpack_require__.p + href;
 /******/ 				var existingLinkTags = document.getElementsByTagName("link");
 /******/ 				for(var i = 0; i < existingLinkTags.length; i++) {
