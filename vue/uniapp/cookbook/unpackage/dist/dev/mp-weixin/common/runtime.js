@@ -105,7 +105,7 @@
 /******/
 /******/
 /******/ 		// mini-css-extract-plugin CSS loading
-/******/ 		var cssChunks = {"components/mycard/mycard":1,"components/myfloorbig/myfloorbig":1,"components/myfloorsmall/myfloorsmall":1,"components/myicon/myicon":1,"components/mymenu/mymenu":1,"components/mysearch/mysearch":1,"components/myheader/myheader":1,"uni_modules/uview-ui/components/u-icon/u-icon":1,"uni_modules/uview-ui/components/u-tabs/u-tabs":1,"uni_modules/uview-ui/components/u-text/u-text":1,"uni_modules/uview-ui/components/u-badge/u-badge":1,"uni_modules/uview-ui/components/u-link/u-link":1};
+/******/ 		var cssChunks = {"components/mycard/mycard":1,"components/myfloorbig/myfloorbig":1,"components/myfloorsmall/myfloorsmall":1,"components/myicon/myicon":1,"components/mymenu/mymenu":1,"components/mysearch/mysearch":1,"components/myheader/myheader":1,"components/mytabs/mytabs":1,"uni_modules/uview-ui/components/u-icon/u-icon":1,"uni_modules/uview-ui/components/u-tabs/u-tabs":1,"uni_modules/uview-ui/components/u-text/u-text":1,"uni_modules/uview-ui/components/u-badge/u-badge":1,"uni_modules/uview-ui/components/u-link/u-link":1};
 /******/ 		if(installedCssChunks[chunkId]) promises.push(installedCssChunks[chunkId]);
 /******/ 		else if(installedCssChunks[chunkId] !== 0 && cssChunks[chunkId]) {
 /******/ 			promises.push(installedCssChunks[chunkId] = new Promise(function(resolve, reject) {

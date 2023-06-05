@@ -12,7 +12,7 @@
 		            color: '#fff',
 		            transform: 'scale(1)'
 		        }" 
-		itemStyle="padding-left: 32rpx; padding-right: 60rpx; height: 34px;backgroundColor:#ee7b2d;border:none">
+		itemStyle="padding-left: 32rpx; padding-right: 60rpx; height: 34px;">
 		</u-tabs>
 	</view>
 </template>
@@ -30,10 +30,13 @@
 			return {
 
 			};
-		}
+		},
+		options: { styleIsolation: 'shared' },
 	}
 </script>
 
-<style lang="scss">
-
+<style lang="scss" scoped>
+/deep/ .u-tabs__wrapper {
+    background-color: #ee7b2d !important;
+}
 </style>
