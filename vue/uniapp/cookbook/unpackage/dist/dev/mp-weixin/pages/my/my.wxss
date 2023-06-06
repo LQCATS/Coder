@@ -27,6 +27,7 @@
 .header {
   width: 750rpx;
   height: 150rpx;
+  background-color: #fff;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -117,5 +118,54 @@
 .my_menu .menu_item text {
   color: #5a5a5a;
   font-size: 28rpx;
+}
+.tabs_warp {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.more {
+  color: #5a5a5a;
+  font-size: 22rpx;
+  height: 72rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.mymenu_warp {
+  width: 100%;
+}
+.mymenu_warp .mymenu_title {
+  color: #5a5a5a;
+  font-size: 28rpx;
+  margin: 10rpx 0 32rpx 32rpx;
+}
+.mymenu_warp .mymenu_scroll {
+  margin-left: 30rpx;
+}
+.mymenu_warp .mymenu_scroll .mymenu_item {
+  margin-right: 32rpx;
+}
+.operate_warp {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.operate_warp .operate_item {
+  width: 686rpx;
+  height: 95rpx;
+  display: flex;
+  align-items: center;
+}
+.operate_warp .operate_item .operate_msg {
+  height: 95rpx;
+  line-height: 95rpx;
+  margin-left: 26rpx;
+  color: #5a5a5a;
+  font-size: 28rpx;
+  flex: 1;
+  border-bottom: 1rpx solid #dbdbdb;
 }
 

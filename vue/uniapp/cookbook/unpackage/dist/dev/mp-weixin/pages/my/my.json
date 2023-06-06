@@ -5,6 +5,9 @@
     "u-icon": "/uni_modules/uview-ui/components/u-icon/u-icon",
     "mybg": "/components/mybg/mybg",
     "mycard": "/components/mycard/mycard",
-    "mytabspersonal": "/components/mytabspersonal/mytabspersonal"
+    "mytabspersonal": "/components/mytabspersonal/mytabspersonal",
+    "mytable": "/components/mytable/mytable",
+    "myscroll": "/components/myscroll/myscroll",
+    "mymenuitem": "/components/mymenuitem/mymenuitem"
   }
 }

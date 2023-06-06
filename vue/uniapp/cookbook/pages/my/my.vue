@@ -54,7 +54,50 @@
 			</mycard>
 		</view>
 		<mybg></mybg>
-		<mytabspersonal :tabslist='tabslist'></mytabspersonal>
+		<!-- 食材 -->
+		<view class="tabs_warp">
+			<mycard>
+				<mytabspersonal :tabslist='tabslist'></mytabspersonal>
+			</mycard>
+		</view>
+		<mytable :menulist='menulist'></mytable>
+
+		<view class="more">
+			展开更多
+			<u-icon name="arrow-down" color='#cccccc' :size='10'></u-icon>
+		</view>
+		<mybg></mybg>
+		<view class="mymenu_warp">
+			<view class="mymenu_title">
+				我的菜谱
+			</view>
+			<view class="mymenu_scroll">
+				<myscroll>
+					<mymenuitem class="mymenu_item"></mymenuitem>
+					<mymenuitem class="mymenu_item"></mymenuitem>
+					<mymenuitem class="mymenu_item"></mymenuitem>
+					<mymenuitem class="mymenu_item"></mymenuitem>
+					<mymenuitem class="mymenu_item"></mymenuitem>
+					<mymenuitem class="mymenu_item"></mymenuitem>
+				</myscroll>
+			</view>
+		</view>
+		<mybg></mybg>
+		<view class="operate_warp">
+			<view class="operate_item">
+				<u-icon name="thumb-up-fill" color='#cccccc' :size='22'></u-icon>
+				<view class="operate_msg">
+					去App Store给菜谱大全评分
+				</view>
+			</view>
+			
+			<view class="operate_item">
+				<u-icon name="chat-fill" color='#cccccc' :size='22'></u-icon>
+				<view class="operate_msg">
+					反馈问题
+				</view>
+			</view>
+		</view>
 	</view>
 </template>
 
@@ -77,7 +120,11 @@
 					{
 						name: '奶油泡芙'
 					},
-				]
+				],
+				menulist: [{
+					name: "小葱末",
+					msg: '20g'
+				}]
 			};
 		}
 	}
@@ -87,6 +134,7 @@
 	.header {
 		width: 750rpx;
 		height: 150rpx;
+		background-color: #fff;
 		display: flex;
 		flex-direction: column;
 		justify-content: flex-end;
@@ -197,6 +245,67 @@
 			text {
 				color: #5a5a5a;
 				font-size: 28rpx;
+			}
+		}
+	}
+
+	.tabs_warp {
+		width: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.more {
+		color: #5a5a5a;
+		font-size: 22rpx;
+		height: 72rpx;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.mymenu_warp {
+		width: 100%;
+
+
+		.mymenu_title {
+			color: #5a5a5a;
+			font-size: 28rpx;
+			margin: 10rpx 0 32rpx 32rpx;
+
+		}
+
+		.mymenu_scroll {
+			margin-left: 30rpx;
+
+			.mymenu_item {
+				margin-right: 32rpx;
+			}
+		}
+
+
+	}
+	
+	.operate_warp {
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		.operate_item {
+			width: 686rpx;
+			height: 95rpx;
+			display: flex;
+			align-items: center;
+			
+			.operate_msg {
+				height: 95rpx;
+				line-height: 95rpx;
+				margin-left: 26rpx;
+				color: #5a5a5a;
+				font-size: 28rpx;
+				flex: 1;
+				border-bottom: 1rpx solid #dbdbdb;
 			}
 		}
 	}

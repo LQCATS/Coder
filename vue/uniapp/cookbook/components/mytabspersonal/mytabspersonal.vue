@@ -12,7 +12,7 @@
 		            color: '#5a5a5a',
 		            transform: 'scale(1)'
 		        }" 
-		itemStyle=" padding-right: 20rpx; height: 34px;">
+		itemStyle=" padding-right: 20rpx; height: 60rpx;">
 		</u-tabs>
 	</view>
 </template>

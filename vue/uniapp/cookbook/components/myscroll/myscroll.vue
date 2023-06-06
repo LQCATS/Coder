@@ -19,7 +19,7 @@
 <style lang="scss">
 	.item_warp {
 		width: 100%;
-		height: 300rpx;
+		min-height: 260rpx;
 		display: flex;
 		flex-wrap: nowrap;
 		overflow-x: auto;
