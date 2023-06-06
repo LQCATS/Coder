@@ -1,0 +1,1 @@
+<view><u-popup class="popup" vue-id="f9ba7680-1" show="{{isshowbuypop}}" mode="bottom" closeOnClickOverlay="{{true}}" data-event-opts="{{[['^close',[['doclose']]]]}}" bind:close="__e" bind:__l="__l" vue-slots="{{['default']}}"><slot></slot></u-popup></view>

@@ -1,0 +1,1 @@
+<view><block wx:for="{{powerlist}}" wx:for-item="item" wx:for-index="__i0__" wx:key="title"><view class="vippower_item"><image src="{{item.src}}" mode="widthFix"></image><view class="power_msg_warp"><view class="power_msg_title">{{''+item.title+''}}</view><view class="power_msg">{{''+item.text+''}}</view></view></view></block></view>

@@ -1,9 +1,12 @@
 <template>
 	<view>
-		<!-- header -->
-		<myheader title="VIP会员"></myheader>
-		<!-- nav -->
-		<mytabs :tabslist='tabslist'></mytabs>
+		<view class="header_warp">
+			<!-- header -->
+			<myheader title="VIP会员"></myheader>
+			<!-- nav -->
+			<mytabs :tabslist='tabslist'></mytabs>
+		</view>
+
 		<!-- banner -->
 		<view class="banner">
 			<view class="banner_bg">
@@ -16,7 +19,7 @@
 							<view class="title">
 								欢迎你，新朋友
 							</view>
-							<view class="member_status">
+							<view class="member_status" @tap="gobuymember">
 								开通
 							</view>
 						</view>
@@ -32,6 +35,42 @@
 					</view>
 
 				</view>
+			</view>
+		</view>
+		<!-- content -->
+		<view class="content_warp">
+			<!-- VIP最新推荐 -->
+			<view class="menu_warp">
+				<view class="warp_title">
+					VIP最新推荐
+				</view>
+				<myscroll class="scroll_wrap">
+					<myvipmenu class="item" text="川味凉粉" src="../../static/bgimages/member_content1.png"
+						collection="12.3万" pageview="5214"></myvipmenu>
+
+				</myscroll>
+			</view>
+			<!--  -->
+			<view class="menu_warp">
+				<view class="warp_title">
+					限时免费体验
+				</view>
+				<myscroll class="scroll_wrap">
+					<myvipmenu class="item" text="川味凉粉" src="../../static/bgimages/member_content1.png"
+						collection="12.3万" pageview="5214"></myvipmenu>
+				</myscroll>
+			</view>
+
+			<!-- 猜你喜欢 -->
+			<view class="menu_warp">
+				<view class="warp_title">
+					猜你喜欢
+				</view>
+				<mycard>
+					<mymenu class="like" text="川味凉粉" src="../../static/bgimages/member_content2.png" collection="12.3万"
+						pageview="5214"></mymenu>
+
+				</mycard>
 			</view>
 		</view>
 	</view>
@@ -78,20 +117,33 @@
 						src: '../../static/bgimages/member_banner3.png',
 						text: '身份标识'
 					},
-				]
+				],
 			};
+		},
+		methods: {
+			gobuymember() {
+				uni.navigateTo({
+					url: '/pages/buymember/buymember'
+				});
+			}
 		}
 	}
 </script>
 
 <style lang="scss">
+	.header_warp {
+		position: fixed;
+		top: 0;
+		z-index: 999;
+	}
+
 	.banner {
 		width: 750rpx;
 		height: 324rpx;
-		margin-top: 14rpx;
 		display: flex;
 		align-items: center;
 		justify-content: center;
+		margin-top: 250rpx;
 
 		.banner_bg {
 			width: 686rpx;
@@ -185,5 +237,34 @@
 
 			}
 		}
+	}
+
+
+	.content_warp {
+		padding-left: 32rpx;
+		box-sizing: border-box;
+
+		.menu_warp {
+			margin-top: 40rpx;
+
+			.warp_title {
+				margin-bottom: 28rpx;
+				color: #303030;
+				font-size: 40rpx;
+				font-weight: 700;
+			}
+		}
+	}
+
+	.scroll_wrap {
+
+		.item {
+			flex-shrink: 0;
+			margin-right: 12rpx;
+		}
+	}
+
+	.like {
+		margin-bottom: 35rpx;
 	}
 </style>

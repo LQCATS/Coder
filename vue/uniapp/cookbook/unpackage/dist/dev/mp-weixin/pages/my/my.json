@@ -1,5 +1,10 @@
 {
   "navigationBarTitleText": "",
   "enablePullDownRefresh": false,
-  "usingComponents": {}
+  "usingComponents": {
+    "u-icon": "/uni_modules/uview-ui/components/u-icon/u-icon",
+    "mybg": "/components/mybg/mybg",
+    "mycard": "/components/mycard/mycard",
+    "mytabspersonal": "/components/mytabspersonal/mytabspersonal"
+  }
 }

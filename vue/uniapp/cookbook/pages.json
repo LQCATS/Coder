@@ -20,7 +20,16 @@
 			}
 
 		}
-	],
+	    ,{
+            "path" : "pages/buymember/buymember",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+    ],
 	"globalStyle": {
 		"navigationStyle": "custom"
 	},
@@ -45,7 +54,7 @@
 				"pagePath": "pages/my/my",
 				"iconPath": "static/images/wode1.png",
 				"selectedIconPath": "static/images/wode2.png",
-				"text": "会员"
+				"text": "我的"
 			}
 		]
 	}

@@ -18,10 +18,11 @@
 <style lang="scss" scopeds>
 	.card {
 		width: 686rpx;
-		min-height: 100rpx;
+		min-height: 50rpx;
 		border-radius: 10rpx;
 		display: flex;
 		flex-wrap: wrap;
 		justify-content: space-between;
+		background-color: palegoldenrod;
 	}
 </style>

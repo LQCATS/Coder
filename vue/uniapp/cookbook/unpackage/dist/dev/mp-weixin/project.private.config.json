@@ -13,6 +13,20 @@
           "query": "",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "mymember",
+          "pathName": "pages/buymember/buymember",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "my",
+          "pathName": "pages/my/my",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }

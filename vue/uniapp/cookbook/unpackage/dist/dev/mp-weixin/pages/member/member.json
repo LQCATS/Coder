@@ -3,6 +3,10 @@
   "enablePullDownRefresh": false,
   "usingComponents": {
     "myheader": "/components/myheader/myheader",
-    "mytabs": "/components/mytabs/mytabs"
+    "mytabs": "/components/mytabs/mytabs",
+    "myscroll": "/components/myscroll/myscroll",
+    "myvipmenu": "/components/myvipmenu/myvipmenu",
+    "mycard": "/components/mycard/mycard",
+    "mymenu": "/components/mymenu/mymenu"
   }
 }

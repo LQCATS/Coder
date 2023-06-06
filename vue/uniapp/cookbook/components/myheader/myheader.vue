@@ -34,6 +34,7 @@
 		display: flex;
 		justify-content: center;
 		align-items: flex-end;
+		
 
 		.header_title {
 			color: #fff;

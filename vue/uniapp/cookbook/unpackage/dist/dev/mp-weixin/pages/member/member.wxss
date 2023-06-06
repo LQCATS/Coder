@@ -24,13 +24,18 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
+.header_warp {
+  position: fixed;
+  top: 0;
+  z-index: 999;
+}
 .banner {
   width: 750rpx;
   height: 324rpx;
-  margin-top: 14rpx;
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-top: 250rpx;
 }
 .banner .banner_bg {
   width: 686rpx;
@@ -106,5 +111,25 @@
 .banner .banner_bg .banner_bootom .icon_warp text {
   color: #f9d9b3;
   font-size: 22rpx;
+}
+.content_warp {
+  padding-left: 32rpx;
+  box-sizing: border-box;
+}
+.content_warp .menu_warp {
+  margin-top: 40rpx;
+}
+.content_warp .menu_warp .warp_title {
+  margin-bottom: 28rpx;
+  color: #303030;
+  font-size: 40rpx;
+  font-weight: 700;
+}
+.scroll_wrap .item {
+  flex-shrink: 0;
+  margin-right: 12rpx;
+}
+.like {
+  margin-bottom: 35rpx;
 }
 

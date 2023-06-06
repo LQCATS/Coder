@@ -1,0 +1,1 @@
+<view class="price_card"><view class="time">{{''+time+'个月'}}</view><view class="discount"><text style="font-size:36rpx;">￥</text>{{discount+''}}</view><view class="price">{{'￥'+price+''}}</view></view>
