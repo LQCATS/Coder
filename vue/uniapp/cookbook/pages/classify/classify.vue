@@ -18,10 +18,7 @@
 			</view>
 
 		</view>
-
-		<view class="bg">
-			<!-- 解决滑动到底部出现露白的问题 -->
-		</view>
+		
 		<!-- content -->
 		<view class="content_warp">
 			<view class="content_left">
@@ -120,12 +117,9 @@
 	.header {
 		width: 750rpx;
 		height: 25vh;
-		position: fixed;
-		top: 0;
-		z-index: 999;
 		background-color: #ee7b2d;
 
-
+		
 		.search_warp {
 			width: 100%;
 			display: flex;
@@ -144,29 +138,18 @@
 		}
 	}
 
-	.bg {
-		width: 750rpx;
-		height: 25vh;
-	}
+	
 
 	.content_warp {
 		width: 750rpx;
 		height: 75vh;
 		display: flex;
-		// margin-top: 25vh;
 
 		.content_left {
 			width: 25vw;
 			height: 75vh;
 			border-right: 1rpx solid #dfdfdf;
-			// position: fixed;
-			// bottom: 0;
-			// overflow-y: auto;
-
-			// &::-webkit-scrollbar {
-			// 	display: none;
-			// }
-
+			
 			.type_item {
 				width: 100%;
 				height: 105rpx;
@@ -186,7 +169,6 @@
 		.content_right {
 			width: 75vw;
 			height: 75vh;
-			// margin-left: 25vw;
 
 			.first_title {
 				color: #cbcbcb;

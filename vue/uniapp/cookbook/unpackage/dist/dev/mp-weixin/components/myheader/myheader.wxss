@@ -24,7 +24,7 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
-.header {
+.header.data-v-2642ca24 {
   width: 750rpx;
   height: 150rpx;
   background-color: #ee7b2d;
@@ -33,14 +33,14 @@
   align-items: flex-end;
   padding-bottom: 20rpx;
 }
-.header .header_title_warp {
+.header .header_title_warp.data-v-2642ca24 {
   color: #fff;
   font-size: 36rpx;
   display: flex;
   align-items: center;
   padding-left: 20rpx;
 }
-.header .header_title_warp .header_title {
+.header .header_title_warp .header_title.data-v-2642ca24 {
   margin-left: 252rpx;
 }
 

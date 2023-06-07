@@ -33,7 +33,7 @@
 	}
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 	.header {
 		width: 750rpx;
 		height: 150rpx;
