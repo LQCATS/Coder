@@ -27,8 +27,30 @@
           "query": "",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "search",
+          "pathName": "pages/search/search",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "type",
+          "pathName": "pages/classify/classify",
+          "query": "icon=%7B%22_id%22%3A%22610a49f8a61d0000d1002903%22%2C%22image_src%22%3A%22https%3A%2F%2Fwoniumd.oss-cn-hangzhou.aliyuncs.com%2Fweb%2Fzhaijizhe%2F20210804155508.png%22%2C%22name%22%3A%22%E5%88%86%E7%B1%BB%22%2C%22navigator_url%22%3A%22%2Fpages%2Fcategory%2Fcategory%22%2C%22open_type%22%3A%22switchTab%22%7D",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "buysucces",
+          "pathName": "pages/buysucces/buysucces",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }
-  }
+  },
+  "libVersion": "2.19.6"
 }

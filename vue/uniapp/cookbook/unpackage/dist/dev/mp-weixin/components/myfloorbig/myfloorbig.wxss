@@ -32,7 +32,7 @@
   width: 100%;
   height: 100%;
 }
-image {
+.banner_image {
   width: 100%;
 }
 .image_title {

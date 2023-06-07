@@ -46,7 +46,7 @@
 		}
 	}
 
-	image {
+	.banner_image {
 		width: 100%;
 	}
 

@@ -30,12 +30,17 @@
   background-color: #ee7b2d;
   border-bottom: 1rpx solid #dbdbdb;
   display: flex;
-  justify-content: center;
   align-items: flex-end;
+  padding-bottom: 20rpx;
 }
-.header .header_title {
+.header .header_title_warp {
   color: #fff;
   font-size: 36rpx;
-  line-height: 50rpx;
+  display: flex;
+  align-items: center;
+  padding-left: 20rpx;
+}
+.header .header_title_warp .header_title {
+  margin-left: 252rpx;
 }
 

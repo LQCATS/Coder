@@ -15,7 +15,7 @@
 	}
 </script>
 
-<style lang="scss" scopeds>
+<style lang="scss">
 	.card {
 		width: 686rpx;
 		min-height: 50rpx;

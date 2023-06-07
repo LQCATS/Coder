@@ -5,9 +5,9 @@
 			{{text}}
 		</view>
 		<view class="menu_msg">
-			<u--text suffixIcon="eye-fill" iconStyle="font-size: 16px;color:#aaa" :text="pageview" size="10"
+			<u--text suffixIcon="eye-fill" iconStyle="font-size: 16px;color:#aaa;marginLeft:10rpx" :text="pageview" size="10"
 				color='#aaa'></u--text>
-			<u--text suffixIcon="star-fill" iconStyle="font-size: 16px;color:#aaa" :text="collection" size="10"
+			<u--text suffixIcon="star-fill" iconStyle="font-size: 16px;color:#aaa;marginLeft:10rpx" :text="collection" size="10"
 				color='#aaa'></u--text>
 		</view>
 	</view>
@@ -44,8 +44,8 @@
 
 <style lang="scss">
 	.bottom_menu_item {
-		width: 334rpx;
-		height: 334rpx;
+		min-width: 300rpx;
+		min-height: 200rpx;
 		// background-color: skyblue;
 
 		image {
@@ -57,6 +57,9 @@
 			font-size: 28rpx;
 			color: #575757;
 			margin-bottom: 10rpx;
+			overflow: hidden;
+			white-space: nowrap;
+			text-overflow: ellipsis;
 		}
 
 		.menu_msg {

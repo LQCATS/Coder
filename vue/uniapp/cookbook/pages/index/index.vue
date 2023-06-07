@@ -27,7 +27,8 @@
 		<!-- nav -->
 		<view class="nav">
 			<mycard>
-				<myicon class="myicon" v-for="icon in iconlist" :key="icon._id" :src="icon.image_src" :text="icon.name">
+				<myicon class="myicon" v-for="icon in iconlist" :key="icon._id" :src="icon.image_src" :text="icon.name"
+					@click="gosearch(icon)">
 				</myicon>
 			</mycard>
 		</view>
@@ -99,7 +100,20 @@
 
 		},
 		methods: {
+			gosearch(icon) {
+				console.log(333, icon.name);
+				if ('分类' != icon.name) {
+					//跳转搜索页面
+					uni.navigateTo({
+						url: `/pages/search/search?icon=${JSON.stringify(icon)}`
+					})
+				} else {
+					uni.navigateTo({
+						url: `/pages/classify/classify?icon=${JSON.stringify(icon)}`
+					})
+				}
 
+			}
 		}
 	}
 </script>
@@ -162,7 +176,7 @@
 		height: 304rpx;
 	}
 
-	
+
 
 	.banner_image {
 		width: 750rpx;
@@ -187,6 +201,8 @@
 
 		.myicon {
 			margin: 0 80rpx 28rpx 0;
+			color: #444444;
+			font-size: 22rpx;
 
 			&:nth-child(5n) {
 				margin-right: 0;
@@ -224,6 +240,9 @@
 
 		.recommend_item {
 			margin-bottom: 30rpx;
+			width: 334rpx;
+			height: 334rpx;
+
 		}
 	}
 </style>

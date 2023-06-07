@@ -3,7 +3,10 @@
     "pages/index/index",
     "pages/member/member",
     "pages/my/my",
-    "pages/buymember/buymember"
+    "pages/buymember/buymember",
+    "pages/search/search",
+    "pages/classify/classify",
+    "pages/buysucces/buysucces"
   ],
   "subPackages": [],
   "window": {

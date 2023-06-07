@@ -19,7 +19,7 @@
     "condition": false
   },
   "compileType": "miniprogram",
-  "libVersion": "2.32.1",
+  "libVersion": "",
   "appid": "wxe15e38290cf35d4e",
   "projectname": "cookbook",
   "condition": {

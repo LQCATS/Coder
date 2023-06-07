@@ -88,6 +88,8 @@
 }
 .nav .myicon {
   margin: 0 80rpx 28rpx 0;
+  color: #444444;
+  font-size: 22rpx;
 }
 .nav .myicon:nth-child(5n) {
   margin-right: 0;
@@ -118,5 +120,7 @@
 }
 .card_bottom .recommend_item {
   margin-bottom: 30rpx;
+  width: 334rpx;
+  height: 334rpx;
 }
 

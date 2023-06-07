@@ -1,5 +1,5 @@
 <template>
-	<view class="icon_warp">
+	<view class="icon_warp" @click="test">
 		<image :src="src" mode="widthFix" class="icon_image"></image>
 		<text>{{text}}</text>
 	</view>
@@ -26,14 +26,20 @@
 		},
 		onShow() {
 			console.log(this.src, this.text);
+		},
+		methods: {
+			test() {
+				console.log(222);
+				this.$emit("click")
+			}
 		}
 	}
 </script>
 
 <style lang="scss" scoped>
 	.icon_warp {
-		width: 70rpx;
-		height: 96rpx;
+		min-width: 70rpx;
+		min-height: 96rpx;
 		// background-color: yellowgreen;
 		display: flex;
 		flex-direction: column;

@@ -1,1 +1,1 @@
-<view><view class="header"><view class="header_title">{{''+title+''}}</view></view></view>
+<view><view class="header" style="{{(color)}}"><view class="header_title_warp"><slot></slot><view class="header_title">{{''+title+''}}</view></view></view></view>

@@ -1,0 +1,12 @@
+{
+  "navigationBarTitleText": "",
+  "enablePullDownRefresh": false,
+  "usingComponents": {
+    "myheader": "/components/myheader/myheader",
+    "u-icon": "/uni_modules/uview-ui/components/u-icon/u-icon",
+    "u-search": "/uni_modules/uview-ui/components/u-search/u-search",
+    "myscroll": "/components/myscroll/myscroll",
+    "mymenu": "/components/mymenu/mymenu",
+    "mymenubig": "/components/mymenubig/mymenubig"
+  }
+}
