@@ -23,6 +23,6 @@
 		display: flex;
 		flex-wrap: wrap;
 		justify-content: space-between;
-		background-color: palegoldenrod;
+		// background-color: palegoldenrod;
 	}
 </style>

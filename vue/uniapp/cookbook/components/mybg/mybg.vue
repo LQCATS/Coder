@@ -17,7 +17,7 @@
 
 <style lang="scss">
 	.bg {
-		width: 100%;
+		width: 750rpx;
 		height: 28rpx;
 		background-color: #f5f7fa;
 	}

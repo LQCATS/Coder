@@ -50,7 +50,8 @@
 			<!-- 内容部分下面的推荐菜谱 -->
 			<mycard class="card_bottom">
 				<mymenu v-for="menu in recommendlist" :key="menu._id" :text="menu.name" :src="menu.coverpic"
-					:pageview="menu.pageview" :collection="menu.collections" class="recommend_item"></mymenu>
+					:pageview="menu.pageview" :collection="menu.collections" class="recommend_item"
+					@click='godetial(menu)'></mymenu>
 			</mycard>
 
 		</view>
@@ -86,8 +87,19 @@
 			//获取楼层图片
 			this.$service.homeService.floorsdata().then(res => {
 				if (200 == res.meta.status) {
-					this.floorssmalllist = res.message.slice(1);
-					this.floorsbiglist = res.message[0];
+					let floorList = [];
+
+					res.message.forEach(item => {
+						floorList.push({
+							floor_imgs: item.floor_imgs,
+							floor_title: item.floor_title.substring(1, item.floor_title.length -
+								1),
+							_id: item._id
+						})
+					})
+
+					this.floorssmalllist = floorList.slice(1);
+					this.floorsbiglist = floorList[0];
 				}
 			})
 
@@ -101,18 +113,25 @@
 		},
 		methods: {
 			gosearch(icon) {
-				console.log(333, icon.name);
+				// console.log(333, icon.name);
 				if ('分类' != icon.name) {
 					//跳转搜索页面
 					uni.navigateTo({
 						url: `/pages/search/search?icon=${JSON.stringify(icon)}`
 					})
 				} else {
+					//跳转分类页面
 					uni.navigateTo({
 						url: `/pages/classify/classify?icon=${JSON.stringify(icon)}`
 					})
 				}
 
+			},
+			godetial(menu) {
+				//跳转详情页面
+				uni.navigateTo({
+					url: `/pages/detials/detials?menu=${JSON.stringify(menu)}`
+				})
 			}
 		}
 	}

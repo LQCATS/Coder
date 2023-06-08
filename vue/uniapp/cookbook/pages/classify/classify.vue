@@ -81,7 +81,7 @@
 
 					//监听first_title的盒子是否和视窗相交
 					this.$nextTick(() => {
-						console.log(11111);
+						// console.log(11111);
 
 						//创建观察者对象，用于监听两个盒子之间的相交状态
 						let objObserver = uni.createIntersectionObserver(this, {
@@ -101,7 +101,7 @@
 
 							}
 
-							console.log('observe', res);
+							// console.log('observe', res);
 						})
 
 					})

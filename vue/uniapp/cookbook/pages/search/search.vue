@@ -27,8 +27,8 @@
 				</view>
 				<view class="vip_menu_warp">
 					<myscroll>
-						<mymenu class="vip_menu" text="芋泥绵绵冰夏日解暑必备" src="../../static/bgimages/search2.png"
-							pageview="3187" collection="10.5万"></mymenu>
+						<myvideo class="vip_menu" v-for="item in recommendlist" :key="item._id" :text="item.name"
+							:src="item.vid" :pageview="item.pageview" :collection="item.collections" @click='godetail(item)'></myvideo>
 
 					</myscroll>
 				</view>
@@ -36,10 +36,11 @@
 
 			<!-- 菜谱推荐 -->
 			<view class="menu_item_warp">
-				<mymenubig class="menu_item" src="../../static/bgimages/search3.png" title="蜜豆铜鼓少"
-					text="鸡蛋、低筋面粉、玉米淀粉..."></mymenubig>
-				<mymenubig src="../../static/bgimages/search3.png" title="蜜豆铜鼓少" text="鸡蛋、低筋面粉、玉米淀粉..."></mymenubig>
-				<mymenubig src="../../static/bgimages/search3.png" title="蜜豆铜鼓少" text="鸡蛋、低筋面粉、玉米淀粉..."></mymenubig>
+				<mymenubig class="menu_item" v-for="item in recommendlist" :key="item._id" :src="item.coverpic"
+					:title="item.name" text="鸡蛋、低筋面粉、玉米淀粉..." :pageview='item.pageview' :collection="item.collections"
+					@click='godetail(item)'>
+				</mymenubig>
+
 			</view>
 
 		</view>
@@ -53,7 +54,9 @@
 			return {
 				menutype: '',
 				vipmenulist: [],
-				menutypeobj: {}
+				menutypeobj: {},
+				//推荐菜谱数组 &精品名厨视频
+				recommendlist: [],
 			};
 		},
 		methods: {
@@ -61,15 +64,28 @@
 				uni.switchTab({
 					url: '/pages/index/index'
 				})
+			},
+			godetail(menu) {
+				//跳转详情页面
+				uni.navigateTo({
+					url: `/pages/detials/detials?menu=${JSON.stringify(menu)}`
+				})
 			}
 		},
 		onLoad(option) {
-			console.log(444, JSON.parse(option.icon));
 			let menutypeobj = JSON.parse(option.icon);
 			this.menutypeobj = menutypeobj;
 			this.menutype = menutypeobj.name;
-			console.log(555, this.menutype, this.menutypeobj);
+			// console.log(555, this.menutype, this.menutypeobj);
 
+		},
+		onReady() {
+			//获取搜索页面随机推荐
+			this.$service.searchService.memberRecommend().then(res => {
+				if (200 == res.meta.status) {
+					this.recommendlist = res.message;
+				}
+			})
 		}
 	}
 </script>
@@ -83,7 +99,7 @@
 			top: 0;
 			z-index: 999;
 		}
-		
+
 		.header_search_warp {
 			width: 100%;
 			height: 114rpx;
@@ -123,7 +139,7 @@
 		.vip_menu_warp {
 			.vip_menu {
 				width: 316rpx;
-				height: 330rpx;
+				height: 340rpx;
 				margin-right: 20rpx;
 				background-color: #f9f9f9;
 			}

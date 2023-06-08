@@ -29,7 +29,7 @@
 		},
 		methods: {
 			test() {
-				console.log(222);
+				// console.log(222);
 				this.$emit("click")
 			}
 		}

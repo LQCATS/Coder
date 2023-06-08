@@ -1,13 +1,13 @@
 <template>
 	<view>
-		<u-list height="minHeight:328rpx">
+		<u-list height="minHeight:328rpx;" style="border-bottom: 1rpx solid #dbdbdb;">
 			<u-list-item v-for="(item, index) in menulist" :key="index">
 				<view class="menu_item">
 					<view class="title">
-						小葱末
+						{{item.name}}
 					</view>
 					<view class="msg">
-						20g
+						{{item.number}}
 					</view>
 				</view>
 			</u-list-item>
@@ -43,10 +43,6 @@
 		border-top: 1rpx solid #dbdbdb;
 		color: #686868;
 		font-size: 28rpx;
-		
-		&:last-child{
-			border-bottom: 1rpx solid #dbdbdb;
-		}
 	
 		.msg {
 			margin-right: 152rpx;

@@ -1,14 +1,14 @@
 <template>
-	<view class="bottom_menu_item">
+	<view class="bottom_menu_item" @click="gopage">
 		<image :src="src"></image>
 		<view class="menu_title">
 			{{text}}
 		</view>
 		<view class="menu_msg">
-			<u--text suffixIcon="eye-fill" iconStyle="font-size: 16px;color:#aaa;marginLeft:10rpx" :text="pageview" size="10"
-				color='#aaa'></u--text>
-			<u--text suffixIcon="star-fill" iconStyle="font-size: 16px;color:#aaa;marginLeft:10rpx" :text="collection" size="10"
-				color='#aaa'></u--text>
+			<u--text suffixIcon="eye-fill" iconStyle="font-size: 16px;color:#aaa;marginLeft:10rpx" :text="pageview"
+				size="10" color='#aaa'></u--text>
+			<u--text suffixIcon="star-fill" iconStyle="font-size: 16px;color:#aaa;marginLeft:10rpx" :text="collection"
+				size="10" color='#aaa'></u--text>
 		</view>
 	</view>
 </template>
@@ -38,6 +38,11 @@
 			return {
 
 			};
+		},
+		methods: {
+			gopage() {
+				this.$emit('click')
+			}
 		}
 	}
 </script>

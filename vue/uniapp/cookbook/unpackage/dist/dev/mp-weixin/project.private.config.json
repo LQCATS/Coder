@@ -48,6 +48,13 @@
           "query": "",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "detial",
+          "pathName": "pages/detials/detials",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }

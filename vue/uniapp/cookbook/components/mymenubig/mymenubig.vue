@@ -1,6 +1,6 @@
 <template>
-	<view class="menu_item">
-		<image :src="src" mode="widthFix"></image>
+	<view class="menu_item" @click="godetail">
+		<image :src="src" class="menu_image"></image>
 		<view class="menu_msg_warp">
 			<view class="menu_title">
 				{{title}}
@@ -47,6 +47,11 @@
 			return {
 
 			};
+		},
+		methods:{
+			godetail() {
+				this.$emit('click')
+			}
 		}
 	}
 </script>
@@ -56,7 +61,7 @@
 		display: flex;
 		min-height: 200rpx;
 
-		image {
+		.menu_image {
 			width: 314rpx;
 			height: 210rpx;
 		}

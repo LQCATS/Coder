@@ -20,7 +20,7 @@
 				</view>
 			</view>
 		</view>
-		
+
 		<!-- content -->
 		<view class="content_warp">
 			<view class="content_title">
@@ -39,6 +39,13 @@
 			return {
 
 			};
+		},
+		methods: {
+			goback() {
+				uni.switchTab({
+					url:'/pages/index/index'
+				})
+			}
 		}
 	}
 </script>
@@ -67,13 +74,13 @@
 				color: #ffffff;
 				font-size: 36rpx;
 			}
-			
+
 			.pay {
 				color: #ffc37e;
 				font-size: 32rpx;
 				margin-bottom: 36rpx;
 			}
-			
+
 			.img_bg {
 				width: 250rpx;
 				height: 250rpx;
@@ -83,7 +90,7 @@
 				display: flex;
 				align-items: center;
 				justify-content: center;
-				
+
 				.img2 {
 					width: 100%;
 				}
@@ -91,22 +98,22 @@
 
 		}
 	}
-	
+
 	.content_warp {
 		margin-top: 158rpx;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		
+
 		.content_title {
 			color: #5f5f5f;
 			font-size: 40rpx;
-			
+
 			.content_title_left {
 				margin-right: 20rpx;
 			}
 		}
-		
+
 		.btn {
 			width: 542rpx;
 			height: 90rpx;
@@ -117,7 +124,7 @@
 			background-color: #ffa543;
 			margin-top: 48rpx;
 		}
-		
+
 		.second_btn {
 			background-color: #fff;
 			color: #ffa543;

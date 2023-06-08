@@ -61,7 +61,7 @@
 }
 .member_warp .vip_menu_warp .vip_menu {
   width: 316rpx;
-  height: 330rpx;
+  height: 340rpx;
   margin-right: 20rpx;
   background-color: #f9f9f9;
 }

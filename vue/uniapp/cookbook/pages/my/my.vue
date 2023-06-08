@@ -14,8 +14,8 @@
 				</view>
 				<view class="top_middle">
 					<view class="middle_top">
-						<view class="title">
-							立即登录
+						<view class="title" @tap="gologin">
+							{{logintools.islogin ? '已登录':'立即登录'}}
 						</view>
 
 					</view>
@@ -90,7 +90,7 @@
 					去App Store给菜谱大全评分
 				</view>
 			</view>
-			
+
 			<view class="operate_item">
 				<u-icon name="chat-fill" color='#cccccc' :size='22'></u-icon>
 				<view class="operate_msg">
@@ -102,6 +102,7 @@
 </template>
 
 <script>
+	import logintools from '../../utils/logintools.js';
 	export default {
 		data() {
 			return {
@@ -121,11 +122,16 @@
 						name: '奶油泡芙'
 					},
 				],
-				menulist: [{
-					name: "小葱末",
-					msg: '20g'
-				}]
+				//原材料列表
+				menulist: []
 			};
+		},
+		methods: {
+			gologin() {
+				//调用封装的登录函数
+				logintools.gologin();
+
+			}
 		}
 	}
 </script>
@@ -286,18 +292,19 @@
 
 
 	}
-	
+
 	.operate_warp {
 		width: 100%;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
+
 		.operate_item {
 			width: 686rpx;
 			height: 95rpx;
 			display: flex;
 			align-items: center;
-			
+
 			.operate_msg {
 				height: 95rpx;
 				line-height: 95rpx;

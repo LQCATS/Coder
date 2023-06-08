@@ -6,7 +6,8 @@
     "pages/buymember/buymember",
     "pages/search/search",
     "pages/classify/classify",
-    "pages/buysucces/buysucces"
+    "pages/buysucces/buysucces",
+    "pages/detials/detials"
   ],
   "subPackages": [],
   "window": {
