@@ -15,7 +15,7 @@
 				<view class="top_middle">
 					<view class="middle_top">
 						<view class="title" @tap="gologin">
-							{{logintools.islogin ? '已登录':'立即登录'}}
+							立即登录
 						</view>
 
 					</view>
@@ -131,7 +131,11 @@
 				//调用封装的登录函数
 				logintools.gologin();
 
-			}
+			},
+
+		},
+		onReady() {
+			logintools.getuserinfo();
 		}
 	}
 </script>

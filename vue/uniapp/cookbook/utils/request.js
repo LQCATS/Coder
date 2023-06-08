@@ -2,6 +2,7 @@ const BASE_URL = 'http://localhost:4000';
 
 export default {
 	post(url, params) {
+		let token = JSON.parse(uni.getStorageSync('Token')) || '';
 		let promise = new Promise((resolve, reject) => {
 			//发送请求显示load
 			uni.showLoading({
@@ -9,12 +10,14 @@ export default {
 				mask: true
 			});
 
+
 			uni.request({
 				url: `${BASE_URL}${url}`,
 				method: 'POST',
 				data: params,
 				header: {
-					"content-type": 'application/json'
+					"content-type": 'application/json',
+					'Authorization': token
 				},
 				success: (res) => {
 					resolve(res.data);
@@ -33,6 +36,7 @@ export default {
 	},
 
 	get(url, params) {
+		let token = JSON.parse(uni.getStorageSync('Token')) || '';
 		let promise = new Promise((resolve, reject) => {
 			//发送请求显示load
 			uni.showLoading({
@@ -45,7 +49,8 @@ export default {
 				method: 'GET',
 				data: params,
 				header: {
-					"content-type": 'application/json'
+					"content-type": 'application/json',
+					'Authorization': token
 				},
 				success: (res) => {
 					resolve(res.data);

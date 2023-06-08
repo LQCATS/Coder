@@ -1,7 +1,7 @@
 import service from '../apis/index.js'
 export default {
+	//微信登录获取token
 	gologin() {
-		console.log('login', 111);
 		// #ifdef MP
 		//判断用户是否登录getUserProfile
 		let userPromise = new Promise((resolve, reject) => {
@@ -42,7 +42,10 @@ export default {
 				}).then(res => {
 					console.log('wxLogin', res);
 					//将token保存在本地储存中
-					uni.setStorageSync('token', JSON.stringify(res.token))
+					this.setToken(res.token);
+					//将用户信息储存在本地
+					uni.setStorageSync('UserInfo', JSON.stringify(userRes.userInfo));
+
 				})
 			})
 
@@ -51,12 +54,39 @@ export default {
 	},
 	//判断是否登录
 	islogin() {
-		let token = uni.getStorageSync('token');
+		let token = this.getToken();
 		if (token) {
 			return true
 		} else {
 			return false
 		}
-	}
+	},
+	//获取用户信息
+	getuserinfo() {
+		let token = this.getToken();
+		console.log(token);
+		if (token) {
+			service.loginService.getUserInfo({
+				token: token
+			}).then(res => {
+				console.log('getuserinfo', res);
+			})
+		}
+
+	},
+	//获取本地token
+	getToken() {
+		let token = JSON.parse(uni.getStorageSync('Token'));
+		if (token) {
+			return token;
+		} else {
+			return '';
+		}
+	},
+	//存储本地token
+	setToken(token) {
+		uni.setStorageSync('Token', JSON.stringify(token));
+	},
+
 
 }
