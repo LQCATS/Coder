@@ -10,13 +10,19 @@
 		<view class="banner">
 			<view class="banner_top">
 				<view class="top_left">
-					<image src="../../static/bgimages/wode1.png" mode="widthFix"></image>
+					<image :src="userInfo.avatarUrl" mode="widthFix" v-if="userInfo" class="avatarUrl"></image>
+					<image src="../../static/bgimages/wode1.png" mode="widthFix" v-else class="avatarUrl">
+					</image>
 				</view>
 				<view class="top_middle">
 					<view class="middle_top">
-						<view class="title" @tap="gologin">
+						<view class="title" v-if="userInfo">
+							{{userInfo.nickName}}
+						</view>
+						<view class="title" @tap="dologin" v-else>
 							立即登录
 						</view>
+
 
 					</view>
 					<view class="middle_bottom">
@@ -31,7 +37,7 @@
 			<view class="banner_bottom">
 				<view class="banner_bottom_msg">
 					<view>升级为VIP</view>
-					<u-icon name="arrow-right" color='#b4853f' :size='12'></u-icon>
+					<u-icon name="arrow-right" color='#b4853f' :size='12' @tap='gomember'></u-icon>
 				</view>
 			</view>
 		</view>
@@ -57,15 +63,31 @@
 		<!-- 食材 -->
 		<view class="tabs_warp">
 			<mycard>
-				<mytabspersonal :tabslist='tabslist'></mytabspersonal>
+				<mytabspersonal :tabslist='tabslist' @change='changemenu'></mytabspersonal>
 			</mycard>
 		</view>
-		<mytable :menulist='menulist'></mytable>
 
-		<view class="more">
-			展开更多
-			<u-icon name="arrow-down" color='#cccccc' :size='10'></u-icon>
+
+
+
+		<view class="smalltanle" v-if="!isshowmore">
+			<mytable :menulist='smallmenulist'></mytable>
+
+			<view class="more" @tap="isshowmore = true">
+				展开更多
+				<u-icon name="arrow-down" color='#cccccc' :size='10'></u-icon>
+			</view>
 		</view>
+
+		<view class="bigtable" v-else>
+			<mytable :menulist='menulist'></mytable>
+
+			<view class="more" @tap="isshowmore = false">
+				收起
+				<u-icon name="arrow-up" color='#cccccc' :size='10'></u-icon>
+			</view>
+		</view>
+
 		<mybg></mybg>
 		<view class="mymenu_warp">
 			<view class="mymenu_title">
@@ -73,12 +95,7 @@
 			</view>
 			<view class="mymenu_scroll">
 				<myscroll>
-					<mymenuitem class="mymenu_item"></mymenuitem>
-					<mymenuitem class="mymenu_item"></mymenuitem>
-					<mymenuitem class="mymenu_item"></mymenuitem>
-					<mymenuitem class="mymenu_item"></mymenuitem>
-					<mymenuitem class="mymenu_item"></mymenuitem>
-					<mymenuitem class="mymenu_item"></mymenuitem>
+					<mymenuitem class="mymenu_item" v-for="item in collect" :key="item._id" :src="item.coverpic" :title="item.name"></mymenuitem>
 				</myscroll>
 			</view>
 		</view>
@@ -106,36 +123,78 @@
 	export default {
 		data() {
 			return {
-				tabslist: [{
-						name: '所有食材'
-					},
-					{
-						name: '蜜豆鲷鱼烧'
-					},
-					{
-						name: '川北凉粉'
-					},
-					{
-						name: '牛肉披萨'
-					},
-					{
-						name: '奶油泡芙'
-					},
+				tabslist: [
+					// 	{
+					// 	name: '所有食材',
+					// 	disabled: true
+					// },
 				],
 				//原材料列表
-				menulist: []
+				menulist: [],
+				smallmenulist: [],
+				//是否登录
+				islogin: false,
+				//用户信息
+				userInfo: null,
+				//我的收藏
+				collect: null,
+				isshowmore: false
 			};
 		},
 		methods: {
-			gologin() {
-				//调用封装的登录函数
-				logintools.gologin();
+			dologin() {
+				//判断是否登录
+				if (logintools.islogin()) {
+					//2.授权后更新用数据库信息
+					logintools.updateUserInfo();
+					//3.获取用户信息
+					logintools.getuserinfo();
+				} else {
+					//登录
+					logintools.gologin();
+				}
+
 
 			},
+			gomember() {
+				// console.log('gomember');
+				uni.switchTab({
+					url: '/pages/member/member'
+				})
+			},
+			changemenu(index) {
+				this.menulist = this.collect[index].ingredient;
+				// console.log(this.menulist);
+				this.smallmenulist = this.menulist.slice(0, 6);
+
+			}
 
 		},
-		onReady() {
-			logintools.getuserinfo();
+		async onReady() {
+			//判断是否登录
+			if (logintools.islogin()) {
+				//获取用户信息，渲染头像
+				this.userInfo = await logintools.getuserinfo();
+				// console.log('333userInfo', this.userInfo);
+
+				//获取所有的收藏
+				this.collect = await logintools.getUserCollect();
+				console.log('getUserCollect', this.collect);
+
+				this.collect.forEach(item => {
+					this.tabslist.push({
+						name: item.name
+					});
+				})
+				//初始化默认页面渲染第一个收藏菜谱的原材料
+				this.menulist = this.collect[0].ingredient;
+
+				this.smallmenulist = this.menulist.slice(0, 6);
+
+
+			}
+
+
 		}
 	}
 </script>
@@ -178,9 +237,11 @@
 			.top_left {
 				width: 128rpx;
 				height: 129rpx;
+				border-radius: 65rpx;
 
-				image {
+				.avatarUrl {
 					width: 100%;
+					border-radius: 65rpx;
 				}
 			}
 

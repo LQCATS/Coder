@@ -1,15 +1,19 @@
+import logintools from './logintools.js';
+
 const BASE_URL = 'http://localhost:4000';
 
 export default {
 	post(url, params) {
-		let token = JSON.parse(uni.getStorageSync('Token')) || '';
-		let promise = new Promise((resolve, reject) => {
-			//发送请求显示load
-			uni.showLoading({
-				title: '正在请求中...',
-				mask: true
-			});
 
+		//发送请求显示load
+		uni.showLoading({
+			title: '正在请求中...',
+			mask: true
+		});
+
+		let promise = new Promise((resolve, reject) => {
+			//拿到当前登录用户的token
+			let token = logintools.getToken();
 
 			uni.request({
 				url: `${BASE_URL}${url}`,
@@ -36,14 +40,16 @@ export default {
 	},
 
 	get(url, params) {
-		let token = JSON.parse(uni.getStorageSync('Token')) || '';
-		let promise = new Promise((resolve, reject) => {
-			//发送请求显示load
-			uni.showLoading({
-				title: '正在请求中...',
-				mask: true
-			});
+		//发送请求显示load
+		uni.showLoading({
+			title: '正在请求中...',
+			mask: true
+		});
 
+		let promise = new Promise((resolve, reject) => {
+			//拿到当前登录用户的token
+			let token = logintools.getToken();
+			
 			uni.request({
 				url: `${BASE_URL}${url}`,
 				method: 'GET',

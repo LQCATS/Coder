@@ -780,8 +780,8 @@ function populateParameters(result) {
     appVersion: "1.0.0",
     appVersionCode: "100",
     appLanguage: getAppLanguage(hostLanguage),
-    uniCompileVersion: "3.8.4",
-    uniRuntimeVersion: "3.8.4",
+    uniCompileVersion: "3.8.3",
+    uniRuntimeVersion: "3.8.3",
     uniPlatform: undefined || "mp-weixin",
     deviceBrand: deviceBrand,
     deviceModel: model,
@@ -9481,9 +9481,9 @@ internalMixin(Vue);
 
 /***/ }),
 /* 26 */
-/*!****************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/pages.json ***!
-  \****************************************************/
+/*!**********************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/pages.json ***!
+  \**********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -9627,9 +9627,9 @@ function normalizeComponent (
 
 /***/ }),
 /* 33 */
-/*!******************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/uni.promisify.adaptor.js ***!
-  \******************************************************************/
+/*!************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/uni.promisify.adaptor.js ***!
+  \************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -9650,9 +9650,9 @@ uni.addInterceptor({
 
 /***/ }),
 /* 34 */
-/*!***********************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/index.js ***!
-  \***********************************************************************/
+/*!*****************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/index.js ***!
+  \*****************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -9739,9 +9739,9 @@ exports.default = _default;
 
 /***/ }),
 /* 35 */
-/*!**********************************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/mixin/mixin.js ***!
-  \**********************************************************************************/
+/*!****************************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/mixin/mixin.js ***!
+  \****************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -9907,9 +9907,9 @@ exports.default = _default;
 
 /***/ }),
 /* 36 */
-/*!************************************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/mixin/mpMixin.js ***!
-  \************************************************************************************/
+/*!******************************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/mixin/mpMixin.js ***!
+  \******************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -9930,9 +9930,9 @@ exports.default = _default;
 
 /***/ }),
 /* 37 */
-/*!*****************************************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/luch-request/index.js ***!
-  \*****************************************************************************************/
+/*!***********************************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/luch-request/index.js ***!
+  \***********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -9950,9 +9950,9 @@ exports.default = _default;
 
 /***/ }),
 /* 38 */
-/*!************************************************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/luch-request/core/Request.js ***!
-  \************************************************************************************************/
+/*!******************************************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/luch-request/core/Request.js ***!
+  \******************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -10156,9 +10156,9 @@ exports.default = Request;
 
 /***/ }),
 /* 39 */
-/*!********************************************************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/luch-request/core/dispatchRequest.js ***!
-  \********************************************************************************************************/
+/*!**************************************************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/luch-request/core/dispatchRequest.js ***!
+  \**************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -10178,9 +10178,9 @@ exports.default = _default;
 
 /***/ }),
 /* 40 */
-/*!**************************************************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/luch-request/adapters/index.js ***!
-  \**************************************************************************************************/
+/*!********************************************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/luch-request/adapters/index.js ***!
+  \********************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -10259,9 +10259,9 @@ exports.default = _default;
 
 /***/ }),
 /* 41 */
-/*!****************************************************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/luch-request/helpers/buildURL.js ***!
-  \****************************************************************************************************/
+/*!**********************************************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/luch-request/helpers/buildURL.js ***!
+  \**********************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -10329,9 +10329,9 @@ function buildURL(url, params) {
 
 /***/ }),
 /* 42 */
-/*!*****************************************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/luch-request/utils.js ***!
-  \*****************************************************************************************/
+/*!***********************************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/luch-request/utils.js ***!
+  \***********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -10482,9 +10482,9 @@ function isUndefined(val) {
 
 /***/ }),
 /* 43 */
-/*!******************************************************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/luch-request/core/buildFullPath.js ***!
-  \******************************************************************************************************/
+/*!************************************************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/luch-request/core/buildFullPath.js ***!
+  \************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -10516,9 +10516,9 @@ function buildFullPath(baseURL, requestedURL) {
 
 /***/ }),
 /* 44 */
-/*!*********************************************************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/luch-request/helpers/isAbsoluteURL.js ***!
-  \*********************************************************************************************************/
+/*!***************************************************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/luch-request/helpers/isAbsoluteURL.js ***!
+  \***************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -10544,9 +10544,9 @@ function isAbsoluteURL(url) {
 
 /***/ }),
 /* 45 */
-/*!*******************************************************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/luch-request/helpers/combineURLs.js ***!
-  \*******************************************************************************************************/
+/*!*************************************************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/luch-request/helpers/combineURLs.js ***!
+  \*************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -10570,9 +10570,9 @@ function combineURLs(baseURL, relativeURL) {
 
 /***/ }),
 /* 46 */
-/*!***********************************************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/luch-request/core/settle.js ***!
-  \***********************************************************************************************/
+/*!*****************************************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/luch-request/core/settle.js ***!
+  \*****************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -10602,9 +10602,9 @@ function settle(resolve, reject, response) {
 
 /***/ }),
 /* 47 */
-/*!***********************************************************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/luch-request/core/InterceptorManager.js ***!
-  \***********************************************************************************************************/
+/*!*****************************************************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/luch-request/core/InterceptorManager.js ***!
+  \*****************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -10666,9 +10666,9 @@ exports.default = _default;
 
 /***/ }),
 /* 48 */
-/*!****************************************************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/luch-request/core/mergeConfig.js ***!
-  \****************************************************************************************************/
+/*!**********************************************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/luch-request/core/mergeConfig.js ***!
+  \**********************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -10742,9 +10742,9 @@ exports.default = _default;
 
 /***/ }),
 /* 49 */
-/*!*************************************************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/luch-request/core/defaults.js ***!
-  \*************************************************************************************************/
+/*!*******************************************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/luch-request/core/defaults.js ***!
+  \*******************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -10774,9 +10774,9 @@ exports.default = _default;
 
 /***/ }),
 /* 50 */
-/*!***********************************************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/luch-request/utils/clone.js ***!
-  \***********************************************************************************************/
+/*!*****************************************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/luch-request/utils/clone.js ***!
+  \*****************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -11022,7 +11022,7 @@ var clone = function () {
 }();
 var _default = clone;
 exports.default = _default;
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../../../../../../../../Other/HBuilderX/plugins/uniapp-cli/node_modules/buffer/index.js */ 51).Buffer))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../../../../../../../../../软件/chormexiazai/HBuilderX.3.8.3.20230526/HBuilderX/plugins/uniapp-cli/node_modules/buffer/index.js */ 51).Buffer))
 
 /***/ }),
 /* 51 */
@@ -13098,9 +13098,9 @@ module.exports = Array.isArray || function (arr) {
 
 /***/ }),
 /* 55 */
-/*!*********************************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/util/route.js ***!
-  \*********************************************************************************/
+/*!***************************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/util/route.js ***!
+  \***************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -13660,9 +13660,9 @@ module.exports = _asyncToGenerator, module.exports.__esModule = true, module.exp
 
 /***/ }),
 /* 59 */
-/*!*********************************************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/function/colorGradient.js ***!
-  \*********************************************************************************************/
+/*!***************************************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/function/colorGradient.js ***!
+  \***************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -13815,9 +13815,9 @@ exports.default = _default;
 
 /***/ }),
 /* 60 */
-/*!************************************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/function/test.js ***!
-  \************************************************************************************/
+/*!******************************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/function/test.js ***!
+  \******************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -14120,9 +14120,9 @@ exports.default = _default;
 
 /***/ }),
 /* 61 */
-/*!****************************************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/function/debounce.js ***!
-  \****************************************************************************************/
+/*!**********************************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/function/debounce.js ***!
+  \**********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -14167,9 +14167,9 @@ exports.default = _default;
 
 /***/ }),
 /* 62 */
-/*!****************************************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/function/throttle.js ***!
-  \****************************************************************************************/
+/*!**********************************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/function/throttle.js ***!
+  \**********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -14216,9 +14216,9 @@ exports.default = _default;
 
 /***/ }),
 /* 63 */
-/*!*************************************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/function/index.js ***!
-  \*************************************************************************************/
+/*!*******************************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/function/index.js ***!
+  \*******************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -15017,9 +15017,9 @@ exports.default = _default;
 
 /***/ }),
 /* 64 */
-/*!*************************************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/function/digit.js ***!
-  \*************************************************************************************/
+/*!*******************************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/function/digit.js ***!
+  \*******************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -15236,9 +15236,9 @@ module.exports = _toArray, module.exports.__esModule = true, module.exports["def
 
 /***/ }),
 /* 66 */
-/*!************************************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/config.js ***!
-  \************************************************************************************/
+/*!******************************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/config.js ***!
+  \******************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -15280,9 +15280,9 @@ exports.default = _default;
 
 /***/ }),
 /* 67 */
-/*!***********************************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props.js ***!
-  \***********************************************************************************/
+/*!*****************************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props.js ***!
+  \*****************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -15392,9 +15392,9 @@ exports.default = _default;
 
 /***/ }),
 /* 68 */
-/*!***********************************************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/actionSheet.js ***!
-  \***********************************************************************************************/
+/*!*****************************************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/actionSheet.js ***!
+  \*****************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -15436,9 +15436,9 @@ exports.default = _default;
 
 /***/ }),
 /* 69 */
-/*!*****************************************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/album.js ***!
-  \*****************************************************************************************/
+/*!***********************************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/album.js ***!
+  \***********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -15480,9 +15480,9 @@ exports.default = _default;
 
 /***/ }),
 /* 70 */
-/*!*****************************************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/alert.js ***!
-  \*****************************************************************************************/
+/*!***********************************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/alert.js ***!
+  \***********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -15519,9 +15519,9 @@ exports.default = _default;
 
 /***/ }),
 /* 71 */
-/*!******************************************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/avatar.js ***!
-  \******************************************************************************************/
+/*!************************************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/avatar.js ***!
+  \************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -15564,9 +15564,9 @@ exports.default = _default;
 
 /***/ }),
 /* 72 */
-/*!***********************************************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/avatarGroup.js ***!
-  \***********************************************************************************************/
+/*!*****************************************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/avatarGroup.js ***!
+  \*****************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -15606,9 +15606,9 @@ exports.default = _default;
 
 /***/ }),
 /* 73 */
-/*!*******************************************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/backtop.js ***!
-  \*******************************************************************************************/
+/*!*************************************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/backtop.js ***!
+  \*************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -15652,9 +15652,9 @@ exports.default = _default;
 
 /***/ }),
 /* 74 */
-/*!*****************************************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/badge.js ***!
-  \*****************************************************************************************/
+/*!***********************************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/badge.js ***!
+  \***********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -15698,9 +15698,9 @@ exports.default = _default;
 
 /***/ }),
 /* 75 */
-/*!******************************************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/button.js ***!
-  \******************************************************************************************/
+/*!************************************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/button.js ***!
+  \************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -15757,9 +15757,9 @@ exports.default = _default;
 
 /***/ }),
 /* 76 */
-/*!********************************************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/calendar.js ***!
-  \********************************************************************************************/
+/*!**************************************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/calendar.js ***!
+  \**************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -15820,9 +15820,9 @@ exports.default = _default;
 
 /***/ }),
 /* 77 */
-/*!***********************************************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/carKeyboard.js ***!
-  \***********************************************************************************************/
+/*!*****************************************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/carKeyboard.js ***!
+  \*****************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -15852,9 +15852,9 @@ exports.default = _default;
 
 /***/ }),
 /* 78 */
-/*!****************************************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/cell.js ***!
-  \****************************************************************************************/
+/*!**********************************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/cell.js ***!
+  \**********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -15904,9 +15904,9 @@ exports.default = _default;
 
 /***/ }),
 /* 79 */
-/*!*********************************************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/cellGroup.js ***!
-  \*********************************************************************************************/
+/*!***************************************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/cellGroup.js ***!
+  \***************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -15938,9 +15938,9 @@ exports.default = _default;
 
 /***/ }),
 /* 80 */
-/*!********************************************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/checkbox.js ***!
-  \********************************************************************************************/
+/*!**************************************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/checkbox.js ***!
+  \**************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -15982,9 +15982,9 @@ exports.default = _default;
 
 /***/ }),
 /* 81 */
-/*!*************************************************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/checkboxGroup.js ***!
-  \*************************************************************************************************/
+/*!*******************************************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/checkboxGroup.js ***!
+  \*******************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -16030,9 +16030,9 @@ exports.default = _default;
 
 /***/ }),
 /* 82 */
-/*!**************************************************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/circleProgress.js ***!
-  \**************************************************************************************************/
+/*!********************************************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/circleProgress.js ***!
+  \********************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -16062,9 +16062,9 @@ exports.default = _default;
 
 /***/ }),
 /* 83 */
-/*!****************************************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/code.js ***!
-  \****************************************************************************************/
+/*!**********************************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/code.js ***!
+  \**********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -16099,9 +16099,9 @@ exports.default = _default;
 
 /***/ }),
 /* 84 */
-/*!*********************************************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/codeInput.js ***!
-  \*********************************************************************************************/
+/*!***************************************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/codeInput.js ***!
+  \***************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -16145,9 +16145,9 @@ exports.default = _default;
 
 /***/ }),
 /* 85 */
-/*!***************************************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/col.js ***!
-  \***************************************************************************************/
+/*!*********************************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/col.js ***!
+  \*********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -16181,9 +16181,9 @@ exports.default = _default;
 
 /***/ }),
 /* 86 */
-/*!********************************************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/collapse.js ***!
-  \********************************************************************************************/
+/*!**************************************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/collapse.js ***!
+  \**************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -16215,9 +16215,9 @@ exports.default = _default;
 
 /***/ }),
 /* 87 */
-/*!************************************************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/collapseItem.js ***!
-  \************************************************************************************************/
+/*!******************************************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/collapseItem.js ***!
+  \******************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -16257,9 +16257,9 @@ exports.default = _default;
 
 /***/ }),
 /* 88 */
-/*!************************************************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/columnNotice.js ***!
-  \************************************************************************************************/
+/*!******************************************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/columnNotice.js ***!
+  \******************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -16298,9 +16298,9 @@ exports.default = _default;
 
 /***/ }),
 /* 89 */
-/*!*********************************************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/countDown.js ***!
-  \*********************************************************************************************/
+/*!***************************************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/countDown.js ***!
+  \***************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -16333,9 +16333,9 @@ exports.default = _default;
 
 /***/ }),
 /* 90 */
-/*!*******************************************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/countTo.js ***!
-  \*******************************************************************************************/
+/*!*************************************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/countTo.js ***!
+  \*************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -16375,9 +16375,9 @@ exports.default = _default;
 
 /***/ }),
 /* 91 */
-/*!**************************************************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/datetimePicker.js ***!
-  \**************************************************************************************************/
+/*!********************************************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/datetimePicker.js ***!
+  \********************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -16430,9 +16430,9 @@ exports.default = _default;
 
 /***/ }),
 /* 92 */
-/*!*******************************************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/divider.js ***!
-  \*******************************************************************************************/
+/*!*************************************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/divider.js ***!
+  \*************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -16469,9 +16469,9 @@ exports.default = _default;
 
 /***/ }),
 /* 93 */
-/*!*****************************************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/empty.js ***!
-  \*****************************************************************************************/
+/*!***********************************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/empty.js ***!
+  \***********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -16511,9 +16511,9 @@ exports.default = _default;
 
 /***/ }),
 /* 94 */
-/*!****************************************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/form.js ***!
-  \****************************************************************************************/
+/*!**********************************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/form.js ***!
+  \**********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -16556,9 +16556,9 @@ exports.default = _default;
 
 /***/ }),
 /* 95 */
-/*!********************************************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/formItem.js ***!
-  \********************************************************************************************/
+/*!**************************************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/formItem.js ***!
+  \**************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -16596,9 +16596,9 @@ exports.default = _default;
 
 /***/ }),
 /* 96 */
-/*!***************************************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/gap.js ***!
-  \***************************************************************************************/
+/*!*********************************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/gap.js ***!
+  \*********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -16632,9 +16632,9 @@ exports.default = _default;
 
 /***/ }),
 /* 97 */
-/*!****************************************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/grid.js ***!
-  \****************************************************************************************/
+/*!**********************************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/grid.js ***!
+  \**********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -16666,9 +16666,9 @@ exports.default = _default;
 
 /***/ }),
 /* 98 */
-/*!********************************************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/gridItem.js ***!
-  \********************************************************************************************/
+/*!**************************************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/gridItem.js ***!
+  \**************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -16699,9 +16699,9 @@ exports.default = _default;
 
 /***/ }),
 /* 99 */
-/*!****************************************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/icon.js ***!
-  \****************************************************************************************/
+/*!**********************************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/icon.js ***!
+  \**********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -16751,9 +16751,9 @@ exports.default = _default;
 
 /***/ }),
 /* 100 */
-/*!*****************************************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/image.js ***!
-  \*****************************************************************************************/
+/*!***********************************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/image.js ***!
+  \***********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -16798,9 +16798,9 @@ exports.default = _default;
 
 /***/ }),
 /* 101 */
-/*!***********************************************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/indexAnchor.js ***!
-  \***********************************************************************************************/
+/*!*****************************************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/indexAnchor.js ***!
+  \*****************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -16834,9 +16834,9 @@ exports.default = _default;
 
 /***/ }),
 /* 102 */
-/*!*********************************************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/indexList.js ***!
-  \*********************************************************************************************/
+/*!***************************************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/indexList.js ***!
+  \***************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -16872,9 +16872,9 @@ exports.default = _default;
 
 /***/ }),
 /* 103 */
-/*!*****************************************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/input.js ***!
-  \*****************************************************************************************/
+/*!***********************************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/input.js ***!
+  \***********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -16937,9 +16937,9 @@ exports.default = _default;
 
 /***/ }),
 /* 104 */
-/*!********************************************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/keyboard.js ***!
-  \********************************************************************************************/
+/*!**************************************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/keyboard.js ***!
+  \**************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -16984,9 +16984,9 @@ exports.default = _default;
 
 /***/ }),
 /* 105 */
-/*!****************************************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/line.js ***!
-  \****************************************************************************************/
+/*!**********************************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/line.js ***!
+  \**********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -17021,9 +17021,9 @@ exports.default = _default;
 
 /***/ }),
 /* 106 */
-/*!************************************************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/lineProgress.js ***!
-  \************************************************************************************************/
+/*!******************************************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/lineProgress.js ***!
+  \******************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -17057,9 +17057,9 @@ exports.default = _default;
 
 /***/ }),
 /* 107 */
-/*!****************************************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/link.js ***!
-  \****************************************************************************************/
+/*!**********************************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/link.js ***!
+  \**********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -17099,9 +17099,9 @@ exports.default = _default;
 
 /***/ }),
 /* 108 */
-/*!****************************************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/list.js ***!
-  \****************************************************************************************/
+/*!**********************************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/list.js ***!
+  \**********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -17144,9 +17144,9 @@ exports.default = _default;
 
 /***/ }),
 /* 109 */
-/*!********************************************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/listItem.js ***!
-  \********************************************************************************************/
+/*!**************************************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/listItem.js ***!
+  \**************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -17176,9 +17176,9 @@ exports.default = _default;
 
 /***/ }),
 /* 110 */
-/*!***********************************************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/loadingIcon.js ***!
-  \***********************************************************************************************/
+/*!*****************************************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/loadingIcon.js ***!
+  \*****************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -17222,9 +17222,9 @@ exports.default = _default;
 
 /***/ }),
 /* 111 */
-/*!***********************************************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/loadingPage.js ***!
-  \***********************************************************************************************/
+/*!*****************************************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/loadingPage.js ***!
+  \*****************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -17262,9 +17262,9 @@ exports.default = _default;
 
 /***/ }),
 /* 112 */
-/*!********************************************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/loadmore.js ***!
-  \********************************************************************************************/
+/*!**************************************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/loadmore.js ***!
+  \**************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -17311,9 +17311,9 @@ exports.default = _default;
 
 /***/ }),
 /* 113 */
-/*!*****************************************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/modal.js ***!
-  \*****************************************************************************************/
+/*!***********************************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/modal.js ***!
+  \***********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -17358,9 +17358,9 @@ exports.default = _default;
 
 /***/ }),
 /* 114 */
-/*!******************************************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/navbar.js ***!
-  \******************************************************************************************/
+/*!************************************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/navbar.js ***!
+  \************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -17407,9 +17407,9 @@ exports.default = _default;
 
 /***/ }),
 /* 115 */
-/*!***********************************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/color.js ***!
-  \***********************************************************************************/
+/*!*****************************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/color.js ***!
+  \*****************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -17440,9 +17440,9 @@ exports.default = _default;
 
 /***/ }),
 /* 116 */
-/*!*********************************************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/noNetwork.js ***!
-  \*********************************************************************************************/
+/*!***************************************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/noNetwork.js ***!
+  \***************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -17474,9 +17474,9 @@ exports.default = _default;
 
 /***/ }),
 /* 117 */
-/*!*********************************************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/noticeBar.js ***!
-  \*********************************************************************************************/
+/*!***************************************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/noticeBar.js ***!
+  \***************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -17520,9 +17520,9 @@ exports.default = _default;
 
 /***/ }),
 /* 118 */
-/*!******************************************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/notify.js ***!
-  \******************************************************************************************/
+/*!************************************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/notify.js ***!
+  \************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -17559,9 +17559,9 @@ exports.default = _default;
 
 /***/ }),
 /* 119 */
-/*!*********************************************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/numberBox.js ***!
-  \*********************************************************************************************/
+/*!***************************************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/numberBox.js ***!
+  \***************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -17611,9 +17611,9 @@ exports.default = _default;
 
 /***/ }),
 /* 120 */
-/*!**************************************************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/numberKeyboard.js ***!
-  \**************************************************************************************************/
+/*!********************************************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/numberKeyboard.js ***!
+  \********************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -17645,9 +17645,9 @@ exports.default = _default;
 
 /***/ }),
 /* 121 */
-/*!*******************************************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/overlay.js ***!
-  \*******************************************************************************************/
+/*!*************************************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/overlay.js ***!
+  \*************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -17680,9 +17680,9 @@ exports.default = _default;
 
 /***/ }),
 /* 122 */
-/*!*****************************************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/parse.js ***!
-  \*****************************************************************************************/
+/*!***********************************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/parse.js ***!
+  \***********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -17719,9 +17719,9 @@ exports.default = _default;
 
 /***/ }),
 /* 123 */
-/*!******************************************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/picker.js ***!
-  \******************************************************************************************/
+/*!************************************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/picker.js ***!
+  \************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -17769,9 +17769,9 @@ exports.default = _default;
 
 /***/ }),
 /* 124 */
-/*!*****************************************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/popup.js ***!
-  \*****************************************************************************************/
+/*!***********************************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/popup.js ***!
+  \***********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -17815,9 +17815,9 @@ exports.default = _default;
 
 /***/ }),
 /* 125 */
-/*!*****************************************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/radio.js ***!
-  \*****************************************************************************************/
+/*!***********************************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/radio.js ***!
+  \***********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -17859,9 +17859,9 @@ exports.default = _default;
 
 /***/ }),
 /* 126 */
-/*!**********************************************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/radioGroup.js ***!
-  \**********************************************************************************************/
+/*!****************************************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/radioGroup.js ***!
+  \****************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -17906,9 +17906,9 @@ exports.default = _default;
 
 /***/ }),
 /* 127 */
-/*!****************************************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/rate.js ***!
-  \****************************************************************************************/
+/*!**********************************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/rate.js ***!
+  \**********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -17949,9 +17949,9 @@ exports.default = _default;
 
 /***/ }),
 /* 128 */
-/*!********************************************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/readMore.js ***!
-  \********************************************************************************************/
+/*!**************************************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/readMore.js ***!
+  \**************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -17988,9 +17988,9 @@ exports.default = _default;
 
 /***/ }),
 /* 129 */
-/*!***************************************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/row.js ***!
-  \***************************************************************************************/
+/*!*********************************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/row.js ***!
+  \*********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -18022,9 +18022,9 @@ exports.default = _default;
 
 /***/ }),
 /* 130 */
-/*!*********************************************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/rowNotice.js ***!
-  \*********************************************************************************************/
+/*!***************************************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/rowNotice.js ***!
+  \***************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -18060,9 +18060,9 @@ exports.default = _default;
 
 /***/ }),
 /* 131 */
-/*!**********************************************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/scrollList.js ***!
-  \**********************************************************************************************/
+/*!****************************************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/scrollList.js ***!
+  \****************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -18097,9 +18097,9 @@ exports.default = _default;
 
 /***/ }),
 /* 132 */
-/*!******************************************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/search.js ***!
-  \******************************************************************************************/
+/*!************************************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/search.js ***!
+  \************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -18155,9 +18155,9 @@ exports.default = _default;
 
 /***/ }),
 /* 133 */
-/*!*******************************************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/section.js ***!
-  \*******************************************************************************************/
+/*!*************************************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/section.js ***!
+  \*************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -18196,9 +18196,9 @@ exports.default = _default;
 
 /***/ }),
 /* 134 */
-/*!********************************************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/skeleton.js ***!
-  \********************************************************************************************/
+/*!**************************************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/skeleton.js ***!
+  \**************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -18238,9 +18238,9 @@ exports.default = _default;
 
 /***/ }),
 /* 135 */
-/*!******************************************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/slider.js ***!
-  \******************************************************************************************/
+/*!************************************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/slider.js ***!
+  \************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -18280,9 +18280,9 @@ exports.default = _default;
 
 /***/ }),
 /* 136 */
-/*!*********************************************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/statusBar.js ***!
-  \*********************************************************************************************/
+/*!***************************************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/statusBar.js ***!
+  \***************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -18312,9 +18312,9 @@ exports.default = _default;
 
 /***/ }),
 /* 137 */
-/*!*****************************************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/steps.js ***!
-  \*****************************************************************************************/
+/*!***********************************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/steps.js ***!
+  \***********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -18350,9 +18350,9 @@ exports.default = _default;
 
 /***/ }),
 /* 138 */
-/*!*********************************************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/stepsItem.js ***!
-  \*********************************************************************************************/
+/*!***************************************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/stepsItem.js ***!
+  \***************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -18385,9 +18385,9 @@ exports.default = _default;
 
 /***/ }),
 /* 139 */
-/*!******************************************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/sticky.js ***!
-  \******************************************************************************************/
+/*!************************************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/sticky.js ***!
+  \************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -18422,9 +18422,9 @@ exports.default = _default;
 
 /***/ }),
 /* 140 */
-/*!**********************************************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/subsection.js ***!
-  \**********************************************************************************************/
+/*!****************************************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/subsection.js ***!
+  \****************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -18462,9 +18462,9 @@ exports.default = _default;
 
 /***/ }),
 /* 141 */
-/*!***********************************************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/swipeAction.js ***!
-  \***********************************************************************************************/
+/*!*****************************************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/swipeAction.js ***!
+  \*****************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -18494,9 +18494,9 @@ exports.default = _default;
 
 /***/ }),
 /* 142 */
-/*!***************************************************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/swipeActionItem.js ***!
-  \***************************************************************************************************/
+/*!*********************************************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/swipeActionItem.js ***!
+  \*********************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -18532,9 +18532,9 @@ exports.default = _default;
 
 /***/ }),
 /* 143 */
-/*!******************************************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/swiper.js ***!
-  \******************************************************************************************/
+/*!************************************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/swiper.js ***!
+  \************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -18589,9 +18589,9 @@ exports.default = _default;
 
 /***/ }),
 /* 144 */
-/*!****************************************************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/swipterIndicator.js ***!
-  \****************************************************************************************************/
+/*!**********************************************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/swipterIndicator.js ***!
+  \**********************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -18625,9 +18625,9 @@ exports.default = _default;
 
 /***/ }),
 /* 145 */
-/*!******************************************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/switch.js ***!
-  \******************************************************************************************/
+/*!************************************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/switch.js ***!
+  \************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -18666,9 +18666,9 @@ exports.default = _default;
 
 /***/ }),
 /* 146 */
-/*!******************************************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/tabbar.js ***!
-  \******************************************************************************************/
+/*!************************************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/tabbar.js ***!
+  \************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -18705,9 +18705,9 @@ exports.default = _default;
 
 /***/ }),
 /* 147 */
-/*!**********************************************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/tabbarItem.js ***!
-  \**********************************************************************************************/
+/*!****************************************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/tabbarItem.js ***!
+  \****************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -18742,9 +18742,9 @@ exports.default = _default;
 
 /***/ }),
 /* 148 */
-/*!****************************************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/tabs.js ***!
-  \****************************************************************************************/
+/*!**********************************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/tabs.js ***!
+  \**********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -18799,9 +18799,9 @@ exports.default = _default;
 
 /***/ }),
 /* 149 */
-/*!***************************************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/tag.js ***!
-  \***************************************************************************************/
+/*!*********************************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/tag.js ***!
+  \*********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -18845,9 +18845,9 @@ exports.default = _default;
 
 /***/ }),
 /* 150 */
-/*!****************************************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/text.js ***!
-  \****************************************************************************************/
+/*!**********************************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/text.js ***!
+  \**********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -18901,9 +18901,9 @@ exports.default = _default;
 
 /***/ }),
 /* 151 */
-/*!********************************************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/textarea.js ***!
-  \********************************************************************************************/
+/*!**************************************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/textarea.js ***!
+  \**************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -18954,9 +18954,9 @@ exports.default = _default;
 
 /***/ }),
 /* 152 */
-/*!*****************************************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/toast.js ***!
-  \*****************************************************************************************/
+/*!***********************************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/toast.js ***!
+  \***********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -19000,9 +19000,9 @@ exports.default = _default;
 
 /***/ }),
 /* 153 */
-/*!*******************************************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/toolbar.js ***!
-  \*******************************************************************************************/
+/*!*************************************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/toolbar.js ***!
+  \*************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -19037,9 +19037,9 @@ exports.default = _default;
 
 /***/ }),
 /* 154 */
-/*!*******************************************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/tooltip.js ***!
-  \*******************************************************************************************/
+/*!*************************************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/tooltip.js ***!
+  \*************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -19081,9 +19081,9 @@ exports.default = _default;
 
 /***/ }),
 /* 155 */
-/*!**********************************************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/transition.js ***!
-  \**********************************************************************************************/
+/*!****************************************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/transition.js ***!
+  \****************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -19116,9 +19116,9 @@ exports.default = _default;
 
 /***/ }),
 /* 156 */
-/*!******************************************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/upload.js ***!
-  \******************************************************************************************/
+/*!************************************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/props/upload.js ***!
+  \************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -19175,9 +19175,9 @@ exports.default = _default;
 
 /***/ }),
 /* 157 */
-/*!************************************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/zIndex.js ***!
-  \************************************************************************************/
+/*!******************************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/config/zIndex.js ***!
+  \******************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -19211,9 +19211,9 @@ exports.default = _default;
 
 /***/ }),
 /* 158 */
-/*!****************************************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/function/platform.js ***!
-  \****************************************************************************************/
+/*!**********************************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/function/platform.js ***!
+  \**********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -19241,9 +19241,9 @@ exports.default = _default;
 
 /***/ }),
 /* 159 */
-/*!*******************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/apis/index.js ***!
-  \*******************************************************/
+/*!*************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/apis/index.js ***!
+  \*************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -19256,22 +19256,24 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 var _home = _interopRequireDefault(__webpack_require__(/*! ./home.js */ 160));
-var _classify = _interopRequireDefault(__webpack_require__(/*! ./classify.js */ 162));
-var _search = _interopRequireDefault(__webpack_require__(/*! ./search.js */ 163));
-var _login = _interopRequireDefault(__webpack_require__(/*! ./login.js */ 164));
+var _classify = _interopRequireDefault(__webpack_require__(/*! ./classify.js */ 163));
+var _search = _interopRequireDefault(__webpack_require__(/*! ./search.js */ 164));
+var _login = _interopRequireDefault(__webpack_require__(/*! ./login.js */ 165));
+var _user = _interopRequireDefault(__webpack_require__(/*! ./user.js */ 166));
 var _default = {
   homeService: _home.default,
   classifyServce: _classify.default,
   searchService: _search.default,
-  loginService: _login.default
+  loginService: _login.default,
+  userService: _user.default
 };
 exports.default = _default;
 
 /***/ }),
 /* 160 */
-/*!******************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/apis/home.js ***!
-  \******************************************************/
+/*!************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/apis/home.js ***!
+  \************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -19306,29 +19308,32 @@ exports.default = _default;
 
 /***/ }),
 /* 161 */
-/*!**********************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/utils/request.js ***!
-  \**********************************************************/
+/*!****************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/utils/request.js ***!
+  \****************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(uni) {
 
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
+var _logintools = _interopRequireDefault(__webpack_require__(/*! ./logintools.js */ 162));
 var BASE_URL = 'http://localhost:4000';
 var _default = {
   post: function post(url, params) {
-    var token = JSON.parse(uni.getStorageSync('Token')) || '';
+    //发送请求显示load
+    uni.showLoading({
+      title: '正在请求中...',
+      mask: true
+    });
     var promise = new Promise(function (resolve, reject) {
-      //发送请求显示load
-      uni.showLoading({
-        title: '正在请求中...',
-        mask: true
-      });
+      //拿到当前登录用户的token
+      var token = _logintools.default.getToken();
       uni.request({
         url: "".concat(BASE_URL).concat(url),
         method: 'POST',
@@ -19352,13 +19357,14 @@ var _default = {
     return promise;
   },
   get: function get(url, params) {
-    var token = JSON.parse(uni.getStorageSync('Token')) || '';
+    //发送请求显示load
+    uni.showLoading({
+      title: '正在请求中...',
+      mask: true
+    });
     var promise = new Promise(function (resolve, reject) {
-      //发送请求显示load
-      uni.showLoading({
-        title: '正在请求中...',
-        mask: true
-      });
+      //拿到当前登录用户的token
+      var token = _logintools.default.getToken();
       uni.request({
         url: "".concat(BASE_URL).concat(url),
         method: 'GET',
@@ -19387,114 +19393,9 @@ exports.default = _default;
 
 /***/ }),
 /* 162 */
-/*!**********************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/apis/classify.js ***!
-  \**********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-var _request = _interopRequireDefault(__webpack_require__(/*! ../utils/request.js */ 161));
-var _default = {
-  //分类信息
-  categories: function categories(params) {
-    return _request.default.get('/categories', params);
-  }
-};
-exports.default = _default;
-
-/***/ }),
-/* 163 */
-/*!********************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/apis/search.js ***!
-  \********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-var _request = _interopRequireDefault(__webpack_require__(/*! ../utils/request.js */ 161));
-var _default = {
-  //搜索页面随机推荐 & 精品名厨视频
-  memberRecommend: function memberRecommend(params) {
-    return _request.default.get('/search/memberRecommend', params);
-  },
-  //菜单详情
-  menuDetail: function menuDetail(params) {
-    return _request.default.post('/search/menuDetail', params);
-  }
-};
-exports.default = _default;
-
-/***/ }),
-/* 164 */
-/*!*******************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/apis/login.js ***!
-  \*******************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-var _request = _interopRequireDefault(__webpack_require__(/*! ../utils/request.js */ 161));
-var _default = {
-  //微信授权登录
-  wxLogin: function wxLogin(params) {
-    return _request.default.post('/user/wxLogin', params);
-  },
-  //获取用户信息
-  getUserInfo: function getUserInfo(params) {
-    return _request.default.get('/user/getUserInfo', params);
-  }
-};
-exports.default = _default;
-
-/***/ }),
-/* 165 */,
-/* 166 */,
-/* 167 */,
-/* 168 */,
-/* 169 */,
-/* 170 */,
-/* 171 */,
-/* 172 */,
-/* 173 */,
-/* 174 */,
-/* 175 */,
-/* 176 */,
-/* 177 */,
-/* 178 */,
-/* 179 */,
-/* 180 */,
-/* 181 */,
-/* 182 */,
-/* 183 */,
-/* 184 */,
-/* 185 */,
-/* 186 */,
-/* 187 */
-/*!*************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/utils/logintools.js ***!
-  \*************************************************************/
+/*!*******************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/utils/logintools.js ***!
+  \*******************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -19506,12 +19407,14 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
+var _regenerator = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/regenerator */ 56));
+var _asyncToGenerator2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/asyncToGenerator */ 58));
 var _index = _interopRequireDefault(__webpack_require__(/*! ../apis/index.js */ 159));
 var _default = {
   //微信登录获取token
   gologin: function gologin() {
     var _this = this;
-    //判断用户是否登录getUserProfile
+    //1.判断用户是否登录getUserProfile
     var userPromise = new Promise(function (resolve, reject) {
       uni.getUserProfile({
         desc: '微信登录',
@@ -19538,9 +19441,11 @@ var _default = {
 
     //wxLogin
     userPromise.then(function (userRes) {
-      console.log('userRes', userRes);
+      // console.log('userRes', userRes);
+
       loginPromise.then(function (loginRes) {
-        console.log('loginRes', loginRes);
+        // console.log('loginRes', loginRes);
+
         _index.default.loginService.wxLogin({
           code: loginRes.code,
           appId: 'wxe15e38290cf35d4e',
@@ -19550,11 +19455,78 @@ var _default = {
           //将token保存在本地储存中
           _this.setToken(res.token);
           //将用户信息储存在本地
-          uni.setStorageSync('UserInfo', JSON.stringify(userRes.userInfo));
+          _this.setUserInfo(userRes.userInfo);
         });
       });
     });
   },
+  //2.调取后端接口获取用户信息
+  getuserinfo: function getuserinfo() {
+    var token = this.getToken();
+    if (token) {
+      return new Promise(function (resolve, reject) {
+        _index.default.loginService.getUserInfo({
+          token: token
+        }).then(function (res) {
+          // console.log('getuserinfo', res);
+          resolve(res[0]);
+        }).catch(function (err) {
+          reject(err);
+        });
+      });
+    } else {
+      return {};
+    }
+  },
+  //3.授权后更新用数据库信息
+  updateUserInfo: function updateUserInfo() {
+    //获取本地用户信息
+    var userInfo = this.getUserInfo();
+    //获取本地token
+    var token = this.getToken();
+    _index.default.loginService.auth({
+      token: token,
+      avatarUrl: userInfo.avatarUrl,
+      nickName: userInfo.nickName,
+      gender: userInfo.gender,
+      province: userInfo.province
+    }).then(function (res) {
+      console.log('updateUserInfo', res);
+      return res;
+    });
+  },
+  //4.我的收藏
+  getUserCollect: function getUserCollect() {
+    var _this2 = this;
+    return (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee() {
+      var userInfo;
+      return _regenerator.default.wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              _context.next = 2;
+              return _this2.getuserinfo();
+            case 2:
+              userInfo = _context.sent;
+              return _context.abrupt("return", new Promise(function (resolve, reject) {
+                _index.default.userService.getcollect({
+                  _id: userInfo._id
+                }).then(function (res) {
+                  console.log('getUserCollect', res.mycollect);
+                  resolve(res.mycollect);
+                }).catch(function (err) {
+                  reject(err);
+                });
+              }));
+            case 4:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee);
+    }))();
+  },
+  //5.添加浏览
   //判断是否登录
   islogin: function islogin() {
     var token = this.getToken();
@@ -19564,22 +19536,11 @@ var _default = {
       return false;
     }
   },
-  //获取用户信息
-  getuserinfo: function getuserinfo() {
-    var token = this.getToken();
-    console.log(token);
-    if (token) {
-      _index.default.loginService.getUserInfo({
-        token: token
-      }).then(function (res) {
-        console.log('getuserinfo', res);
-      });
-    }
-  },
   //获取本地token
   getToken: function getToken() {
-    var token = JSON.parse(uni.getStorageSync('Token'));
+    var token = uni.getStorageSync('Token');
     if (token) {
+      token = JSON.parse(token);
       return token;
     } else {
       return '';
@@ -19588,12 +19549,167 @@ var _default = {
   //存储本地token
   setToken: function setToken(token) {
     uni.setStorageSync('Token', JSON.stringify(token));
+  },
+  //储存本地用户信息
+  setUserInfo: function setUserInfo(userInfo) {
+    uni.setStorageSync('UserInfo', JSON.stringify(userInfo));
+  },
+  //获取本地用户信息
+  getUserInfo: function getUserInfo() {
+    var userInfo = uni.getStorageSync('UserInfo');
+    if (userInfo) {
+      userInfo = JSON.parse(userInfo);
+      return userInfo;
+    } else {
+      return '';
+    }
+  },
+  //本地储存信息
+  setMsg: function setMsg(key, val) {
+    uni.setStorageSync('key', JSON.stringify(val));
   }
 };
 exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
+/* 163 */
+/*!****************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/apis/classify.js ***!
+  \****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _request = _interopRequireDefault(__webpack_require__(/*! ../utils/request.js */ 161));
+var _default = {
+  //分类信息
+  categories: function categories(params) {
+    return _request.default.get('/categories', params);
+  }
+};
+exports.default = _default;
+
+/***/ }),
+/* 164 */
+/*!**************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/apis/search.js ***!
+  \**************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _request = _interopRequireDefault(__webpack_require__(/*! ../utils/request.js */ 161));
+var _default = {
+  //搜索页面随机推荐 & 精品名厨视频
+  memberRecommend: function memberRecommend(params) {
+    return _request.default.get('/search/memberRecommend', params);
+  },
+  //菜单详情
+  menuDetail: function menuDetail(params) {
+    return _request.default.post('/search/menuDetail', params);
+  }
+};
+exports.default = _default;
+
+/***/ }),
+/* 165 */
+/*!*************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/apis/login.js ***!
+  \*************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _request = _interopRequireDefault(__webpack_require__(/*! ../utils/request.js */ 161));
+var _default = {
+  //微信授权登录
+  wxLogin: function wxLogin(params) {
+    return _request.default.post('/user/wxLogin', params);
+  },
+  //获取用户信息
+  getUserInfo: function getUserInfo(params) {
+    return _request.default.get('/user/getUserInfo', params);
+  },
+  //授权后更新用数据库信息
+  auth: function auth(params) {
+    return _request.default.post('/user/auth', params);
+  }
+};
+exports.default = _default;
+
+/***/ }),
+/* 166 */
+/*!************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/apis/user.js ***!
+  \************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _request = _interopRequireDefault(__webpack_require__(/*! ../utils/request.js */ 161));
+var _default = {
+  //收藏餐品
+  collect: function collect(params) {
+    return _request.default.post('/user/collect', params);
+  },
+  //我的收藏
+  getcollect: function getcollect(params) {
+    return _request.default.get('/user/getcollect', params);
+  }
+};
+exports.default = _default;
+
+/***/ }),
+/* 167 */,
+/* 168 */,
+/* 169 */,
+/* 170 */,
+/* 171 */,
+/* 172 */,
+/* 173 */,
+/* 174 */,
+/* 175 */,
+/* 176 */,
+/* 177 */,
+/* 178 */,
+/* 179 */,
+/* 180 */,
+/* 181 */,
+/* 182 */,
+/* 183 */,
+/* 184 */,
+/* 185 */,
+/* 186 */,
+/* 187 */,
 /* 188 */,
 /* 189 */,
 /* 190 */,
@@ -19711,10 +19827,11 @@ exports.default = _default;
 /* 302 */,
 /* 303 */,
 /* 304 */,
-/* 305 */
-/*!*****************************************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/components/u-icon/icons.js ***!
-  \*****************************************************************************************/
+/* 305 */,
+/* 306 */
+/*!***********************************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/components/u-icon/icons.js ***!
+  \***********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -19942,10 +20059,10 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 306 */
-/*!*****************************************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/components/u-icon/props.js ***!
-  \*****************************************************************************************/
+/* 307 */
+/*!***********************************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/components/u-icon/props.js ***!
+  \***********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -20049,7 +20166,6 @@ exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
-/* 307 */,
 /* 308 */,
 /* 309 */,
 /* 310 */,
@@ -20084,10 +20200,11 @@ exports.default = _default;
 /* 339 */,
 /* 340 */,
 /* 341 */,
-/* 342 */
-/*!*************************************************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/components/u-avatar-group/props.js ***!
-  \*************************************************************************************************/
+/* 342 */,
+/* 343 */
+/*!*******************************************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/components/u-avatar-group/props.js ***!
+  \*******************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -20154,7 +20271,6 @@ exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
-/* 343 */,
 /* 344 */,
 /* 345 */,
 /* 346 */,
@@ -20189,10 +20305,11 @@ exports.default = _default;
 /* 375 */,
 /* 376 */,
 /* 377 */,
-/* 378 */
-/*!*******************************************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/components/u-search/props.js ***!
-  \*******************************************************************************************/
+/* 378 */,
+/* 379 */
+/*!*************************************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/components/u-search/props.js ***!
+  \*************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -20325,7 +20442,6 @@ exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
-/* 379 */,
 /* 380 */,
 /* 381 */,
 /* 382 */,
@@ -20367,10 +20483,11 @@ exports.default = _default;
 /* 418 */,
 /* 419 */,
 /* 420 */,
-/* 421 */
-/*!*****************************************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/components/u-text/props.js ***!
-  \*****************************************************************************************/
+/* 421 */,
+/* 422 */
+/*!***********************************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/components/u-text/props.js ***!
+  \***********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -20495,15 +20612,15 @@ exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
-/* 422 */,
 /* 423 */,
 /* 424 */,
 /* 425 */,
 /* 426 */,
-/* 427 */
-/*!*****************************************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/components/u-tabs/props.js ***!
-  \*****************************************************************************************/
+/* 427 */,
+/* 428 */
+/*!***********************************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/components/u-tabs/props.js ***!
+  \***********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -20582,17 +20699,17 @@ exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
-/* 428 */,
 /* 429 */,
 /* 430 */,
 /* 431 */,
 /* 432 */,
 /* 433 */,
 /* 434 */,
-/* 435 */
-/*!*****************************************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/components/u-list/props.js ***!
-  \*****************************************************************************************/
+/* 435 */,
+/* 436 */
+/*!***********************************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/components/u-list/props.js ***!
+  \***********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -20682,17 +20799,17 @@ exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
-/* 436 */,
 /* 437 */,
 /* 438 */,
 /* 439 */,
 /* 440 */,
 /* 441 */,
 /* 442 */,
-/* 443 */
-/*!**********************************************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/components/u-list-item/props.js ***!
-  \**********************************************************************************************/
+/* 443 */,
+/* 444 */
+/*!****************************************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/components/u-list-item/props.js ***!
+  \****************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -20716,17 +20833,17 @@ exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
-/* 444 */,
 /* 445 */,
 /* 446 */,
 /* 447 */,
 /* 448 */,
 /* 449 */,
 /* 450 */,
-/* 451 */
-/*!*******************************************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/components/u-avatar/props.js ***!
-  \*******************************************************************************************/
+/* 451 */,
+/* 452 */
+/*!*************************************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/components/u-avatar/props.js ***!
+  \*************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -20819,17 +20936,17 @@ exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
-/* 452 */,
 /* 453 */,
 /* 454 */,
 /* 455 */,
 /* 456 */,
 /* 457 */,
 /* 458 */,
-/* 459 */
-/*!******************************************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/components/u-popup/props.js ***!
-  \******************************************************************************************/
+/* 459 */,
+/* 460 */
+/*!************************************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/components/u-popup/props.js ***!
+  \************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -20923,17 +21040,17 @@ exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
-/* 460 */,
 /* 461 */,
 /* 462 */,
 /* 463 */,
 /* 464 */,
 /* 465 */,
 /* 466 */,
-/* 467 */
-/*!***********************************************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/components/u-subsection/props.js ***!
-  \***********************************************************************************************/
+/* 467 */,
+/* 468 */
+/*!*****************************************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/components/u-subsection/props.js ***!
+  \*****************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -20997,17 +21114,17 @@ exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
-/* 468 */,
 /* 469 */,
 /* 470 */,
 /* 471 */,
 /* 472 */,
 /* 473 */,
 /* 474 */,
-/* 475 */
-/*!*****************************************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/components/u-text/value.js ***!
-  \*****************************************************************************************/
+/* 475 */,
+/* 476 */
+/*!***********************************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/components/u-text/value.js ***!
+  \***********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -21112,10 +21229,10 @@ exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
-/* 476 */
-/*!***********************************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/mixin/button.js ***!
-  \***********************************************************************************/
+/* 477 */
+/*!*****************************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/mixin/button.js ***!
+  \*****************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -21142,10 +21259,10 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 477 */
-/*!*************************************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/mixin/openType.js ***!
-  \*************************************************************************************/
+/* 478 */
+/*!*******************************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/libs/mixin/openType.js ***!
+  \*******************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -21184,17 +21301,17 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 478 */,
 /* 479 */,
 /* 480 */,
 /* 481 */,
 /* 482 */,
 /* 483 */,
 /* 484 */,
-/* 485 */
-/*!******************************************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/components/u-badge/props.js ***!
-  \******************************************************************************************/
+/* 485 */,
+/* 486 */
+/*!************************************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/components/u-badge/props.js ***!
+  \************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -21281,17 +21398,17 @@ exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
-/* 486 */,
 /* 487 */,
 /* 488 */,
 /* 489 */,
 /* 490 */,
 /* 491 */,
 /* 492 */,
-/* 493 */
-/*!********************************************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/components/u-overlay/props.js ***!
-  \********************************************************************************************/
+/* 493 */,
+/* 494 */
+/*!**************************************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/components/u-overlay/props.js ***!
+  \**************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -21330,17 +21447,17 @@ exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
-/* 494 */,
 /* 495 */,
 /* 496 */,
 /* 497 */,
 /* 498 */,
 /* 499 */,
 /* 500 */,
-/* 501 */
-/*!***********************************************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/components/u-transition/props.js ***!
-  \***********************************************************************************************/
+/* 501 */,
+/* 502 */
+/*!*****************************************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/components/u-transition/props.js ***!
+  \*****************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -21379,10 +21496,10 @@ exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
-/* 502 */
-/*!****************************************************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/components/u-transition/transition.js ***!
-  \****************************************************************************************************/
+/* 503 */
+/*!**********************************************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/components/u-transition/transition.js ***!
+  \**********************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -21396,7 +21513,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = void 0;
 var _regenerator = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/regenerator */ 56));
 var _asyncToGenerator2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/asyncToGenerator */ 58));
-var _nvueAniMap = _interopRequireDefault(__webpack_require__(/*! ./nvue.ani-map.js */ 503));
+var _nvueAniMap = _interopRequireDefault(__webpack_require__(/*! ./nvue.ani-map.js */ 504));
 // 定义一个一定时间后自动成功的promise，让调用nextTick方法处，进入下一个then方法
 var nextTick = function nextTick() {
   return new Promise(function (resolve) {
@@ -21488,10 +21605,10 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 503 */
-/*!******************************************************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/components/u-transition/nvue.ani-map.js ***!
-  \******************************************************************************************************/
+/* 504 */
+/*!************************************************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/components/u-transition/nvue.ani-map.js ***!
+  \************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -21681,17 +21798,17 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 504 */,
 /* 505 */,
 /* 506 */,
 /* 507 */,
 /* 508 */,
 /* 509 */,
 /* 510 */,
-/* 511 */
-/*!***********************************************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/components/u-status-bar/props.js ***!
-  \***********************************************************************************************/
+/* 511 */,
+/* 512 */
+/*!*****************************************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/components/u-status-bar/props.js ***!
+  \*****************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -21714,17 +21831,17 @@ exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
-/* 512 */,
 /* 513 */,
 /* 514 */,
 /* 515 */,
 /* 516 */,
 /* 517 */,
 /* 518 */,
-/* 519 */
-/*!************************************************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/components/u-safe-bottom/props.js ***!
-  \************************************************************************************************/
+/* 519 */,
+/* 520 */
+/*!******************************************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/components/u-safe-bottom/props.js ***!
+  \******************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -21741,17 +21858,17 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 520 */,
 /* 521 */,
 /* 522 */,
 /* 523 */,
 /* 524 */,
 /* 525 */,
 /* 526 */,
-/* 527 */
-/*!*****************************************************************************************!*\
-  !*** D:/Exp2/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/components/u-link/props.js ***!
-  \*****************************************************************************************/
+/* 527 */,
+/* 528 */
+/*!***********************************************************************************************!*\
+  !*** D:/web/vscode/Coder/vue/uniapp/cookbook/uni_modules/uview-ui/components/u-link/props.js ***!
+  \***********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 

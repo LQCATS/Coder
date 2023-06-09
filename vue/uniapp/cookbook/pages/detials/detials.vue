@@ -11,7 +11,11 @@
 			</view>
 
 			<view class="icon_warp">
-				<u-icon name="heart" color='#fff' size="50rpx"></u-icon>
+				<!-- 收藏 -->
+				<u-icon name="heart-fill" color='red' size="50rpx" @tap='docollect' v-if='iscollect'></u-icon>
+				<u-icon name="heart" color='#fff' size="50rpx" @tap='docollect' v-else="iscollect"></u-icon>
+
+				<!-- 分享 -->
 				<u-icon name="share-square" color='#fff' class="icon2" size="50rpx"></u-icon>
 			</view>
 		</view>
@@ -142,6 +146,7 @@
 </template>
 
 <script>
+	import logintools from '../../utils/logintools.js';
 	export default {
 		potions: {
 			styleIsolation: 'shared'
@@ -155,7 +160,11 @@
 				menudetialobj: {},
 				//相关推荐
 				recommendlist: [],
-				
+				//是否收藏
+				iscollect: false,
+				//用户信息
+				userInfo: '',
+
 			};
 		},
 		methods: {
@@ -166,17 +175,44 @@
 			},
 			godetial(menu) {
 				//跳转详情页面
+				console.log('godetial', menu);
 				uni.navigateTo({
 					url: `/pages/detials/detials?menu=${JSON.stringify(menu)}`
 				})
+			},
+			async docollect() {
+				//登录才可以收藏
+				if (logintools.islogin()) {
+					//获取用户信息
+					this.userInfo = await logintools.getuserinfo();
+					// console.log(userInfo);
+
+					this.$service.userService.collect({
+						user_id: this.userInfo._id,
+						menu_id: this.menuobj._id,
+					}).then(res => {
+						console.log('docollect', res);
+						if (1 == res.code) {
+							this.iscollect = true;
+						} else if (0 == res.code) {
+							this.iscollect = false;
+						}
+
+					})
+				} else {
+					this.iscollect = false;
+				}
+
+
 			}
 		},
-		onLoad(options) {
+		async onLoad(options) {
+			console.log('options', this.options);
 			this.menuobj = JSON.parse(options.menu);
-			// console.log(this.menuobj);
+			console.log('menuobj', this.menuobj);
 
 			//菜单详情
-			this.$service.searchService.menuDetail({
+			await this.$service.searchService.menuDetail({
 				_id: this.menuobj._id
 			}).then(res => {
 				if (200 == res.meta.status) {
@@ -187,12 +223,21 @@
 			});
 
 			//相关推荐
-			this.$service.searchService.memberRecommend().then(res => {
+			await this.$service.searchService.memberRecommend().then(res => {
 				if (200 == res.meta.status) {
 					this.recommendlist = res.message;
 					// console.log('memberRecommend', this.recommendlist);
 				}
-			})
+			});
+
+			//我的收藏
+			let collectList = await logintools.getUserCollect();
+			// console.log('collectList', collectList);
+			let iscollectList = collectList.filter(item => item._id == this.menuobj._id);
+			// console.log('iscollectList', iscollectList);
+			if (iscollectList.length > 0) {
+				this.iscollect = true;
+			}
 		}
 
 	}

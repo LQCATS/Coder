@@ -57,9 +57,11 @@
 .banner .banner_top .top_left {
   width: 128rpx;
   height: 129rpx;
+  border-radius: 65rpx;
 }
-.banner .banner_top .top_left image {
+.banner .banner_top .top_left .avatarUrl {
   width: 100%;
+  border-radius: 65rpx;
 }
 .banner .banner_top .top_middle {
   padding-left: 18rpx;

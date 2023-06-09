@@ -1,18 +1,15 @@
 <template>
 	<view>
-		<u-tabs :list="tabslist" lineColor="transparent" 
-		:activeStyle="{
+		<u-tabs :list="tabslist" lineColor="transparent" :current='current' @change="change" :activeStyle="{
 		            color: '#ee7b2d',
 		            fontWeight: 'bold',
 		            transform: 'scale(1.05)',
 					fontSize: '28rpx'
-		        }" 
-		:inactiveStyle="{
+		        }" :inactiveStyle="{
 					fontSize: '22rpx',
 		            color: '#5a5a5a',
 		            transform: 'scale(1)'
-		        }" 
-		itemStyle=" padding-right: 20rpx; height: 60rpx;">
+		        }" itemStyle=" padding-right: 20rpx; height: 60rpx;">
 		</u-tabs>
 	</view>
 </template>
@@ -28,15 +25,23 @@
 		name: "mytabs",
 		data() {
 			return {
-
+				current: 0,
 			};
 		},
-		options: { styleIsolation: 'shared' },
+		options: {
+			styleIsolation: 'shared'
+		},
+		methods: {
+			change(index) {
+				this.current = index.index;
+				this.$emit('change', this.current);
+			}
+		}
 	}
 </script>
 
 <style lang="scss" scoped>
-// /deep/ .u-tabs__wrapper {
-//     background-color: #ee7b2d !important;
-// }
+	// /deep/ .u-tabs__wrapper {
+	//     background-color: #ee7b2d !important;
+	// }
 </style>
