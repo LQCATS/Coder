@@ -59,6 +59,7 @@
 </template>
 
 <script>
+	import logintools from '../../utils/logintools.js';
 	export default {
 		data() {
 			return {
@@ -67,6 +68,7 @@
 				floorsbiglist: [],
 				floorssmalllist: [],
 				recommendlist: [],
+				userInfo: null,
 			}
 		},
 		onLoad() {
@@ -127,11 +129,24 @@
 				}
 
 			},
-			godetial(menu) {
-				//跳转详情页面
-				uni.navigateTo({
-					url: `/pages/detials/detials?menu=${JSON.stringify(menu)}`
-				})
+			async godetial(menu) {
+				if (logintools.islogin()) {
+					//1.添加到我的浏览中
+					this.userInfo = await logintools.getuserinfo();
+					console.log(this.userInfo);
+
+					await this.$service.userService.record({
+						user_id: this.userInfo_id,
+						menu_id: menu._id
+					}).then(res => {
+						console.log('index', res);
+					})
+				}
+
+				//2.跳转详情页面
+				// uni.navigateTo({
+				// 	url: `/pages/detials/detials?menu=${JSON.stringify(menu)}`
+				// })
 			}
 		}
 	}

@@ -233,11 +233,14 @@
 			//我的收藏
 			let collectList = await logintools.getUserCollect();
 			// console.log('collectList', collectList);
-			let iscollectList = collectList.filter(item => item._id == this.menuobj._id);
-			// console.log('iscollectList', iscollectList);
-			if (iscollectList.length > 0) {
-				this.iscollect = true;
+			if (collectList) {
+				let iscollectList = collectList.filter(item => item._id == this.menuobj._id);
+				// console.log('iscollectList', iscollectList);
+				if (iscollectList.length > 0) {
+					this.iscollect = true;
+				}
 			}
+
 		}
 
 	}

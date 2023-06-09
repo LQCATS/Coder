@@ -16,7 +16,7 @@
 				</view>
 				<view class="top_middle">
 					<view class="middle_top">
-						<view class="title" v-if="userInfo">
+						<view class="title" v-if="userInfo" @tap="dologin">
 							{{userInfo.nickName}}
 						</view>
 						<view class="title" @tap="dologin" v-else>
@@ -36,7 +36,8 @@
 
 			<view class="banner_bottom">
 				<view class="banner_bottom_msg">
-					<view>升级为VIP</view>
+					<view v-if="isvip">续费</view>
+					<view v-else>升级为VIP</view>
 					<u-icon name="arrow-right" color='#b4853f' :size='12' @tap='gomember'></u-icon>
 				</view>
 			</view>
@@ -44,20 +45,12 @@
 
 		<mybg></mybg>
 		<view class="my_menu">
-			<mycard>
-				<view class="menu_item">
-					<u-icon name="star-fill" color='#cccccc' :size='18'></u-icon>
-					<text>我的收藏</text>
-				</view>
-				<view class="menu_item">
-					<u-icon name="clock-fill" color='#cccccc' :size='18'></u-icon>
-					<text>浏览记录</text>
-				</view>
-				<view class="menu_item" style="margin-right: 20rpx;">
-					<u-icon name="thumb-up-fill" color='#cccccc' :size='18'></u-icon>
-					<text>点赞</text>
-				</view>
-			</mycard>
+			<u-tabbar :value="value1" :fixed="false" :placeholder="false" :safeAreaInsetBottom="false"
+				:border='false' active-color="#da7a35">
+				<u-tabbar-item text="我的收藏" icon="star-fill" @click="click1"></u-tabbar-item>
+				<u-tabbar-item text="浏览记录" icon="clock-fill" @click="click1"></u-tabbar-item>
+				<u-tabbar-item text="点赞" icon="thumb-up-fill" @click="click1"></u-tabbar-item>
+			</u-tabbar>
 		</view>
 		<mybg></mybg>
 		<!-- 食材 -->
@@ -69,37 +62,45 @@
 
 
 
+		<!-- 原材料 -->
+		<view v-if="islogin && collect">
+			<view class="smalltanle" v-if="!isshowmore">
+				<mytable :menulist='smallmenulist'></mytable>
 
-		<view class="smalltanle" v-if="!isshowmore">
-			<mytable :menulist='smallmenulist'></mytable>
-
-			<view class="more" @tap="isshowmore = true">
-				展开更多
-				<u-icon name="arrow-down" color='#cccccc' :size='10'></u-icon>
+				<view class="more" @tap="isshowmore = true" v-if="collect">
+					展开更多
+					<u-icon name="arrow-down" color='#cccccc' :size='10'></u-icon>
+				</view>
 			</view>
+
+			<view class="bigtable" v-else>
+				<mytable :menulist='menulist'></mytable>
+
+				<view class="more" @tap="isshowmore = false">
+					收起
+					<u-icon name="arrow-up" color='#cccccc' :size='10'></u-icon>
+				</view>
+			</view>
+			<mybg></mybg>
 		</view>
 
-		<view class="bigtable" v-else>
-			<mytable :menulist='menulist'></mytable>
-
-			<view class="more" @tap="isshowmore = false">
-				收起
-				<u-icon name="arrow-up" color='#cccccc' :size='10'></u-icon>
+		<!-- 我的菜谱 -->
+		<view v-if="islogin && collect">
+			<view class="mymenu_warp">
+				<view class="mymenu_title">
+					我的菜谱
+				</view>
+				<view class="mymenu_scroll">
+					<myscroll>
+						<mymenuitem class="mymenu_item" v-for="item in collect" :key="item._id" :src="item.coverpic"
+							:title="item.name"></mymenuitem>
+					</myscroll>
+				</view>
 			</view>
+			<mybg></mybg>
 		</view>
 
-		<mybg></mybg>
-		<view class="mymenu_warp">
-			<view class="mymenu_title">
-				我的菜谱
-			</view>
-			<view class="mymenu_scroll">
-				<myscroll>
-					<mymenuitem class="mymenu_item" v-for="item in collect" :key="item._id" :src="item.coverpic" :title="item.name"></mymenuitem>
-				</myscroll>
-			</view>
-		</view>
-		<mybg></mybg>
+
 		<view class="operate_warp">
 			<view class="operate_item">
 				<u-icon name="thumb-up-fill" color='#cccccc' :size='22'></u-icon>
@@ -138,11 +139,18 @@
 				userInfo: null,
 				//我的收藏
 				collect: null,
-				isshowmore: false
+				//原材料显示更多
+				isshowmore: false,
+				//nav的下标
+				value1: 0,
+				//是否是会员
+				isvip: false,
 			};
 		},
 		methods: {
+			//去登陆
 			dologin() {
+				// console.log('333login');
 				//判断是否登录
 				if (logintools.islogin()) {
 					//2.授权后更新用数据库信息
@@ -153,43 +161,93 @@
 					//登录
 					logintools.gologin();
 				}
-
-
 			},
+			//去开会员
 			gomember() {
 				// console.log('gomember');
-				uni.switchTab({
-					url: '/pages/member/member'
+				uni.navigateTo({
+					url: '/pages/buymember/buymember'
 				})
 			},
+			//切换菜谱
 			changemenu(index) {
 				this.menulist = this.collect[index].ingredient;
 				// console.log(this.menulist);
 				this.smallmenulist = this.menulist.slice(0, 6);
 
-			}
+			},
+			//切换nav
+			async click1(e) {
+				this.value1 = e;
+				if (0 == e) {
+					//获取收藏数据
+					this.collect = await logintools.getUserCollect();
+					// console.log('111getUserCollect', this.collect);
+					if (this.collect) {
 
+						this.tabslist = this.collect;
+						//初始化默认页面渲染第一个收藏菜谱的原材料
+						this.menulist = this.collect[0].ingredient;
+
+						this.smallmenulist = this.menulist.slice(0, 6);
+					}
+				} else if (1 == e) {
+					//获取浏览数据
+					this.$service.userService.getrecord({
+						_id: this.userInfo._id
+					}).then(res => {
+						console.log('getrecord', res);
+
+						if (200 == res.meta.status) {
+							this.tabslist = res.message;
+
+							this.menulist = res.message.record;
+
+							this.smallmenulist = this.menulist.slice(0, 6);
+						} else {
+							this.tabslist = null;
+
+							// this.menulist = null;
+
+							// this.smallmenulist = null;
+							this.collect = null;
+						}
+					})
+
+				} else if (2 == e) {
+					//获取点赞数据
+					
+				}
+			}
 		},
-		async onReady() {
+		async onShow() {
 			//判断是否登录
 			if (logintools.islogin()) {
+				this.islogin = true;
 				//获取用户信息，渲染头像
 				this.userInfo = await logintools.getuserinfo();
-				// console.log('333userInfo', this.userInfo);
+				console.log('333userInfo', this.userInfo);
+				
+				//判断是否是会员
+				if (this.userInfo.vip) {
+					this.isvip = true;
+				}
+
 
 				//获取所有的收藏
+
 				this.collect = await logintools.getUserCollect();
 				console.log('getUserCollect', this.collect);
+				if (this.collect) {
 
-				this.collect.forEach(item => {
-					this.tabslist.push({
-						name: item.name
-					});
-				})
-				//初始化默认页面渲染第一个收藏菜谱的原材料
-				this.menulist = this.collect[0].ingredient;
+					this.tabslist = this.collect;
+					//初始化默认页面渲染第一个收藏菜谱的原材料
+					this.menulist = this.collect[0].ingredient;
 
-				this.smallmenulist = this.menulist.slice(0, 6);
+					this.smallmenulist = this.menulist.slice(0, 6);
+				}
+
+
 
 
 			}
