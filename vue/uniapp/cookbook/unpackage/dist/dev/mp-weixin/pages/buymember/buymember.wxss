@@ -142,6 +142,7 @@
 }
 .mybuymember_warp {
   margin-top: 116rpx;
+  position: relative;
 }
 .vippower_content {
   display: flex;
@@ -206,9 +207,38 @@
   background-color: #fcf1d3;
   border: none;
 }
+.btnsel {
+  margin-bottom: 20rpx;
+}
 .mycard {
   width: 100%;
   display: flex;
   justify-content: center;
+}
+.mypricecard {
+  margin-bottom: 20rpx;
+  border-radius: 12rpx;
+  background-color: #fbfcfe;
+}
+.recommend:first-child {
+  border: 1px solid #dcb66a;
+  background-color: #fbf7ef;
+}
+.recommend_btn {
+  width: 98rpx;
+  height: 48rpx;
+  line-height: 48rpx;
+  color: #fff;
+  font-size: 28rpx;
+  text-align: center;
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGIAAAAwCAYAAADq46/yAAAABHNCSVQICAgIfAhkiAAAA1VJREFUeF7tnEFOGzEUhv9nz5CyoycoqGGfnqCwJFkUTlC6TDaEE5SeoKwSdk1PUFiQLdyAdk0qegTYtDRM/Co7TQSEZMYMHgXpWRoJZTx+L+/z+21PbAhS5iICNBdeiBMQEHPSCQSEgJiTCMyJGxMZcXHcqBiFd8y8BmAZoOU58fUZucG/AHwH4VC/KB2trO9fpjk/BnFx0lwy1/0dZuylPST3fSLgoOyWq+3DWU85EBZC8rt/QoSKqzxIoNgAzMNLil8ElAKIYEgD9m9bGB/KtVZnWkMORO+48QWEbRgDNUgAC0FK/ggQgVUE1tqCuNTKvFnZOLAZMlGo161vAvTN9nyV3AiE/OGfaIF1PIQBPixX21tTQDT2AewgSaBMEsANadLJVBwzoEiTWXkoK+j8uHFmxwZ105dsCNhnTBQDSoPJrK9uHJzeN0W9bsONxqp/HdANadqoCIgiOwJ8Wq21JmamAqKgPiIZUVCgZ5pxY0TJVdGLCy8fWuBJRhQBSmnYjGDmH6u19nCtdq8IiAJAjKavBN59XW3bWaqAKCDud01kkCX7gGREaDL/ZQmMo3KttTnNnIAIDGK8qk571yTriIAkMsqSSFNABq7pjLIkIAKDyCpLAiIkCA9ZEhAhQXjIkoAICMJEC8Nf51JmSyMXZPoaAoanLElGhIBg29QaRsc2G2Yu4m6bl4wIAMNXliQjAkAY/ixqX3nzlV4sLWfZ0yQgQoAYyRL4a7na3s5qQqQpa6Qy1hvLEngrbVOZjBEZg+pd7ZYslavtJZ/nJSN8opVW95GyJGNEWmA97z9WlgSEZ6BnVs8hSwLiKUHkkCUB8YQg8siSA3HerZ8S6K1K+rC7waU8IgKkYOIFt4jznS2NrNm9r3tE+OjORNgt+VK8I2B0BNjLcxF3Zx1hj2oNCGf2Q8kKbwbAOBuAaTu9s7TqDqr87NabDPpst6IpMyCbHVIyRMBCiGIGEeXJBjdGjMz1uvUOQO/dh8aAYMCGQZCjWxNISIHtNTqWlUOSxmPEbSPu9BDTPgivMvQHqQK+AqhTrraaeYMxebz3pLk0+PN3jZkqBFSY2OudSV6HnsXzTKeK+FItljpZX3OnfS/5zwNpESrovoAoKNBpZgREWoQKuv8PO4KnQD0pk7wAAAAASUVORK5CYII=) no-repeat;
+  background-size: cover;
+  position: absolute;
+  left: 40rpx;
+  top: -20rpx;
+}
+.active {
+  border: 1px solid #dcb66a;
+  background-color: #fbf7ef;
 }
 

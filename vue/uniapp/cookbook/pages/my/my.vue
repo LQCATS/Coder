@@ -45,8 +45,8 @@
 
 		<mybg></mybg>
 		<view class="my_menu">
-			<u-tabbar :value="value1" :fixed="false" :placeholder="false" :safeAreaInsetBottom="false"
-				:border='false' active-color="#da7a35">
+			<u-tabbar :value="value1" :fixed="false" :placeholder="false" :safeAreaInsetBottom="false" :border='false'
+				active-color="#da7a35">
 				<u-tabbar-item text="我的收藏" icon="star-fill" @click="click1"></u-tabbar-item>
 				<u-tabbar-item text="浏览记录" icon="clock-fill" @click="click1"></u-tabbar-item>
 				<u-tabbar-item text="点赞" icon="thumb-up-fill" @click="click1"></u-tabbar-item>
@@ -149,17 +149,77 @@
 		},
 		methods: {
 			//去登陆
-			dologin() {
-				// console.log('333login');
+			async dologin() {
 				//判断是否登录
 				if (logintools.islogin()) {
-					//2.授权后更新用数据库信息
-					logintools.updateUserInfo();
-					//3.获取用户信息
-					logintools.getuserinfo();
+					//登录成功获取用户信息
+					this.userInfo = await logintools.getuserinfo();
+					console.log('111getuserinfo', this.userInfo);
 				} else {
-					//登录
-					logintools.gologin();
+					//登录获取授权后的用户信息，渲染页面
+					//1.判断用户是否登录getUserProfile
+					let userPromise = new Promise((resolve, reject) => {
+						uni.getUserProfile({
+							desc: '微信登录',
+							success: (res) => {
+								resolve(res)
+							},
+							fail: (err) => {
+								reject(err)
+							}
+						})
+					});
+
+					//login
+					let loginPromise = new Promise((resolve, reject) => {
+						uni.login({
+							success: (res) => {
+								resolve(res)
+							},
+							fail: (err) => {
+								reject(err)
+							}
+						})
+					});
+
+					//wxLogin
+					userPromise.then(userRes => {
+						// console.log('userRes', userRes);
+
+						loginPromise.then(loginRes => {
+							// console.log('loginRes', loginRes);
+
+							this.$service.loginService.wxLogin({
+								code: loginRes.code,
+								appId: 'wxe15e38290cf35d4e',
+								appSecret: '11ad6a08e492439b5bc157738c2c55c2'
+							}).then(res => {
+								// console.log('wxLogin', res);
+								//将token保存在本地储存中
+								logintools.setToken(res.token);
+								//将用户信息储存在本地
+								logintools.setUserInfo(userRes.userInfo);
+
+								//授权修改用户信息
+								this.$service.loginService.auth({
+									token: res.token,
+									avatarUrl: userRes.userInfo.avatarUrl,
+									nickName: userRes.userInfo.nickName,
+									gender: userRes.userInfo.gender,
+									province: userRes.userInfo.province,
+								}).then(async res => {
+									console.log('updateUserInfo', res);
+									if (200 == res.code) {
+										this.userInfo = await logintools.getuserinfo();
+
+										this.collect = await logintools.getUserCollect();
+										console.log('000userInfo', this.userInfo,this.collect);
+									}
+
+								})
+							})
+						})
+					})
 				}
 			},
 			//去开会员
@@ -216,7 +276,7 @@
 
 				} else if (2 == e) {
 					//获取点赞数据
-					
+
 				}
 			}
 		},
@@ -226,8 +286,8 @@
 				this.islogin = true;
 				//获取用户信息，渲染头像
 				this.userInfo = await logintools.getuserinfo();
-				console.log('333userInfo', this.userInfo);
-				
+				// console.log('333userInfo', this.userInfo);
+
 				//判断是否是会员
 				if (this.userInfo.vip) {
 					this.isvip = true;
@@ -235,9 +295,8 @@
 
 
 				//获取所有的收藏
-
 				this.collect = await logintools.getUserCollect();
-				console.log('getUserCollect', this.collect);
+				// console.log('getUserCollect', this.collect);
 				if (this.collect) {
 
 					this.tabslist = this.collect;
@@ -246,13 +305,7 @@
 
 					this.smallmenulist = this.menulist.slice(0, 6);
 				}
-
-
-
-
 			}
-
-
 		}
 	}
 </script>

@@ -41,7 +41,7 @@
 	.price_card {
 		width: 212rpx;
 		height: 232rpx;
-		background-color: #fbfcfe;
+		// background-color: #fbfcfe;
 		border: 1rpx solid #e0e0e0;
 		border-radius: 16rpx;
 		display: flex;

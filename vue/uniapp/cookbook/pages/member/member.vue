@@ -45,10 +45,17 @@
 					VIP最新推荐
 				</view>
 				<myscroll class="scroll_wrap">
-					<myvipmenu class="item" text="川味凉粉" src="../../static/bgimages/member_content1.png"
-						collection="12.3万" pageview="5214"></myvipmenu>
+
+					<myvideo class="item" v-for="item in vipmenulist" :key="item._id" :text="item.name" :src="item.vid"
+						:collection="item.collections" :pageview="item.pageview"></myvideo>
 
 				</myscroll>
+				<!-- <myscroll class="scroll_wrap">
+
+					<myvipmenu class="item" v-for="item in vipmenulist" :key="item._id" :text="item.name"
+						:src="item.coverpic" :collection="item.collections" :pageview="item.pageview"></myvipmenu>
+
+				</myscroll> -->
 			</view>
 			<!--  -->
 			<view class="menu_warp">
@@ -56,8 +63,11 @@
 					限时免费体验
 				</view>
 				<myscroll class="scroll_wrap">
-					<myvipmenu class="item" text="川味凉粉" src="../../static/bgimages/member_content1.png"
-						collection="12.3万" pageview="5214"></myvipmenu>
+					<myvipmenu class="item" v-for="item in freemenulist" :key="item._id" :text="item.name"
+						:src="item.coverpic" :collection="item.collections" :pageview="item.pageview"></myvipmenu>
+
+					<!-- <myvideo class="item" v-for="item in freemenulist" :key="item._id" :text="item.name" :src="item.vid"
+						:collection="item.collections" :pageview="item.pageview"></myvideo> -->
 				</myscroll>
 			</view>
 
@@ -67,8 +77,8 @@
 					猜你喜欢
 				</view>
 				<mycard>
-					<mymenu class="like" text="川味凉粉" src="../../static/bgimages/member_content2.png" collection="12.3万"
-						pageview="5214"></mymenu>
+					<mymenu class="like" v-for="item in likemenulist" :key="item._id" :text="item.name"
+						:src="item.coverpic" :collection="item.collections" :pageview="item.pageview"></mymenu>
 
 				</mycard>
 			</view>
@@ -77,6 +87,7 @@
 </template>
 
 <script>
+	import logintools from '../../utils/logintools.js';
 	export default {
 		data() {
 			return {
@@ -118,6 +129,9 @@
 						text: '身份标识'
 					},
 				],
+				vipmenulist: [],
+				freemenulist: [],
+				likemenulist: [],
 			};
 		},
 		methods: {
@@ -126,6 +140,34 @@
 					url: '/pages/buymember/buymember'
 				});
 			}
+		},
+		onLoad() {
+			if (logintools.islogin()) {
+				//获取VIP最新推荐
+				this.$service.vipService.getRecommendMenuList().then(res => {
+					console.log('getRecommendMenuList', res);
+					if (200 == res.meta.status) {
+						this.vipmenulist = res.menus;
+					}
+				});
+
+				//获取限时免费菜单
+				this.$service.vipService.getisFreeMenuList().then(res => {
+					console.log('getisFreeMenuList', res);
+					if (200 == res.meta.status) {
+						this.freemenulist = res.menus;
+					}
+				});
+
+				//猜你喜欢
+				this.$service.vipService.likeMenu().then(res => {
+					console.log('likeMenu', res);
+					if (200 == res.meta.status) {
+						this.likemenulist = res.menus;
+					}
+				});
+			}
+
 		}
 	}
 </script>
@@ -143,7 +185,7 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		margin-top: 250rpx;
+		margin-top: 270rpx;
 
 		.banner_bg {
 			width: 686rpx;

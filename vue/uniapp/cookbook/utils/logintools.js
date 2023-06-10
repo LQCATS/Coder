@@ -46,6 +46,25 @@ export default {
 					this.setToken(res.token);
 					//将用户信息储存在本地
 					this.setUserInfo(userRes.userInfo);
+
+					//授权修改用户信息
+					service.loginService.auth({
+						token: res.token,
+						avatarUrl: userRes.userInfo.avatarUrl,
+						nickName: userRes.userInfo.nickName,
+						gender: userRes.userInfo.gender,
+						province: userRes.userInfo.province,
+					}).then(async res => {
+						console.log('updateUserInfo', res);
+						// if (200 == res.code) {
+						// 	let userInfo = await this.getuserinfo();
+						// 	console.log('000userInfo', userInfo);
+						// 	return userInfo;
+						// }
+
+						return res;
+					})
+
 				})
 			})
 
@@ -109,8 +128,8 @@ export default {
 		})
 
 	},
-	
-	//5.添加浏览
+
+
 
 	//判断是否登录
 	islogin() {
@@ -119,6 +138,15 @@ export default {
 			return true
 		} else {
 			return false
+		}
+	},
+	//判断是否是vip
+	async isVip() {
+		let userInfo = await this.getuserinfo();
+		if (userInfo.vip) {
+			return true;
+		} else {
+			return false;
 		}
 	},
 

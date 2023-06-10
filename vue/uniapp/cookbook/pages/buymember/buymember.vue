@@ -32,12 +32,21 @@
 
 					<view class="member_login">
 						<view class="member_login_top">
-							<view>
+							<view v-if="!islogin" @tap="gologin">
 								立即登录
+							</view>
+							<view v-if="islogin && !isvip">
+								普通用户
+							</view>
+							<view v-if="islogin && isvip">
+								会员
 							</view>
 							<view>会员</view>
 						</view>
-						<view>开通会员尊享VIP权益</view>
+						<view v-if="!isvip">开通会员尊享VIP权益</view>
+						<view v-else>
+							会员有效期至{{userInfo.vipdate}}
+						</view>
 					</view>
 				</view>
 			</view>
@@ -45,13 +54,15 @@
 
 		<!-- 开通会员 -->
 		<view class="mybuymember_warp">
+			<view class="recommend_btn">
+				推荐
+			</view>
 			<mybuymember text='您获得2折开通会员特权！'>
-				<mypricecard time="12" discount="45" price="144"></mypricecard>
-				<mypricecard time="3" discount="18" price="36"></mypricecard>
-				<mypricecard time="1" discount="8" price="14"></mypricecard>
+				<mypricecard v-for="item in topupList" :key="item._id" :time="item.mouth" :discount="item.salePrice"
+					:price="item.normalPrice" class="mypricecard recommend"></mypricecard>
 			</mybuymember>
 			<view class="mycard">
-				<button class="btn" @tap="showbuymember">立即开通</button>
+				<button class="btn btnsel" @tap="showbuymember">立即开通</button>
 			</view>
 		</view>
 
@@ -98,12 +109,12 @@
 				开通VIP会员
 			</view>
 			<mybuymember text="开通后立即全站去广告、免费看10000+名厨视频">
-				<mypricecard time="12" discount="45" price="144"></mypricecard>
-				<mypricecard time="3" discount="18" price="36"></mypricecard>
-				<mypricecard time="1" discount="8" price="14"></mypricecard>
+				<mypricecard v-for="(item,index) in topupList" :key="item._id" :time="item.mouth"
+					:discount="item.salePrice" :price="item.normalPrice" class="mypricecard"
+					:class="{active: curindex == index}" @tap='checkcard(item,index)'></mypricecard>
 			</mybuymember>
 			<view class="mycard">
-				<button class="btn">立即开通</button>
+				<button class="btn" @tap="domember">立即开通</button>
 			</view>
 
 			<view class="toast">
@@ -114,15 +125,21 @@
 </template>
 
 <script>
+	import {
+		userInfo
+	} from 'os';
+	import logintools from '../../utils/logintools.js';
 	export default {
 		data() {
 			return {
+				//会员统计显示的头像组
 				imglist: [
 					'http://localhost:4000/public/images/yonghu6@2x.png',
 					'http://localhost:4000/public/images/yonghu5@2x.png',
 					'http://localhost:4000/public/images/yonghu4@2x.png',
 					'http://localhost:4000/public/images/yonghu6@2x.png'
 				],
+				//会员权限内容数组
 				powerlist: [{
 						src: '../../static/bgimages/member2_power1.png',
 						title: '1000+精品名厨菜谱',
@@ -144,10 +161,40 @@
 						text: '随时随地、与众不同'
 					},
 				],
+				//开通会员弹窗
 				isshowbuy: false,
+				//是否登录
+				islogin: false,
+				//是否是vip
+				isvip: false,
+				//用户信息
+				userInfo: null,
+				//套餐数组
+				topupList: [],
+				//当前选中套餐的下标
+				curindex: 0,
+				//充值会员的月数
+				month: 0,
+
 			};
 		},
 		methods: {
+			//获取今天的时间格式2023-06-10
+			getNow() {
+				let now = new Date();
+				let year = now.getFullYear();
+				let month = now.getMonth() + 1;
+				if (month < 10) {
+					month = "0" + month;
+				}
+				let date = now.getDate();
+				if (date < 10) {
+					date = "0" + date;
+				}
+				let nowDate = year + "-" + month + "-" + date;
+
+				return nowDate;
+			},
 			showbuymember() {
 				this.isshowbuy = true;
 			},
@@ -158,7 +205,128 @@
 				uni.switchTab({
 					url: '/pages/member/member'
 				});
-			}
+			},
+			gologin() {
+				uni.switchTab({
+					url: '/pages/my/my'
+				});
+			},
+			checkcard(item, index) {
+				this.curindex = index;
+				this.month = item.mouth;
+				// console.log('item, index', item, index);
+			},
+			domember() {
+				//开通会员
+				if (this.islogin) {
+					if (this.isvip) {
+
+						//获取当前时间戳
+						let time = new Date().getTime();
+						let vipdate = new Date(this.userInfo.vipdate).getTime();
+						console.log(time, vipdate);
+						//判断会员是否过期
+						if (time < vipdate) {
+							uni.showModal({
+								title: '提示',
+								content: '您的会员未到期',
+								confirmText: "确认", // 确认按钮的文字
+								showCancel: false, // 是否显示取消按钮，默认为 true
+								confirmColor: '#39B54A',
+								success: async (res) => {
+									if (res.confirm) {
+										//1.关闭模态框
+										this.isshowbuy = false;
+									}
+								}
+							})
+
+						} else {
+							//会员到期续费
+							this.$service.userService.openVip({
+								_id: this.userInfo._id,
+								date: this.month
+							}).then(async res => {
+								if (1 == res.code) {
+									//1.关闭模态框
+									this.isshowbuy = false;
+									//2.开通成功消息提示
+									uni.showModal({
+										title: '提示',
+										content: '续费成功',
+										confirmText: "确认", // 确认按钮的文字
+										showCancel: false, // 是否显示取消按钮，默认为 true
+										confirmColor: '#39B54A',
+										success: async (res) => {
+											if (res.confirm) {
+												//3.获取信息重新渲染页面
+												this.userInfo = await logintools.getuserinfo();
+												this.isvip = this.userInfo.vip;
+												// console.log(this.isvip, 'this.this.isvip');
+											}
+										}
+									});
+								}
+							})
+						}
+					} else {
+						this.$service.userService.openVip({
+							_id: this.userInfo._id,
+							date: this.month
+						}).then(async res => {
+							console.log('openVip', res);
+							if (1 == res.code) {
+								//1.关闭模态框
+								this.isshowbuy = false;
+								//2.开通成功消息提示
+								uni.showModal({
+									title: '提示',
+									content: '开通会员成功',
+									confirmText: "确认", // 确认按钮的文字
+									showCancel: false, // 是否显示取消按钮，默认为 true
+									confirmColor: '#39B54A',
+									success: async (res) => {
+										if (res.confirm) {
+											console.log('comfirm') //点击确定之后执行的代码
+											//3.获取信息重新渲染页面
+											this.userInfo = await logintools.getuserinfo();
+											this.isvip = this.userInfo.vip;
+											console.log(this.isvip, 'this.this.isvip');
+										} else {
+											console.log('cancel') //点击取消之后执行的代码
+										}
+									}
+								});
+							}
+						})
+					}
+				} else {
+					uni.showToast({
+						title: '请登录',
+						mask: true,
+					});
+
+					uni.switchTab({
+						url: '/pages/my/my'
+					})
+				}
+			},
+		},
+		async onLoad() {
+
+			//渲染会员卡片
+			this.islogin = logintools.islogin();
+			this.userInfo = await logintools.getuserinfo();
+			this.isvip = await logintools.isVip()
+			console.log(this.userInfo);
+
+			//渲染套餐
+			this.$service.userService.topupList().then(res => {
+				// console.log('topupList', res);
+				if (200 == res.meta.status) {
+					this.topupList = res.data;
+				}
+			})
 		}
 	}
 </script>
@@ -308,9 +476,10 @@
 
 	.mybuymember_warp {
 		margin-top: 116rpx;
+		position: relative;
 	}
 
-	
+
 
 	.vippower_content {
 		display: flex;
@@ -389,9 +558,46 @@
 		// margin-bottom: 74rpx;
 	}
 
+	.btnsel {
+		margin-bottom: 20rpx;
+	}
+
 	.mycard {
 		width: 100%;
 		display: flex;
 		justify-content: center;
+	}
+
+	.mypricecard {
+		margin-bottom: 20rpx;
+		border-radius: 12rpx;
+		background-color: #fbfcfe;
+	}
+
+	.recommend {
+		&:first-child {
+			border: 1px solid #dcb66a;
+			background-color: #fbf7ef;
+		}
+	}
+
+	.recommend_btn {
+		width: 98rpx;
+		height: 48rpx;
+		line-height: 48rpx;
+		color: #fff;
+		font-size: 28rpx;
+		text-align: center;
+		background: url(../../static/bgimages/tuijian.png) no-repeat;
+		background-size: cover;
+		position: absolute;
+		left: 40rpx;
+		top: -20rpx;
+
+	}
+
+	.active {
+		border: 1px solid #dcb66a;
+		background-color: #fbf7ef;
 	}
 </style>
