@@ -114,6 +114,7 @@
 }
 .member_card .member_msg .icon image {
   width: 100%;
+  border-radius: 55rpx;
 }
 .member_card .member_msg .member_login {
   margin-left: 18rpx;
@@ -240,5 +241,8 @@
 .active {
   border: 1px solid #dcb66a;
   background-color: #fbf7ef;
+}
+.ismember {
+  background-color: #dcb66a !important;
 }
 

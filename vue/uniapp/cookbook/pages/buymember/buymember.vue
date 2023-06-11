@@ -27,7 +27,8 @@
 			<view class="member_card">
 				<view class="member_msg">
 					<view class="icon">
-						<image src="../../static/bgimages/member_banner4.png" mode="widthFix"></image>
+						<image :src="userInfo.avatarUrl" mode="widthFix" v-if="islogin"></image>
+						<image src="../../static/bgimages/member_banner4.png" mode="widthFix" v-else></image>
 					</view>
 
 					<view class="member_login">
@@ -41,7 +42,8 @@
 							<view v-if="islogin && isvip">
 								会员
 							</view>
-							<view>会员</view>
+							<view class="ismember" v-if="isvip">会员</view>
+							<view v-else>非会员</view>
 						</view>
 						<view v-if="!isvip">开通会员尊享VIP权益</view>
 						<view v-else>
@@ -243,9 +245,10 @@
 
 						} else {
 							//会员到期续费
+							console.log(this.month);
 							this.$service.userService.openVip({
 								_id: this.userInfo._id,
-								date: this.month
+								date: this.month + ''
 							}).then(async res => {
 								if (1 == res.code) {
 									//1.关闭模态框
@@ -270,6 +273,7 @@
 							})
 						}
 					} else {
+						//不是会员开通会员
 						this.$service.userService.openVip({
 							_id: this.userInfo._id,
 							date: this.month
@@ -436,6 +440,7 @@
 
 				image {
 					width: 100%;
+					border-radius: 55rpx;
 				}
 			}
 
@@ -468,6 +473,8 @@
 						font-size: 28rpx;
 						margin-top: 15rpx;
 					}
+					
+					
 
 				}
 			}
@@ -599,5 +606,9 @@
 	.active {
 		border: 1px solid #dcb66a;
 		background-color: #fbf7ef;
+	}
+	
+	.ismember {
+		background-color: #dcb66a !important;
 	}
 </style>

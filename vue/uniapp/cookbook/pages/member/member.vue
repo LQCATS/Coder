@@ -12,9 +12,11 @@
 			<view class="banner_bg">
 				<view class="banner_top">
 					<view class="top_left">
-						<image src="../../static/bgimages/member_banner4.png" mode="widthFix"></image>
+						<image :src="userInfo.avatarUrl" mode="widthFix" v-if="islogin"></image>
+						<image src="../../static/bgimages/member_banner4.png" mode="widthFix" v-else></image>
 					</view>
-					<view class="top_right">
+					<!-- 未开通会员 -->
+					<view class="top_right" v-if="!isvip">
 						<view class="right_top">
 							<view class="title">
 								欢迎你，新朋友
@@ -27,6 +29,22 @@
 							8元开通VIP，畅学明初独家菜谱
 						</view>
 					</view>
+					<!-- 已开通会员 -->
+					<view class="top_right" v-else>
+						<view class="right_top">
+							<view class="title">
+								{{userInfo.nickName}}
+							</view>
+							<view class="member_status" @tap="gobuymember">
+								续费
+							</view>
+						</view>
+						<view class="right_bottom">
+							会员有效期至{{userInfo.vipdate}}
+						</view>
+					</view>
+
+
 				</view>
 				<view class="banner_bootom">
 					<view class="icon_warp" v-for="icon in iconlist" :key="icon.text">
@@ -40,14 +58,14 @@
 		<!-- content -->
 		<view class="content_warp">
 			<!-- VIP最新推荐 -->
-			<view class="menu_warp">
+			<view class="menu_warp" v-if="isvip">
 				<view class="warp_title">
 					VIP最新推荐
 				</view>
 				<myscroll class="scroll_wrap">
 
 					<myvideo class="item" v-for="item in vipmenulist" :key="item._id" :text="item.name" :src="item.vid"
-						:collection="item.collections" :pageview="item.pageview"></myvideo>
+						:collection="item.collections" :pageview="item.pageview" @tap='godetial(item)'></myvideo>
 
 				</myscroll>
 				<!-- <myscroll class="scroll_wrap">
@@ -57,14 +75,14 @@
 
 				</myscroll> -->
 			</view>
-			<!--  -->
+			<!-- 限时免费 -->
 			<view class="menu_warp">
 				<view class="warp_title">
 					限时免费体验
 				</view>
 				<myscroll class="scroll_wrap">
 					<myvipmenu class="item" v-for="item in freemenulist" :key="item._id" :text="item.name"
-						:src="item.coverpic" :collection="item.collections" :pageview="item.pageview"></myvipmenu>
+						:src="item.coverpic" :collection="item.collections" :pageview="item.pageview" @tap='godetial(item)'></myvipmenu>
 
 					<!-- <myvideo class="item" v-for="item in freemenulist" :key="item._id" :text="item.name" :src="item.vid"
 						:collection="item.collections" :pageview="item.pageview"></myvideo> -->
@@ -78,7 +96,7 @@
 				</view>
 				<mycard>
 					<mymenu class="like" v-for="item in likemenulist" :key="item._id" :text="item.name"
-						:src="item.coverpic" :collection="item.collections" :pageview="item.pageview"></mymenu>
+						:src="item.coverpic" :collection="item.collections" :pageview="item.pageview" @tap='godetial(item)'></mymenu>
 
 				</mycard>
 			</view>
@@ -129,9 +147,15 @@
 						text: '身份标识'
 					},
 				],
+				//vip最新推荐
 				vipmenulist: [],
+				//限时免费体验
 				freemenulist: [],
+				//猜你喜欢
 				likemenulist: [],
+				isvip: false,
+				islogin: false,
+				userInfo: null,
 			};
 		},
 		methods: {
@@ -139,9 +163,15 @@
 				uni.navigateTo({
 					url: '/pages/buymember/buymember'
 				});
+			},
+			godetial(menu) {
+				console.log('menu',menu);
+				uni.navigateTo({
+					url: `/pages/detials/detials?id=${menu._id}`
+				})
 			}
 		},
-		onLoad() {
+		async onLoad() {
 			if (logintools.islogin()) {
 				//获取VIP最新推荐
 				this.$service.vipService.getRecommendMenuList().then(res => {
@@ -166,6 +196,14 @@
 						this.likemenulist = res.menus;
 					}
 				});
+
+				//获取用户信息，是否是会员
+				this.userInfo = await logintools.getuserinfo();
+				console.log('this.userInfo', this.userInfo);
+				this.isvip = this.userInfo.vip;
+
+				//是否登录
+				this.islogin = logintools.islogin();
 			}
 
 		}
@@ -207,6 +245,8 @@
 
 					image {
 						width: 100%;
+						border-radius: 65rpx;
+
 					}
 				}
 

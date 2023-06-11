@@ -57,6 +57,7 @@
 }
 .banner .banner_bg .banner_top .top_left image {
   width: 100%;
+  border-radius: 65rpx;
 }
 .banner .banner_bg .banner_top .top_right {
   width: 482rpx;

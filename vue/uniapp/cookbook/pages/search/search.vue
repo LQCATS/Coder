@@ -20,7 +20,7 @@
 		<!-- content -->
 		<view class="content_warp">
 			<!-- 会员专享 -->
-			<view class="member_warp">
+			<view class="member_warp" v-if="isvip">
 				<view class="member_title">
 					<view>精品名厨视频-会员专享</view>
 					<image src="../../static/bgimages/search1.png" mode="widthFix"></image>
@@ -28,7 +28,8 @@
 				<view class="vip_menu_warp">
 					<myscroll>
 						<myvideo class="vip_menu" v-for="item in recommendlist" :key="item._id" :text="item.name"
-							:src="item.vid" :pageview="item.pageview" :collection="item.collections" @click='godetail(item)'></myvideo>
+							:src="item.vid" :pageview="item.pageview" :collection="item.collections"
+							@click='godetail(item)'></myvideo>
 
 					</myscroll>
 				</view>
@@ -49,6 +50,7 @@
 </template>
 
 <script>
+	import logintools from '../../utils/logintools.js';
 	export default {
 		data() {
 			return {
@@ -57,6 +59,7 @@
 				menutypeobj: {},
 				//推荐菜谱数组 &精品名厨视频
 				recommendlist: [],
+				isvip: false,
 			};
 		},
 		methods: {
@@ -79,13 +82,15 @@
 			// console.log(555, this.menutype, this.menutypeobj);
 
 		},
-		onReady() {
+		async onReady() {
 			//获取搜索页面随机推荐
 			this.$service.searchService.memberRecommend().then(res => {
 				if (200 == res.meta.status) {
 					this.recommendlist = res.message;
 				}
 			})
+
+			this.isvip = await logintools.isVip();
 		}
 	}
 </script>

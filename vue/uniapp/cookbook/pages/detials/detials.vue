@@ -22,7 +22,8 @@
 
 		<!-- banner -->
 		<view class="banner">
-			<image :src="menudetialobj.coverpic" class="banner_img"></image>
+			<video :src="menudetialobj.vid" object-fit='cover' class="video"></video>
+			<!-- <image :src="menudetialobj.coverpic" class="banner_img"></image> -->
 			<view class="banner_btn">
 				会员低至2元/月，免广告、看10000+名厨视频
 			</view>
@@ -34,12 +35,12 @@
 			</view>
 
 			<!-- 遮罩 -->
-			<view class="overlay">
+			<view class="overlay" v-if="!isvip">
 				<view class="overlay_title">
 					开通会员观看视频做法
 				</view>
-				<button type="default" class="overlay_btn">立即开通</button>
-				<view class="go_login">
+				<button type="default" class="overlay_btn" @tap="gobuymember">立即开通</button>
+				<view class="go_login" @tap="gologin">
 					已是会员，立即登录
 					<u-icon name="arrow-right" color='#fff' size="32rpx" style="margin-left: 4rpx;"></u-icon>
 				</view>
@@ -86,17 +87,19 @@
 					<text class="grade">切墩（初级）</text>
 				</view>
 
-				<view class="table_title">
-					<text>用料</text>
-					<text class="add_buy">加入采购清单</text>
+				<view class="mytable">
+					<view class="table_title">
+						<text>用料</text>
+						<text class="add_buy">加入采购清单</text>
+					</view>
+					<mytable :menulist='menulist'></mytable>
 				</view>
-				<mytable :menulist='menulist' class="mytable"></mytable>
 
 				<!-- 步骤 -->
-				<view class="course_warp">
+				<view class="course_warp" v-if="islogin && isvip">
 					<view class="course_item" v-for="(item,index) in menudetialobj.method" :key="index">
 						<view class="course_title">
-							步骤{{index}}
+							步骤{{index +1}}
 						</view>
 						<image :src="item.img" class="course_img"></image>
 						<view class="course_msg">
@@ -164,10 +167,24 @@
 				iscollect: false,
 				//用户信息
 				userInfo: '',
+				//是否登录
+				islogin: false,
+				//是否是会员
+				isvip: false
 
 			};
 		},
 		methods: {
+			gologin() {
+				uni.switchTab({
+					url: '/pages/my/my'
+				})
+			},
+			gobuymember() {
+				uni.navigateTo({
+					url: '/pages/buymember/buymember'
+				})
+			},
 			goback() {
 				uni.switchTab({
 					url: '/pages/index/index'
@@ -177,19 +194,18 @@
 				//跳转详情页面
 				console.log('godetial', menu);
 				uni.navigateTo({
-					url: `/pages/detials/detials?menu=${JSON.stringify(menu)}`
+					url: `/pages/detials/detials?id=${menu._id}`
 				})
 			},
 			async docollect() {
 				//登录才可以收藏
 				if (logintools.islogin()) {
-					//获取用户信息
-					this.userInfo = await logintools.getuserinfo();
+
 					// console.log(userInfo);
 
 					this.$service.userService.collect({
 						user_id: this.userInfo._id,
-						menu_id: this.menuobj._id,
+						menu_id: this.menudetialobj._id,
 					}).then(res => {
 						console.log('docollect', res);
 						if (1 == res.code) {
@@ -207,39 +223,59 @@
 			}
 		},
 		async onLoad(options) {
-			console.log('options', this.options);
-			this.menuobj = JSON.parse(options.menu);
-			console.log('menuobj', this.menuobj);
+			console.log('options', options);
+			if (options) {
+				// this.menuobj = JSON.parse(options.menu);
+				// console.log('menuobj', this.menuobj);
 
-			//菜单详情
-			await this.$service.searchService.menuDetail({
-				_id: this.menuobj._id
-			}).then(res => {
-				if (200 == res.meta.status) {
-					this.menudetialobj = res.message[0];
-					this.menulist = res.message[0].ingredient;
-					// console.log('menuDetail', this.menudetialobj);
+
+				//菜单详情
+				this.$service.searchService.menuDetail({
+					_id: options.id
+				}).then(res => {
+					if (200 == res.meta.status) {
+						this.menudetialobj = res.message[0];
+						this.menulist = res.message[0].ingredient;
+						console.log('menuDetail', this.menudetialobj);
+					}
+				});
+
+				//相关推荐
+				this.$service.searchService.memberRecommend().then(res => {
+					if (200 == res.meta.status) {
+						this.recommendlist = res.message;
+						// console.log('memberRecommend', this.recommendlist);
+					}
+				});
+
+				//我的收藏
+				let collectList = await logintools.getUserCollect();
+				// console.log('collectList', collectList);
+				if (collectList) {
+					let iscollectList = collectList.filter(item => item._id == this.menudetialobj._id);
+					// console.log('iscollectList', iscollectList);
+					if (iscollectList.length > 0) {
+						this.iscollect = true;
+					}
 				}
-			});
 
-			//相关推荐
-			await this.$service.searchService.memberRecommend().then(res => {
-				if (200 == res.meta.status) {
-					this.recommendlist = res.message;
-					// console.log('memberRecommend', this.recommendlist);
-				}
-			});
+				//获取用户信息
+				this.userInfo = await logintools.getuserinfo();
+				this.islogin = logintools.islogin();
+				this.isvip = await logintools.isVip();
+				console.log(this.isvip);
 
-			//我的收藏
-			let collectList = await logintools.getUserCollect();
-			// console.log('collectList', collectList);
-			if (collectList) {
-				let iscollectList = collectList.filter(item => item._id == this.menuobj._id);
-				// console.log('iscollectList', iscollectList);
-				if (iscollectList.length > 0) {
-					this.iscollect = true;
+				//进入详情页就将商品添加到我的浏览中
+				if (this.islogin) {
+					this.$service.userService.record({
+						user_id: this.userInfo._id,
+						menu_id: this.menudetialobj._id
+					}).then(res => {
+						console.log('index', res);
+					})
 				}
 			}
+
 
 		}
 
@@ -281,7 +317,7 @@
 		align-items: center;
 		position: relative;
 
-		.banner_img {
+		.video {
 			width: 750rpx;
 			height: 386rpx;
 		}
@@ -423,6 +459,12 @@
 				.add_buy {
 					color: #ee7b2d;
 				}
+
+
+			}
+
+			.mytable {
+				border-bottom: 1rpx solid #dfdfdf;
 			}
 
 			.course_warp {

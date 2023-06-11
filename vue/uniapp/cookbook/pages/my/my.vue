@@ -53,6 +53,8 @@
 			</u-tabbar>
 		</view>
 		<mybg></mybg>
+
+
 		<!-- 食材 -->
 		<view class="tabs_warp">
 			<mycard>
@@ -93,7 +95,7 @@
 				<view class="mymenu_scroll">
 					<myscroll>
 						<mymenuitem class="mymenu_item" v-for="item in collect" :key="item._id" :src="item.coverpic"
-							:title="item.name"></mymenuitem>
+							:title="item.name" @tap='godetial(item)'></mymenuitem>
 					</myscroll>
 				</view>
 			</view>
@@ -209,11 +211,28 @@
 									province: userRes.userInfo.province,
 								}).then(async res => {
 									console.log('updateUserInfo', res);
-									if (200 == res.code) {
-										this.userInfo = await logintools.getuserinfo();
 
-										this.collect = await logintools.getUserCollect();
-										console.log('000userInfo', this.userInfo,this.collect);
+									if (200 == res.code) {
+										//获取完整的用户信息
+										this.userInfo = await logintools
+											.getuserinfo();
+										//获取用户的收藏
+										this.collect = await logintools
+											.getUserCollect();
+										console.log('000userInfo', this.userInfo,
+											this.collect);
+
+										if (this.collect) {
+											this.tabslist = this.collect;
+											//默认渲染第一个收藏菜谱的原材料
+											this.menulist = this.collect[0]
+												.ingredient;
+
+											this.smallmenulist = this.menulist
+												.slice(0, 5);
+											console.log("000", this.menulist, this
+												.smallmenulist, this.tabslist);
+										}
 									}
 
 								})
@@ -221,6 +240,13 @@
 						})
 					})
 				}
+			},
+			//去详情
+			godetial(menu) {
+				//跳转详情页面
+				uni.navigateTo({
+					url: `/pages/detials/detials?id=${menu._id}`
+				})
 			},
 			//去开会员
 			gomember() {
@@ -233,7 +259,7 @@
 			changemenu(index) {
 				this.menulist = this.collect[index].ingredient;
 				// console.log(this.menulist);
-				this.smallmenulist = this.menulist.slice(0, 6);
+				this.smallmenulist = this.menulist.slice(0, 5);
 
 			},
 			//切换nav
@@ -249,7 +275,7 @@
 						//初始化默认页面渲染第一个收藏菜谱的原材料
 						this.menulist = this.collect[0].ingredient;
 
-						this.smallmenulist = this.menulist.slice(0, 6);
+						this.smallmenulist = this.menulist.slice(0, 5);
 					}
 				} else if (1 == e) {
 					//获取浏览数据
@@ -259,11 +285,11 @@
 						console.log('getrecord', res);
 
 						if (200 == res.meta.status) {
-							this.tabslist = res.message;
+							this.tabslist = res.record;
 
-							this.menulist = res.message.record;
+							this.menulist = res.record[0].ingredient;
 
-							this.smallmenulist = this.menulist.slice(0, 6);
+							this.smallmenulist = this.menulist.slice(0, 5);
 						} else {
 							this.tabslist = null;
 
@@ -275,8 +301,18 @@
 					})
 
 				} else if (2 == e) {
-					//获取点赞数据
 
+					//获取点赞数据没有接口，暂时使用获取收藏数据
+					this.collect = await logintools.getUserCollect();
+					// console.log('111getUserCollect', this.collect);
+					if (this.collect) {
+
+						this.tabslist = this.collect;
+						//初始化默认页面渲染第一个收藏菜谱的原材料
+						this.menulist = this.collect[0].ingredient;
+
+						this.smallmenulist = this.menulist.slice(0, 5);
+					}
 				}
 			}
 		},
@@ -303,7 +339,7 @@
 					//初始化默认页面渲染第一个收藏菜谱的原材料
 					this.menulist = this.collect[0].ingredient;
 
-					this.smallmenulist = this.menulist.slice(0, 6);
+					this.smallmenulist = this.menulist.slice(0, 5);
 				}
 			}
 		}
