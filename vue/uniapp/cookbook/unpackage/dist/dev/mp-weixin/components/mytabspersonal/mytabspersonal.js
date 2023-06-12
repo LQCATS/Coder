@@ -166,6 +166,10 @@ var _default2 = {
       default: function _default() {
         return [];
       }
+    },
+    curindex: {
+      type: Number,
+      default: 0
     }
   },
   name: "mytabs",
@@ -174,13 +178,23 @@ var _default2 = {
       current: 0
     };
   },
+  watch: {
+    curindex: {
+      handler: function handler(nv, ov) {
+        console.log('curindex', nv, ov);
+        this.current = this.curindex;
+      },
+      immediate: true
+    }
+  },
   options: {
     styleIsolation: 'shared'
   },
   methods: {
-    change: function change(index) {
-      this.current = index.index;
-      this.$emit('change', this.current);
+    click: function click(item) {
+      this.current = item.index;
+      // console.log("this.current", item);
+      this.$emit('change', item);
     }
   }
 };

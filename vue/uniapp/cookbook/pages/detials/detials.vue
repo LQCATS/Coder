@@ -170,7 +170,9 @@
 				//是否登录
 				islogin: false,
 				//是否是会员
-				isvip: false
+				isvip: false,
+				//返回的页面,1=首页，2=会员页，3=个人中心,4=首页
+				type: 0,
 
 			};
 		},
@@ -181,20 +183,42 @@
 				})
 			},
 			gobuymember() {
-				uni.navigateTo({
-					url: '/pages/buymember/buymember'
-				})
+				if (this.islogin) {
+					uni.navigateTo({
+						url: '/pages/buymember/buymember?type=' + 3
+					})
+				}
+
 			},
 			goback() {
-				uni.switchTab({
-					url: '/pages/index/index'
-				})
+				if (1 == this.type) {
+					uni.switchTab({
+						url: '/pages/index/index'
+					})
+				} else if (2 == this.type) {
+					uni.switchTab({
+						url: '/pages/member/member'
+					})
+				} else if (3 == this.type) {
+					uni.switchTab({
+						url: '/pages/my/my'
+					})
+				} else if (4 == this.type) {
+					uni.switchTab({
+						url: '/pages/index/index'
+					})
+				} else if (5 == this.type) {
+					uni.switchTab({
+						url: '/pages/index/index'
+					})
+				}
+
 			},
 			godetial(menu) {
 				//跳转详情页面
 				console.log('godetial', menu);
 				uni.navigateTo({
-					url: `/pages/detials/detials?id=${menu._id}`
+					url: `/pages/detials/detials?id=${menu._id}&type=${5}`
 				})
 			},
 			async docollect() {
@@ -227,7 +251,7 @@
 			if (options) {
 				// this.menuobj = JSON.parse(options.menu);
 				// console.log('menuobj', this.menuobj);
-
+				this.type = options.type;
 
 				//菜单详情
 				this.$service.searchService.menuDetail({
@@ -248,16 +272,11 @@
 					}
 				});
 
-				//我的收藏
-				let collectList = await logintools.getUserCollect();
-				// console.log('collectList', collectList);
-				if (collectList) {
-					let iscollectList = collectList.filter(item => item._id == this.menudetialobj._id);
-					// console.log('iscollectList', iscollectList);
-					if (iscollectList.length > 0) {
-						this.iscollect = true;
-					}
+				if (logintools.islogin()) {
+
 				}
+
+
 
 				//获取用户信息
 				this.userInfo = await logintools.getuserinfo();
@@ -267,6 +286,17 @@
 
 				//进入详情页就将商品添加到我的浏览中
 				if (this.islogin) {
+					//我的收藏登录才会显示
+					let collectList = await logintools.getUserCollect();
+					// console.log('collectList', collectList);
+					if (collectList) {
+						let iscollectList = collectList.filter(item => item._id == this.menudetialobj._id);
+						// console.log('iscollectList', iscollectList);
+						if (iscollectList.length > 0) {
+							this.iscollect = true;
+						}
+					}
+
 					this.$service.userService.record({
 						user_id: this.userInfo._id,
 						menu_id: this.menudetialobj._id

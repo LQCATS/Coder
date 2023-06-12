@@ -76,13 +76,14 @@
 				</myscroll> -->
 			</view>
 			<!-- 限时免费 -->
-			<view class="menu_warp">
+			<view class="menu_warp" v-if="islogin">
 				<view class="warp_title">
 					限时免费体验
 				</view>
 				<myscroll class="scroll_wrap">
 					<myvipmenu class="item" v-for="item in freemenulist" :key="item._id" :text="item.name"
-						:src="item.coverpic" :collection="item.collections" :pageview="item.pageview" @tap='godetial(item)'></myvipmenu>
+						:src="item.coverpic" :collection="item.collections" :pageview="item.pageview"
+						@tap='godetial(item)'></myvipmenu>
 
 					<!-- <myvideo class="item" v-for="item in freemenulist" :key="item._id" :text="item.name" :src="item.vid"
 						:collection="item.collections" :pageview="item.pageview"></myvideo> -->
@@ -90,13 +91,14 @@
 			</view>
 
 			<!-- 猜你喜欢 -->
-			<view class="menu_warp">
+			<view class="menu_warp" v-if="islogin">
 				<view class="warp_title">
 					猜你喜欢
 				</view>
 				<mycard>
 					<mymenu class="like" v-for="item in likemenulist" :key="item._id" :text="item.name"
-						:src="item.coverpic" :collection="item.collections" :pageview="item.pageview" @tap='godetial(item)'></mymenu>
+						:src="item.coverpic" :collection="item.collections" :pageview="item.pageview"
+						@tap='godetial(item)'></mymenu>
 
 				</mycard>
 			</view>
@@ -160,18 +162,21 @@
 		},
 		methods: {
 			gobuymember() {
-				uni.navigateTo({
-					url: '/pages/buymember/buymember'
-				});
+				if (this.islogin) {
+					uni.navigateTo({
+						url: '/pages/buymember/buymember?type=' + 2
+					});
+				}
+
 			},
 			godetial(menu) {
-				console.log('menu',menu);
+				console.log('menu', menu);
 				uni.navigateTo({
-					url: `/pages/detials/detials?id=${menu._id}`
+					url: `/pages/detials/detials?id=${menu._id}&type=${2}`
 				})
 			}
 		},
-		async onLoad() {
+		async onShow() {
 			if (logintools.islogin()) {
 				//获取VIP最新推荐
 				this.$service.vipService.getRecommendMenuList().then(res => {

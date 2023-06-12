@@ -204,7 +204,9 @@ exports.default = void 0;
 //
 var _default = {
   data: function data() {
-    return {};
+    return {
+      money: 0
+    };
   },
   methods: {
     goback: function goback() {
@@ -212,6 +214,9 @@ var _default = {
         url: '/pages/index/index'
       });
     }
+  },
+  onLoad: function onLoad(options) {
+    this.money = options.money;
   }
 };
 exports.default = _default;

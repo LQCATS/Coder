@@ -323,6 +323,11 @@ var _logintools = _interopRequireDefault(__webpack_require__(/*! ../../utils/log
 //
 //
 //
+//
+//
+//
+//
+//
 var _default = {
   data: function data() {
     return {
@@ -346,7 +351,9 @@ var _default = {
       //nav的下标
       value1: 0,
       //是否是会员
-      isvip: false
+      isvip: false,
+      //点击nav是对应的当前菜谱下标
+      curtabsmenu: 0
     };
   },
   methods: {
@@ -471,21 +478,27 @@ var _default = {
     godetial: function godetial(menu) {
       //跳转详情页面
       uni.navigateTo({
-        url: "/pages/detials/detials?id=".concat(menu._id)
+        url: "/pages/detials/detials?id=".concat(menu._id, "&type=", 3)
       });
     },
     //去开会员
     gomember: function gomember() {
       // console.log('gomember');
-      uni.navigateTo({
-        url: '/pages/buymember/buymember'
-      });
+      if (this.islogin) {
+        uni.navigateTo({
+          url: '/pages/buymember/buymember?type=' + 1
+        });
+      }
     },
     //切换菜谱
-    changemenu: function changemenu(index) {
-      this.menulist = this.collect[index].ingredient;
-      // console.log(this.menulist);
-      this.smallmenulist = this.menulist.slice(0, 5);
+    changemenu: function changemenu(item) {
+      // console.log('item', item);
+      if (item) {
+        this.curtabsmenu = item.index;
+        this.menulist = item.ingredient;
+        // console.log(this.menulist);
+        this.smallmenulist = this.menulist.slice(0, 5);
+      }
     },
     //切换nav
     click1: function click1(e) {
@@ -496,13 +509,14 @@ var _default = {
             switch (_context3.prev = _context3.next) {
               case 0:
                 _this2.value1 = e;
+                _this2.curtabsmenu = 0;
                 if (!(0 == e)) {
-                  _context3.next = 8;
+                  _context3.next = 9;
                   break;
                 }
-                _context3.next = 4;
+                _context3.next = 5;
                 return _logintools.default.getUserCollect();
-              case 4:
+              case 5:
                 _this2.collect = _context3.sent;
                 // console.log('111getUserCollect', this.collect);
                 if (_this2.collect) {
@@ -511,11 +525,11 @@ var _default = {
                   _this2.menulist = _this2.collect[0].ingredient;
                   _this2.smallmenulist = _this2.menulist.slice(0, 5);
                 }
-                _context3.next = 17;
+                _context3.next = 18;
                 break;
-              case 8:
+              case 9:
                 if (!(1 == e)) {
-                  _context3.next = 12;
+                  _context3.next = 13;
                   break;
                 }
                 //获取浏览数据
@@ -536,16 +550,16 @@ var _default = {
                     _this2.collect = null;
                   }
                 });
-                _context3.next = 17;
+                _context3.next = 18;
                 break;
-              case 12:
+              case 13:
                 if (!(2 == e)) {
-                  _context3.next = 17;
+                  _context3.next = 18;
                   break;
                 }
-                _context3.next = 15;
+                _context3.next = 16;
                 return _logintools.default.getUserCollect();
-              case 15:
+              case 16:
                 _this2.collect = _context3.sent;
                 // console.log('111getUserCollect', this.collect);
                 if (_this2.collect) {
@@ -554,7 +568,7 @@ var _default = {
                   _this2.menulist = _this2.collect[0].ingredient;
                   _this2.smallmenulist = _this2.menulist.slice(0, 5);
                 }
-              case 17:
+              case 18:
               case "end":
                 return _context3.stop();
             }

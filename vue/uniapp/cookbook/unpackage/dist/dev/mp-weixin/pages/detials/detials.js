@@ -356,7 +356,9 @@ var _default = {
       //是否登录
       islogin: false,
       //是否是会员
-      isvip: false
+      isvip: false,
+      //返回的页面,1=首页，2=会员页，3=个人中心,4=首页
+      type: 0
     };
   },
   methods: {
@@ -366,20 +368,40 @@ var _default = {
       });
     },
     gobuymember: function gobuymember() {
-      uni.navigateTo({
-        url: '/pages/buymember/buymember'
-      });
+      if (this.islogin) {
+        uni.navigateTo({
+          url: '/pages/buymember/buymember?type=' + 3
+        });
+      }
     },
     goback: function goback() {
-      uni.switchTab({
-        url: '/pages/index/index'
-      });
+      if (1 == this.type) {
+        uni.switchTab({
+          url: '/pages/index/index'
+        });
+      } else if (2 == this.type) {
+        uni.switchTab({
+          url: '/pages/member/member'
+        });
+      } else if (3 == this.type) {
+        uni.switchTab({
+          url: '/pages/my/my'
+        });
+      } else if (4 == this.type) {
+        uni.switchTab({
+          url: '/pages/index/index'
+        });
+      } else if (5 == this.type) {
+        uni.switchTab({
+          url: '/pages/index/index'
+        });
+      }
     },
     godetial: function godetial(menu) {
       //跳转详情页面
       console.log('godetial', menu);
       uni.navigateTo({
-        url: "/pages/detials/detials?id=".concat(menu._id)
+        url: "/pages/detials/detials?id=".concat(menu._id, "&type=", 5)
       });
     },
     docollect: function docollect() {
@@ -426,11 +448,12 @@ var _default = {
             case 0:
               console.log('options', options);
               if (!options) {
-                _context2.next = 17;
+                _context2.next = 20;
                 break;
               }
               // this.menuobj = JSON.parse(options.menu);
               // console.log('menuobj', this.menuobj);
+              _this2.type = options.type;
 
               //菜单详情
               _this2.$service.searchService.menuDetail({
@@ -451,10 +474,28 @@ var _default = {
                 }
               });
 
-              //我的收藏
-              _context2.next = 6;
+              if (_logintools.default.islogin()) {}
+
+              //获取用户信息
+              _context2.next = 8;
+              return _logintools.default.getuserinfo();
+            case 8:
+              _this2.userInfo = _context2.sent;
+              _this2.islogin = _logintools.default.islogin();
+              _context2.next = 12;
+              return _logintools.default.isVip();
+            case 12:
+              _this2.isvip = _context2.sent;
+              console.log(_this2.isvip);
+
+              //进入详情页就将商品添加到我的浏览中
+              if (!_this2.islogin) {
+                _context2.next = 20;
+                break;
+              }
+              _context2.next = 17;
               return _logintools.default.getUserCollect();
-            case 6:
+            case 17:
               collectList = _context2.sent;
               // console.log('collectList', collectList);
               if (collectList) {
@@ -465,29 +506,13 @@ var _default = {
                   _this2.iscollect = true;
                 }
               }
-
-              //获取用户信息
-              _context2.next = 10;
-              return _logintools.default.getuserinfo();
-            case 10:
-              _this2.userInfo = _context2.sent;
-              _this2.islogin = _logintools.default.islogin();
-              _context2.next = 14;
-              return _logintools.default.isVip();
-            case 14:
-              _this2.isvip = _context2.sent;
-              console.log(_this2.isvip);
-
-              //进入详情页就将商品添加到我的浏览中
-              if (_this2.islogin) {
-                _this2.$service.userService.record({
-                  user_id: _this2.userInfo._id,
-                  menu_id: _this2.menudetialobj._id
-                }).then(function (res) {
-                  console.log('index', res);
-                });
-              }
-            case 17:
+              _this2.$service.userService.record({
+                user_id: _this2.userInfo._id,
+                menu_id: _this2.menudetialobj._id
+              }).then(function (res) {
+                console.log('index', res);
+              });
+            case 20:
             case "end":
               return _context2.stop();
           }

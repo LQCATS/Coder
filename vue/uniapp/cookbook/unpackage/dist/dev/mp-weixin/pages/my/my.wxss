@@ -170,4 +170,7 @@
   flex: 1;
   border-bottom: 1rpx solid #dbdbdb;
 }
+.mytable {
+  border-bottom: 1rpx solid #dfdfdd;
+}
 

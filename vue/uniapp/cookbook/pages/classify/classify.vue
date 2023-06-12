@@ -18,7 +18,7 @@
 			</view>
 
 		</view>
-		
+
 		<!-- content -->
 		<view class="content_warp">
 			<view class="content_left">
@@ -36,7 +36,7 @@
 							{{first.cat_name}}
 						</view>
 						<view class="second_warp">
-							<view class="second_item" v-for="second in first.children" :key="second.cat_name">
+							<view class="second_item" v-for="second in first.children" :key="second.cat_name" @tap="godetial(second)">
 								<view>
 									<image :src="second.cat_icon" mode="widthFix" class="second_img"></image>
 								</view>
@@ -72,7 +72,7 @@
 				this.curpos = menu.cat_name;
 				this.curfirst = 's' + menu._id;
 				// console.log(333, this.curfirst, this.curpos);
-			}
+			},
 		},
 		onReady() {
 			this.$service.classifyServce.categories().then(res => {
@@ -119,7 +119,7 @@
 		height: 25vh;
 		background-color: #ee7b2d;
 
-		
+
 		.search_warp {
 			width: 100%;
 			display: flex;
@@ -138,7 +138,7 @@
 		}
 	}
 
-	
+
 
 	.content_warp {
 		width: 750rpx;
@@ -149,7 +149,7 @@
 			width: 25vw;
 			height: 75vh;
 			border-right: 1rpx solid #dfdfdf;
-			
+
 			.type_item {
 				width: 100%;
 				height: 105rpx;

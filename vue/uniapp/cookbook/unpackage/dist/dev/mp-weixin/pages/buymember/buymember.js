@@ -350,8 +350,11 @@ var _default = {
       topupList: [],
       //当前选中套餐的下标
       curindex: 0,
-      //充值会员的月数
-      month: 0
+      //充值会员的月数,和价格
+      month: 0,
+      money: 0,
+      //返回页面
+      type: 0
     };
   },
   methods: {
@@ -377,9 +380,19 @@ var _default = {
       this.isshowbuy = par;
     },
     goback: function goback() {
-      uni.switchTab({
-        url: '/pages/member/member'
-      });
+      if (1 == this.type) {
+        uni.switchTab({
+          url: '/pages/my/my'
+        });
+      } else if (2 == this.type) {
+        uni.switchTab({
+          url: '/pages/member/member'
+        });
+      } else if (3 == this.type) {
+        uni.switchTab({
+          url: '/pages/member/member'
+        });
+      }
     },
     gologin: function gologin() {
       uni.switchTab({
@@ -389,6 +402,7 @@ var _default = {
     checkcard: function checkcard(item, index) {
       this.curindex = index;
       this.month = item.mouth;
+      this.money = item.salePrice;
       // console.log('item, index', item, index);
     },
     domember: function domember() {
@@ -464,7 +478,7 @@ var _default = {
                                     switch (_context2.prev = _context2.next) {
                                       case 0:
                                         if (!res.confirm) {
-                                          _context2.next = 5;
+                                          _context2.next = 6;
                                           break;
                                         }
                                         _context2.next = 3;
@@ -473,7 +487,10 @@ var _default = {
                                         _this.userInfo = _context2.sent;
                                         _this.isvip = _this.userInfo.vip;
                                         // console.log(this.isvip, 'this.this.isvip');
-                                      case 5:
+                                        uni.navigateTo({
+                                          url: "/pages/buysucces/buysucces?money=".concat(_this.money)
+                                        });
+                                      case 6:
                                       case "end":
                                         return _context2.stop();
                                     }
@@ -530,7 +547,7 @@ var _default = {
                                   switch (_context4.prev = _context4.next) {
                                     case 0:
                                       if (!res.confirm) {
-                                        _context4.next = 9;
+                                        _context4.next = 10;
                                         break;
                                       }
                                       console.log('comfirm'); //点击确定之后执行的代码
@@ -541,11 +558,14 @@ var _default = {
                                       _this.userInfo = _context4.sent;
                                       _this.isvip = _this.userInfo.vip;
                                       console.log(_this.isvip, 'this.this.isvip');
-                                      _context4.next = 10;
+                                      uni.navigateTo({
+                                        url: "/pages/buysucces/buysucces?money=".concat(_this.money)
+                                      });
+                                      _context4.next = 11;
                                       break;
-                                    case 9:
-                                      console.log('cancel'); //点击取消之后执行的代码
                                     case 10:
+                                      console.log('cancel'); //点击取消之后执行的代码
+                                    case 11:
                                     case "end":
                                       return _context4.stop();
                                   }
@@ -582,22 +602,25 @@ var _default = {
       }
     }
   },
-  onLoad: function onLoad() {
+  onLoad: function onLoad(options) {
     var _this2 = this;
     return (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee6() {
       return _regenerator.default.wrap(function _callee6$(_context6) {
         while (1) {
           switch (_context6.prev = _context6.next) {
             case 0:
+              if (options) {
+                _this2.type = options.type;
+              }
               //渲染会员卡片
               _this2.islogin = _logintools.default.islogin();
-              _context6.next = 3;
+              _context6.next = 4;
               return _logintools.default.getuserinfo();
-            case 3:
+            case 4:
               _this2.userInfo = _context6.sent;
-              _context6.next = 6;
+              _context6.next = 7;
               return _logintools.default.isVip();
-            case 6:
+            case 7:
               _this2.isvip = _context6.sent;
               console.log(_this2.userInfo);
 
@@ -608,7 +631,7 @@ var _default = {
                   _this2.topupList = res.data;
                 }
               });
-            case 9:
+            case 10:
             case "end":
               return _context6.stop();
           }

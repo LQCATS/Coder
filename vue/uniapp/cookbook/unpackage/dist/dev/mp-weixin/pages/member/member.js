@@ -292,6 +292,8 @@ var _logintools = _interopRequireDefault(__webpack_require__(/*! ../../utils/log
 //
 //
 //
+//
+//
 var _default = {
   data: function data() {
     return {
@@ -335,18 +337,20 @@ var _default = {
   },
   methods: {
     gobuymember: function gobuymember() {
-      uni.navigateTo({
-        url: '/pages/buymember/buymember'
-      });
+      if (this.islogin) {
+        uni.navigateTo({
+          url: '/pages/buymember/buymember?type=' + 2
+        });
+      }
     },
     godetial: function godetial(menu) {
       console.log('menu', menu);
       uni.navigateTo({
-        url: "/pages/detials/detials?id=".concat(menu._id)
+        url: "/pages/detials/detials?id=".concat(menu._id, "&type=", 2)
       });
     }
   },
-  onLoad: function onLoad() {
+  onShow: function onShow() {
     var _this = this;
     return (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee() {
       return _regenerator.default.wrap(function _callee$(_context) {

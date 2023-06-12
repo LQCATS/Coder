@@ -316,7 +316,7 @@ var _default = {
               case 0:
                 //跳转详情页面
                 uni.navigateTo({
-                  url: "/pages/detials/detials?id=".concat(menu._id)
+                  url: "/pages/detials/detials?id=".concat(menu._id, "&type=", 1)
                 });
               case 1:
               case "end":

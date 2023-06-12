@@ -175,8 +175,11 @@
 				topupList: [],
 				//当前选中套餐的下标
 				curindex: 0,
-				//充值会员的月数
+				//充值会员的月数,和价格
 				month: 0,
+				money: 0,
+				//返回页面
+				type: 0,
 
 			};
 		},
@@ -204,9 +207,20 @@
 				this.isshowbuy = par;
 			},
 			goback() {
-				uni.switchTab({
-					url: '/pages/member/member'
-				});
+				if (1 == this.type) {
+					uni.switchTab({
+						url: '/pages/my/my'
+					});
+				} else if (2 == this.type) {
+					uni.switchTab({
+						url: '/pages/member/member'
+					});
+				} else if (3 == this.type) {
+					uni.switchTab({
+						url: '/pages/member/member'
+					});
+				}
+
 			},
 			gologin() {
 				uni.switchTab({
@@ -216,6 +230,7 @@
 			checkcard(item, index) {
 				this.curindex = index;
 				this.month = item.mouth;
+				this.money = item.salePrice;
 				// console.log('item, index', item, index);
 			},
 			domember() {
@@ -266,6 +281,9 @@
 												this.userInfo = await logintools.getuserinfo();
 												this.isvip = this.userInfo.vip;
 												// console.log(this.isvip, 'this.this.isvip');
+												uni.navigateTo({
+													url: `/pages/buysucces/buysucces?money=${this.money}`
+												})
 											}
 										}
 									});
@@ -296,6 +314,9 @@
 											this.userInfo = await logintools.getuserinfo();
 											this.isvip = this.userInfo.vip;
 											console.log(this.isvip, 'this.this.isvip');
+											uni.navigateTo({
+												url: `/pages/buysucces/buysucces?money=${this.money}`
+											})
 										} else {
 											console.log('cancel') //点击取消之后执行的代码
 										}
@@ -316,8 +337,10 @@
 				}
 			},
 		},
-		async onLoad() {
-
+		async onLoad(options) {
+			if (options) {
+				this.type = options.type;
+			}
 			//渲染会员卡片
 			this.islogin = logintools.islogin();
 			this.userInfo = await logintools.getuserinfo();
@@ -473,8 +496,8 @@
 						font-size: 28rpx;
 						margin-top: 15rpx;
 					}
-					
-					
+
+
 
 				}
 			}
@@ -607,7 +630,7 @@
 		border: 1px solid #dcb66a;
 		background-color: #fbf7ef;
 	}
-	
+
 	.ismember {
 		background-color: #dcb66a !important;
 	}

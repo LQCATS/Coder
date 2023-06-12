@@ -71,7 +71,7 @@
 			godetail(menu) {
 				//跳转详情页面
 				uni.navigateTo({
-					url: `/pages/detials/detials?menu=${JSON.stringify(menu)}`
+					url: `/pages/detials/detials?id=${menu._id}&type=${4}`
 				})
 			}
 		},

@@ -58,25 +58,30 @@
 		<!-- 食材 -->
 		<view class="tabs_warp">
 			<mycard>
-				<mytabspersonal :tabslist='tabslist' @change='changemenu'></mytabspersonal>
+				<mytabspersonal :tabslist='tabslist' :curindex="curtabsmenu" @change='changemenu'></mytabspersonal>
 			</mycard>
 		</view>
 
 
 
 		<!-- 原材料 -->
-		<view v-if="islogin && collect">
+		<view v-if="collect">
 			<view class="smalltanle" v-if="!isshowmore">
-				<mytable :menulist='smallmenulist'></mytable>
+				<view class="mytable">
+					<mytable :menulist='smallmenulist'></mytable>
+				</view>
 
-				<view class="more" @tap="isshowmore = true" v-if="collect">
+				<view class="more" @tap="isshowmore = true" v-if="smallmenulist">
 					展开更多
 					<u-icon name="arrow-down" color='#cccccc' :size='10'></u-icon>
 				</view>
 			</view>
 
 			<view class="bigtable" v-else>
-				<mytable :menulist='menulist'></mytable>
+				<view class="mytable">
+					<mytable :menulist='menulist'></mytable>
+				</view>
+
 
 				<view class="more" @tap="isshowmore = false">
 					收起
@@ -147,6 +152,8 @@
 				value1: 0,
 				//是否是会员
 				isvip: false,
+				//点击nav是对应的当前菜谱下标
+				curtabsmenu: 0,
 			};
 		},
 		methods: {
@@ -245,26 +252,35 @@
 			godetial(menu) {
 				//跳转详情页面
 				uni.navigateTo({
-					url: `/pages/detials/detials?id=${menu._id}`
+					url: `/pages/detials/detials?id=${menu._id}&type=${3}`
 				})
 			},
 			//去开会员
 			gomember() {
 				// console.log('gomember');
-				uni.navigateTo({
-					url: '/pages/buymember/buymember'
-				})
+				if (this.islogin) {
+					uni.navigateTo({
+						url: '/pages/buymember/buymember?type=' + 1
+					})
+				}
+
 			},
 			//切换菜谱
-			changemenu(index) {
-				this.menulist = this.collect[index].ingredient;
-				// console.log(this.menulist);
-				this.smallmenulist = this.menulist.slice(0, 5);
+			changemenu(item) {
+				// console.log('item', item);
+				if (item) {
+					this.curtabsmenu = item.index;
+					this.menulist = item.ingredient;
+					// console.log(this.menulist);
+					this.smallmenulist = this.menulist.slice(0, 5);
+				}
+
 
 			},
 			//切换nav
 			async click1(e) {
 				this.value1 = e;
+				this.curtabsmenu = 0;
 				if (0 == e) {
 					//获取收藏数据
 					this.collect = await logintools.getUserCollect();
@@ -527,5 +543,9 @@
 				border-bottom: 1rpx solid #dbdbdb;
 			}
 		}
+	}
+
+	.mytable {
+		border-bottom: 1rpx solid #dfdfdd;
 	}
 </style>

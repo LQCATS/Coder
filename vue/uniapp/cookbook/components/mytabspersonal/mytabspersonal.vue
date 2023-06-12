@@ -1,6 +1,6 @@
 <template>
 	<view>
-		<u-tabs :list="tabslist" lineColor="transparent" :current='current' @change="change" :activeStyle="{
+		<u-tabs :list="tabslist" lineColor="transparent" :current='current' @click="click" :activeStyle="{
 		            color: '#ee7b2d',
 		            fontWeight: 'bold',
 		            transform: 'scale(1.05)',
@@ -20,21 +20,36 @@
 			tabslist: {
 				type: Array,
 				default: () => []
+			},
+			curindex: {
+				type: Number,
+				default: 0,
 			}
 		},
 		name: "mytabs",
+
 		data() {
 			return {
 				current: 0,
 			};
 		},
+		watch: {
+			curindex: {
+				handler(nv, ov) {
+					console.log('curindex', nv, ov);
+					this.current = this.curindex;
+				},
+				immediate: true
+			}
+		},
 		options: {
 			styleIsolation: 'shared'
 		},
 		methods: {
-			change(index) {
-				this.current = index.index;
-				this.$emit('change', this.current);
+			click(item) {
+				this.current = item.index;
+				// console.log("this.current", item);
+				this.$emit('change', item);
 			}
 		}
 	}

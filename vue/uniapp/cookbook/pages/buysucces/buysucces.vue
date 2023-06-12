@@ -13,7 +13,7 @@
 					支付成功
 				</view>
 				<view class="pay">
-					已支付￥45
+					已支付￥{{money}}
 				</view>
 				<view class="img_bg">
 					<image class="img2" src="../../static/bgimages/buysuccess.png" mode="widthFix"></image>
@@ -28,7 +28,7 @@
 				<text>领取豪礼</text>
 			</view>
 			<button type="default" class="btn frist_btn">立即分享</button>
-			<button type="default" class="btn second_btn">返回首页</button>
+			<button type="default" class="btn second_btn" @tap="goback">返回首页</button>
 		</view>
 	</view>
 </template>
@@ -37,15 +37,18 @@
 	export default {
 		data() {
 			return {
-
+				money: 0,
 			};
 		},
 		methods: {
 			goback() {
 				uni.switchTab({
-					url:'/pages/index/index'
+					url: '/pages/index/index'
 				})
-			}
+			},
+		},
+		onLoad(options) {
+			this.money = options.money;
 		}
 	}
 </script>

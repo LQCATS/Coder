@@ -254,7 +254,7 @@ var _default = {
     godetail: function godetail(menu) {
       //跳转详情页面
       uni.navigateTo({
-        url: "/pages/detials/detials?menu=".concat(JSON.stringify(menu))
+        url: "/pages/detials/detials?id=".concat(menu._id, "&type=", 4)
       });
     }
   },
