@@ -230,6 +230,7 @@
 											this.collect);
 
 										if (this.collect) {
+											// this.islogin = logintools.islogin();
 											this.tabslist = this.collect;
 											//默认渲染第一个收藏菜谱的原材料
 											this.menulist = this.collect[0]

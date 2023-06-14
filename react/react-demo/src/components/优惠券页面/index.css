@@ -1,0 +1,210 @@
+body,
+div {
+    padding: 0;
+    margin: 0;
+}
+
+/* app.jsx */
+.root_warp {
+    padding-left: 20px;
+    box-sizing: border-box;
+}
+
+/* header.jsx */
+.header {
+    margin-left: 10px;
+}
+
+/* 全局样式 */
+button {
+    height: 30px;
+    border-radius: 5px;
+    background-color: #000;
+    color: #fff;
+    padding: 0 10px;
+    font-size: 12px;
+}
+
+input {
+    padding-left: 10px;
+    box-sizing: border-box;
+}
+
+input:focus {
+    outline: none;
+}
+
+select:focus {
+    outline: none;
+}
+
+/* tabs.jsx */
+.tabs_warp {
+    display: flex;
+    border-bottom: 1px dashed #dfdfdf;
+}
+
+.tabs_warp div {
+    padding: 10px 10px;
+    margin-right: 10px;
+    background-color: rgb(56, 52, 52);
+    color: #fff;
+    font-size: 12px;
+}
+
+.tabs_warp .active {
+    background-color: rgb(226, 57, 57);
+}
+
+/* search.jsx */
+.serach_warp {
+    margin-left: 50px;
+    margin-top: 30px;
+}
+
+.serach_warp select {
+    height: 30px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 0 3px 1px #dfdfdf;
+}
+
+.serach_warp input {
+    height: 30px;
+    box-sizing: border-box;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 0 3px 1px #dfdfdf;
+    margin-left: 50px;
+}
+
+.serach_warp .search_btn {
+    margin-left: 50px;
+}
+
+/* tables.jsx */
+.table_warp .add_btn {
+    margin-top: 20px;
+}
+
+.table_warp table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    margin-top: 20px;
+    box-shadow: 0 0 10px 2px #dfdfdf;
+}
+
+.table_warp table thead {
+    background-color: #333;
+    color: #fff;
+    text-align: left;
+
+}
+
+.table_warp table thead tr th {
+    border: 1px solid #666;
+    font-size: 14px;
+    font-weight: 400;
+    height: 30px;
+}
+
+.table_warp table tbody tr td {
+    height: 40px;
+    border: 1px solid #666;
+    font-size: 12px;
+    padding-left: 5px;
+
+}
+
+.table_warp table tbody tr td img {
+    height: 30px;
+}
+
+.table_warp table tbody .btn_td {
+    font-size: 10px;
+}
+
+/* ppagesize.jsx */
+.page_warp {
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+    margin-top: 20px;
+
+}
+
+
+.page_warp select {
+    height: 20px;
+    margin-left: 10px;
+    border: none;
+    border-radius: 3px;
+    box-shadow: 0 0 3px 1px #dfdfdf;
+}
+
+.page_warp .btn {
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
+    margin-left: 10px;
+    background-color: #000;
+    color: #fff;
+}
+
+/* AddCoupon.jsx */
+.dialog {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(71, 69, 69, 0.3);
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dialog_warp {
+    width: 300px;
+    /* height: 400px; */
+    background-color: #fff;
+    padding-left: 10px;
+    padding-bottom: 20px;
+}
+
+.dialog_warp>div {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    font-size: 12px;
+}
+
+.dialog_warp .input_warp input,
+.dialog_warp .input_warp select {
+    width: 200px;
+    height: 25px;
+    margin-left: 15px;
+    border: none;
+    border-radius: 3px;
+    box-shadow: 0 0 3px 1px #dfdfdf;
+
+}
+
+.dialog_warp .radio_warp>div {
+    margin-right: 15px;
+}
+
+.dialog_warp .radio_warp input {
+    width: 10px;
+}
+
+.dialog_warp button {
+    background-color: rgb(48, 45, 45);
+    font-size: 12px;
+}
+
+.dialog_warp .add_btn {
+    margin-right: 10px;
+}
