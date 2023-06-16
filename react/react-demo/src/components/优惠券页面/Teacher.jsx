@@ -1,7 +1,6 @@
-import React, { Component, createRef } from 'react';
-import Context from './context';
+import React, { Component, createRef } from 'react'
 
-export default class AllCouponComponents extends Component {
+export default class Teacher extends Component {
     state = {
         list: [
             {
@@ -68,80 +67,49 @@ export default class AllCouponComponents extends Component {
                 imgSrc: "https://pic.616pic.com/ys_bnew_img/00/06/12/6QLoLGyq3C.jpg"
             }
         ],
-        isSearch: false,
         pageSize: 3,
-        curPage: 1
+        curPage: 1,
+        inputValue: '',
     }
     searchValue = createRef();
-    selectValue = createRef();
     del = (id) => {
         this.setState({
             list: this.state.list.filter(item => item._id != id),
         })
     }
-    changeCurPage = (curPage) => {
+    changeCurPage = (cur) => {
         this.setState({
-            curPage: curPage
+            curPage: cur
         })
     }
-    //改变pagesize，onchange事件获取下拉框的值，并获取第一页的数据
-    changeSize = () => {
-        this.setState({
-            pageSize: this.selectValue.current.value - 0,
-            curPage: 1
-        })
+    //搜索
+    get searchCoupon() {
+        const { list, inputValue } = this.state;
+        return list.filter(item => item.title.includes(inputValue));
     }
-    //渲染表格，isSearch=true点击搜索按钮，isSearch=false，没有点击搜索按钮，查询全部数据
-    get searchByName() {
-        const { list, isSearch, curPage, pageSize } = this.state;
-        switch (isSearch) {
-            //点击搜索按钮
-            case true:
-                const inputValue = this.searchValue.current.value;
-                if (inputValue) {
-
-                    //筛选出所有满足条件的数据
-                    let filterList = list.filter(item => item.title.includes(inputValue));
-
-                    //截取当前页数据
-                    return filterList.slice((curPage - 1) * pageSize, curPage * pageSize);
-                }
-            //没有点击搜索按钮，查询全部数据
-            case false:
-                //当前页数据
-                return list.slice((curPage - 1) * pageSize, curPage * pageSize);
-        }
+    //分页
+    get paging() {
+        const { list, curPage, pageSize } = this.state;
+        return this.searchCoupon.slice((curPage - 1) * pageSize, curPage * pageSize);
     }
-    //计算总页数,isSearch=true点击搜索按钮，isSearch=false，没有点击搜索按钮，查询全部数据
+    //获取总页数
     get totalPage() {
-        const { list, isSearch, curPage, pageSize } = this.state;
-
-        switch (isSearch) {
-            //点击搜索按钮 
-            case true:
-                const inputValue = this.searchValue.current.value;
-                if (inputValue) {
-                    let filterList = list.filter(item => item.title.includes(inputValue));
-                    return Math.ceil(filterList.length / pageSize);
-                }
-                return Math.ceil(list.length / pageSize);
-
-            case false:
-                return Math.ceil(list.length / pageSize);
-        }
+        const { list, pageSize } = this.state;
+        return Math.ceil(this.searchCoupon.length / pageSize);
     }
-    //计算总页数的数组，比如共3页，arr=[1,2,3]
-    get page() {
-        let arr = []
+    //渲染分页按钮
+    get allPageBtn() {
+        const { list, curPage } = this.state;
+        let btnArr = [];
         for (let i = 1; i <= this.totalPage; i++) {
-            arr.push(i)
+            btnArr.push(<div className={i == curPage ? 'btn_active' : 'btn'} onClick={() => this.changeCurPage(i)} key={i}>{i}</div>)
         }
-        return arr
+        return btnArr;
     }
     render() {
+        const { list, curPage, pageSize } = this.state;
         return (
-
-            <div className='content_warp'>
+            <>
                 {/* header */}
                 <div className='header'>
                     <h3>优惠券页面</h3>
@@ -163,7 +131,7 @@ export default class AllCouponComponents extends Component {
                         <input type="text" placeholder='请输入搜索的值' ref={this.searchValue} />
                         <button className='search_btn' onClick={() => {
                             this.setState({
-                                isSearch: true
+                                inputValue: this.searchValue.current.value
                             })
                         }}>搜索</button>
                     </div>
@@ -187,7 +155,7 @@ export default class AllCouponComponents extends Component {
                         </thead>
                         <tbody>
                             {
-                                this.searchByName.map(item => {
+                                this.paging.map(item => {
                                     return (
                                         <tr key={item._id}>
                                             <td>{item._id}</td>
@@ -215,24 +183,28 @@ export default class AllCouponComponents extends Component {
                 <div className='page_warp'>
 
                     <div>
-                        第{this.state.curPage}页/共{this.totalPage}页
+                        第{curPage}页/共{this.totalPage}页
                     </div>
 
-                    <select ref={this.selectValue} onChange={this.changeSize}>
+                    <select onChange={(event) => {
+                        this.setState({
+                            pageSize: event.target.value,
+                            curPage: 1
+                        })
+                    }}>
                         <option value="3">3条/每页</option>
-                        <option value="4">4条/每页</option>
+                        <option value="5">5条/每页</option>
+                        <option value="7">7条/每页</option>
                     </select>
 
                     {
-                        this.page.map(item => {
-                            return <div className={item == this.state.curPage ? 'btn_active' : 'btn'} onClick={() => this.changeCurPage(item)} key={item}>{item}</div>
-                        })
+                        this.allPageBtn
                     }
 
                 </div>
 
 
-            </div>
+            </>
         )
     }
 }

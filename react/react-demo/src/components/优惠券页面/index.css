@@ -1,12 +1,13 @@
 body,
-div {
+div,
+p {
     padding: 0;
     margin: 0;
 }
 
 /* app.jsx */
 .root_warp {
-    padding-left: 20px;
+    /* padding-left: 20px; */
     box-sizing: border-box;
 }
 
@@ -170,6 +171,8 @@ select:focus {
     display: flex;
     align-items: center;
     justify-content: center;
+    /* visibility: hidden; */
+    /* visibility: visible; */
 }
 
 .dialog_warp {
@@ -214,3 +217,34 @@ select:focus {
 .dialog_warp .add_btn {
     margin-right: 10px;
 }
+
+.btn_active {
+    background-color: orangered;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
+    margin-left: 10px;
+    color: #fff;
+    cursor: pointer;
+}
+
+/* 优惠券容器整体大布局 */
+.coupon_warp {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+}
+
+.content_warp {
+    width: 80vw;
+}
+
+.menu_warp {
+    width: 20vw;
+    /* height: 100vh; */
+    background-color: pink;
+    margin-right: 20px;
+}
+
+/* menu.jsx */

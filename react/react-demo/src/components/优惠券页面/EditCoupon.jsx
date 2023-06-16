@@ -1,10 +1,11 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import Dialog from './Dialog';
 
 export default class EditCoupon extends Component {
     render() {
         return (
-            <div className='dialog'>
-                <div className="dialog_warp">
+            <div style={{ visibility: 'hidden' }}>
+                <Dialog>
                     <h3>修改</h3>
                     <div className='input_warp'>
                         <div>编号</div>
@@ -36,7 +37,9 @@ export default class EditCoupon extends Component {
                     </div>
                     <button className='add_btn'>修改</button>
                     <button>关闭</button>
-                </div>
+                </Dialog>
+
+
             </div>
         )
     }

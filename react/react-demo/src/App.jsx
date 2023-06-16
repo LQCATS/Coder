@@ -18,6 +18,11 @@ import ClickComponents from './components/06-类组件的事件/ClickComponents'
 import ClickTable from './components/07-动态渲染图书列表/ClickTable';
 import ToDoList from './components/08-数组新增todolist/ToDoList';
 import AllCouponComponents from './components/优惠券页面/AllCouponComponents';
+import Teacher from './components/优惠券页面/Teacher';
+import Father from './components/09-组件传值/Father';
+import Father2 from './components/10-事件总线/Father2';
+import FormCompoments from './components/11-受控组件/FormCompoments';
+import CouponContainer from './components/优惠券页面/CouponContainer';
 
 export default class App extends Component {
 	render() {
@@ -37,13 +42,23 @@ export default class App extends Component {
 				<PageSize></PageSize>
 				<AddCoupon></AddCoupon>
 				<EditCoupon></EditCoupon> */}
-				<AllCouponComponents></AllCouponComponents>
+				{/* <AllCouponComponents></AllCouponComponents> */}
+				{/* <Teacher></Teacher> */}
+
+				{/* 完整版本的优惠券 */}
+				<CouponContainer></CouponContainer>
 
 				{/* 第二天学习 */}
 				{/* <StateComponents></StateComponents> */}
 				{/* <ClickComponents></ClickComponents> */}
 				{/* <ClickTable></ClickTable> */}
 				{/* <ToDoList></ToDoList> */}
+
+
+				{/* 第四天学习 */}
+				{/* <Father></Father> */}
+				{/* <Father2></Father2> */}
+				{/* <FormCompoments></FormCompoments> */}
 			</div>
 
 		)
