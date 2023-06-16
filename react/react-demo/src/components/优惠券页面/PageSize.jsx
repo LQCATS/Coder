@@ -6,7 +6,7 @@ export default class PageSize extends Component {
             <div className='page_warp'>
 
                 <div>
-                    <span>1页</span>/<span>共3页</span>
+                    第1页/共3页
                 </div>
 
                 <select name="" id="">

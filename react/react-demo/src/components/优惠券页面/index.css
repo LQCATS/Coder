@@ -83,6 +83,11 @@ select:focus {
 }
 
 /* tables.jsx */
+
+.table_warp {
+    margin-right: 20px;
+}
+
 .table_warp .add_btn {
     margin-top: 20px;
 }
@@ -151,6 +156,7 @@ select:focus {
     margin-left: 10px;
     background-color: #000;
     color: #fff;
+    cursor: pointer;
 }
 
 /* AddCoupon.jsx */

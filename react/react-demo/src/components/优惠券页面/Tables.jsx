@@ -1,37 +1,46 @@
 import React, { Component } from 'react';
 
-let list = [
-    {
-        useTime: '30天',
-        _id: "63bd14c40d58511b7c6b6b18",
-        title: "测试优惠券",
-        receiveType: "商品券",
-        price: 30,
-        state: false,
-        imgSrc: "https://pic.616pic.com/ys_bnew_img/00/06/12/6QLoLGyq3C.jpg"
-    },
-    {
-        "useTime": '730天',
-        _id: "63ec3510aac28814ac2068ef",
-        title: "测试优惠券",
-        receiveType: '通用券',
-        price: 30,
-        state: true,
-        imgSrc: "https://pic.616pic.com/ys_bnew_img/00/06/12/6QLoLGyq3C.jpg"
-    },
-    {
-        useTime: '730天',
-        _id: "6408742473fc62162ce86053",
-        title: "测试优惠券",
-        receiveType: "商品券",
-        price: 30,
-        state: true,
-        imgSrc: "https://pic.616pic.com/ys_bnew_img/00/06/12/6QLoLGyq3C.jpg"
-    },
-]
+
 
 export default class Tables extends Component {
+    state = {
+        list: [
+            {
+                useTime: '30天',
+                _id: "63bd14c40d58511b7c6b6b18",
+                title: "测试优惠券",
+                receiveType: "商品券",
+                price: 30,
+                state: false,
+                imgSrc: "https://pic.616pic.com/ys_bnew_img/00/06/12/6QLoLGyq3C.jpg"
+            },
+            {
+                "useTime": '730天',
+                _id: "63ec3510aac28814ac2068ef",
+                title: "测试优惠券",
+                receiveType: '通用券',
+                price: 30,
+                state: true,
+                imgSrc: "https://pic.616pic.com/ys_bnew_img/00/06/12/6QLoLGyq3C.jpg"
+            },
+            {
+                useTime: '730天',
+                _id: "6408742473fc62162ce86053",
+                title: "测试优惠券",
+                receiveType: "商品券",
+                price: 30,
+                state: true,
+                imgSrc: "https://pic.616pic.com/ys_bnew_img/00/06/12/6QLoLGyq3C.jpg"
+            },
+        ]
+    }
+    del = (id) => {
+        this.setState({
+            list: this.state.list.filter(item => item._id != id),
+        })
+    }
     render() {
+        const { list } = this.state;
         return (
             <div className='table_warp'>
                 <button className='add_btn'>新增</button>
@@ -63,7 +72,7 @@ export default class Tables extends Component {
                                         <td>{item.useTime}</td>
                                         <td>{item.state ? '开启' : '关闭'}</td>
                                         <td className='btn_td'>
-                                            <button>删除</button>
+                                            <button onClick={() => this.del(item._id)}>删除</button>
                                             <button>修改</button>
                                         </td>
                                     </tr>
