@@ -1,12 +1,12 @@
 import React, { Component, createRef } from 'react';
-import Context from './context';
+import events from './events';
 
 export default class AllCouponComponents extends Component {
     state = {
         list: [
             {
                 useTime: '30天',
-                _id: "63bd14c40d58511b7c6b6b18",
+                id: 1,
                 title: "测试优惠券",
                 receiveType: "商品券",
                 price: 30,
@@ -15,7 +15,7 @@ export default class AllCouponComponents extends Component {
             },
             {
                 "useTime": '730天',
-                _id: "63ec3510aac28814ac2068ef",
+                id: 2,
                 title: "跨店优惠券",
                 receiveType: '通用券',
                 price: 30,
@@ -24,7 +24,7 @@ export default class AllCouponComponents extends Component {
             },
             {
                 useTime: '730天',
-                _id: "6408742473fc62162ce86053",
+                id: 3,
                 title: "跨店优惠券",
                 receiveType: "商品券",
                 price: 30,
@@ -33,7 +33,7 @@ export default class AllCouponComponents extends Component {
             },
             {
                 useTime: '30天',
-                _id: "63bd14c40d58511b7c6b6b14",
+                id: 4,
                 title: "跨店优惠券",
                 receiveType: "商品券",
                 price: 30,
@@ -42,7 +42,7 @@ export default class AllCouponComponents extends Component {
             },
             {
                 "useTime": '730天',
-                _id: "63ec3510aac28814ac2068e5",
+                id: 5,
                 title: "跨店优惠券",
                 receiveType: '通用券',
                 price: 30,
@@ -51,7 +51,7 @@ export default class AllCouponComponents extends Component {
             },
             {
                 useTime: '730天',
-                _id: "6408742473fc62162ce86056",
+                id: 6,
                 title: "新人优惠券",
                 receiveType: "商品券",
                 price: 30,
@@ -60,7 +60,7 @@ export default class AllCouponComponents extends Component {
             },
             {
                 useTime: '730天',
-                _id: "6408742473fc62162ce86057",
+                id: 7,
                 title: "测试优惠券",
                 receiveType: "商品券",
                 price: 30,
@@ -76,7 +76,7 @@ export default class AllCouponComponents extends Component {
     selectValue = createRef();
     del = (id) => {
         this.setState({
-            list: this.state.list.filter(item => item._id != id),
+            list: this.state.list.filter(item => item.id != id),
         })
     }
     changeCurPage = (curPage) => {
@@ -138,7 +138,36 @@ export default class AllCouponComponents extends Component {
         }
         return arr
     }
+    componentDidMount() {
+        //接受到添加的优惠券，添加到数组中
+        events.addListener('addCoupon', (addObj) => {
+            const { list } = this.state;
+            // console.log(111, this.state.list)
+            addObj['id'] = list[list.length - 1].id + 1
+            this.setState({
+                list: [
+                    ...list,
+                    addObj
+                ]
+            }, () => {
+                console.log(222, this.state.list);
+            })
+        });
+        //接收到要修改的优惠券，修改数组
+        events.addListener('editCoupon', (editObj) => {
+            const { list } = this.state;
+            let index = list.findIndex(item => item.id == editObj.id);
+            if (-1 != index) {
+                this.setState({
+                    list: list.toSpliced(index, 1, editObj)
+                })
+            }
+
+        })
+    }
     render() {
+        const { showAdd, showEdit } = this.props;
+
         return (
 
             <div className='content_warp'>
@@ -171,7 +200,9 @@ export default class AllCouponComponents extends Component {
 
                 {/* table */}
                 <div className='table_warp'>
-                    <button className='add_btn'>新增</button>
+                    <button className='add_btn' onClick={() => {
+                        showAdd(true)
+                    }}>新增</button>
                     <table>
                         <thead>
                             <tr>
@@ -189,8 +220,8 @@ export default class AllCouponComponents extends Component {
                             {
                                 this.searchByName.map(item => {
                                     return (
-                                        <tr key={item._id}>
-                                            <td>{item._id}</td>
+                                        <tr key={item.id}>
+                                            <td>{item.id}</td>
                                             <td>{item.title}</td>
                                             <td>
                                                 <img src={item.imgSrc} alt="" />
@@ -200,8 +231,13 @@ export default class AllCouponComponents extends Component {
                                             <td>{item.useTime}</td>
                                             <td>{item.state ? '开启' : '关闭'}</td>
                                             <td className='btn_td'>
-                                                <button onClick={() => this.del(item._id)}>删除</button>
-                                                <button>修改</button>
+                                                <button onClick={() => this.del(item.id)}>删除</button>
+                                                <button onClick={() => {
+                                                    //显示修改模态框
+                                                    showEdit(true);
+                                                    //传递需要修改的item
+                                                    events.emit('getNeedChangeItem', item);
+                                                }}>修改</button>
                                             </td>
                                         </tr>
                                     )
@@ -220,7 +256,8 @@ export default class AllCouponComponents extends Component {
 
                     <select ref={this.selectValue} onChange={this.changeSize}>
                         <option value="3">3条/每页</option>
-                        <option value="4">4条/每页</option>
+                        <option value="4">5条/每页</option>
+                        <option value="7">7条/每页</option>
                     </select>
 
                     {

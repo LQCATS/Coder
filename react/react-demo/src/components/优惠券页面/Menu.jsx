@@ -27,9 +27,32 @@ export default class Menu extends Component {
             }
         ]
     }
+    renderMenu = (menuData) => {
+        return (
+            <ul>
+                {
+                    menuData.map(firstMenu => {
+                        return (
+                            <li key={firstMenu.id}> {firstMenu.title}
+                                {firstMenu.children ?
+                                    this.renderMenu(firstMenu.children)
+                                    : ''}
+                            </li>
+                        )
+                    })
+                }
+            </ul>
+        )
+    }
     render() {
         return (
-            <div className='menu_warp'>Menu</div>
+            <div className='menu_warp'>
+
+                {
+                    this.renderMenu(this.state.menuData)
+                }
+
+            </div>
         )
     }
 }
