@@ -10,8 +10,8 @@ export default class AddCoupon extends Component {
             title: '',
             price: '',
             imgSrc: "https://pic.616pic.com/ys_bnew_img/00/06/12/6QLoLGyq3C.jpg",
-            receiveType: '',
-            state: true,
+            receiveType: '通用券',
+            state: '',
             useTime: '',
         }
     }
@@ -60,21 +60,14 @@ export default class AddCoupon extends Component {
                                     </div>
                                     <div className='input_warp'>
                                         <div>类型</div>
-                                        <select value={form.receiveType} onChange={(event) => {
-                                            this.setState({
-                                                form: {
-                                                    ...form,
-                                                    receiveType: event.target.value
-                                                }
-                                            })
-                                        }}>
+                                        <select data-name='receiveType' value={form.receiveType} onChange={(event) => this.onChange(event)}>
                                             <option value="通用券">通用券</option>
                                             <option value="商品券">商品券</option>
                                         </select>
                                     </div>
                                     <div className='radio_warp'>
                                         <div>状态</div>
-                                        开启<input type="radio" checked={form.state == true} onChange={() => {
+                                        开启<input type="radio" checked={form.state === true} onChange={() => {
                                             this.setState({
                                                 form: {
                                                     ...form,
@@ -82,7 +75,7 @@ export default class AddCoupon extends Component {
                                                 }
                                             })
                                         }} />
-                                        关闭<input type="radio" checked={form.state == false} onChange={() => {
+                                        关闭<input type="radio" checked={form.state === false} onChange={() => {
                                             this.setState({
                                                 form: {
                                                     ...form,

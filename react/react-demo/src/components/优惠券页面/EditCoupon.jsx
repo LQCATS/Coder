@@ -71,14 +71,7 @@ export default class EditCoupon extends Component {
                                     </div>
                                     <div className='input_warp'>
                                         <div>类型</div>
-                                        <select value={form.receiveType} onChange={(event) => {
-                                            this.setState({
-                                                form: {
-                                                    ...form,
-                                                    receiveType: event.target.value
-                                                }
-                                            })
-                                        }}>
+                                        <select data-name='receiveType' value={form.receiveType} onChange={(event) => this.onChange(event)}>
                                             <option value="通用券">通用券</option>
                                             <option value="商品券">商品券</option>
                                         </select>

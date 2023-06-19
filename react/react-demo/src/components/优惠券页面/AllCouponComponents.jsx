@@ -70,7 +70,8 @@ export default class AllCouponComponents extends Component {
         ],
         isSearch: false,
         pageSize: 3,
-        curPage: 1
+        curPage: 1,
+        newId: 8
     }
     searchValue = createRef();
     selectValue = createRef();
@@ -141,19 +142,29 @@ export default class AllCouponComponents extends Component {
     componentDidMount() {
         //接受到添加的优惠券，添加到数组中
         events.addListener('addCoupon', (addObj) => {
-            const { list } = this.state;
+            // const { list } = this.state;
             // console.log(111, this.state.list)
-            addObj['id'] = list[list.length - 1].id + 1
+            // addObj['id'] = list[list.length - 1].id + 1
+            // this.setState({
+            //     list: [
+            //         ...list,
+            //         addObj
+            //     ]
+            // })
+            const { list, newId } = this.state;
             this.setState({
                 list: [
                     ...list,
-                    addObj
-                ]
-            }, () => {
-                console.log(222, this.state.list);
+                    {
+                        id: newId,
+                        ...addObj
+
+                    }
+                ],
+                newId: newId + 1
             })
         });
-        //接收到要修改的优惠券，修改数组
+        //接收到要修改的优惠券，修改数组,修改数组一般使用map，toSpliced是新增的api，不能使用时就用map
         events.addListener('editCoupon', (editObj) => {
             const { list } = this.state;
             let index = list.findIndex(item => item.id == editObj.id);
@@ -170,21 +181,21 @@ export default class AllCouponComponents extends Component {
 
         return (
 
-            <div className='content_warp'>
+            <div className='content_warp' >
                 {/* header */}
-                <div className='header'>
+                <div className='header' >
                     <h3>优惠券页面</h3>
                 </div>
 
                 {/* tabs */}
-                <div className='tabs_warp'>
+                <div className='tabs_warp' >
                     <div className='active'>优惠券列表</div>
                     <div>领取记录</div>
                     <div>额外扩展</div>
-                </div>
+                </div >
 
                 {/* search */}
-                <div className='serach_warp'>
+                <div className='serach_warp' >
                     <div>
                         <select name="" id="">
                             <option value="">请选择搜素的数据</option>
@@ -196,10 +207,10 @@ export default class AllCouponComponents extends Component {
                             })
                         }}>搜索</button>
                     </div>
-                </div>
+                </div >
 
                 {/* table */}
-                <div className='table_warp'>
+                <div className='table_warp' >
                     <button className='add_btn' onClick={() => {
                         showAdd(true)
                     }}>新增</button>
@@ -245,10 +256,10 @@ export default class AllCouponComponents extends Component {
                             }
                         </tbody>
                     </table>
-                </div>
+                </div >
 
                 {/* pagesize */}
-                <div className='page_warp'>
+                <div className='page_warp' >
 
                     <div>
                         第{this.state.curPage}页/共{this.totalPage}页
@@ -269,7 +280,7 @@ export default class AllCouponComponents extends Component {
                 </div>
 
 
-            </div>
+            </div >
         )
     }
 }
