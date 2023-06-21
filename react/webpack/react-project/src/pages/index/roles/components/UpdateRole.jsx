@@ -1,54 +1,51 @@
-import React, { forwardRef, useEffect, useImperativeHandle } from 'react'
+import React, { forwardRef, useImperativeHandle } from 'react'
 import { Modal, Form, Input } from 'antd';
 import { useState } from 'react';
-import { useForm } from 'antd/es/form/Form';
 
 
 const UpdateRole = (props, ref) => {
     const [isUpdateOpen, setIsUpdateOpen] = useState(false);
-    const { updateObj, getUpdateObj } = props;
-
-    let data = { ...updateObj };
-    //设置form的初始值
-    const [form] = useForm();
-
-    useEffect(() => {
-        form.setFieldsValue({ ...updateObj })
-    })
+    const [updateRole, setUpdateRole] = useState({});
 
     useImperativeHandle(ref, () => {
         // 返回给父组件的数据或方法
         return {
             showUpdateModal,
         }
-    })
+    });
 
-    const showUpdateModal = () => {
+    //显示对话框
+    const showUpdateModal = (data) => {
+        //将父组件传递的对象设置到子组件中
+        setUpdateRole(data);
+        //打开对话
         setIsUpdateOpen(true);
     };
-    const handleOk = () => {
 
-        //向父组件传递修改数据
-        getUpdateObj(data)
+    //点击确定
+    const handleOk = () => {
+        //向父组件传递需要修改的数据
+        props.updateRoleOne(updateRole);
         //关闭对话框
         setIsUpdateOpen(false);
     };
+
+    //点击取消
     const handleCancel = () => {
         setIsUpdateOpen(false);
     };
 
     //表单输入框值改变时触发的函数
     const onValuesChange = (_, allValues) => {
-        //将修改后的值设置到newObj中
-        // setNewObj({...allValues});
-        // console.log('newObj',newObj);
-        data = { ...data, ...allValues }
-        console.log(data);
-    }
+        setUpdateRole({
+            ...updateRole,
+            ...allValues
+        })
+    };
 
     return (
         <>
-            <Modal title="修改角色" open={isUpdateOpen} okText='确定' cancelText='取消' onOk={handleOk} onCancel={handleCancel} maskClosable={false}>
+            <Modal title="修改角色" open={isUpdateOpen} okText='确定' cancelText='取消' onOk={handleOk} onCancel={handleCancel} maskClosable={false} destroyOnClose={true}>
                 <Form
                     labelCol={{
                         span: 5,
@@ -57,11 +54,10 @@ const UpdateRole = (props, ref) => {
                         span: 16,
                     }}
                     onValuesChange={onValuesChange}
-                    form={form}
+                    initialValues={updateRole}
+                    preserve={false}
                 >
-                    <Form.Item
-                        label="角色名称"
-                        name="role"
+                    <Form.Item label="角色名称" name="role"
                         rules={[
                             {
                                 required: true,
@@ -72,9 +68,7 @@ const UpdateRole = (props, ref) => {
                         <Input />
                     </Form.Item>
 
-                    <Form.Item
-                        label="创建时间"
-                        name="createTime"
+                    <Form.Item label="创建时间" name="createTime"
                         rules={[
                             {
                                 required: true,

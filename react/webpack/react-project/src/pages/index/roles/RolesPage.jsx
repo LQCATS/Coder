@@ -28,10 +28,8 @@ const RolesPage = () => {
                         delRoles(record._id);
                     }}>删除</Button>
                     <Button type="dashed" size='small' icon={<EditOutlined />} onClick={() => {
-                        //显示修改框
-                        showUpdateRole();
-                        //传递需要修改的对象
-                        setUpdateObj(record);
+                        //通过ref获取子组件的方法，并传参给子组件，显示修改框,并传入要修改的数据
+                        updateRef.current.showUpdateModal(record);
                     }}>修改</Button>
                 </Space>
             ),
@@ -49,7 +47,7 @@ const RolesPage = () => {
     //删除角色
     const delRoles = (id) => {
         setRolesData(rolesData.filter(item => item._id !== id));
-    }
+    };
 
     //获取新增的角色
     const getAddRole = (roleData) => {
@@ -63,7 +61,7 @@ const RolesPage = () => {
                 }
             ]
         )
-    }
+    };
 
     // let showAddFa;
     // //打开新增角色对话框
@@ -76,25 +74,22 @@ const RolesPage = () => {
     const showAddRole = () => {
         addRef.current.showModal()
 
-    }
+    };
 
     //修改角色
+    //绑定子组件ref
     const updateRef = useRef();
-    const showUpdateRole = () => {
-        updateRef.current.showUpdateModal();
-    };
-    //传递数据给子组件回显数据
-    const [updateObj, setUpdateObj] = useState({});
-    const getUpdateObj = (obj) => {
-        console.log('obj', obj);
+    //子组件给父组件传参，修改父组件的数据
+    const updateRoleOne = (updateOne) => {
         setRolesData(rolesData.map(item => {
-            if (item._id === obj._id) {
-                return obj
+            if (item._id === updateOne._id) {
+                return {
+                    ...updateOne
+                }
             }
             return item
         }))
-
-    }
+    };
 
     //页面渲染
     return (
@@ -107,7 +102,7 @@ const RolesPage = () => {
             {/* <AddRoles getAddRole={getAddRole} showAddRole={showAddRole} ></AddRoles> */}
             <AddRoles getAddRole={getAddRole} ref={addRef} ></AddRoles>
             {/* 修改角色 */}
-            <UpdateRole ref={updateRef} updateObj={updateObj} getUpdateObj={getUpdateObj}></UpdateRole>
+            <UpdateRole ref={updateRef} updateRoleOne={updateRoleOne}></UpdateRole>
         </>
 
     )
