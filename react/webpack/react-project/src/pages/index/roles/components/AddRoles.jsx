@@ -53,7 +53,7 @@ const AddRoles = (props, ref) => {
                 >
                     <Form.Item
                         label="角色名称"
-                        name="role"
+                        name="name"
                         rules={[
                             {
                                 required: true,

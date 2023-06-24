@@ -25,13 +25,14 @@ const UsersAdd = (props, ref) => {
     //点击确定
     const onOk = () => {
         //给父组件传递需要新增的用户
-
+        props.addUserData(addUser);
         //关闭模态框
         onCancel();
     }
 
     //打开模态框
     const showAdd = () => {
+        //打开模态框
         setIsShowAdd(true);
     }
     //向父组件传递方法，点击打开对话框
@@ -45,13 +46,13 @@ const UsersAdd = (props, ref) => {
     const onValuesChange = (_, values) => {
         //获取新增的用户数据
         setAddUser(values);
-        console.log(values);
+        // console.log(addUser);
     }
 
     //获取所有角色id
     const getRolesId = async () => {
         const res = await getRolesIdAPI();
-        console.log(res);
+        // console.log(res);
         if (res.code) {
             setRolesOptions(res.data);
         }

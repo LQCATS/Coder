@@ -39,7 +39,8 @@ const UpdateRole = (props, ref) => {
     const onValuesChange = (_, allValues) => {
         setUpdateRole({
             ...updateRole,
-            ...allValues
+            ...allValues,
+            id: updateRole._id
         })
     };
 
@@ -57,7 +58,7 @@ const UpdateRole = (props, ref) => {
                     initialValues={updateRole}
                     preserve={false}
                 >
-                    <Form.Item label="角色名称" name="role"
+                    <Form.Item label="修改的用户" name="authUser"
                         rules={[
                             {
                                 required: true,
@@ -68,7 +69,7 @@ const UpdateRole = (props, ref) => {
                         <Input />
                     </Form.Item>
 
-                    <Form.Item label="创建时间" name="createTime"
+                    <Form.Item label="修改时间" name="authTime"
                         rules={[
                             {
                                 required: true,
@@ -79,6 +80,9 @@ const UpdateRole = (props, ref) => {
                         <Input />
                     </Form.Item>
 
+                    <Form.Item label="菜单" name="menus">
+                        <Input />
+                    </Form.Item>
 
                 </Form>
             </Modal>
