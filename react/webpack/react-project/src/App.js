@@ -13,6 +13,7 @@ import GoodsList from '@p/index/goods/GoodsList';
 import GoodsType from '@p/index/goods/GoodsType';
 import Users from '@p/index/users/Users';
 import Roles from '@p/index/roles/RolesPage';
+import GoodsAdd from '@p/index/goods/components/goodsList/GoodsAdd';
 
 //路由懒加载
 const NotFound = lazy(() => import('@p/404/NotFound'));
@@ -35,6 +36,7 @@ const App = () => {
 								<Route path='roles' element={<Roles />}></Route>
 								<Route path='goodsList' element={<GoodsList />}></Route>
 								<Route path='goodsType' element={<GoodsType />}></Route>
+								<Route path='add/goods' element={<GoodsAdd />}></Route>
 
 							</Route>
 							<Route path='*' element={<NotFound />}></Route>

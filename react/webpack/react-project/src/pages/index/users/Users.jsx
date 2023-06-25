@@ -38,7 +38,7 @@ const Users = () => {
                     <Popconfirm
                         title="删除信息提示"
                         description="点击确定将永久删除该用户，确定继续操作吗？"
-                        onConfirm={(e) => confirm(value)}
+                        onConfirm={() => delUser(value)}
                         onCancel={cancel}
                         okText="确定"
                         cancelText="取消"
@@ -69,7 +69,7 @@ const Users = () => {
 
     }
 
-    //删除用户数据,并重新渲染页面
+    //气泡弹框确认按钮触发事件，删除用户数据,并重新渲染页面
     const delUser = async (id) => {
         //调接口删除用户
         const res = await delUserAPI({ id });
@@ -82,15 +82,15 @@ const Users = () => {
         }
     };
 
-    //气泡弹框确认按钮触发事件
-    const confirm = (id) => {
-        //调用删除方法
-        delUser(id);
-    };
+    // //气泡弹框确认按钮触发事件
+    // const confirm = (id) => {
+    //     //调用删除方法
+    //     delUser(id);
+    // };
 
     //气泡按钮取消触发事件
-    const cancel = (e) => {
-        console.log(e);
+    const cancel = () => {
+        // console.log(e);
         message.error('取消删除');
     };
 

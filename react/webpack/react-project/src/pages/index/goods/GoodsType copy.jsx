@@ -1,9 +1,9 @@
 import React, { useEffect, useState, useRef } from 'react'
 //引入antd
-import { Button, Divider, Space, Table, message, Popconfirm, Tag } from 'antd';
+import { Button, Divider, Space, Table, message, Popconfirm } from 'antd';
 import { DeleteOutlined, EditOutlined } from '@ant-design/icons';
 //引入api
-import { addGoodsTypeAPI, delGoodsAPI, getGoodsTypeAPI, updateGoodsAPI } from '../../../apis/goodsAPI';
+import { addGoodsTypeAPI, delGoodsAPI, getGoodsAPI, updateGoodsAPI } from '../../../apis/goodsAPI';
 //引入子组件
 import TypeAdd from './components/goodsType/TypeAdd';
 import TypeUpdate from './components/goodsType/TypeUpdate';
@@ -15,11 +15,12 @@ const GoodsType = () => {
             dataIndex: 'name'
         },
         {
+            title: '父级id',
+            dataIndex: 'parentId'
+        },
+        {
             title: '类型',
-            dataIndex: 'type',
-            render: (value, record) => (
-                <Tag color="orange">{value}</Tag>
-            )
+            dataIndex: 'type'
         },
         {
             title: '操作',
@@ -33,6 +34,7 @@ const GoodsType = () => {
                         title="删除信息提示"
                         description="点击确定将永久删除该用户，确定继续操作吗？"
                         onConfirm={() => delGoodsType(value)}
+                        onCancel={cancel}
                         okText="确定"
                         cancelText="取消"
                     >
@@ -48,41 +50,15 @@ const GoodsType = () => {
 
     //挂载后触发生命周期函数,获取分类数据
     useEffect(() => {
-        getGoodsTypeList();
-        // eslint-disable-next-line
-    }, []);
+        getGoodsList();
+    }, [])
 
     //渲染页面表格----------------------------------------------------------
     //调接口获取分类数据
-    const getGoodsTypeList = async (id = 0) => {
-        const res = await getGoodsTypeAPI({ parentId: id });
-        // console.log(res.data.data);
-        if (0 === id) {
-            setGoodsTypeData(res.data.data.map(item => {
-                return {
-                    ...item,
-                    children: []
-                };
-            }));
-        } else {
-            setGoodsTypeData(goodsTypeData.map(item => {
-                if (id === item._id) {
-                    return {
-                        ...item,
-                        children: res.data.data
-                    };
-                }
-                return item;
-            }))
-        }
-    }
-
-    //展开一级分类触发的事件
-    const onExpand = (expanded, record) => {
-        console.log(expanded, record);
-        if (expanded) {
-            getGoodsTypeList(record._id);
-        }
+    const getGoodsList = async () => {
+        const res = await getGoodsAPI({ parentId: 0 });
+        setGoodsTypeData(res.data.data);
+        console.log(res);
     }
 
     // 新增功能------------------------------------------------------------
@@ -97,7 +73,7 @@ const GoodsType = () => {
         console.log(res);
         if (res.code) {
             //调取接口新增成功，重新渲染页面
-            getGoodsTypeList();
+            getGoodsList();
         }
     }
     //删除----------------------------------------------------------------
@@ -108,13 +84,16 @@ const GoodsType = () => {
         console.log(res);
         if (res.code) {
             //删除成功重新渲染页面
-            getGoodsTypeList();
+            getGoodsList();
             //提示用户删除信息
             message.success('删除成功');
         }
     };
 
-
+    //气泡按钮取消触发事件
+    const cancel = (e) => {
+        message.error('取消删除');
+    };
 
     //修改---------------------------------------------------------------
     const updateRef = useRef();
@@ -126,7 +105,7 @@ const GoodsType = () => {
         console.log("updateData", res);
         if (res.code) {
             //修改成功，重新渲染页面
-            getGoodsTypeList();
+            getGoodsList();
         }
     }
 
@@ -134,7 +113,7 @@ const GoodsType = () => {
         <div>
             <Button onClick={addGoods}>新增分类</Button>
             <Divider></Divider>
-            <Table columns={columns} dataSource={goodsTypeData} rowKey='_id' expandable={{ onExpand }}></Table>
+            <Table columns={columns} dataSource={goodsTypeData} rowKey='_id'></Table>
             {/* 新增分类 */}
             <TypeAdd ref={addRef} addGoodsData={addGoodsData}></TypeAdd>
             {/* 修改分类 */}
