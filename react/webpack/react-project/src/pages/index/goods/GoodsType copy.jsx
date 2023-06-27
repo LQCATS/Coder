@@ -3,7 +3,7 @@ import React, { useEffect, useState, useRef } from 'react'
 import { Button, Divider, Space, Table, message, Popconfirm } from 'antd';
 import { DeleteOutlined, EditOutlined } from '@ant-design/icons';
 //引入api
-import { addGoodsTypeAPI, delGoodsAPI, getGoodsAPI, updateGoodsAPI } from '../../../apis/goodsAPI';
+import { addGoodsTypeAPI, delGoodsAPI, getGoodsAPI, updateGoodsTypeAPI } from '../../../apis/goodsAPI';
 //引入子组件
 import TypeAdd from './components/goodsType/TypeAdd';
 import TypeUpdate from './components/goodsType/TypeUpdate';
@@ -100,7 +100,7 @@ const GoodsType = () => {
     //获取子组件传递的修改数据，调用接口进行修改
     const doUpdateType = async (updateData) => {
         //修改信息
-        let res = await updateGoodsAPI(updateData);
+        let res = await updateGoodsTypeAPI(updateData);
         console.log("updateData", updateData);
         console.log("updateData", res);
         if (res.code) {

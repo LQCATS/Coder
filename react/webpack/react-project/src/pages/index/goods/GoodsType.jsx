@@ -1,12 +1,14 @@
-import React, { useEffect, useState, useRef } from 'react'
+import React, { useEffect, useRef } from 'react'
 //引入antd
 import { Button, Divider, Space, Table, message, Popconfirm, Tag } from 'antd';
 import { DeleteOutlined, EditOutlined } from '@ant-design/icons';
 //引入api
-import { addGoodsTypeAPI, delGoodsAPI, getGoodsTypeAPI, updateGoodsAPI } from '../../../apis/goodsAPI';
+import { addGoodsTypeAPI, delGoodsAPI, updateGoodsTypeAPI } from '../../../apis/goodsAPI';
 //引入子组件
 import TypeAdd from './components/goodsType/TypeAdd';
 import TypeUpdate from './components/goodsType/TypeUpdate';
+import { useDispatch, useSelector } from 'react-redux';
+import { getGoodsTypeAsync } from '../../../store/goodsType/actions';
 
 const GoodsType = () => {
     const columns = [
@@ -17,9 +19,20 @@ const GoodsType = () => {
         {
             title: '类型',
             dataIndex: 'type',
-            render: (value, record) => (
-                <Tag color="orange">{value}</Tag>
-            )
+            render: (value, record) => {
+                if (value === '一级分类') {
+                    return <Tag color="red">{value}</Tag>
+                } else {
+                    return <Tag color="blue">{value}</Tag>
+                }
+            },
+            onCell: (record, rowIndex) => {
+                if (!record.children) {
+                    return {
+                        style: { paddingLeft: '50px' }
+                    }
+                }
+            }
         },
         {
             title: '操作',
@@ -43,8 +56,10 @@ const GoodsType = () => {
             )
         },
     ];
-    const [goodsTypeData, setGoodsTypeData] = useState();
-
+    // const [goodsTypeData, setGoodsTypeData] = useState();
+    //获取状态机的数据
+    const { type } = useSelector(state => state);
+    const dispatch = useDispatch();
 
     //挂载后触发生命周期函数,获取分类数据
     useEffect(() => {
@@ -55,31 +70,33 @@ const GoodsType = () => {
     //渲染页面表格----------------------------------------------------------
     //调接口获取分类数据
     const getGoodsTypeList = async (id = 0) => {
-        const res = await getGoodsTypeAPI({ parentId: id });
-        // console.log(res.data.data);
-        if (0 === id) {
-            setGoodsTypeData(res.data.data.map(item => {
-                return {
-                    ...item,
-                    children: []
-                };
-            }));
-        } else {
-            setGoodsTypeData(goodsTypeData.map(item => {
-                if (id === item._id) {
-                    return {
-                        ...item,
-                        children: res.data.data
-                    };
-                }
-                return item;
-            }))
-        }
+        // const res = await getGoodsTypeAPI({ parentId: id });
+        // // console.log(res.data.data);
+        // if (0 === id) {
+        //     setGoodsTypeData(res.data.data.map(item => {
+        //         return {
+        //             ...item,
+        //             children: []
+        //         };
+        //     }));
+        // } else {
+        //     setGoodsTypeData(goodsTypeData.map(item => {
+        //         if (id === item._id) {
+        //             return {
+        //                 ...item,
+        //                 children: res.data.data
+        //             };
+        //         }
+        //         return item;
+        //     }))
+        // }
+        //调用状态机的异步方法
+        dispatch(getGoodsTypeAsync(id, type));
     }
 
     //展开一级分类触发的事件
     const onExpand = (expanded, record) => {
-        console.log(expanded, record);
+        // console.log(expanded, record);
         if (expanded) {
             getGoodsTypeList(record._id);
         }
@@ -92,9 +109,9 @@ const GoodsType = () => {
     }
     //调接口新增用户，并获取子组件的传参
     const addGoodsData = async (addData) => {
-        console.log('addData', addData);
+        // console.log('addData', addData);
         let res = await addGoodsTypeAPI(addData);
-        console.log(res);
+        // console.log(res);
         if (res.code) {
             //调取接口新增成功，重新渲染页面
             getGoodsTypeList();
@@ -121,7 +138,7 @@ const GoodsType = () => {
     //获取子组件传递的修改数据，调用接口进行修改
     const doUpdateType = async (updateData) => {
         //修改信息
-        let res = await updateGoodsAPI(updateData);
+        let res = await updateGoodsTypeAPI(updateData);
         console.log("updateData", updateData);
         console.log("updateData", res);
         if (res.code) {
@@ -134,7 +151,7 @@ const GoodsType = () => {
         <div>
             <Button onClick={addGoods}>新增分类</Button>
             <Divider></Divider>
-            <Table columns={columns} dataSource={goodsTypeData} rowKey='_id' expandable={{ onExpand }}></Table>
+            <Table columns={columns} dataSource={type} rowKey='_id' expandable={{ onExpand }}></Table>
             {/* 新增分类 */}
             <TypeAdd ref={addRef} addGoodsData={addGoodsData}></TypeAdd>
             {/* 修改分类 */}

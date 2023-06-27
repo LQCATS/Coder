@@ -82,15 +82,9 @@ const Users = () => {
         }
     };
 
-    // //气泡弹框确认按钮触发事件
-    // const confirm = (id) => {
-    //     //调用删除方法
-    //     delUser(id);
-    // };
 
     //气泡按钮取消触发事件
     const cancel = () => {
-        // console.log(e);
         message.error('取消删除');
     };
 

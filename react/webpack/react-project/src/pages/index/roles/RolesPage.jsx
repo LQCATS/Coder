@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from 'react'
+import React, { useRef, useEffect } from 'react'
 
 //引入antd
 import { Space, Table, Button, Divider, message, Popconfirm } from 'antd';
@@ -7,7 +7,9 @@ import { DeleteOutlined, EditOutlined } from '@ant-design/icons';
 import AddRoles from './components/AddRoles';
 import UpdateRole from './components/UpdateRole';
 //引入接口
-import { addRolesAPI, delRolesAPI, getRolesIdAPI, updateRolesAPI } from '../../../apis/rolesAPI';
+import { addRolesAPI, delRolesAPI, updateRolesAPI } from '../../../apis/rolesAPI';
+import { useDispatch, useSelector } from 'react-redux';
+import { getRolesAsync } from '../../../store/roles/actions';
 
 const RolesPage = () => {
     //表格每列渲染的数组
@@ -58,28 +60,33 @@ const RolesPage = () => {
     ];
 
     //设置，表格初始数据
-    const [rolesData, setRolesData] = useState([]);
+    // const [rolesData, setRolesData] = useState([]);
+
+    //组件中获取仓库数据
+    const roles = useSelector(state => state.roles);
+
+    const dispatch = useDispatch();
 
     //挂载后触发生命周期函数,获取数据
     useEffect(() => {
         getRolesList();
+        // eslint-disable-next-line
     }, []);
 
     //调接口获取数据
     const getRolesList = async () => {
-        const res = await getRolesIdAPI({ parentId: 0 });
-        setRolesData(res.data);
-        console.log(res);
+        // const res = await getRolesIdAPI({ parentId: 0 });
+        // // setRolesData(res.data);
+        // dispatch({ type: 'defRoles', payload: res.data });
+        dispatch(getRolesAsync());
     };
 
     //删除--------------------------------------------------------
     //删除角色
     const delRoles = async (id) => {
         // setRolesData(rolesData.filter(item => item._id !== id));
-        console.log(id);
         //调取接口删除
         let res = await delRolesAPI({ id });
-        console.log(res);
         if (res.code) {
             //删除成功重新渲染页面
             getRolesList();
@@ -104,7 +111,6 @@ const RolesPage = () => {
     //新增-----------------------------------------------
     //获取新增的角色
     const getAddRole = async (roleData) => {
-        console.log(roleData);
         let res = await addRolesAPI(roleData);
         if (res.code) {
             //调取接口新增成功，重新渲染页面
@@ -153,7 +159,7 @@ const RolesPage = () => {
             {/* <Button type='primary' onClick={() => showAddFa()}>新增角色</Button> */}
             <Button type='primary' onClick={showAddRole}>新增角色</Button>
             <Divider />
-            <Table columns={columns} dataSource={rolesData} rowKey='_id' />
+            <Table columns={columns} dataSource={roles} rowKey='_id' />
             {/* 新增角色 */}
             {/* <AddRoles getAddRole={getAddRole} showAddRole={showAddRole} ></AddRoles> */}
             <AddRoles getAddRole={getAddRole} ref={addRef} ></AddRoles>

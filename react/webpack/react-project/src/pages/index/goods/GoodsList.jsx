@@ -1,10 +1,23 @@
 
-import React, { useState, useEffect } from 'react'
+import React, { useEffect, useRef } from 'react'
 //引入antd
-import { Table, Space, Button, Image, Divider } from 'antd';
+import { Table, Space, Button, Image, Divider, Popconfirm, Pagination, Input, Select, } from 'antd';
 //引入api
-import { getGoodsAPI } from '../../../apis/goodsAPI';
-import { useNavigate } from 'react-router-dom';
+import { deleteGoodsAPI } from '../../../apis/goodsAPI';
+import { Link, useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { getGoodsAsync, searchGoodsAsync } from '../../../store/goods/actions';
+
+const options = [
+    {
+        value: 'name',
+        label: '商品名称',
+    },
+    {
+        value: 'title',
+        label: '商品简介',
+    },
+];
 
 const GoodsList = () => {
     const columns = [
@@ -50,14 +63,38 @@ const GoodsList = () => {
             dataIndex: '_id',
             render: (value, record) => (
                 <Space>
-                    <Button type='dashed'>修改</Button>
-                    <Button type='dashed'>删除</Button>
+                    {/* 动态路由传参 */}
+                    <Link to={`/update/goods/${value}`}>修改</Link>
+                    {/* state传参 */}
+                    <Link to='/update/goods' state={{ id: value }}>修改</Link>
+                    <Popconfirm
+                        title="删除信息提示"
+                        description="点击确定将永久删除该用户，确定继续操作吗？"
+                        onConfirm={() => delGoods(value)}
+                        okText="确定"
+                        cancelText="取消"
+                    >
+                        <Button danger type='dashed'>删除</Button>
+                    </Popconfirm>
                 </Space>
             )
         }
     ];
-    const [goodsList, setGoodsList] = useState([]);
     const navigate = useNavigate();
+
+    //状态机获取商品列表和总条数
+    const goods = useSelector(state => state.goods);
+    const dispatch = useDispatch();
+    //分页需要的数据
+    const pageData = useRef({
+        pageSize: 3,
+        currentPage: 1
+    });
+    //搜索需要的数据
+    const search = useRef({
+        searchType: 'name',
+        searchData: ''
+    });
 
     const rowSelection = {
         onChange: (selectedRowKeys, selectedRows) => {
@@ -74,26 +111,97 @@ const GoodsList = () => {
     //获取数据，渲染table
     useEffect(() => {
         getGoodsList();
-
+        // eslint-disable-next-line
     }, []);
 
     const getGoodsList = async () => {
-        const res = await getGoodsAPI();
+        dispatch(getGoodsAsync(pageData.current));
+    }
+
+
+    //删除商品-------------------------------------------------------------------------------
+    const delGoods = async (id) => {
+        const res = await deleteGoodsAPI({ id });
+        // console.log(res);
         if (res.code) {
-            setGoodsList(res.data);
+            //重新渲染页面
+            getGoodsList();
         }
     }
+    //分页------------------------------------------------------------------------------------
+    const doSearch = () => {
+        //调接口查询数据(状态机)
+        dispatch(searchGoodsAsync({
+            ...search.current,
+            ...pageData.current
+        }));
+    }
+
+    const onChange = (currentPage, pageSize) => {
+        // console.log(currentPage, pageSize);
+        //设置分页查询的参数
+        pageData.current = {
+            currentPage,
+            pageSize
+        }
+        if (search.current.searchData) {
+            //搜索的input框有内容，调用搜索事件
+            doSearch();
+        } else {
+            //获取全部数据重新渲染页面
+            getGoodsList();
+        }
+
+    }
+
+    //搜索输入框回车触发的事件
+    const onPressEnter = (e) => {
+        //将需要搜索的内容全局保存
+        search.current.searchData = e.target.value;
+        //调接口查询数据(状态机)
+        doSearch();
+
+    }
+    //搜索下拉框切换事件
+    const searchChange = (e) => {
+        search.current.searchType = e;
+    }
+
     return (
         <div>
-            <Button type='primary' onClick={() => {
-                navigate('/add/goods')
-            }}>新增商品</Button>
+            <Space>
+                <Space.Compact>
+                    <Select defaultValue="商品名称" options={options} onChange={searchChange} />
+                    <Input onPressEnter={onPressEnter} />
+                </Space.Compact>
+
+                <Button type='primary' onClick={() => {
+                    navigate('/add/goods')
+                }}>新增商品</Button>
+            </Space>
             <Divider></Divider>
-            <Table columns={columns} dataSource={goodsList} rowKey='_id'
+            <Table
+                columns={columns}
+                dataSource={goods.goodsList}
+                rowKey='_id'
                 rowSelection={{
                     type: 'checkbox',
                     ...rowSelection,
-                }}></Table>
+                }}
+                pagination={false}></Table>
+
+            <div style={{ marginTop: '50px' }}>
+                <Pagination
+                    total={goods.total}
+                    showSizeChanger
+                    showQuickJumper
+                    current={pageData.current.currentPage}
+                    pageSize={pageData.current.pageSize}
+                    pageSizeOptions={[3, 5, 7, 10]}
+                    showTotal={(total) => `共 ${total} 条`}
+                    onChange={onChange}
+                />
+            </div>
         </div>
     )
 }

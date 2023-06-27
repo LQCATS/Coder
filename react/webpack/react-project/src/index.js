@@ -4,9 +4,15 @@ import App from './App';
 
 import '@/less/index.less';
 
+//状态机全局挂载
+import { Provider } from 'react-redux';
+import store from './store';
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-    <App />
+    <Provider store={store}>
+        <App />
+    </Provider>
 );
 
 // If you want to start measuring performance in your app, pass a function

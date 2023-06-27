@@ -76,24 +76,18 @@ const GoodsAdd = () => {
     //表单提交事件-------------------------------------------------------------------------
     const navigate = useNavigate();
     const onFinish = async (values) => {
-        // console.log(addGoods);
         //调接口新增数据
         const res = await addGoodsAPI({
             ...values,
             type: cascaderRef.current,
             imgSrc: imgRef.current
         });
-        // console.log(res);
         //跳转页面到商品列表
         if (res.code) {
             message.success('商品新增成功');
             navigate('/goodsList');
         }
-        // console.log({
-        //     ...values,
-        //     type: cascaderRef.current,
-        //     imgSrc: imgRef.current
-        // });
+        
     }
 
 
