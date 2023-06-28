@@ -7,7 +7,8 @@ import { addGoodsTypeAPI, delGoodsAPI, updateGoodsTypeAPI } from '../../../apis/
 //引入子组件
 import TypeAdd from './components/goodsType/TypeAdd';
 import TypeUpdate from './components/goodsType/TypeUpdate';
-import useTypeRequest from '../../../hooks/goodsTypeHooks';
+import { useDispatch, useSelector } from 'react-redux';
+import { getGoodsTypeAsync } from '../../../store/goodsType/actions';
 
 const GoodsType = () => {
     const columns = [
@@ -55,17 +56,43 @@ const GoodsType = () => {
             )
         },
     ];
+    // const [goodsTypeData, setGoodsTypeData] = useState();
+    //获取状态机的数据
+    const { type } = useSelector(state => state);
+    const dispatch = useDispatch();
 
-    //获取状态机的数据,自定义hook
-    const { type, getGoodsTypeList } = useTypeRequest();
-
-    //渲染页面表格----------------------------------------------------------
     //挂载后触发生命周期函数,获取分类数据
     useEffect(() => {
         getGoodsTypeList();
         // eslint-disable-next-line
     }, []);
 
+    //渲染页面表格----------------------------------------------------------
+    //调接口获取分类数据
+    const getGoodsTypeList = async (id = 0) => {
+        // const res = await getGoodsTypeAPI({ parentId: id });
+        // // console.log(res.data.data);
+        // if (0 === id) {
+        //     setGoodsTypeData(res.data.data.map(item => {
+        //         return {
+        //             ...item,
+        //             children: []
+        //         };
+        //     }));
+        // } else {
+        //     setGoodsTypeData(goodsTypeData.map(item => {
+        //         if (id === item._id) {
+        //             return {
+        //                 ...item,
+        //                 children: res.data.data
+        //             };
+        //         }
+        //         return item;
+        //     }))
+        // }
+        //调用状态机的异步方法
+        dispatch(getGoodsTypeAsync(id, type));
+    }
 
     //展开一级分类触发的事件
     const onExpand = (expanded, record) => {

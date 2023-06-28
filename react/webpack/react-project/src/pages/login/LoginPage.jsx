@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { Button, Form, Input, Card } from 'antd'
 import { loginAPI } from '../../apis/usersAPI';
 
@@ -26,19 +26,15 @@ const LoginPage = () => {
         // console.log(res);
         if (res.code) {
             //将数据保存在本地储存
-            localStorage.setItem('Token', JSON.stringify(res.data.token));
+            // localStorage.setItem('Token', JSON.stringify(res.data.token));
+            localStorage.Token = res.data.token;
+            localStorage.UserInfo = JSON.stringify(res.data.userInfo);
             //跳转页面
             navigate('/', { replace: true })
         }
     }
     return (
         <div className='login'>
-            <Link to={'/'}>link登录</Link>
-            <button onClick={() => {
-                navigate('/', { replace: true })
-            }}>登录</button>
-
-            <Button type="primary" size='small'>登录</Button>
 
             <Card
                 title="登录"

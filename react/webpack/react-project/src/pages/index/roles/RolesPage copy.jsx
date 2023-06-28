@@ -8,7 +8,8 @@ import AddRoles from './components/AddRoles';
 import UpdateRole from './components/UpdateRole';
 //引入接口
 import { addRolesAPI, delRolesAPI, updateRolesAPI } from '../../../apis/rolesAPI';
-import useRolesRequest from '../../../hooks/rolesHook';
+import { useDispatch, useSelector } from 'react-redux';
+import { getRolesAsync } from '../../../store/roles/actions';
 
 const RolesPage = () => {
     //表格每列渲染的数组
@@ -58,8 +59,13 @@ const RolesPage = () => {
         },
     ];
 
-    //组件中用自定义的hook方法获取状态机数据
-    const { roles, getRolesList } = useRolesRequest();
+    //设置，表格初始数据
+    // const [rolesData, setRolesData] = useState([]);
+
+    //组件中获取仓库数据
+    const roles = useSelector(state => state.roles);
+
+    const dispatch = useDispatch();
 
     //挂载后触发生命周期函数,获取数据
     useEffect(() => {
@@ -67,6 +73,13 @@ const RolesPage = () => {
         // eslint-disable-next-line
     }, []);
 
+    //调接口获取数据
+    const getRolesList = async () => {
+        // const res = await getRolesIdAPI({ parentId: 0 });
+        // // setRolesData(res.data);
+        // dispatch({ type: 'defRoles', payload: res.data });
+        dispatch(getRolesAsync());
+    };
 
     //删除--------------------------------------------------------
     //删除角色

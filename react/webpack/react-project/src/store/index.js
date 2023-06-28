@@ -5,12 +5,14 @@ import thunk from 'redux-thunk';
 import { rolesReducer } from './roles/reducer';
 import { typeReducer } from './goodsType/reducer';
 import { goodsReducer } from './goods/reducer';
+import { usersReducer } from './users/reducer';
 
 //合并reducer
 const allReducer = combineReducers({
     roles: rolesReducer,
     type: typeReducer,
-    goods: goodsReducer
+    goods: goodsReducer,
+    users: usersReducer,
 })
 
 //将reduce放进状态机中

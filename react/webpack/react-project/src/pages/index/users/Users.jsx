@@ -1,7 +1,7 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 
 //引入后端请求函数
-import { addUsersAPI, delUserAPI, getUsersAPI, updateUsersAPI } from '../../../apis/usersAPI';
+import { addUsersAPI, delUserAPI, updateUsersAPI } from '../../../apis/usersAPI';
 
 //引入子组件
 import UsersAdd from './components/UsersAdd';
@@ -10,6 +10,9 @@ import UsersUpdate from './components/UsersUpdate';
 //引入antd
 import { Button, Space, Table, message, Popconfirm, Divider } from 'antd';
 import { DeleteOutlined, EditOutlined } from '@ant-design/icons';
+// import { useDispatch, useSelector } from 'react-redux';
+// import { getUsersAsync } from '../../../store/users/actions';
+import useRequest from '../../../hooks/userHook';
 
 const Users = () => {
 
@@ -51,23 +54,29 @@ const Users = () => {
         }
     ];
 
-    const [usersData, setUsersData] = useState([]);
+    // const [usersData, setUsersData] = useState([]);
     // console.log(usersData);
+    //引入状态机的数据
+    // const { users } = useSelector(state => state);
+    // const dispatch = useDispatch();
 
+    const { getUsers, users } = useRequest();
     //挂载后触发生命周期函数
     useEffect(() => {
         getUsers();
+        // eslint-disable-next-line
     }, []);
 
     //获取用户数据,渲染页面
-    const getUsers = async () => {
-        const res = await getUsersAPI();
-        // console.log(res);
-        if (res.code) {
-            setUsersData(res.data);
-        }
-
-    }
+    // const getUsers = async () => {
+    //     // const res = await getUsersAPI();
+    //     // // console.log(res);
+    //     // if (res.code) {
+    //     //     // setUsersData(res.data);
+    //     //     dispatch({ type: 'setUsers', payload: res.data });
+    //     // }
+    //     dispatch(getUsersAsync());
+    // }
 
     //气泡弹框确认按钮触发事件，删除用户数据,并重新渲染页面
     const delUser = async (id) => {
@@ -120,7 +129,7 @@ const Users = () => {
         <div>
             <Button onClick={addUser}>新增用户</Button>
             <Divider></Divider>
-            <Table columns={columns} dataSource={usersData} rowKey='_id'></Table>
+            <Table columns={columns} dataSource={users} rowKey='_id'></Table>
             {/* 新增用户 */}
             <UsersAdd ref={addRef} addUserData={addUserData}></UsersAdd>
             {/* 修改用户 */}

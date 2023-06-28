@@ -5,7 +5,8 @@ import { Table, Space, Button, Image, Divider, Popconfirm, Pagination, Input, Se
 //引入api
 import { deleteGoodsAPI } from '../../../apis/goodsAPI';
 import { Link, useNavigate } from 'react-router-dom';
-import useGoodsRequest from '../../../hooks/goodsHook';
+import { useDispatch, useSelector } from 'react-redux';
+import { getGoodsAsync, searchGoodsAsync } from '../../../store/goods/actions';
 
 const options = [
     {
@@ -82,7 +83,8 @@ const GoodsList = () => {
     const navigate = useNavigate();
 
     //状态机获取商品列表和总条数
-    const { goods, getGoodsList: getGoodsAsync, searchGoods } = useGoodsRequest();
+    const goods = useSelector(state => state.goods);
+    const dispatch = useDispatch();
     //分页需要的数据
     const pageData = useRef({
         pageSize: 3,
@@ -113,7 +115,7 @@ const GoodsList = () => {
     }, []);
 
     const getGoodsList = async () => {
-        getGoodsAsync(pageData.current);
+        dispatch(getGoodsAsync(pageData.current));
     }
 
 
@@ -128,11 +130,11 @@ const GoodsList = () => {
     }
     //分页------------------------------------------------------------------------------------
     const doSearch = () => {
-
-        searchGoods({
+        //调接口查询数据(状态机)
+        dispatch(searchGoodsAsync({
             ...search.current,
             ...pageData.current
-        })
+        }));
     }
 
     const onChange = (currentPage, pageSize) => {
