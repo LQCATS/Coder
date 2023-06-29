@@ -7,6 +7,9 @@ import { addUsersAPI, delUserAPI, updateUsersAPI } from '../../../apis/usersAPI'
 import UsersAdd from './components/UsersAdd';
 import UsersUpdate from './components/UsersUpdate';
 
+//引入高阶组件，hoc
+import AuthButton from '../../../hoc/AuthButton';
+
 //引入antd
 import { Button, Space, Table, message, Popconfirm, Divider } from 'antd';
 import { DeleteOutlined, EditOutlined } from '@ant-design/icons';
@@ -34,9 +37,13 @@ const Users = () => {
             dataIndex: '_id',
             render: (value, record) => (
                 <Space>
-                    <Button type="dashed" size='small' icon={<EditOutlined />} onClick={() => {
+                    {/* <Button type="dashed" size='small' icon={<EditOutlined />} onClick={() => {
                         updateRef.current.openUpdate(record);
-                    }}  >修改</Button>
+                    }}  >修改</Button> */}
+
+                    <AuthButton type="dashed" size='small' icon={<EditOutlined />} onClick={() => {
+                        updateRef.current.openUpdate(record);
+                    }}></AuthButton>
 
                     <Popconfirm
                         title="删除信息提示"

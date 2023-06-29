@@ -1,5 +1,5 @@
 import { React, lazy } from 'react';
-import { useRoutes } from 'react-router-dom';
+import { Navigate, useLocation, useRoutes } from 'react-router-dom';
 //引入一级路由页组件
 import LoginPage from '@p/login/LoginPage';
 import IndexPage from '@p/index/IndexPage';
@@ -16,7 +16,6 @@ import SalePage from '@p/index/data/SalePage';
 import ExpendPage from '@p/index/data/ExpendPage';
 import { useState } from 'react';
 import { useEffect } from 'react';
-import { useMemo } from 'react';
 //路由懒加载
 const NotFound = lazy(() => import('@p/404/NotFound'));
 
@@ -26,8 +25,13 @@ const router = [
         element: <LoginPage />
     },
     {
+        path:'/',
+        element:<Navigate to='/home'/>
+    },
+    {
         path: '/',
         element: <IndexPage />,
+        authKey: '/home',
         children: [
             {
                 path: 'home',
@@ -96,78 +100,53 @@ const router = [
 
 const RouterConfig = () => {
 
+    //获取当前页的路由，侦听路由路劲变化，触发useEffect生命周期
+    const { pathname } = useLocation();
+
     //定义全局变量保存用户的菜单权限
     const [authPath, setAuthPath] = useState([]);
+
     //获取本地存储的菜单权限,保存在全局变量中
     useEffect(() => {
         const { role } = JSON.parse(localStorage.UserInfo || '{}');
         if (role) {
             setAuthPath(role.menus);
         }
-    }, [])
+    }, [pathname])
 
 
-    //递归算法，将含有authKey属性的数组进行筛选
+    //递归算法，将数组进行筛选
     const filterRouter = (router) => {
 
         return router.reduce((data, item) => {
-            if (authPath.includes(item.authKey)) {
-                if (item.children) {
+            //如果authKey存在需要筛选
+            if (item.authKey) {
+                //后端返回的数据包含authKey，返回item的数据
+                if (authPath.includes(item.authKey)) {
                     return [
                         ...data,
                         {
                             path: item.path,
                             element: item.element,
-                            children: filterRouter(item.children),
+                            children: filterRouter(item.children || []),
                         }
-                    ];
-                } 
-                return [
-                    ...data,
-                    {
-                        path: item.path,
-                        element: item.element
-                    }
-                ];
+                    ]
 
+                }
+                //后端返回的数据不包括authKey，直接返回data
+                return data;
             }
-
-            return data;
-
+            //authKey不存在,保留item
+            return [
+                ...data,
+                item
+            ]
         }, []);
     };
 
-    //计算属性
-    const authRouter = useMemo(() => {
-
-        //先找到所有用户共有的，不需要设置权限的，再筛选需要设置权限的
-        return router.reduce((data, item) => {
-            if (item.children) {
-                return [
-                    ...data,
-                    {
-                        path: item.path,
-                        element: item.element,
-                        children: filterRouter(item.children)
-                    }
-
-                ];
-            }
-            return [
-                ...data,
-                {
-                    path: item.path,
-                    element: item.element
-                }
-            ];
-
-        }, []);
-
-        // eslint-disable-next-line
-    }, [authPath])
-
+    
     //利用路由的hook方法生成路由组件
-    const routes = useRoutes(authRouter);
+    const routes = useRoutes(filterRouter(router));
 
     return (
         <>

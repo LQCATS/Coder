@@ -31,3 +31,26 @@
 - rem：相对单位，相对于html的font-size
 - vw：相对单位，屏幕宽度的1%
 - vh：相对单位，屏幕高度的1%
+
+## 4.行内元素与块级元素的区别有哪些？
+
+1. 行内元素：可以多个标签存在一行，不能直接设置行内标签的高度、宽度、行高以及顶和底边距，完全靠内容撑开宽高
+2. 块级元素：独占一行，对高度、宽度、行高以及顶和底边距都可设置的属性值生效；如果不给宽度，块级元素就默认为浏览器的宽度，即就是100%宽
+
+## 5.CSS隐藏元素的方式有哪些？区别是什么？
+
+## 6.列举常见的行内元素和块级元素（各5个）
+
+1. 行内元素：a，span，i，strong，b，em
+2. 块级元素：div、p、ul、ol、li、dl、dt、dd、table、form、h1~h6
+
+## 7.HTML5的新特性有哪些？（列举5个）
+
+- 语义化标签：header，footer，section，article。。。
+- 多媒体标签：audio、video。。。
+- 绘图标签：canvas
+- 本地存储：sessionStorage、localStorage
+- 百度地图api
+- 表单控件：calendar、date、time、email、url、search 。。。
+
+## 8.CSS3的新特性有哪些？（列举5个

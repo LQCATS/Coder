@@ -10,6 +10,9 @@ import UpdateRole from './components/UpdateRole';
 import { addRolesAPI, delRolesAPI, updateRolesAPI } from '../../../apis/rolesAPI';
 import useRolesRequest from '../../../hooks/rolesHook';
 
+//引入高阶组件
+import AuthButton from '../../../hoc/AuthButton';
+
 const RolesPage = () => {
     //表格每列渲染的数组
     const columns = [
@@ -49,10 +52,14 @@ const RolesPage = () => {
                     >
                         <Button danger size='small' icon={<DeleteOutlined />} >删除</Button>
                     </Popconfirm>
-                    <Button type="dashed" size='small' icon={<EditOutlined />} onClick={() => {
+                    {/* <Button type="dashed" size='small' icon={<EditOutlined />} onClick={() => {
                         //通过ref获取子组件的方法，并传参给子组件，显示修改框,并传入要修改的数据
                         updateRef.current.showUpdateModal(record);
-                    }}>修改</Button>
+                    }}>修改</Button> */}
+                    <AuthButton type="dashed" size='small' icon={<EditOutlined />} onClick={() => {
+                        //通过ref获取子组件的方法，并传参给子组件，显示修改框,并传入要修改的数据
+                        updateRef.current.showUpdateModal(record);
+                    }}>修改</AuthButton>
                 </Space>
             ),
         },
