@@ -1,24 +1,20 @@
 // import React, { useEffect } from 'react'
-import React, { forwardRef, useImperativeHandle } from 'react'
+import React, { forwardRef, useImperativeHandle, useState, memo } from 'react'
 import { Modal, Form, Input } from 'antd';
-import { useState } from 'react';
 
 
 const AddRoles = (props, ref) => {
+    console.log('角色新增');
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [addRoleObj, setAddRoleObj] = useState({});
 
-    // useEffect(() => {
-    //     //组件挂载后执行的生命周期函数
-    //     props.showAddRole(showModal)
-    // })
     useImperativeHandle(ref, () => {
         // 返回给父组件的数据或方法
         return {
             showModal
         }
     })
-    
+
     const showModal = () => {
         setIsModalOpen(true);
     };
@@ -84,5 +80,4 @@ const AddRoles = (props, ref) => {
     );
 }
 
-// export default AddRoles
-export default forwardRef(AddRoles)
+export default memo(forwardRef(AddRoles));

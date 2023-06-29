@@ -6,6 +6,8 @@ import styles from './indexPage.module.less';
 //引入子组件
 import SiderMenu from '@c/menu/SiderMenu';
 
+import IndexBreadCrumb from '../../components/breadcrumb/IndexBreadCrumb';
+
 //引入antd的内容
 import {
     MenuFoldOutlined,
@@ -39,6 +41,7 @@ const IndexPage = () => {
                     style={{
                         padding: 0,
                         background: colorBgContainer,
+                        marginBottom: '20px'
                     }}
                 >
                     <Button
@@ -52,9 +55,13 @@ const IndexPage = () => {
                         }}
                     />
                 </Header>
+                {/* 面包屑导航 */}
+                <div style={{marginLeft: '30px'}}>
+                    <IndexBreadCrumb />
+                </div>
                 <Content
                     style={{
-                        margin: '24px 16px',
+                        margin: '20px 16px',
                         padding: 24,
                         minHeight: 280,
                         background: colorBgContainer,

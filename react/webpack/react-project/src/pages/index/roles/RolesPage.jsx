@@ -12,6 +12,7 @@ import useRolesRequest from '../../../hooks/rolesHook';
 
 //引入高阶组件
 import AuthButton from '../../../hoc/AuthButton';
+import { useCallback } from 'react';
 
 const RolesPage = () => {
     //表格每列渲染的数组
@@ -32,10 +33,11 @@ const RolesPage = () => {
             title: '修改时间',
             dataIndex: 'authTime',
         },
-        // {
-        //     title: '菜单',
-        //     dataIndex: 'menus',
-        // },
+        {
+            title: '菜单',
+            dataIndex: 'menus',
+            ellipsis: true
+        },
         {
             title: '操作',
             dataIndex: '_id',
@@ -52,10 +54,7 @@ const RolesPage = () => {
                     >
                         <Button danger size='small' icon={<DeleteOutlined />} >删除</Button>
                     </Popconfirm>
-                    {/* <Button type="dashed" size='small' icon={<EditOutlined />} onClick={() => {
-                        //通过ref获取子组件的方法，并传参给子组件，显示修改框,并传入要修改的数据
-                        updateRef.current.showUpdateModal(record);
-                    }}>修改</Button> */}
+                    {/* hoc高阶组件封装的button组件，用法和antd一样 */}
                     <AuthButton type="dashed" size='small' icon={<EditOutlined />} onClick={() => {
                         //通过ref获取子组件的方法，并传参给子组件，显示修改框,并传入要修改的数据
                         updateRef.current.showUpdateModal(record);
@@ -78,7 +77,6 @@ const RolesPage = () => {
     //删除--------------------------------------------------------
     //删除角色
     const delRoles = async (id) => {
-        // setRolesData(rolesData.filter(item => item._id !== id));
         //调取接口删除
         let res = await delRolesAPI({ id });
         if (res.code) {
@@ -112,12 +110,11 @@ const RolesPage = () => {
         }
     };
 
-    // let showAddFa;
-    // //打开新增角色对话框
-    // const showAddRole = (showAdd) => {
-    //     showAddFa = showAdd;
-    //     // console.log(showAddFa);
-    // }
+    //useCallback缓存方法，传递给子组件
+    // eslint-disable-next-line
+    const getAddRoleCb = useCallback(getAddRole, []);
+
+
     // 新增角色
     const addRef = useRef();
     const showAddRole = () => {
@@ -129,15 +126,6 @@ const RolesPage = () => {
     const updateRef = useRef();
     //子组件给父组件传参，修改父组件的数据
     const updateRoleOne = async (updateOne) => {
-        // setRolesData(rolesData.map(item => {
-        //     if (item._id === updateOne._id) {
-        //         return {
-        //             ...updateOne
-        //         }
-        //     }
-        //     return item
-        // }))
-
         //调取接口修改数据
         let res = await updateRolesAPI(updateOne);
         // console.log(res);
@@ -150,13 +138,11 @@ const RolesPage = () => {
     //页面渲染
     return (
         <>
-            {/* <Button type='primary' onClick={() => showAddFa()}>新增角色</Button> */}
             <Button type='primary' onClick={showAddRole}>新增角色</Button>
             <Divider />
             <Table columns={columns} dataSource={roles} rowKey='_id' />
             {/* 新增角色 */}
-            {/* <AddRoles getAddRole={getAddRole} showAddRole={showAddRole} ></AddRoles> */}
-            <AddRoles getAddRole={getAddRole} ref={addRef} ></AddRoles>
+            <AddRoles getAddRole={getAddRoleCb} ref={addRef} ></AddRoles>
             {/* 修改角色 */}
             <UpdateRole ref={updateRef} updateRoleOne={updateRoleOne}></UpdateRole>
         </>

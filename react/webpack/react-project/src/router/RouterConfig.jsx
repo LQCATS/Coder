@@ -64,7 +64,7 @@ const router = [
                 authKey: '/home/product/list'
             },
             {
-                path: 'update/goods/',
+                path: 'update/goods',
                 element: <GoodsUpdate />,
                 authKey: '/home/product/list'
             },
