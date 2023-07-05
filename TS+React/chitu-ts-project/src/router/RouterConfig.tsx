@@ -54,8 +54,8 @@ const RouterConfig = () => {
                     element: lazyLoad(item.component),
                 }
             ]
-        }, [])
-    }
+        }, []);
+    };
 
     //计算属性，获取需要的菜单数据
     const routesData = useMemo(() => {
@@ -70,9 +70,9 @@ const RouterConfig = () => {
                 }
             ]
 
-        }, routes)
+        }, routes);
 
-    }, [menusData])
+    }, [menusData]);
 
     const router = useRoutes(routesData);
 
