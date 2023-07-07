@@ -25,7 +25,7 @@
 
 <script setup lang="ts">
 import { reactive, onMounted, computed } from 'vue';
-import { useGlobalStore } from "../../store/global.d";
+import { useGlobalStore } from "../../store/global";
 import ChildMenus from './ChildMenus.vue';
 import { CustomIcon } from '../icons/CustomIcon';
 

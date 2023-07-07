@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router';
 // import { useGlobalStore } from '../store/global';
-import { useGlobalStore } from '../store/global.d';
+import { useGlobalStore } from '../store/global';
 import LoginPage from '../views/LoginPage.vue';
 
 const routes = [
