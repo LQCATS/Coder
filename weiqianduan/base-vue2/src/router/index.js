@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import HomeView from '../views/HomeView.vue';
+import indexVue from '../views/index/index.vue';
 
 Vue.use(VueRouter)
 
@@ -12,13 +13,16 @@ const routes = [
 		children: [
 			{
 				path: 'index',
-				name: 'home',
-				component: () => import('../views/index/index.vue')
+				name: 'index',
+				component: indexVue
 			}
 		]
 	},
-
-
+	// 给子应用提供的路由
+	{
+		path: '/*',
+		component: HomeView,
+	}
 ]
 
 const router = new VueRouter({

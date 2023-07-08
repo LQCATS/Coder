@@ -5,14 +5,14 @@
 
 				<!-- 菜单 -->
 				<el-menu default-active="2" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose"
-					background-color="#545c64" text-color="#fff" active-text-color="#ffd04b">
+					background-color="#545c64" text-color="#fff" active-text-color="#ffd04b" :router="true">
 					<el-submenu index="1">
 						<template slot="title">
 							<i class="el-icon-location"></i>
 							<span>主应用(vue2)</span>
 						</template>
 						<el-menu-item-group>
-							<el-menu-item index="1-1">首页</el-menu-item>
+							<el-menu-item index="/index">首页</el-menu-item>
 						</el-menu-item-group>
 					</el-submenu>
 
@@ -22,7 +22,7 @@
 							<span>子应用(vue2)</span>
 						</template>
 						<el-menu-item-group>
-							<el-menu-item index="2-1">首页</el-menu-item>
+							<el-menu-item index="/vue2/list">商品列表</el-menu-item>
 						</el-menu-item-group>
 					</el-submenu>
 
@@ -32,7 +32,7 @@
 							<span>子应用(vue3)</span>
 						</template>
 						<el-menu-item-group>
-							<el-menu-item index="3-1">首页</el-menu-item>
+							<el-menu-item index="/vue3/list">优惠券列表</el-menu-item>
 						</el-menu-item-group>
 					</el-submenu>
 
@@ -42,7 +42,7 @@
 							<span>子应用(react)</span>
 						</template>
 						<el-menu-item-group>
-							<el-menu-item index="4-1">首页</el-menu-item>
+							<el-menu-item index="/react/list">订单列表</el-menu-item>
 						</el-menu-item-group>
 					</el-submenu>
 
@@ -52,7 +52,7 @@
 							<span>子应用(umi)</span>
 						</template>
 						<el-menu-item-group>
-							<el-menu-item index="5-1">首页</el-menu-item>
+							<el-menu-item index="/umi/list">拼团列表</el-menu-item>
 						</el-menu-item-group>
 					</el-submenu>
 
