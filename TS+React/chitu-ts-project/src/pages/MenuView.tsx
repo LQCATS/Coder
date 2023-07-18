@@ -7,63 +7,16 @@ import {
     SettingOutlined,
     LogoutOutlined
 } from '@ant-design/icons';
-import { Layout, Button, theme, Avatar, Dropdown, Space } from 'antd';
+import { Layout, Button, theme, Avatar, Dropdown, Space, Breadcrumb } from 'antd';
 
-import { Link, Outlet } from 'react-router-dom';
+import { Link, Outlet, useLocation, useNavigate } from 'react-router-dom';
 
 import MenuSider from '../component/menu/MenuSider';
+import useRequest from '../hook/useRequest';
 
 const { Header, Sider, Content } = Layout;
 
-const items: {
-    key: string,
-    label: React.ReactElement,
-}[] = [
-        {
-            key: '1',
-            label: (
-                <>
-                    <Space size={'large'}>
-                        <UserOutlined />
-                        <Link to='/profile'>个人中心</Link>
-                    </Space>
 
-
-                </>
-            )
-        },
-        {
-            key: '2',
-            label: (
-                <>
-                    <Space size={'large'}>
-                        <KeyOutlined />
-                        <span>密码修改</span>
-                    </Space>
-
-                </>
-            )
-        },
-        {
-            key: '3',
-            label: <>
-                <Space size={'large'}>
-                    <SettingOutlined />
-                    <span>系统定制</span>
-                </Space>
-            </>,
-        },
-        {
-            key: '4',
-            label: <>
-                <Space size={'large'}>
-                    <LogoutOutlined />
-                    <span>退出登录</span>
-                </Space>
-            </>,
-        },
-
-    ]
 
 const MenuView = () => {
     const [collapsed, setCollapsed] = useState(false);
@@ -71,7 +24,123 @@ const MenuView = () => {
     const {
         token: { colorBgContainer },
     } = theme.useToken();
-    const { avatar, username } = JSON.parse(localStorage.User);
+    const { avatar, username } = JSON.parse(localStorage.User || '{}');
+
+    const navigate = useNavigate();
+    //获取本地的路由路径
+    const { pathname } = useLocation();
+    //面包屑--------------------------------------------------------------------------------------------------
+    //获取用户的菜单权限数据
+    const { menusData } = useRequest();
+    const routerList: any = menusData[0]['children'];
+
+    //找到当前菜单对应的路由对象
+    const curPath1 = (menusData: any) => {
+        return menusData.find((item: any) => {
+            if (item.children) {
+                return curPath1(item.children);
+            }
+            return item.path.includes(pathname);
+        });
+    }
+
+    const curPathArr = [curPath1(routerList)];
+
+    const curNameArr = (curPathArr: any) => {
+        return curPathArr.reduce((data: any, item: any) => {
+            if (item.children) {
+                if (pathname.includes(item.path)) {
+                    return [
+                        ...data,
+                        {
+
+                            title: item.name,
+
+                        },
+                        ...curNameArr(item.children)
+                    ];
+                }
+            } else {
+                if (pathname.includes(item.path)) {
+                    return [
+                        ...data,
+                        {
+
+                            title: item.name,
+                        }
+
+                    ];
+                }
+            }
+            return data;
+        }, []);
+    }
+
+    // console.log(curNameArr(curPathArr));
+
+    const breadcrumb = [{
+        title: <span onClick={() => {
+            navigate('/home')
+        }}>首页</span>
+    }];
+    breadcrumb.push(...curNameArr(curPathArr));
+
+    //-----------------------------------------------------------------------------------------------------------
+    const items: {
+        key: string,
+        label: React.ReactElement,
+    }[] = [
+            {
+                key: '1',
+                label: (
+                    <>
+                        <Space size={'large'}>
+                            <UserOutlined />
+                            <Link to='/profile'>个人中心</Link>
+                        </Space>
+
+
+                    </>
+                )
+            },
+            {
+                key: '2',
+                label: (
+                    <>
+                        <Space size={'large'}>
+                            <KeyOutlined />
+                            <span>密码修改</span>
+                        </Space>
+
+                    </>
+                )
+            },
+            {
+                key: '3',
+                label: <>
+                    <Space size={'large'}>
+                        <SettingOutlined />
+                        <span>系统定制</span>
+                    </Space>
+                </>,
+            },
+            {
+                key: '4',
+                label: <>
+                    <Space size={'large'}>
+                        <LogoutOutlined />
+                        <span onClick={() => {
+                            //清空本地储存
+                            localStorage.removeItem('Token');
+                            localStorage.removeItem('User');
+                            //跳转到登录页面
+                            navigate('/login');
+                        }}>退出登录</span>
+                    </Space>
+                </>,
+            },
+
+        ]
 
     return (
         <>
@@ -118,6 +187,11 @@ const MenuView = () => {
                             background: colorBgContainer,
                         }}
                     >
+                        {/* 面包屑 */}
+                        <Breadcrumb
+                            items={breadcrumb}
+                            style={{ cursor: 'pointer' }}
+                        />
                         <Outlet />
                     </Content>
                 </Layout>
@@ -127,4 +201,4 @@ const MenuView = () => {
     );
 }
 
-export default MenuView
+export default MenuView;

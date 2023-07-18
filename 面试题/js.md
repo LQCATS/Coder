@@ -94,7 +94,7 @@
 
 ## 12.JS的数据类型有哪些？
 
-- 基本数据类型：数字，字符串，布尔值，bull，undefined，Symbol，bigInt
+- 基本数据类型：数字，字符串，布尔值，null，undefined，Symbol，bigInt
 - 引用数据类型：object
 
 ## 12.基本类型数据和引用类型数据的区别

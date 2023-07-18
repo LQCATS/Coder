@@ -16,3 +16,9 @@ export const getMenusAPI = (username: string) => {
         url: `/menu/${username}`
     });
 };
+
+export const getHomeInfoAPI = () => {
+    return request({
+        url:'/index/bobo'
+    })
+}

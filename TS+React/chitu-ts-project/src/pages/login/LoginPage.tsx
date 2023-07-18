@@ -2,6 +2,7 @@ import { Button, Card, Col, Form, Input, Row, Tabs } from "antd"
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import { loginAPI } from "../../apis/usersAPI"
 import { useNavigate } from 'react-router-dom';
+import useRequest from "../../hook/useRequest";
 
 interface userInfo {
     username: string,
@@ -16,17 +17,25 @@ const LoginPage = () => {
     //     console.log(typeof key);
     // };
 
+
+    //获取自定义hook中获取菜单的数据的方法
+    const { getMenusDataAsync } = useRequest();
+
+    
     const doLogin = async (values: userInfo) => {
         const res: any = await loginAPI(values);
         console.log(res);
+
         if (res.message === "认证成功") {
             //登录成功
             //将token保存在本地
             localStorage.Token = res.data.token;
             //将用户信息保存在本地
             localStorage.User = JSON.stringify(res.data.user);
+            //将用户的菜单权限更新到状态机中
+            await getMenusDataAsync();
             //跳转页面
-            navigate('/');
+            navigate('/home');
         }
 
     };
@@ -39,7 +48,7 @@ const LoginPage = () => {
                 <Form onFinish={doLogin}>
                     <Form.Item name='username'>
                         <Input
-                            prefix={<UserOutlined  />}
+                            prefix={<UserOutlined />}
                         />
                     </Form.Item>
                     <Form.Item name='password'>
