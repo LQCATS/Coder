@@ -1,0 +1,1 @@
+<view><view class="buy_member_warp"><view class="mycard"><slot></slot></view><view class="discount_msg"><view class="discount_msg_btn">恭喜</view><view class="discount_msg_text">{{''+text+''}}</view></view></view></view>

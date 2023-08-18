@@ -1,0 +1,1 @@
+<view class="search"><view class="search_icon"><image src="http://localhost:3000/public/img/search.png" mode="widthFix"></image></view><input class="header_input" type="text" placeholder="请输入关键字"/></view>

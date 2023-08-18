@@ -1,0 +1,1 @@
+.bottom_menu_item{min-width:300rpx;min-height:200rpx}.bottom_menu_item image{width:100%;height:248rpx}.bottom_menu_item .menu_title{font-size:28rpx;color:#575757;margin-bottom:10rpx;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}.bottom_menu_item .menu_msg{display:flex}

@@ -1,0 +1,1 @@
+<view class="data-v-9684d0c0"><view class="header data-v-9684d0c0" style="{{(color)}}"><view class="header_title_warp data-v-9684d0c0"><slot></slot><view class="header_title data-v-9684d0c0">{{''+title+''}}</view></view></view></view>

@@ -1,0 +1,1 @@
+<view class="menu_item"><image class="menu_img" src="{{src}}"></image><view class="title">{{''+title+''}}</view></view>

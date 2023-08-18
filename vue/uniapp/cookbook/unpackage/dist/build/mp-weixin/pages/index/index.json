@@ -1,0 +1,11 @@
+{
+  "navigationBarTitleText": "uni-app",
+  "usingComponents": {
+    "mysearch": "/components/mysearch/mysearch",
+    "mycard": "/components/mycard/mycard",
+    "myicon": "/components/myicon/myicon",
+    "myfloorbig": "/components/myfloorbig/myfloorbig",
+    "myfloorsmall": "/components/myfloorsmall/myfloorsmall",
+    "mymenu": "/components/mymenu/mymenu"
+  }
+}

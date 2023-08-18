@@ -1,0 +1,1 @@
+<view class="search data-v-bf807f68"><u-icon vue-id="7495b4fc-1" name="search" color="#f2a063" size="20" class="data-v-bf807f68" bind:__l="__l"></u-icon><input class="header_input data-v-bf807f68" type="text" placeholder="想吃什么搜这里，如麻婆豆腐" placeholder-style="color: #bfbfbf;font-size: 22rpx;"/></view>

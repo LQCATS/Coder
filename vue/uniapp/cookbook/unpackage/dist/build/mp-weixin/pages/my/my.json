@@ -1,0 +1,15 @@
+{
+  "navigationBarTitleText": "",
+  "enablePullDownRefresh": false,
+  "usingComponents": {
+    "u-icon": "/uni_modules/uview-ui/components/u-icon/u-icon",
+    "mybg": "/components/mybg/mybg",
+    "u-tabbar": "/uni_modules/uview-ui/components/u-tabbar/u-tabbar",
+    "u-tabbar-item": "/uni_modules/uview-ui/components/u-tabbar-item/u-tabbar-item",
+    "mycard": "/components/mycard/mycard",
+    "mytabspersonal": "/components/mytabspersonal/mytabspersonal",
+    "mytable": "/components/mytable/mytable",
+    "myscroll": "/components/myscroll/myscroll",
+    "mymenuitem": "/components/mymenuitem/mymenuitem"
+  }
+}

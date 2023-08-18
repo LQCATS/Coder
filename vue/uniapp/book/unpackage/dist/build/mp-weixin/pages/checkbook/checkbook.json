@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "选书",
+  "enablePullDownRefresh": false,
+  "usingComponents": {
+    "mysearch": "/components/mysearch/mysearch",
+    "mytabs": "/components/mytabs/mytabs",
+    "myagetab": "/components/myagetab/myagetab"
+  }
+}

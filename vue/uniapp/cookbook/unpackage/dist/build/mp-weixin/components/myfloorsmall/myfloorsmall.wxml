@@ -1,0 +1,1 @@
+<view class="right"><image src="{{src}}" mode="widthFix"></image><view class="image_title">{{''+text+''}}</view></view>

@@ -1,0 +1,13 @@
+{
+  "navigationBarTitleText": "",
+  "enablePullDownRefresh": false,
+  "usingComponents": {
+    "u-icon": "/uni_modules/uview-ui/components/u-icon/u-icon",
+    "u-avatar-group": "/uni_modules/uview-ui/components/u-avatar-group/u-avatar-group",
+    "mybuymember": "/components/mybuymember/mybuymember",
+    "mypricecard": "/components/mypricecard/mypricecard",
+    "mybg": "/components/mybg/mybg",
+    "mypoweritem": "/components/mypoweritem/mypoweritem",
+    "mypopup": "/components/mypopup/mypopup"
+  }
+}

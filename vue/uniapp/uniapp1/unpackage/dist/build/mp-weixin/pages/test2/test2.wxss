@@ -1,0 +1,1 @@
+.warp{display:flex}.warp .defaul{width:100rpx;height:50rpx;background-color:#ccc;border:1px solid #000;text-align:center;line-height:50rpx}.warp .active{background-color:pink;color:#fff}

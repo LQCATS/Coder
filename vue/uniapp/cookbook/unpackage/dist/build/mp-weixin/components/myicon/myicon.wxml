@@ -1,0 +1,1 @@
+<view data-event-opts="{{[['tap',[['test',['$event']]]]]}}" class="icon_warp data-v-46d1fdca" bindtap="__e"><image class="icon_image data-v-46d1fdca" src="{{src}}" mode="widthFix"></image><text class="data-v-46d1fdca">{{text}}</text></view>
